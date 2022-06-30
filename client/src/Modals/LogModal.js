@@ -86,7 +86,7 @@ const handleSubmit = (e) => {
   e.preventDefault()
   setError()
   setLoading(true)
-axios.post(process.env.NODE_ENV ==='production'?'https://spireinsights.herokuapp.com/api/user/login':'http://localhost:4000/api/user/login',User).then(res=> {
+axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/login':'http://localhost:4000/api/user/login',User).then(res=> {
 sessionStorage.setItem('token',res.data.userToken)
   // props.logFunc(res.data.user)
   // if(res.data.cookieObj){
@@ -144,7 +144,7 @@ const sendResetCode = (e) => {
   },600000
   )
 
-axios.post(process.env.NODE_ENV ==='production'?'https://spireinsights.herokuapp.com/api/user/sendResetCode':'http://localhost:4000/api/user/sendResetCode',{mail:resetMail, code:codeTemp}).then(res=> {
+axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/sendResetCode':'http://localhost:4000/api/user/sendResetCode',{mail:resetMail, code:codeTemp}).then(res=> {
   setResetCodeSent(true)
 setLoading(false)
 }).catch(err=> {
@@ -179,7 +179,7 @@ const [passReset, setPassReset] = useState(false)
 const resetPass = (e) => {
   e.preventDefault()
   setLoading(true)
-  axios.post(process.env.NODE_ENV ==='production'?'https://spireinsights.herokuapp.com/api/user/resetPassword':'http://localhost:4000/api/user/resetPassword',{email:resetMail, pass:passNew}).then(res=> {
+  axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/resetPassword':'http://localhost:4000/api/user/resetPassword',{email:resetMail, pass:passNew}).then(res=> {
     setPassReset(true)
   setLoading(false)
   }).catch(err=> {

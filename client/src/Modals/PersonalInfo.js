@@ -39,7 +39,7 @@ setError()
 props.isLoading()
 setLoading(true)
 console.log(User)
-axios.post(process.env.NODE_ENV ==='production'?'https://spireinsights.herokuapp.com/api/user/register':'http://localhost:4000/api/user/register',User).then(res=> {
+axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/register':'http://localhost:4000/api/user/register',User).then(res=> {
     sessionStorage.setItem('token',res.data.userToken)
     currentUser.setUser(res.data.user)
     history('/profile')

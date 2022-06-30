@@ -64,9 +64,9 @@ const Pricing = () => {
                Personal
                </span>
                <h2 class="font-bold text-dark mb-5 text-[42px]">
-                  $59
+                  Free Trial
                   <span class="text-base text-body-color font-medium">
-                  / year
+                  / 48 hours
                   </span>
                </h2>
                <p
@@ -77,26 +77,26 @@ const Pricing = () => {
                   border-b border-[#F2F2F2]
                   "
                   >
-                  Perfect for using in a personal website or a client project.
+                  Perfect for testing out our services.
                </p>
                <div class="mb-7">
                   <p class="text-base text-body-color leading-loose mb-1">
-                     1 User
+                     48 Hours
                   </p>
                   <p class="text-base text-body-color leading-loose mb-1">
-                     All UI components
+                     All Features & Services
                   </p>
                   <p class="text-base text-body-color leading-loose mb-1">
-                     Lifetime access
+                     Limited Access
                   </p>
                   <p class="text-base text-body-color leading-loose mb-1">
-                     Free updates
+                     Listings will not be synchronized to Amazon.
                   </p>
                   <p class="text-base text-body-color leading-loose mb-1">
-                     Use on 1 (one) project
+                     Test out Optimization Algorithms
                   </p>
                   <p class="text-base text-body-color leading-loose mb-1">
-                     3 Months support
+                     Customer Support
                   </p>
                </div>
                <a
