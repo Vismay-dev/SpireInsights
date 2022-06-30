@@ -63,9 +63,9 @@ const Pricing = () => {
                <span class="text-primary font-semibold text-lg block mb-4">
                Personal
                </span>
-               <h2 class="font-bold text-dark mb-5 text-[42px]">
+               <h2 class="font-bold text-dark mb-5  text-[42px]">
                   Free Trial
-                  <span class="text-base text-body-color font-medium">
+                  <span class="text-base m-1 text-body-color font-medium">
                   / 48 hours
                   </span>
                </h2>
@@ -408,9 +408,9 @@ const Pricing = () => {
                Business
                </span>
                <h2 class="font-bold text-dark mb-5 text-[42px]">
-                  $199
+                  $20
                   <span class="text-base text-body-color font-medium">
-                  / year
+                  / month
                   </span>
                </h2>
                <p
@@ -421,26 +421,26 @@ const Pricing = () => {
                   border-b border-[#F2F2F2]
                   "
                   >
-                  Perfect for using in a Business website or a client project.
+                  Perfect for use in a Business setting.
                </p>
                <div class="mb-7">
                   <p class="text-base text-body-color leading-loose mb-1">
-                     5 Users
+                     Unlimited Access
                   </p>
                   <p class="text-base text-body-color leading-loose mb-1">
-                     All UI components
+                    All Features & Services
                   </p>
                   <p class="text-base text-body-color leading-loose mb-1">
-                     Lifetime access
+                  Real-time Insights on Marketplaces.
                   </p>
                   <p class="text-base text-body-color leading-loose mb-1">
-                     Free updates
+                     Synchronized with Your Marketplace Listing 
                   </p>
                   <p class="text-base text-body-color leading-loose mb-1">
-                     Use on 3 (Three) project
+                     Unrestricted Usage of Analytics.
                   </p>
                   <p class="text-base text-body-color leading-loose mb-1">
-                     4 Months support
+                     Customer Support
                   </p>
                </div>
                <a

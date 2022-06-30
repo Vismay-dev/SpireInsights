@@ -14,7 +14,7 @@ const OptimiseListings = () => {
   const subHandle = ()=> {
     setLoading(true)
     setKeyWord(document.getElementById('keywords').value.toLowerCase())
-    axios.post('http://localhost:4000/api/user/topProductAnalysis',{platform:currentPlatform,sentence:document.getElementById('keywords').value}).then(res=> {
+    axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/sendUserQuery":'http://localhost:4000/api/user/topProductAnalysis',{platform:currentPlatform,sentence:document.getElementById('keywords').value}).then(res=> {
         setAnalysis(res.data)
         console.log(res.data)
         setLoading(false)

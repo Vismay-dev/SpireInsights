@@ -33,7 +33,7 @@ const Contact = () => {
     const formSub = (e) => {
         e.preventDefault()
         setLoading(true)
-        axios.post(process.env.NODE_ENV ==='production'?"https://ideastack.herokuapp.com/api/user/sendUserQuery":"http://localhost:4000/api/user/sendUserQuery",mailer).then(res=> {
+        axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/sendUserQuery":"http://localhost:4000/api/user/sendUserQuery",mailer).then(res=> {
             console.log(res.data)
             setTimeout(()=> {
                 setLoading(false)
