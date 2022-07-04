@@ -6,10 +6,10 @@ const Footer = () => {
       
 <footer class="p-4 mt-4 z-50 sm:p-6 bg-gradient-to-tr from-blue-800 to-blue-900">
     <div class="md:flex md:justify-between">
-        <div class="mb-6 bg-white md:mb-0 h-fit p-2 rounded-md shadow-md">
+        <div class="mb-6 bg-white md:mb-0 h-fit p-2 rounded-sm shadow-md">
             <a href="https://flowbite.com/" class="flex monotone items-center">
                 <img src={logo} class="mr-1  h-8" alt="FlowBite Logo"/>
-                <span class="self-center text-2xl font-semibold whitespace-nowrap">Spire Insights</span>
+                <span class="self-center text-xl top-[1px] font-semibold whitespace-nowrap">Spire Insights</span>
             </a>
         </div>
         <div class="grid grid-cols-2 gap-8 mt-4 mr-6 mb-3 sm:gap-6 sm:grid-cols-3">

@@ -5,13 +5,385 @@ import { MdSell } from 'react-icons/md'
 import { CgTrack } from 'react-icons/cg'
 import { AiFillAmazonCircle } from 'react-icons/ai'
 import { FiShoppingCart } from 'react-icons/fi'
-
-
-import { useState } from 'react'
+import {ImCross} from 'react-icons/im'
+import {TiTick} from 'react-icons/ti'
+import { useState, useContext, useEffect, useRef } from 'react'
+import axios from 'axios'
+import userContext from '../../../context/userContext'
 
 const ContentSetup = (props)=> {
    const [isOpen,setIsOpen] = useState(false)
    const [currentPlatform, setCurrentPlatform] = useState('Amazon')
+   const userCon = useContext(userContext)
+
+   const [currentPrep, setCurrentPrep] = useState({
+      storeDetails:{
+               platform: '',
+               productName: '',
+               productDetails: '',
+               beingEdited:false,
+               isSaved:false
+            },
+            pricing: {
+               productPricing: 0,
+               currency: '',
+               beingEdited:false,
+               isSaved:false
+      
+            },
+            shipping: {
+               productDimension: '',
+               productWeight: 0,
+               beingEdited:false,
+               isSaved:false
+            },
+            images: {
+               collection:[],
+               beingEdited:false,
+               isSaved:false
+            },
+            keyWords: {
+               one: '',
+               two: '',
+               three: '',
+               four: '',
+               five: ''
+            }
+   })
+   const [keyWords,setKeyWords] = useState(currentPrep.keyWords)
+
+   const [storeDetails, setStoreDetails] = useState(currentPrep.storeDetails)
+
+   const [pricing, setPricing] = useState(currentPrep.pricing)
+
+   const [shipping, setShipping] = useState(currentPrep.shipping)
+
+   const [images, setImages] = useState(currentPrep.images)
+
+
+   const [upload, setUpload] = useState({
+      title: '',
+      image: '',
+  })
+
+
+  const [uploading, setUploading] = useState(false)
+  const [file,setFile] = useState()
+
+  const fileUploadHandler = (e) => {
+   const data = new FormData();
+   setUploading(true)
+   data.append('image',e.target.files[0]);
+   console.log(e.target.files[0].name)
+   let currTitle = e.target.files[0].name
+
+   setFile(e.target.files[0])
+   data.append('token',sessionStorage.getItem('token') )
+   axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/uploadPic':'http://localhost:4000/api/user/uploadPic'
+   ,data).then(res=> {
+       setUpload({
+         ...upload,
+         image:res.data,
+         title:currTitle
+     })
+     setImages({
+      ...images, collection: [{
+         ...upload,
+         image:res.data,
+         title: currTitle
+     }], isBeingEdited:true,
+     isSaved:false
+     })
+     if(userCon.user.pipeline.current!=='preparation'){
+      userNow = userCon.user
+      userCon.setUser({...userNow, pipeline: {
+         ...userNow.pipeline,
+         prepBeingEdited:true
+      }})
+      axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/saveCurrentPipeline':'http://localhost:4000/api/user/saveCurrentPipeline',
+{pipeline:{...currentPrep, prepBeingEdited:true },token:sessionStorage.getItem('token')}).then(res=> {
+      userCon.setUser(res.data)
+  }).catch(err=> {
+      console.log(err.response)
+  })
+}
+   setUploading(false)
+   }).catch(err=> {
+       console.log(err)
+       setUploading(false)
+   })
+   }
+
+
+   let userNow
+
+   let inputRef = useRef()
+
+
+   useEffect(()=> {
+         axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/getUser':'http://localhost:4000/api/user/getUser',
+      {token: sessionStorage.getItem('token')}).then(res=> {
+        setCurrentPrep(res.data.pipeline.data)
+        setStoreDetails(res.data.pipeline.data.storeDetails)
+      setPricing(res.data.pipeline.data.pricing)
+      setShipping(res.data.pipeline.data.shipping)
+      setImages(res.data.pipeline.data.images)
+      setKeyWords(res.data.pipeline.data.keyWords)
+      }).catch(err=> {
+        console.log(err.response)
+      })
+   },[])
+
+
+   const keyWordChange = (e)=> {
+      setKeyWords({
+         ...keyWords,
+         [e.target.name]:e.target.value,
+         beingEdited:true,
+         isSaved:false
+      })
+
+      setCurrentPrep({
+         ...currentPrep,
+         keyWords:keyWords
+      })
+
+      if(userCon.user.pipeline.current!=='seo'){
+         userNow = userCon.user
+         userCon.setUser({...userNow, pipeline: {
+            ...userNow.pipeline,
+            keyWordsBeingEdited:true
+         }})
+         axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/saveCurrentPipeline':'http://localhost:4000/api/user/saveCurrentPipeline',
+   {pipeline:{...currentPrep, keyWordsBeingEdited:true },token:sessionStorage.getItem('token')}).then(res=> {
+         userCon.setUser(res.data)
+     }).catch(err=> {
+         console.log(err.response)
+     })
+   }
+   }
+
+   const storeDetailsChange = (e) => {
+      setStoreDetails({
+         ...storeDetails, 
+         [e.target.name]:e.target.value,
+         beingEdited:true,
+         isSaved:false
+      })
+
+      setCurrentPrep({
+         ...currentPrep,
+         storeDetails:storeDetails
+      })
+
+      if(userCon.user.pipeline.current!=='preparation'){
+         userNow = userCon.user
+         userCon.setUser({...userNow, pipeline: {
+            ...userNow.pipeline,
+            prepBeingEdited:true
+         }})
+         axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/saveCurrentPipeline':'http://localhost:4000/api/user/saveCurrentPipeline',
+   {pipeline:{...currentPrep, prepBeingEdited:true },token:sessionStorage.getItem('token')}).then(res=> {
+         userCon.setUser(res.data)
+     }).catch(err=> {
+         console.log(err.response)
+     })
+   }
+
+   }
+
+   const pricingChange = (e) => {
+      setPricing({
+         ...pricing, 
+         [e.target.name]:e.target.value,
+         beingEdited:true,
+         isSaved:false
+      })
+
+      setCurrentPrep({
+         ...currentPrep,
+         pricing:pricing
+      })
+
+      if(userCon.user.pipeline.current!=='preparation'){
+         userNow = userCon.user
+         userCon.setUser({...userNow, pipeline: {
+            ...userNow.pipeline,
+            prepBeingEdited:true
+         }})
+         axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/saveCurrentPipeline':'http://localhost:4000/api/user/saveCurrentPipeline',
+   {pipeline:{...userNow.pipeline, prepBeingEdited:true   },token:sessionStorage.getItem('token')}).then(res=> {
+         userCon.setUser(res.data)
+     }).catch(err=> {
+         console.log(err.response)
+     })
+   }
+
+  
+
+  
+
+}
+
+   const shippingChange = (e) => {
+      setShipping({
+         ...shipping, 
+         [e.target.name]:e.target.value,
+         beingEdited:true,
+         isSaved:false
+      })
+
+      setCurrentPrep({
+         ...currentPrep,
+         shipping:shipping
+      })
+
+      if(userCon.user.pipeline.current!=='preparation'){
+         userNow = userCon.user
+         userCon.setUser({...userNow, pipeline: {
+            ...userNow.pipeline,
+            prepBeingEdited:true
+         }})
+         axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/saveCurrentPipeline':'http://localhost:4000/api/user/saveCurrentPipeline',
+   {pipeline:{...currentPrep, prepBeingEdited:true },token:sessionStorage.getItem('token')}).then(res=> {
+         userCon.setUser(res.data)
+     }).catch(err=> {
+         console.log(err.response)
+     })
+   }}
+
+   const subKeyWords = () => {
+
+
+      let details = {
+         ...currentPrep, keyWords : {
+            ...keyWords, isSaved:true
+         }
+      }
+
+
+
+      setKeyWords({
+         ...keyWords, 
+         isSaved:true,
+      })
+
+      setCurrentPrep({
+         ...currentPrep,
+         keyWords:{
+            ...keyWords, isSaved:true
+         }
+      })
+
+
+      axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/saveCurrentPipelineKeyWords':'http://localhost:4000/api/user/saveCurrentPipelineKeyWords',
+      {details,token:sessionStorage.getItem('token')}).then(res=> {
+            console.log(res.data.pipeline.data)
+            userCon.setUser(res.data)
+        }).catch(err=> {
+            console.log(err.response)
+        })
+   }
+   
+
+   const saveFunc = (type) => {
+
+      console.log(currentPrep)
+
+
+      let details = type === 'storeDetails' ? {
+         ...currentPrep, storeDetails : {
+            ...storeDetails, isSaved:true
+         }
+      }: type === 'pricing' ? {
+         ...currentPrep, pricing : {
+            ...pricing, isSaved:true
+         }
+      } : type === 'shipping' ?  {
+         ...currentPrep, shipping : {
+            ...shipping, isSaved:true
+         }      } : type === 'image' ? {
+            ...currentPrep, images : {...images, isSaved:true}} : {}
+
+      if(type === 'storeDetails') {
+         setStoreDetails({
+            ...storeDetails, 
+            isSaved:true,
+         })
+   
+         setCurrentPrep({
+            ...currentPrep,
+            storeDetails:{
+            ...storeDetails, isSaved:true
+         }
+         })
+   
+      } else if(type === 'pricing') {
+         setPricing({
+            ...pricing, 
+            isSaved:true,
+         })
+   
+         setCurrentPrep({
+            ...currentPrep,
+            pricing:{
+               ...pricing, isSaved:true
+         }})
+      } else if(type === 'shipping') {
+         setShipping({
+            ...shipping, 
+            isSaved:true,
+      })
+   
+         setCurrentPrep({
+            ...currentPrep,
+            shipping:{
+               ...shipping, isSaved:true
+            }
+         })
+      }else if(type = 'image') {
+         setImages({
+            ...images,
+            collection: [{...images.collection[0],title:upload.title}],
+            isSaved:true,
+      })
+   
+         setCurrentPrep({
+            ...currentPrep,
+            images:{
+               ...images, isSaved:true
+            }
+         })
+      }
+
+      axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/saveCurrentPipelinePrep':'http://localhost:4000/api/user/saveCurrentPipelinePrep',
+      {details,token:sessionStorage.getItem('token')}).then(res=> {
+            console.log(res.data.pipeline.data)
+            userCon.setUser(res.data)
+        }).catch(err=> {
+            console.log(err.response)
+        })
+   }
+
+
+
+   const saveDetails1 = ()=> {
+      saveFunc('storeDetails')
+   }
+
+   const saveDetails2 = ()=> {
+      saveFunc('pricing')
+   }
+
+   const saveDetails3 = ()=> {
+      saveFunc('shipping')
+   }
+
+   const saveDetails4 = ()=> {
+      saveFunc('image')
+   }
+
+
 
     const contentList = [
                     <div className="mt-12 relative mx-auto lg:mt-14 mb-14">
@@ -37,7 +409,7 @@ const ContentSetup = (props)=> {
 <div class="container">
    <div class="flex flex-wrap -mx-4">
       <div class="w-full px-4">
-         <div class="text-center mx-auto mb-12 lg:mb-14 max-w-[700px]">
+         <div class="text-center mx-auto mb-12 lg:mb-14 max-w-[800px]">
             <span class="font-semibold text-lg text-primary mb-2 block">
              Step-By-Step Guide
             </span>
@@ -53,18 +425,19 @@ const ContentSetup = (props)=> {
                >
                Plan Your Listings
             </h2>
-            <p class="text-base text-body-color relative top-3">
+            <p class="text-base text-body-color relative top-3 mb-5 block">
                Use these instructions to systematically organize your E-Commerce Listings. An aspect ignored by most online business, comprehensive planning of listings is key to better consumer exposure & higher sales.
                Planning & storing these details early saves time later when setting up online stores.
             </p>
          </div>
-         <a href="javascript:void(0)" class="
+         <a href="javascript:void(0)" class={`
 py-2
 px-5
--top-6
-w-1/
+-top-[18px]
+w-1/4
 lg:px-8 
-mb-3
+mb-5
+mt-4
 mx-auto
 block
 relative
@@ -72,12 +445,28 @@ xl:px-6
 items-center
 justify-center
 text-center text-white text-lg
-bg-blue-700
-hover:bg-opacity-90
+${
+   userCon.user && userCon.user.pipeline && userCon.user.pipeline.current !== 'preparation'?
+  'bg-blue-700 hover:bg-opacity-90 hover:shadow-md cursor-pointer mt-2':
+  'bg-blue-300 cursor-default text-gray-100'
+}
 rounded-md
-">
-Save All Details
+`}>
+Save All Details & Continue
 </a>
+
+{
+   userCon.user && userCon.user.pipeline && userCon.user.pipeline.current !== 'preparation'?
+   <div class = 'block mx-auto -mt-1 -top-2 mb-1 relative'>{
+   !userCon.user.pipeline.prepBeingEdited?
+   <TiTick class = 'text-green-600 text-center mx-auto relative mb-3 mt-1 text-4xl bg-gradient-to-br block from-blue-100 to-indigo-100 rounded-full'/>:
+   <><ImCross class = 'text-red-600 text-center mx-auto relative mb-2 text-4xl p-1 bg-gradient-to-br block from-blue-100 to-indigo-100 rounded-full'/> <h1 class = 'text-center uppercase mb-3 font-semibold underline'>Being Edited...</h1></>
+}</div>
+   :
+   ''
+}
+
+
       </div>
    </div>
    <div class="flex flex-wrap -mx-4">
@@ -129,7 +518,7 @@ Save All Details
       <label for="" class="font-medium text-base text-black block mb-3">
       E-Commerce Platform
       </label>
-      <input type="text" placeholder="Platform" class="
+      <input type="text"  name = 'platform' defaultValue = {storeDetails.platform} onChange={storeDetailsChange} placeholder="Platform" class="
          w-full
          border-[1.5px] border-form-stroke
          rounded-lg
@@ -151,7 +540,7 @@ Save All Details
       <label for="" class="font-medium text-base text-black block mb-3">
       Product Name
       </label>
-      <input type="text" placeholder="Product Name" class="
+      <input type="text"  name = 'productName' defaultValue = {storeDetails.productName} onChange={storeDetailsChange} placeholder="Product Name" class="
          w-full
          border-[1.5px] border-primary
          rounded-lg
@@ -172,7 +561,7 @@ Save All Details
       <label for="" class="font-medium text-base text-black block mb-3">
       Rough Product Details
       </label>
-      <input type="text" placeholder="One-line Description" disabled="" class="
+      <input type="text" name = 'productDetails'  defaultValue = {storeDetails.productDetails} onChange={storeDetailsChange} placeholder="One-line Description" disabled="" class="
          w-full
          border-[1.5px] border-form-stroke
          rounded-lg
@@ -202,9 +591,21 @@ text-center text-white text-lg
 bg-blue-700
 hover:bg-opacity-90
 rounded-md
-">
+"
+onClick = {()=>saveDetails1()}
+>
 Save Details
 </a>
+<div class = 'relative inline left-8 top-[18px]'>
+
+{
+   storeDetails.beingEdited?
+   storeDetails.isSaved?
+   <TiTick class = 'text-green-600 text-4xl bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full'/>:
+   <ImCross class = 'text-red-600 text-4xl p-1 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full'/>:
+   ''
+}
+</div>
 </div>
          </div>
       </div>
@@ -252,7 +653,7 @@ Save Details
       <label for="" class="font-medium text-base text-black block mb-3">
       Product Pricing
       </label>
-      <input type="number" placeholder="Pricing" disabled="" class="
+      <input type="number"  name = 'productPricing' defaultValue={pricing.productPricing} onChange={pricingChange} placeholder="Pricing" disabled="" class="
          w-full
          border-[1.5px] border-form-stroke
          rounded-lg
@@ -273,7 +674,10 @@ Save Details
       <label for="" class="font-medium text-base text-black block mb-3">
       Currency
       </label>
-      <select class="
+      <select 
+      name = 'currency'
+      defaultValue={pricing.currency===""?null:pricing.currency}
+      class="
             w-full
             border-[1.5px] border-form-stroke
             rounded-lg
@@ -287,7 +691,10 @@ Save Details
             transition
             disabled:bg-[#F5F7FD] disabled:cursor-default
             appearance-none
-            ">
+            "
+            onChange={pricingChange}
+            >
+            <option value={null} defaultChecked disabled>Select Currency</option>
             <option value="AED">AED - Dirham (United Arab Emirates)</option>
             <option value="QR">QR - Qatari Rial (Qatar)</option>
             {/* <option value="">Option</option> */}
@@ -299,6 +706,7 @@ py-2
 px-5
 lg:px-8 left-2 my-3
 -mb-1
+mr-2
 relative
 xl:px-6
 inline-flex
@@ -308,9 +716,20 @@ text-center text-white text-lg
 bg-blue-700
 hover:bg-opacity-90
 rounded-md
-">
+"
+onClick = {()=>saveDetails2()}
+>
 Save Details
 </a>
+<div class = 'relative inline left-6 top-[-1px]'>
+{
+   pricing.beingEdited?
+   pricing.isSaved?
+   <TiTick class = 'text-green-600 text-4xl inline bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full'/>:
+   <ImCross class = 'text-red-600 text-4xl inline bg-gradient-to-br p-1 from-blue-100 to-indigo-100 rounded-full'/>:
+   ''
+}
+</div>
          </div>
       </div>
       <div class="w-full md:w-1/2  px-4">
@@ -361,7 +780,7 @@ Save Details
       <label for="" class="font-medium text-base text-black block mb-3">
       Product Dimensions
       </label>
-      <input type="text" placeholder="Platform" class="
+      <input type="text" name = 'productDimension' defaultValue = {shipping.productDimension} onChange={shippingChange} placeholder="Dimensions" class="
          w-full
          border-[1.5px] border-form-stroke
          rounded-lg
@@ -381,9 +800,9 @@ Save Details
 <div class="w-full md:w-1/2 lg:w-1/2 px-2">
    <div class="mb-4">
       <label for="" class="font-medium text-base text-black block mb-3">
-      Product Weight (Estimated)
+      Product Weight (Estimated - Kg)
       </label>
-      <input type="text" placeholder="Product Name" class="
+      <input onChange={shippingChange} name = 'productWeight' defaultValue = {shipping.productWeight} type="number" placeholder="Weight" class="
          w-full
          border-[1.5px] border-primary
          rounded-lg
@@ -416,9 +835,21 @@ text-center text-white text-lg
 bg-blue-700
 hover:bg-opacity-90
 rounded-md
-">
+"
+onClick = {()=>saveDetails3()}
+>
 Save Details
 </a>
+<div class = 'relative left-8 top-[18px]'>
+
+{
+   shipping.beingEdited?
+   shipping.isSaved?
+   <TiTick class = 'text-green-600 text-4xl inline bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full'/>:
+   <ImCross class = 'text-red-600 text-4xl inline bg-gradient-to-br p-1 from-blue-100 to-indigo-100 rounded-full'/>:
+   ''
+}
+</div>
 </div>
            
          </div>
@@ -427,6 +858,7 @@ Save Details
          <div
             class="
             p-10
+            pb-7
             md:px-7
             xl:px-10
             rounded-[20px]
@@ -466,9 +898,9 @@ Save Details
 <div class="w-full lg:w-full px-4">
    <div class="mb-[35px]">
       <label for="" class="font-medium text-base text-black block mb-3">
-      Default file input
+      {images&&images.collection[0]&&images.collection[0].title?'Change Image':'Upload Image'}
       </label>
-      <input type="file" class="
+      <input type="file" ref={inputRef} onChange = {fileUploadHandler} class="
          w-full
          border-[1.5px] border-form-stroke
          rounded-lg
@@ -494,6 +926,7 @@ Save Details
          file:cursor-pointer
          file:hover:bg-primary
          file:hover:bg-opacity-10
+         mt-0.5
          "/>
    </div>
 </div>
@@ -501,10 +934,11 @@ Save Details
 <a href="javascript:void(0)" class="
 py-2
 px-5
--mt-14
-top-0.5
+-mt-16
+
 lg:px-8 
--mb-9
+-mb-12
+mr-0
 relative
 xl:px-6
 inline-flex
@@ -514,9 +948,22 @@ text-center text-white text-lg
 bg-blue-700
 hover:bg-opacity-90
 rounded-md
-">
+" onClick = {()=> {
+   saveDetails4()
+}}>
 Save Details
 </a>
+
+<div class = 'relative inline top-[1.5px] left-6'>
+
+{
+   images.isBeingEdited?
+   images.isSaved?
+   <TiTick class = 'text-green-600 text-4xl inline bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full'/>:
+   <ImCross class = 'text-red-600 text-4xl p-1 inline bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full'/>:
+   ''
+}
+</div>
          </div>
         
       </div>
@@ -529,7 +976,7 @@ Save Details
 <div class="container">
    <div class="flex flex-wrap -mx-4">
       <div class="w-full px-4">
-         <div class="text-center mx-auto mb-12 lg:mb-14 max-w-[1000px]">
+         <div class="text-center mx-auto mb-12 lg:mb-14 max-w-[650px]">
             <span class="font-semibold text-lg text-primary mb-2 block">
              Maximize Consumer Exposure
             </span>
@@ -577,7 +1024,7 @@ Save Details
          <label for="" class="font-medium text-base text-black block mb-3">
          Key Word 1
          </label>
-         <input type="text" placeholder="Enter Keyword" class="
+         <input type="text" onChange={keyWordChange} defaultValue = {keyWords.one} name = 'one' placeholder="Enter Keyword" class="
             w-full
             border-[1.5px] border-form-stroke
             rounded-lg
@@ -599,7 +1046,7 @@ Save Details
          <label for="" class="font-medium text-base text-black block mb-3">
          Key Word 2
          </label>
-         <input type="text" placeholder="Enter Keyword" class="
+         <input type="text" onChange={keyWordChange} name = 'two' defaultValue = {keyWords.two} placeholder="Enter Keyword" class="
             w-full
             border-[1.5px] border-form-stroke
             rounded-lg
@@ -621,7 +1068,7 @@ Save Details
          <label for="" class="font-medium text-base text-black block mb-3">
          Key Word 3
          </label>
-         <input type="text" placeholder="Enter Keyword" class="
+         <input type="text" onChange={keyWordChange} name = 'three' defaultValue = {keyWords.three} placeholder="Enter Keyword" class="
             w-full
             border-[1.5px] border-form-stroke
             rounded-lg
@@ -640,10 +1087,10 @@ Save Details
    </div>
    <div class="w-full md:w-1/2 lg:w-1/5 px-1.5">
       <div class="mb-12">
-         <label for="" class="font-medium text-base text-black block mb-3">
+         <label for=""   class="font-medium text-base text-black block mb-3">
          Key Word 4
          </label>
-         <input type="text" placeholder="Enter Keyword" class="
+         <input type="text" name = 'four' onChange={keyWordChange} placeholder="Enter Keyword" defaultValue = {keyWords.four} class="
             w-full
             border-[1.5px] border-primary
             rounded-lg
@@ -665,7 +1112,7 @@ Save Details
          <label for="" class="font-medium text-base text-black block mb-3">
          Key Word 5
          </label>
-         <input type="text" placeholder="Enter Keyword" disabled="" class="
+         <input type="text" onChange={keyWordChange} name = 'five' defaultValue = {keyWords.five} placeholder="Enter Keyword" disabled="" class="
             w-full
             border-[1.5px] border-form-stroke
             rounded-lg
@@ -683,7 +1130,11 @@ Save Details
       </div>
    </div>
 </div>
-<a href="javascript:void(0)" class="
+<a href="javascript:void(0)" onClick={()=> {
+   subKeyWords()
+}}
+
+class="
 py-2
 px-5
 -top-6
@@ -703,7 +1154,16 @@ rounded-md
 ">
 Save All Details
 </a>
-       
+<div class = 'relative block mx-auto   top-[2px] mb-3'>
+
+{
+   keyWords.beingEdited?
+   keyWords.isSaved?
+   <TiTick class = 'text-green-600 text-5xl bg-gradient-to-br text-center block mx-auto from-blue-50 to-indigo-50 rounded-full'/>:
+   <><ImCross class = 'text-red-600 text-center mx-auto relative mb-2 text-5xl p-1 bg-gradient-to-br block from-blue-100 to-indigo-100 rounded-full'/> <h1 class = 'text-center uppercase mb-3 font-semibold underline'>Being Edited...</h1></>:
+   ''
+}
+</div>
       </div>
      
 </div>
@@ -854,7 +1314,43 @@ currentPlatform==='Amazon'?
     ]
 
     return (<>
-     <div className="mx-auto container bg-gradient-to-tr from-blue-100 to-indigo-200 p-4 py-1 rounded-md shadow-lg border-2 border-dotted border-blue-700 mt-[66px] mb-[70px]">
+    {
+    props.segment-1===2?
+    <>
+    <a href="javascript:void(0)" class={`
+    py-2
+    px-5
+    w-1/4
+    lg:px-8 
+    -mb-5
+    mt-9
+    mx-auto
+    block
+    relative
+    xl:px-6
+    items-center
+    justify-center
+    text-center text-white text-lg
+    ${
+       userCon.user && userCon.user.pipeline && userCon.user.pipeline.current !== 'seo'?
+      'bg-blue-700 hover:bg-opacity-90 hover:shadow-md cursor-pointer mt-2':
+      'bg-blue-300 cursor-default text-gray-100'
+    }
+    rounded-md
+    `}>
+    Save All Details & Continue
+    </a>
+    {
+      userCon.user && userCon.user.pipeline && userCon.user.pipeline.current !== 'seo'?
+      <div class = 'block mx-auto top-[33px] relative'>{
+      !userCon.user.pipeline.keyWordsBeingEdited?
+      <TiTick class = 'text-green-600 text-center mx-auto relative mb-3 mt-1 text-4xl bg-gradient-to-br block from-blue-100 to-indigo-100 rounded-full'/>:
+      <><ImCross class = 'text-red-600 text-center mx-auto relative mb-2 mt-1 text-4xl p-1 bg-gradient-to-br block from-blue-100 to-indigo-100 rounded-full'/> <h1 class = 'text-center uppercase mb-3 font-semibold underline'>Being Edited...</h1></>
+   }</div>:''}
+   </>
+    
+    :''}
+     <div className="mx-auto container bg-gradient-to-tr from-blue-100 to-indigo-200 p-4 py-1 rounded-md shadow-lg border-2 border-dotted border-blue-700 mt-[56px] mb-[70px]">
      {contentList[props.segment-1]}
      </div>  
     </>)

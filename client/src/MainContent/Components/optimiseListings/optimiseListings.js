@@ -5,38 +5,86 @@ import {TbReportSearch} from 'react-icons/tb'
 import axios from "axios"
 import TopProdResult from "./TopProdResult"
 import { useState } from "react"
+import Tooltip from 'react-power-tooltip'
 
 const OptimiseListings = () => {
+  const [showToolTip, setShowToolTip] = useState(false)
     const [analysis, setAnalysis] = useState()
     const [keyword, setKeyWord] = useState()
     const [loading, setLoading] = useState(false)
     const [currentPlatform, setCurrentPlatform] = useState('Amazon') 
+
+    const [operation, setOperation] = useState('top-prod')
+
+    const changeOp = (op) => {
+      setAnalysis()
+      setOperation(op)
+    }
+
   const subHandle = ()=> {
     setLoading(true)
     setKeyWord(document.getElementById('keywords').value.toLowerCase())
-    axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/sendUserQuery":'http://localhost:4000/api/user/topProductAnalysis',{platform:currentPlatform,sentence:document.getElementById('keywords').value}).then(res=> {
+    if(operation === 'top-prod'){
+
+    axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/topProductAnalysis":'http://localhost:4000/api/user/topProductAnalysis',{platform:currentPlatform,sentence:document.getElementById('keywords').value, token:sessionStorage.getItem('token')}).then(res=> {
         setAnalysis(res.data)
         console.log(res.data)
         setLoading(false)
 }).catch(err=> {
       console.log(err.response.message)
     })
+
+  }else if(operation === 'marketplace-overview'){
+
+    axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/marketPlaceOverview":'http://localhost:4000/api/user/marketPlaceOverview',
+    {platform:currentPlatform,sentence:document.getElementById('keywords').value, token:sessionStorage.getItem('token')}).then(res=> {
+      setAnalysis(res.data)
+      setLoading(false)
+}).catch(err=> {
+    console.log(err.response.message)
+  })
+
+  }else if(operation === 'track-product'){
+    axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/trackProductPerformance":'http://localhost:4000/api/user/trackProductPerformance',{platform:currentPlatform,asin:document.getElementById('keywords').value.toUpperCase(), token:sessionStorage.getItem('token')}).then(res=> {
+      setAnalysis(res.data)
+      console.log(res.data)
+      setLoading(false)
+}).catch(err=> {
+    console.log(err.response.message)
+  })
+
+  }
   }
 
     return (
         <>
-        <div class = 'relative mx-auto  w-fit'>
+        <div class = 'relative mx-auto  z-[100]  w-fit'>
             <h1 class = 'text-4xl font-bold mt-[40px] mb-4 bottom-2 relative text-center'>Optimize E-Commerce Listings</h1>
             <hr class = 'relative top-1 w-[150%] mt-1 right-[25%]'/>
-            <ButtonGroup/>
+            <ButtonGroup operation = {operation} changeOp = {changeOp}/>
             <hr class = 'relative top-1 w-[150%] my-1 right-[25%]'/>
-            <div class="flex flex-wrap -mx-4 relative w-[130%] right-[14%] mt-8">
+            <div class="flex flex-wrap  -mx-4 relative w-[130%] right-[14%] mt-8">
    <div class="w-full md:w-1/2 lg:w-1/3 px-4">
-      <div class="mb-12">
+      <div class="mb-12 block relative ">
          <label for="" class="font-medium text-base text-black block mb-3">
-         Enter Product Keywords
+         Enter Product {operation==='track-product'?'ASIN ID':'Keywords'} {operation==='track-product'?
+         <svg 
+         onMouseOver={() => {
+             setShowToolTip(true)      
+         }} 
+         onMouseLeave={() =>{
+             setShowToolTip(false)    
+         }}
+         xmlns="http://www.w3.org/2000/svg" class="h-[19px] w-[19px] relative left-1 bottom-[1.8px] hover:text-gray-600 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+         <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+       </svg>:''}
+
+<div class = 'relative right-16'>
+       <Tooltip show={showToolTip} position = 'bottom' fontSize = '16px' padding = '5px 5px'>
+  <span class = 'font-semibold text-center relative  font-sans'>ASIN is a unique ID given on Amazon product pages.</span>
+</Tooltip></div>
          </label>
-         <input type="text" id = 'keywords' placeholder="Ex. Wireless Mouse" class="
+         <input type="text" id = 'keywords' placeholder={`Ex. ${operation==='track-product'?'B001TJ3HUG':'Wireless Mouse'}`} class="
             w-full
             border-[1.5px] border-form-stroke
             rounded-lg
@@ -141,7 +189,7 @@ const OptimiseListings = () => {
 </a>
 </div>
 <hr class = 'relative mt-6 w-[90%] mx-auto'/>
-<TopProdResult loading={loading} analysis = {analysis} keyword = {keyword}/>
+<TopProdResult loading={loading} operation = {operation} analysis = {analysis} keyword = {keyword}/>
 
         
         </>

@@ -29,6 +29,10 @@ const userSchema = new mongoose.Schema({
       type: String,
       required: true
     },
+    pipeline:{
+      type: Object,
+      required:true
+    },
     profilePic: {
       type: String,
       required: false

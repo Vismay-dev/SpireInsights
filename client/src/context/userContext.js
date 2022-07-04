@@ -9,7 +9,13 @@ const userContext = createContext({
     password: '',
     country: '',
     city: '',
-    id:''
+    id:'',
+    pipeline:{
+        current:'preparation',
+        data: {
+            
+        }
+    }
     },
     setUser:   () => {
 

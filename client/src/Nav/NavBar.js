@@ -103,7 +103,7 @@ const NavBar = () => {
          <a  href="#" onClick = {()=> {
           setLogModal(true)
           }} 
-          className="uppercase items-center justify-center top-[5px] hover:font-semibold relative mr-4  p-2 border border-transparent rounded-md hover:shadow-lg text-md tracking-wide font-semibold hover:text-white text-gray-700 bg-gradient-to-r  hover:from-indigo-400 hover:to-indigo-600 active:bg-blue-500">
+          className="uppercase items-center justify-center top-[5px] hover:font-semibold relative mr-4  p-2 border border-transparent rounded-md hover:shadow-lg text-md tracking-wide font-semibold hover:text-white text-gray-700 bg-gradient-to-r  hover:from-blue-600 hover:to-blue-700 active:bg-blue-500">
           Log in
          </a>
 
@@ -112,7 +112,7 @@ const NavBar = () => {
           setRegModal(true)
           }}
            href="#"
-           className="uppercase items-center justify-center  top-[5px] hover:font-semibold relative p-2 border border-transparent rounded-md hover:shadow-lg text-md tracking-wide font-semibold hover:text-white text-gray-700 bg-gradient-to-r  hover:from-indigo-400 hover:to-indigo-600 active:bg-blue-500"
+           className="uppercase items-center justify-center  top-[5px] hover:font-semibold relative p-2 border border-transparent rounded-md hover:shadow-lg text-md tracking-wide font-semibold hover:text-white text-gray-700 bg-gradient-to-r  hover:from-blue-600 hover:to-blue-700 active:bg-blue-500"
          >
            Sign up
          </a>
@@ -128,20 +128,20 @@ const NavBar = () => {
       <li>
         <a class={`block py-2 pr-4 cursor-pointer  pl-3 ${location.pathname === '/setupListings'?'text-blue-700':'text-gray-700'} border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-sm uppercase md:p-0`} onClick={()=> {
           history('/setupListings')
-        }}>E-COMMERCE SET-UP</a>
+        }}> SET-UP</a>
       </li>
       <li>
         <a  class="block py-2 pr-4 pl-3 cursor-pointer  text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-sm uppercase md:p-0 " onClick={()=> {
           history('/profile')
-        }}>MANAGE LISTING</a>
+        }}>MANAGE</a>
       </li>
       <li>
         <a class={`block py-2 pr-4 pl-3 cursor-pointer  ${location.pathname === '/optimiseListings'?'text-blue-700':'text-gray-700'}  border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-sm uppercase md:p-0`} onClick={()=> {
           history('/optimiseListings')
-        }}>OPTIMIZE LISTING</a>
+        }}>OPTIMIZE </a>
       </li>
       <li>
-        <a class={`block  cursor-pointer  -mt-2 -ml-4  border-b border-gray-100  md:hover:bg-transparent md:border-0 hover:text-white text-sm uppercase p-2 border border-transparent rounded-md hover:shadow-lg tracking-wide font-semibold  text-gray-700 bg-gradient-to-r  hover:from-indigo-400 hover:to-indigo-600 active:bg-blue-500`} onClick={()=> {
+        <a class={`block  cursor-pointer  -mt-2 -ml-4  border-b border-gray-100  md:hover:bg-transparent md:border-0 hover:text-white text-sm uppercase p-2 border border-transparent rounded-md hover:shadow-lg tracking-wide font-semibold  text-gray-700 bg-gradient-to-r  hover:from-blue-600 hover:to-blue-700 active:bg-blue-500`} onClick={()=> {
         logOutHandle()
         }}>LOG OUT</a>
       </li>

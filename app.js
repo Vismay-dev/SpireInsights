@@ -4,10 +4,16 @@ const dotenv         = require('dotenv')
 const { http, https } = require('follow-redirects');
 const cors           = require('cors')
 const mongoose = require('mongoose')
+const cloudinary = require('cloudinary')
 
 const RoutesAPIUser = require('./server/routes/RoutesAPIUser.js')
 
 dotenv.config()
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+})
 app.use(express.json())
 
 mongoose.connect(process.env.MONGODB,{useUnifiedTopology:true,useNewUrlParser:true },

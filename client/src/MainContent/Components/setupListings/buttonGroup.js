@@ -1,6 +1,17 @@
 import {MdOutlineWork, MdScreenSearchDesktop, MdRestartAlt} from 'react-icons/md'
 import {IoCreateSharp} from 'react-icons/io5'
+import userContext from '../../../context/userContext'
+import {useContext, useState} from 'react'
+import Tooltip from 'react-power-tooltip'
+
 const ButtonGroup = (props) => {
+   const [showToolTip, setShowToolTip] = useState(false)
+   const [showToolTip2, setShowToolTip2] = useState(false)
+
+   const user = useContext(userContext).user
+   let current = user.pipeline?user.pipeline.current:''
+   current = current === 'preparation'  ?  1: current === 'seo' ? 2: 3
+
 
     return (<>
 
@@ -58,8 +69,22 @@ const ButtonGroup = (props) => {
    </a>
    <a href="javascript:void(0)"
     onClick={()=> {
-      props.changeSeg(3)
-   }}
+      if(current&&current>=2){
+         props.changeSeg(3)
+      }   }}
+
+      onMouseOver={() => {
+         if(!(current&&current>=2)){
+            setShowToolTip(true)      }
+      } } 
+      onMouseLeave={() =>{
+         if(!(current&&current>=2)){
+            setShowToolTip(false)    
+          }
+      }
+         }
+
+
    class={`
       py-[10px]
       sm:py-3
@@ -75,9 +100,18 @@ const ButtonGroup = (props) => {
       text-center text-sm
       sm:text-base
       transition-all
-      hover:bg-blue-700 hover:text-white hover:border-gray-300
+      ${
+         current&&current>=2?
+         'hover:bg-blue-700 hover:text-white hover:border-gray-300'
+:'bg-gray-300 cursor-default text-gray-500'
+      }
       
       `}>
+         <div class = 'relative -right-28 top-6'>
+         <Tooltip show={showToolTip} position = 'bottom' fontSize = '16px' padding = '5px 5px'>
+  <span class = 'font-semibold text-center relative  font-sans -bottom-0'>Complete Preparation</span>
+</Tooltip>
+</div>
       <span class="pr-2">
          <MdScreenSearchDesktop/>
       </span>
@@ -85,8 +119,20 @@ const ButtonGroup = (props) => {
    </a>
    <a href="javascript:void(0)"
    onClick={()=> {
-      props.changeSeg(4)
+      if(current&&current>=3){
+         props.changeSeg(4)
+      }
    }}
+   onMouseOver={() => {
+      if(!(current&&current>=3)){
+         setShowToolTip2(true)      }
+   } } 
+   onMouseLeave={() =>{
+      if(!(current&&current>=3)){
+         setShowToolTip2(false)    
+       }
+   }
+      }
     class={`
       py-[10px]
       sm:py-3
@@ -102,9 +148,18 @@ const ButtonGroup = (props) => {
       text-center  text-sm
       sm:text-base
       transition-all
-      hover:bg-blue-700 hover:text-white hover:border-gray-300
-      rounded-r-lg
+
+${
+         current&&current>=3?
+         'hover:bg-blue-700 hover:text-white hover:border-gray-300'
+:'bg-gray-300 text-gray-500 cursor-default'
+      }      rounded-r-lg
       `}>
+         <div class = 'relative -right-28 top-6'>
+         <Tooltip show={showToolTip2} position = 'bottom' fontSize = '16px' padding = '5px 5px'>
+  <span class = 'font-semibold text-center font-sans '>Complete {current&&current===1?'Preparation':current&&current===2?'SEO':''}</span>
+</Tooltip>
+</div>
       <span class="pr-2">
          <IoCreateSharp/>
       </span>

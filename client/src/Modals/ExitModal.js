@@ -43,7 +43,7 @@ useEffect(
 );
 
 
-    return (<div  class="fixed z-[100] inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    return (<div  class="fixed z-[1000000000000] inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div  class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         {/* Background overlay, show/hide based on modal state. */}
       <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
@@ -55,7 +55,7 @@ useEffect(
         {/* Modal panel, show/hide based on modal state. */}
   
       <div data-aos="fade-up" data-aos-once='true' class="pr-6 relative sm:top-2 top-12 inline-block align-bottom z-50 bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 mb-36 sm:align-middle sm:max-w-lg sm:w-10/12 w-11/12">
-        <div ref = {myRef} class="bg-white  px-1 pt-2 pb-2 sm:p-6 sm:pb-4 z-50">
+        <div ref = {myRef} class="bg-white  px-1 pt-4 pb-2 sm:p-6 sm:pt-8 sm:pb-3 z-50">
           <div class="sm:flex sm:items-start">
             <div class=" text-center sm:mt-0 ml-4  sm:text-left">   
               <div>
@@ -66,8 +66,8 @@ useEffect(
                 <div class="right-2 min-h-full flex items-center justify-center py-3 px-5 sm:px-6 lg:px-5">
     <div class="max-w-md w-full space-y-8">
       <div>
-      <img class="mx-auto w-16 mb-9 -mt-2 relative" src = {logo}  alt="Workflow"/>
-        <h2 class="mt-1 bottom-3 relative mb-1 text-center sm:text-4xl text-3xl font-extrabold text-gray-900">
+      <img class="mx-auto w-16 mb-9 -mt-1 relative" src = {logo}  alt="Workflow"/>
+        <h2 class="mt-2 bottom-3 relative mb-1 text-center sm:text-4xl text-3xl font-extrabold text-gray-900">
           Are you sure you want to logout?
         </h2>
       </div>

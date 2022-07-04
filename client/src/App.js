@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import axios from 'axios'
 import NavBar from './Nav/NavBar';
 import Footer from './Footer/Footer';
@@ -26,6 +26,17 @@ function App() {
   //     console.log(err.response)
   //   })
   // }
+
+useEffect(() => {
+    if(sessionStorage.getItem('token')!==null){
+      axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/getUser':'http://localhost:4000/api/user/getUser',
+      {token: sessionStorage.getItem('token')}).then(res=> {
+        setUser(res.data)
+      }).catch(err=> {
+        console.log(err.response)
+      })
+  }
+},[user])
   
   return (
     <div className="App">
