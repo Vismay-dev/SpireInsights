@@ -61,7 +61,6 @@ await axios({
   if(!result){
     res.status(400).send('Unable to scrape')
   }
-  console.log(result)
   for(let x = 0; x<result[0].result.length; x++){
     for(let y = 0; y< result[0].result[x].items.length; y++ ){
 
