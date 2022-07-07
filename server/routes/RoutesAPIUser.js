@@ -58,9 +58,10 @@ await axios({
   }
 }).then(async(response) => {
   var result = response['data']['tasks'];
-  if(!result){
+  if(!result || !result[0].result){
     res.status(400).send('Unable to scrape')
   }
+  console.log(result)
   for(let x = 0; x<result[0].result.length; x++){
     for(let y = 0; y< result[0].result[x].items.length; y++ ){
 
@@ -107,7 +108,7 @@ await axios({
   }).then(async (response) => {
     var result = response['data']['tasks'];
     if(!result){
-        res.status(402).send('Unable to scrape')
+        res.status(400).send('Unable to scrape')
       }
     for(let x = 0; x<result[0].result.length; x++){
         for(let y = 0; y< result[0].result[x].items.length; y++ ){
@@ -197,7 +198,7 @@ await axios({
         console.log(response['data']['tasks'][0])
         res.status(402).send('Unable to scrape')
       }
-else if(response['data']['tasks'][0]['result'][0].items){
+if(response['data']['tasks'][0]['result'][0].items){
   var result = response['data']['tasks'][0]['result'][0].items
   if(result){
   for(let i = 0; i < result.length;i++) {
