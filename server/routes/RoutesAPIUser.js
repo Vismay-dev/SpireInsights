@@ -44,7 +44,7 @@ post_array.push({
   "location_code": 2840
 });
 let searchVolumeData = []
-// make the http GET request to Rainforest API
+
 await axios({
   method: 'post',
   url: 'https://api.dataforseo.com/v3/dataforseo_labs/amazon/bulk_search_volume/live',
@@ -145,7 +145,7 @@ await axios({
 
 
 }catch(err){
-    res.status(400).send(err.response)
+    res.status(400).send(err.response.data)
 }
 })
 
@@ -219,7 +219,7 @@ res.send({
 
 }).catch(function (error) {
   console.log(error);
-  res.status(400).send(error.response)
+  res.status(400).send(error.response.data)
 });
 
     }else if(req.body.platform ==='Noon') {
