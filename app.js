@@ -25,7 +25,7 @@ mongoose.connection.on('error', function (err) { console.log(err) });
 
 
 app.use(cors({
-    origin:'http://localhost:3000',
+    origin:'http://spire-insights.herokuapp.com',
     credentials:true
     // :'http://localhost:3000'
     // 'https://www.ideastack.org'
