@@ -4,6 +4,7 @@ import NavBar from './Nav/NavBar';
 import Footer from './Footer/Footer';
 import MainContent from './MainContent/MainContent';
 import userContext from './context/userContext'
+import {useLocation} from 'react-router-dom'
 
 function App() {
 
@@ -17,6 +18,8 @@ function App() {
     city: '',
     id:''
   })
+
+  const location = useLocation()
 
   // const [currentPlatform, setCurrentPlatform] = useState('') 
   // const submitHandler = ()=> {
@@ -36,7 +39,7 @@ useEffect(() => {
         console.log(err.response)
       })
   }
-},[user])
+},[location.pathname])
   
   return (
     <div className="App">
