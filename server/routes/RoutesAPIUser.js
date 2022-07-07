@@ -146,7 +146,7 @@ res.send({
 
 
 }catch(err){
-    res.status(400).send(err.response)
+    res.status(401).send(err.response)
 }
 })
 
@@ -227,7 +227,7 @@ res.send({
     }
 
 }catch(err){
-    res.status(400).send(err.response)
+    res.status(401).send(err.response)
 }
 })
 
