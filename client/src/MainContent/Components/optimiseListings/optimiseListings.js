@@ -25,12 +25,12 @@ const OptimiseListings = () => {
       setOperation(op)
     }
 
-  const subHandle = ()=> {
+  const subHandle = async ()=> {
     setLoading(true)
     setKeyWord(document.getElementById('keywords').value.toLowerCase())
     if(operation === 'top-prod'){
 
-    axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/topProductAnalysis":'http://localhost:4000/api/user/topProductAnalysis',{platform:currentPlatform,sentence:document.getElementById('keywords').value, token:sessionStorage.getItem('token')}).then(res=> {
+   await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/topProductAnalysis":'http://localhost:4000/api/user/topProductAnalysis',{platform:currentPlatform,sentence:document.getElementById('keywords').value, token:sessionStorage.getItem('token')}).then(res=> {
         setAnalysis(res.data)
         console.log(res.data)
         setLoading(false)
@@ -40,7 +40,7 @@ const OptimiseListings = () => {
 
   }else if(operation === 'marketplace-overview'){
 console.log({platform:currentPlatform,sentence:document.getElementById('keywords').value})
-    axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/marketPlaceOverview":'http://localhost:4000/api/user/marketPlaceOverview',
+    await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/marketPlaceOverview":'http://localhost:4000/api/user/marketPlaceOverview',
     {platform:currentPlatform,sentence:document.getElementById('keywords').value, token:sessionStorage.getItem('token')}).then(res=> {
       setAnalysis(res.data)
       console.log(res.data)
@@ -50,7 +50,7 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
   })
 
   }else if(operation === 'track-product'){
-    axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/trackProductPerformance":'http://localhost:4000/api/user/trackProductPerformance',{platform:currentPlatform,asin:document.getElementById('keywords').value.toUpperCase(), token:sessionStorage.getItem('token')}).then(res=> {
+   await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/trackProductPerformance":'http://localhost:4000/api/user/trackProductPerformance',{platform:currentPlatform,asin:document.getElementById('keywords').value.toUpperCase(), token:sessionStorage.getItem('token')}).then(res=> {
       setAnalysis(res.data)
       console.log(res.data)
       setLoading(false)
