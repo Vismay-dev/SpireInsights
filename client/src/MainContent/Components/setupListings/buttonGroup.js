@@ -12,10 +12,9 @@ const ButtonGroup = (props) => {
    let current = user.pipeline?user.pipeline.current:''
    current = current === 'preparation'  ?  1: current === 'seo' ? 2: 3
 
-
     return (<>
 
-<div class={`inline-flex rounded-lg mx-auto ${props.segment === 4?'left-[75px]':'left-[212.5px]'} shadow-md  relative items-center text-center mt-7 mb-4`}>
+<div class={`flex flex-wrap rounded-lg w-fit mx-auto md:shadow-md md:px-0 px-6  relative items-center text-center mt-7 mb-4`}>
    <a href="javascript:void(0)"
     onClick={()=> {
       props.changeSeg(1)
@@ -24,7 +23,14 @@ const ButtonGroup = (props) => {
       py-[10px]
       sm:py-3
       px-[12px]
-      sm:px-6
+      lg:px-6
+      md:w-fit
+      sm:w-2/4
+      w-[92%]
+      md:shadow-[0]
+      shadow-md
+      sm:mx-0 
+      mx-auto
       inline-flex
       items-center
       justify-center
@@ -50,7 +56,14 @@ const ButtonGroup = (props) => {
       py-[10px]
       sm:py-3
       px-[12px]
-      sm:px-6
+      lg:px-6
+      md:w-fit
+      sm:w-2/4
+      w-[92%]
+      md:shadow-[0]
+      shadow-md
+      sm:mx-0 
+      mx-auto
       inline-flex
       items-center
       justify-center
@@ -89,7 +102,13 @@ const ButtonGroup = (props) => {
       py-[10px]
       sm:py-3
       px-[12px]
-      sm:px-6
+      md:w-fit
+      sm:w-2/4
+      w-[92%]
+      md:shadow-[0]
+      shadow-md
+      sm:mx-0 
+      mx-auto
       inline-flex
       items-center
       justify-center
@@ -137,7 +156,14 @@ const ButtonGroup = (props) => {
       py-[10px]
       sm:py-3
       px-[12px]
-      sm:px-6
+      lg:px-6
+      md:w-fit
+      sm:w-2/4
+      w-[92%]
+      md:shadow-[0]
+      shadow-md
+      sm:mx-0 
+      mx-auto
       inline-flex
       items-center
       justify-center

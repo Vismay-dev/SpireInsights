@@ -189,7 +189,6 @@ const keyWordAnalysis = async(sentence, domain) => {
 };
 
 const fetchResults = async (sentence,domain) => {
-    console.log('works')
         let words = sentence.split(' ')
         fword = words.shift()
         let url = `https://www.amazon.${domain}/s?k=` + String(fword) + String(words.length>0?'+'+words.join('+'):'')

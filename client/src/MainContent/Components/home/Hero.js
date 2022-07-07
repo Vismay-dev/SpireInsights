@@ -212,36 +212,36 @@ anim();
 
     return (
         
-        <div class="relative pt-[120px] lg:pt-[150px] -mb-10 -mt-16 mx-auto block pb-[97px] bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div class="relative pt-[100px] lg:pt-[100px] xl:pt-[150px] -mb-10 -mt-16 mx-auto block xl:pb-[97px] lg:pb-[110px] pb-[80px] bg-gradient-to-br from-blue-50 to-indigo-50">
           <div class="container mx-auto block  relative ">
-            <div class="flex flex-wrap mx-auto  relative pointer-events-auto">
-              <div class="w-full lg:w-5/12  relative pointer-events-auto px-4 -mr-8 ml-8">
-                <div class="hero-content relative block pointer-events-auto">
+            <div class="flex flex-wrap mx-auto lg:right-0 right-[44px]  relative pointer-events-auto">
+              <div class="w-full xl:w-5/12 lg:w-[47%] lg:top-[15px]  pointer-events-auto px-4 xl:-mr-8 xl:ml-8 ml-10 lg:-mr-4 -mr-14 xl:-left-1 lg:left-2 left-2 xl:top-0 top-0 relative">
+                <div class="hero-content lg:text-left sm:px-0 px-3 text-center top-5 relative block pointer-events-auto">
                   <h1
                     class="
                       text-dark
                       font-bold
-                      text-4xl
+                      text-3xl
                       sm:text-[42px]
-                      lg:text-[40px]
+                      lg:text-[34px]
                       xl:text-[38px]
                       leading-snug
-                      mb-[40px]
+                      sm:mb-[50px] mb-[40px]
                     "
                   >
                     Build, Manage & Optimize <br />
                     Your E-Commerce Listings <br />
-                    <span class = ' xl:text-[33px] relative ml-0.5'> with <span class = 'text-blue-700 ml-[2px] relative'>Spire Insights</span>.</span>
+                    <span class = ' xl:text-[33px] sm:block hidden relative ml-0.5'> with <span class = 'text-blue-700 ml-[2px] relative'>Spire Insights</span>.</span>
                   </h1>
-                  <p class="text-base mb-8 mt-2 relative text-body-color max-w-[480px]">
+                  <p class="text-base  lg:mx-0 mx-auto block mb-12 mt-2 sm:px-0 px-4 relative text-body-color max-w-[480px]">
                     With our algorithms & management system, e-commerce businesses & sellers can now reposition themselves in online marketplaces. 
                   </p>
 
                       <button
                         class="
                           py-4
-                          px-6
-                          sm:px-10
+                          px-10
+                          sm:px-20
                           lg:px-8
                           xl:px-10
                           items-center
@@ -254,7 +254,8 @@ anim();
                           hover:bg-opacity-90
                           rounded-lg
                           text-base
-
+						  sm:left-0 left-[4px]
+						  lg:mx-0 mx-auto 
                           relative
                           font-semibold
                           z-[10]
@@ -266,7 +267,7 @@ anim();
                         Get Started
                       </button>
                     
-                  <div class="clients pt-16 relative top-2">
+                  {/* <div class="clients pt-16 relative top-2">
                     <h6
                       class="
                         text-xs
@@ -298,22 +299,22 @@ anim();
                         <img src="https://cdn.tailgrids.com/1.0/assets/images/brands/uideck.svg" alt="uideck" />
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div class="hidden lg:block lg:w-1/12 px-4"></div>
-              <div class="w-full lg:w-6/12 px-4">
-                <div class="lg:text-right lg:ml-auto">
-                  <div class="relative inline-block z-10 pt-11 lg:pt-0">
+              <div class="xl:w-6/12 lg:left-6 relative xl:left-0 lg:w-5/12  sm:block hidden lg:mx-0 left-[110px] lg:top-0 top-4 mx-auto w-[270px] lg:px-4">
+                <div class="lg:text-right lg:ml-auto mx-auto block">
+                  <div class="relative  lg:inline-block block lg:mx-0 mx-auto z-10 pt-11 lg:pt-0">
                    
 
-                   <img src = {img} class = 'relative -left-[200px] top-8'/>
+                   <img src = {img} class = 'relative xl:-left-[200px] lg:mx-0 mx-auto -left-[60px] xl:top-8 top-5'/>
        
 
-                  <canvas id='c' class = 'absolute -top-[85px]  -right-24 rounded-bl-[70%] shadow-lg'/>
+                  <canvas id='c' class = 'absolute xl:block hidden -top-[85px]  -right-20 rounded-bl-[70%] shadow-lg'/>
 
 
-                    <span class="absolute right-2 top-[370px] z-[-1]">
+                    <span class="absolute right-2 lg:block hidden top-[370px] z-[-1]">
                       <svg
                         width="93"
                         height="93"

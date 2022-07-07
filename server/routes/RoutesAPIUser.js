@@ -32,7 +32,7 @@ router.post('/topProductAnalysis',auth,(req,res)=> {
 })
 
 router.post('/marketPlaceOverview',auth, async(req,res)=> {
-
+console.log('yahi pe')
     console.log('\nPlatform: ' + req.body.platform)
     if(req.body.platform==='Amazon'){
  let post_array = [
@@ -162,7 +162,7 @@ post_array.push({
   "asin": req.body.asin,
   "language_name": "English",
   "location_code": 2840,
-  'limit': 5
+  'limit': 6
 });
 
 await axios({
@@ -302,6 +302,11 @@ router.post('/login', async(req,res)=> {
                 console.log('- Incorrect password')
                 res.status(401).send('Incorrect password')
             }else {
+                if(Math.abs((new Date()) - new Date(user.createdAt)) / (36*Math.pow(10,5))>48){
+                    console.log('- Free Trial Expired')
+                    res.status(401).send('Free Trial Expired.')
+                }
+                else{ 
                 const token = jwt.sign({_id:user._id}, 
                     process.env.TOKEN_SECRET,
                     {expiresIn:'2.5h'});
@@ -326,7 +331,7 @@ router.post('/login', async(req,res)=> {
                 // }else {
                 // }
             }
-        }
+        } }
     }catch (err) {
         console.log(err)
     }
@@ -341,6 +346,21 @@ router.post('/getUser',auth,async(req,res)=> {
     }
 })
 
+router.post('/updateUser',auth, async(req,res)=> {
+    try {
+        const userPrev = await User.findById(req.user._id)
+        updateInfo = {...req.body.user, password: userPrev.password}
+        console.log(updateInfo)
+        const newUser = await User.findByIdAndUpdate(req.user._id, updateInfo)
+        const updatedUser = await newUser.save()
+        res.send(updatedUser)
+    }catch (err) {
+        console.log(err)
+        res.status(400).send(err)
+    }
+}
+)
+
 router.post('/saveCurrentPipelinePrep', auth, async(req,res)=> {
     try{
     const user = await User.findById(req.user._id)
@@ -349,12 +369,16 @@ router.post('/saveCurrentPipelinePrep', auth, async(req,res)=> {
     let newUser = await User.findByIdAndUpdate(req.user._id , user)
     let detailObj = newUser.pipeline.data
     let chk = true
+
     for(let x = 0;x<Object.values(detailObj).length;x++){
         let subObj = Object.values(detailObj)[x];
         for(let y = 0; y<Object.values(subObj).length;y++){
-            if(!['one','two','three','four','five'].includes(Object.keys(subObj)[y])){
+            if(!['one','two','three','four','five','beingEdited'].includes(Object.keys(subObj)[y])){
             if(Object.values(subObj)[y]===null||Object.values(subObj)[y]===false||Object.values(subObj)[y]===''||Object.values(subObj)[y]===[]){
                 chk = false;
+                console.log(Object.values(subObj)[y]===[])
+                console.log(Object.keys(subObj)[y])
+                console.log(Object.values(subObj)[y])
                 break;
             }
         }
@@ -364,6 +388,7 @@ router.post('/saveCurrentPipelinePrep', auth, async(req,res)=> {
         }
     }
 
+    
     let currPipeline = user.pipeline;
 
     if(currPipeline.current !== 'preparation' && chk){
@@ -388,12 +413,11 @@ router.post('/saveCurrentPipelinePrep', auth, async(req,res)=> {
 
 router.post('/saveCurrentPipelineKeyWords', auth, async(req,res)=> {
     try{
-    const user = await User.findById(req.user._id)
+    let user = await User.findById(req.user._id)
     let details = req.body.details
-    console.log(details)
     user.pipeline.data = details
     let newUser = await User.findByIdAndUpdate(req.user._id , user)
-    let detailObj = newUser.pipeline.data
+    let detailObj = user.pipeline.data
     let chk = true
     for(let x = 0;x<Object.values(detailObj).length;x++){
         let subObj = Object.values(detailObj)[x];
@@ -411,10 +435,9 @@ router.post('/saveCurrentPipelineKeyWords', auth, async(req,res)=> {
     }
 
     let currPipeline = user.pipeline;
-    console.log(currPipeline)
+    // console.log(currPipeline.data.keyWords)
 
     if(currPipeline.current !== 'seo' && chk){
-        console.log({...currPipeline, keyWordsBeingEdited:false})
         let newData = {pipeline:{...currPipeline, keyWordsBeingEdited:false}}
          newUser = await User.findByIdAndUpdate(req.user._id , newData)
          res.send(newUser)
@@ -459,6 +482,24 @@ router.post('/uploadPic',upload.single('image'),async(req,res)=> {
     }).catch(err=> console.log(err.response))
    
     res.send(fileUrl);
+})
+
+router.post('/uploadProfPic',upload.single('image'),async(req,res)=> {
+    const decoded = jwt.verify(req.body.token, process.env.TOKEN_SECRET);
+    let id = decoded._id;
+    const user = await User.findOne({userId:id})
+    let file = req.file;
+    var fileUrl;
+    await cloudinary.v2.uploader.upload(file.path, 
+        { folder: "IdeaStack" },
+     (err, result) => {
+        fileUrl = result.secure_url           
+        console.log('File Uploaded')
+    }).catch(err=> console.log(err.response))
+
+    console.log(fileUrl)
+        let userUpdated = await User.findOneAndUpdate({_id:id}, {profilePic : fileUrl}).catch(err=> console.log(err))
+    res.send(userUpdated);
 })
 
 

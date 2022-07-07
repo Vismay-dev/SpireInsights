@@ -49,7 +49,7 @@ const Contact = () => {
 
     return (
 
-            <section id = "contact" class="py-[133px] pb-[115px] border-t-2 border-dashed border-blue-700  overflow-hidden relative z-75">
+            <section id = "contact" class="xl:py-[133px] sm:py-[102px] py-[90px] pb-[115px] border-t-2 border-dashed border-blue-700  overflow-hidden relative z-75">
                <div class="container mx-auto">
                   <div class="flex flex-wrap top-4 mx-auto justify-center">
                      <div class="w-full xl:ml-12 xl:mr-0 lg:w-full  justify-center  mx-auto xl:w-6/12 px-8">

@@ -188,7 +188,6 @@ const resetPass = (e) => {
   })
 }
 
-
 // const useAnalyticsEventTracker = (category="Logins") => {
 //   const eventTracker = (action = "Logged In", label = "Log In Modal") => {
 //     ReactGA.event({category, action, label});
@@ -445,7 +444,8 @@ passReset?
   <form class="mt-24 space-y-6 pb-2 relative" onSubmit={handleSubmit}>
     <input class="text-md" type="hidden" name="remember"  id = 'remember'/>
     <div class="rounded-md relative sm:mb-3 sm:w-full w-[117%] sm:right-0 right-[6%] -mb-1 block -space-y-px ">
-    {error==='User Email ID not found'?<p class="text-red-500 text-center text-md relative bottom-3 mt-2 pt-3 pb-2 mb-2">Login Failed: User Mail Not Found</p>:null}
+    {error==='User Email ID not found'?<p class="text-red-500 text-center text-md relative bottom-3 mt-2 pt-3 pb-2 mb-2">Login Failed: User Mail Not Found</p>:
+   null}
 
       <div>
         <p class = 'text-sm text-gray-700 text-center relative -mt-1.5 mb-3 uppercase font-semibold underline'>Enter Email ID:</p>
@@ -504,7 +504,8 @@ passReset?
     <form class="mt-24 space-y-6 pb-2 relative" onSubmit={handleSubmit}>
       <input class="text-md" type="hidden" name="remember"  id = 'remember'/>
       <div class="rounded-md sm:shadow-sm relative sm:mb-0 sm:w-full w-[117%] sm:right-0 right-[6%] -mb-4 block -space-y-px ">
-      {error==='User not found'?<p class="text-red-500 text-center text-md relative bottom-3 mt-4 pt-3 pb-2 mb-2">Login Failed: User Not Found</p>:error==='Incorrect password'?<p class="text-red-500 text-center text-md relative bottom-3 mt-4 pt-3 pb-2 mb-2">Login Failed: Incorrect Password</p>:null}
+      {error==='User not found'?<p class="text-red-500 text-center text-md relative bottom-3 underline mt-4 pt-3 pb-2 mb-2">Login Failed: User Not Found</p>:error==='Incorrect password'?<p class="text-red-500 underline text-center text-md relative bottom-3 mt-4 pt-3 pb-2 mb-2">Login Failed: Incorrect Password</p>:
+       error==='Free Trial Expired.'?<p class="text-red-500 text-center text-md relative bottom-5 -mt-1 underline pt-3 pb-2 mb-1">Login Failed: Free Trial Expired</p>:null}
 
         <div>
           <label for="email-address" class="sr-only">Email address</label>
@@ -532,7 +533,7 @@ passReset?
       </div>
 
       <div>
-        <button type="submit" class="mt-3 group relative sm:left-0 left-[3px] sm:w-full w-[150px] mx-auto sm:right-0 right-[2px] flex justify-center py-1 pb-1.5 px-4 border border-transparent text-md font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        <button type="submit" class="mt-3  -mb-2 group relative sm:left-0 left-[3px] sm:w-full w-[150px] mx-auto sm:right-0 right-[2px] flex justify-center py-1 pb-1.5 px-4 border border-transparent text-md font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
           <span class="absolute left-0 inset-y-0 flex items-center pl-3">
             <svg class="h-5 w-5 text-blue-600 group-hover:text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />

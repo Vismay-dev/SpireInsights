@@ -17,16 +17,19 @@ const SetupListings = () => {
 
     return (
         <>
-        <div class = 'relative mx-auto  w-fit'>
-            <h1 class = 'text-4xl font-bold mt-[40px] mb-4 bottom-2 relative text-center'>Set-Up E-Commerce Listings</h1>
+        <div class = 'relative mx-auto   w-fit'>
+            <h1 class = 'md:text-4xl text-3xl px-5 font-bold mt-[40px] mb-4 bottom-2 relative text-center'>Set-Up E-Commerce Listings</h1>
             <hr class = 'relative top-1 w-[120%] mt-1 right-[10%]'/>
+            <div class = 'block mx-auto sm:py-0 py-4 relative'>
             <ButtonGroup segment = {currentSegment} changeSeg = {changeSeg}/>
+            </div>
             <hr class = 'relative top-1 w-[150%] my-1 right-[25%]'/>
             <h1 class = 'text-3xl font-bold mt-[40px] mb-4 bottom-3 relative text-center'>{titles[currentSegment-1]}</h1>
             <hr class = 'relative w-[150%] my-1 right-[25%]'/>
 
-            <ContentSetup segment = {currentSegment}/>
-
+<div class = 'w-screen px-8'>
+            <ContentSetup segment = {currentSegment} changeSeg = {changeSeg}/>
+            </div>
         </div>
         
         </>

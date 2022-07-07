@@ -5,19 +5,19 @@ const Pricing = () => {
 <section
    class="
    bg-gradient-to-br from-blue-50 to-indigo-50
-   pt-20
+   pt-[74px]
    lg:pt-[66px]
-   pb-12
-   lg:pb-[60px]
+   pb-10
+   lg:pb-[47px]
    relative
    z-20
    overflow-hidden
    "
    >
-   <div class="container block mx-auto">
+   <div class="lg:container block mx-auto">
       <div class="flex flex-wrap -mx-4">
          <div class="w-full px-4">
-            <div class="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
+            <div class="text-center mx-auto lg:bottom-0 bottom-4 relative mb-[60px] lg:mb-20 max-w-[510px]">
                <span class="font-semibold text-lg text-primary mb-2 block">
                Pricing Table
                </span>
@@ -33,15 +33,15 @@ const Pricing = () => {
                   >
                   Our Pricing Plan
                </h2>
-               <p class="text-base text-body-color">
+               <p class="text-base px-3 lg:top-0 top-3 relative text-body-color">
                   There are many variations of passages of Lorem Ipsum available
                   but the majority have suffered alteration in some form.
                </p>
             </div>
          </div>
       </div>
-      <div class="flex flex-wrap justify-center w-[80%] mx-auto relative ">
-         <div class="w-full md:w-1/2 px-4">
+      <div class="flex flex-wrap justify-center lg:w-[80%] w-[95%] mx-auto relative ">
+         <div class="w-full md:w-1/2 lg:px-4 px-1">
             <div
                class="
                bg-white
@@ -66,7 +66,7 @@ const Pricing = () => {
                <h2 class="font-bold text-dark mb-5  text-[42px]">
                   Free Trial
                   <span class="text-base m-1 text-body-color font-medium">
-                  / 48 hours
+                  / 48 <span class = 'lg:inline hidden'>hours</span> <span class = 'lg:hidden inline'>hrs</span>
                   </span>
                </h2>
                <p
@@ -75,9 +75,22 @@ const Pricing = () => {
                   pb-8
                   mb-8
                   border-b border-[#F2F2F2]
+                  lg:block hidden
+
                   "
                   >
                   Perfect for testing out our services.
+               </p>
+               <p
+                  class="
+                  text-base text-body-color
+                  pb-8
+                  mb-8
+                  border-b border-[#F2F2F2]
+                  block lg:hidden
+                  "
+                  >
+                  For testing services.
                </p>
                <div class="mb-7">
                   <p class="text-base text-body-color leading-loose mb-1">
@@ -90,7 +103,7 @@ const Pricing = () => {
                      Limited Access
                   </p>
                   <p class="text-base text-body-color leading-loose mb-1">
-                     Listings will not be synchronized to Amazon.
+                     Listings will not be synchronized <span class = 'lg:inline hidden'>to Amazon.</span>
                   </p>
                   <p class="text-base text-body-color leading-loose mb-1">
                      Test out Optimization Algorithms
@@ -384,7 +397,7 @@ const Pricing = () => {
                </div>
             </div>
          </div>
-         <div class="w-full md:w-1/2 px-4">
+         <div class="w-full md:w-1/2 lg:px-4 px-1">
             <div
                class="
                bg-white
@@ -418,10 +431,23 @@ const Pricing = () => {
                   text-base text-body-color
                   pb-8
                   mb-8
+                  lg:block hidden
                   border-b border-[#F2F2F2]
                   "
                   >
                   Perfect for use in a Business setting.
+               </p>
+
+               <p
+                  class="
+                  text-base text-body-color
+                  pb-8
+                  mb-8
+                  border-b border-[#F2F2F2]
+                  block lg:hidden
+                  "
+                  >
+                  For use in a business setting.
                </p>
                <div class="mb-7">
                   <p class="text-base text-body-color leading-loose mb-1">
@@ -434,7 +460,7 @@ const Pricing = () => {
                   Real-time Insights on Marketplaces.
                   </p>
                   <p class="text-base text-body-color leading-loose mb-1">
-                     Synchronized with Your Marketplace Listing 
+                     Synchronized with Your <span class = 'hidden lg:inline'>Marketplace</span> Listing 
                   </p>
                   <p class="text-base text-body-color leading-loose mb-1">
                      Unrestricted Usage of Analytics.

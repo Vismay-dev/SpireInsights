@@ -62,7 +62,7 @@ props.isNotLoading()
     <div class="mt-10 sm:mt-0 relative mx-auto block justify-center">
     <div class={`md:grid md:grid-cols-3    md:gap-6`}>
       <div class="md:col-span-1 ">
-        <div class="px-8 sm:px-3 md:left-0 sm:left-3 left-4 relative mr-3">
+        <div class="px-8 sm:px-3 md:left-0 sm:left-3 -mt-[43px] left-4 relative mr-3">
           <h3 class={`  ${loading?'xl:mt-28 md:mt-24 sm:-mt-3 -mt-10 ':'-mt-10 sm:-mt-4 md:mt-48'} md:mb-0 mb-4 relative  md:left-0 sm:left-1.5 left-1   lg:text-3xl md:text-2xl text-3xl font-bold text-gray-900 text-center`}>Sign Up for Spire</h3>
           <p class = 'text-xs font-medium leading-6 mt-2 text-gray-400 uppercase text-center'>Join The Movement</p>
           <p class="xl:mt-8 mt-6 md:mb-0 mb-7 text-sm text-gray-600 xl:px-14 lg:px-6 sm:px-2 px-0.5 text-center">
@@ -90,6 +90,7 @@ loading?
               <p class = 'xl:text-center lg:text-base text-sm font-semibold lg:font-normal xl:mb-4 mb-6 text-red-500'><span class = 'black underline text-black font-semibold'>Error:</span> {error?error:''}</p>
             :''}
             
+              <h1 class = 'font-bold text-blue-700 mb-7 -mt-[1px] underline text-2xl text-center mx-auto block'>Free Trial Registration</h1>
               
               <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6 sm:col-span-3">

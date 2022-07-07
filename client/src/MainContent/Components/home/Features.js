@@ -1,8 +1,8 @@
 const Features = () => {
 
     return (
-<section class="pt-20 lg:pt-[100px]  pb-12 lg:pb-[90px]">
-   <div class="container block mx-auto">
+<section class="pt-20 lg:pt-[100px] px-16 lg:px-0 pb-12 lg:pb-[78px]">
+   <div class="xl:container xl:px-0 px-12 block mx-auto">
       <div class="flex flex-wrap -mx-4">
          <div class="w-full px-4">
             <div class="text-center mx-auto mb-14 lg:mb-20 max-w-[680px]">
@@ -21,13 +21,13 @@ const Features = () => {
                   >
                   What We Offer
                </h2>
-               <p class="text-base text-body-color">
+               <p class="text-base lg:top-0 top-3 relative text-body-color">
                   Our features & services are oriented around the objective of helping businesses thrive and compete in online marketplaces without having to conduct their own market research or undergo technical training for setting up listings.
                </p>
             </div>
          </div>
       </div>
-      <div class="flex flex-wrap bg-gradient-to-br from-blue-100 to-indigo-100 pt-7 px-6  relative  -mt-4 rounded-xl -mx-4">
+      <div class="flex flex-wrap bg-gradient-to-br from-blue-100 to-indigo-100 pt-7 px-6  relative  lg:-mt-4 mt-2 lg:mb-0 mb-2 rounded-xl -mx-4">
          
          <div class="w-full md:w-1/2 lg:w-1/3 px-2">
             <div
@@ -68,7 +68,7 @@ const Features = () => {
                   E-Commerce Setup
                </h4>
                <p class="text-body-color text-center">
-                  We streamline the process of setting up product listings on any E-Commerce Platform.
+                 Provided with the seller token, we streamline the process of setting up product listings on any E-Commerce Platform.
                </p>
             </div>
          </div>
@@ -108,16 +108,19 @@ const Features = () => {
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
 </svg>
                </div>
-               <h4 class="font-semibold text-xl text-center text-dark mb-3">
+               <h4 class="font-semibold xl:block hidden text-xl text-center text-dark mb-3">
                   Management of Product Listings
                </h4>
+               <h4 class="font-semibold xl:hidden block  text-xl text-center text-dark mb-3">
+                  Manage Product Listings
+               </h4>
                <p class="text-body-color text-center">
-                  We simplify the technically nuanced process of managing your listings, 
+                  We simplify the <span class = 'xl:inline lg:hidden'>nuanced</span> process of managing your listings, 
                   giving you a bird's eye view of your product's performance.
                </p>
             </div>
          </div>
-         <div class="w-full md:w-1/2 lg:w-1/3 px-2">
+         <div class="w-full md:w-1/2 lg:mx-0 mx-auto block lg:w-1/3 px-2">
             <div
                class="
                p-10
@@ -154,10 +157,10 @@ const Features = () => {
 </svg>
                </div>
                <h4 class="font-semibold text-xl text-center text-dark mb-3">
-                  E-Commerce Optimization
+                  <span class = 'xl:inline hidden'>E-Commerce</span> Optimization
                </h4>
                <p class="text-body-color text-center">
-                We analyze top product listings and market trends to help improve your product's consumer exposure.
+                We analyze top product listings, market trends and specific products to help improve your product's consumer exposure.
                </p>
             </div>
          </div>

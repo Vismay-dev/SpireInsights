@@ -4,7 +4,7 @@ import {AiFillAmazonCircle} from 'react-icons/ai'
 import {TbReportSearch} from 'react-icons/tb'
 import axios from "axios"
 import TopProdResult from "./TopProdResult"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Tooltip from 'react-power-tooltip'
 
 const OptimiseListings = () => {
@@ -15,7 +15,11 @@ const OptimiseListings = () => {
     const [currentPlatform, setCurrentPlatform] = useState('Amazon') 
 
     const [operation, setOperation] = useState('top-prod')
-
+    useEffect(()=> {
+      if(sessionStorage.getItem('redirect')==='toMarket'){
+        setOperation('marketplace-overview')
+      }
+    },[])
     const changeOp = (op) => {
       setAnalysis()
       setOperation(op)
@@ -59,13 +63,15 @@ const OptimiseListings = () => {
     return (
         <>
         <div class = 'relative mx-auto  z-[100]  w-fit'>
-            <h1 class = 'text-4xl font-bold mt-[40px] mb-4 bottom-2 relative text-center'>Optimize E-Commerce Listings</h1>
+            <h1 class = 'sm:text-4xl text-3xl font-bold mt-[40px] mb-4 px-4 bottom-2 relative text-center'>Optimize E-Commerce Listings</h1>
             <hr class = 'relative top-1 w-[150%] mt-1 right-[25%]'/>
+            <div class = 'md:px-2.5 sm:px-12 px-6'>
             <ButtonGroup operation = {operation} changeOp = {changeOp}/>
+            </div>
             <hr class = 'relative top-1 w-[150%] my-1 right-[25%]'/>
-            <div class="flex flex-wrap  -mx-4 relative w-[130%] right-[14%] mt-8">
-   <div class="w-full md:w-1/2 lg:w-1/3 px-4">
-      <div class="mb-12 block relative ">
+            <div class="flex flex-wrap md:pb-0 pb-1  -mx-4 relative lg:w-[120%] w-[96%] right-[-3.8%] lg:right-[8%] mt-8">
+   <div class="md:w-1/3 sm:w-1/2 w-[75%] sm:left-0 left-1.5 mx-auto block md:mt-0 -mt-2  px-4">
+      <div class="sm:mb-12 mb-10 block relative ">
          <label for="" class="font-medium text-base text-black block mb-3">
          Enter Product {operation==='track-product'?'ASIN ID':'Keywords'} {operation==='track-product'?
          <svg 
@@ -102,7 +108,7 @@ const OptimiseListings = () => {
       </div>
    </div>
 
-   <div class="w-full md:w-1/2 lg:w-2/3 px-2   relative">
+   <div class="w-[95%] md:left-0 sm:left-[2.9%] left-[4%] md:mt-0 -mt-5 md:w-2/3 px-2   relative">
    <label for="" class="font-semibold text-base text-black block mb-3">
          Select E-Commerce Platform
          </label>
@@ -136,12 +142,14 @@ const OptimiseListings = () => {
     setCurrentPlatform('Al Anees')
    }}
    class={`
-      py-[10px]
+      py-[11.5px]
       sm:py-3
       w-[50%]
       cursor-pointer
-      
-      sm:px-20
+      sm:px-6 px-5
+      sm:top-0
+      -top-[4.9px] relative
+      lg:px-20
       inline-flex
       items-center
       rounded-r-md
@@ -156,7 +164,7 @@ const OptimiseListings = () => {
       ${currentPlatform === 'Al Anees' ? 'bg-blue-700 text-white':'text-black bg-white'}
       hover:bg-blue-700 hover:text-white hover:border-primary
       `}>
-    <FiShoppingCart class = 'mr-2 text-xl top-[0.5px] font-bold relative'/> Al Anees (Qatar)
+    <FiShoppingCart class = 'mr-2 text-xl sm:inline hidden top-[0.5px] font-bold relative'/> Al Anees (Qatar)
    </a>
 </div>
 
@@ -169,14 +177,17 @@ const OptimiseListings = () => {
    px-6
    lg:px-8
    xl:px-10
-   w-full
-  bottom-2
-   -mt-7
+   lg:w-full
+   sm:w-[92%] w-[88%]
+  lg:left-0
+  sm:left-[4.2%] left-[6.3%]
+  md:bottom-2 -bottom-8
+   md:-mt-7 sm:-mt-2 -mt-3
    shadow-lg
    relative
    inline-flex
    items-center
-   
+    md:mb-0 mb-4
    justify-center
    text-center text-white text-base
    bg-blue-700
@@ -188,7 +199,7 @@ const OptimiseListings = () => {
 <TbReportSearch class = 'mr-2 text-xl font-bold relative'/> Show Insights
 </a>
 </div>
-<hr class = 'relative mt-6 w-[90%] mx-auto'/>
+<hr class = 'relative md:mt-6 mt-10 w-[90%] mx-auto'/>
 <TopProdResult loading={loading} operation = {operation} analysis = {analysis} keyword = {keyword}/>
 
         
