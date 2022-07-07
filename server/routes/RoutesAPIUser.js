@@ -193,7 +193,8 @@ await axios({
     'content-type': 'application/json'
   }
 }).then(async(response) => {
-    if(!response['data']['tasks'][0]['result'][0].items){
+    if(!response['data']['tasks'][0]||!response['data']['tasks'][0]['result'][0].items){
+        console.log(response['data']['tasks'][0])
         res.status(402).send('Unable to scrape')
       }
 if(response['data']['tasks'][0]['result'][0].items){
