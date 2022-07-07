@@ -117,27 +117,26 @@ await axios({
         } 
       }
 
+
+      for(let y = 0; y< relatedKeyWordData.length; y++ ){    
+        await amazonResults(relatedKeyWordData[y].keyWordSentence,'ae').then(res=> {
+            relatedKeyWordData[y] = {
+                ...relatedKeyWordData[y],
+                searchResults: res
+            }
+        })
+    }
+
+
+    res.send({
+        searchVolumeData: searchVolumeData,
+        relatedKeyWordData: relatedKeyWordData
+    })
+
   }).catch(function (error) {
     console.log(error);
+    res.status(400).send(error)
   });
-
-
-for(let y = 0; y< relatedKeyWordData.length; y++ ){    
-    await amazonResults(relatedKeyWordData[y].keyWordSentence,'ae').then(res=> {
-        relatedKeyWordData[y] = {
-            ...relatedKeyWordData[y],
-            searchResults: res
-        }
-    })
-}
-    
-
-res.send({
-    searchVolumeData: searchVolumeData,
-    relatedKeyWordData: relatedKeyWordData
-})
-
- 
 
 
     }else if(req.body.platform ==='Noon') {
@@ -210,17 +209,18 @@ if(response['data']['tasks'][0]['result'][0].items){
     })
     }
   }
+  
 }
-}).catch(function (error) {
-  console.log(error);
-});
 
-console.log(productAnalysis)
-console.log(competitorData)
 res.send({
     productAnalysis,
     competitorData
 })
+
+}).catch(function (error) {
+  console.log(error);
+  res.status(401).send(error.response)
+});
 
     }else if(req.body.platform ==='Noon') {
         
