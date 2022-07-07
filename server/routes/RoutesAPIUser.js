@@ -107,7 +107,7 @@ await axios({
   }).then(async (response) => {
     var result = response['data']['tasks'];
     if(!result){
-        res.status(400).send('Unable to scrape')
+        res.status(402).send('Unable to scrape')
       }
     for(let x = 0; x<result[0].result.length; x++){
         for(let y = 0; y< result[0].result[x].items.length; y++ ){
@@ -161,8 +161,8 @@ await axios({
 })
 
 router.post('/trackProductPerformance',auth, async(req,res)=> {
-    console.log('\nPlatform: ' + req.body.platform)
     try{
+        console.log('\nPlatform: ' + req.body.platform)
     if(req.body.platform==='Amazon'){
 
 let productAnalysis = {
@@ -194,10 +194,11 @@ await axios({
   }
 }).then(async(response) => {
     if(!response['data']['tasks'][0]['result'][0].items){
-        res.status(400).send('Unable to scrape')
+        res.status(402).send('Unable to scrape')
       }
 if(response['data']['tasks'][0]['result'][0].items){
   var result = response['data']['tasks'][0]['result'][0].items
+  if(result){
   for(let i = 0; i < result.length;i++) {
      let scrapeData = await amazonASIN(result[i].asin,'ae')
     if(i===0){
@@ -223,7 +224,9 @@ if(response['data']['tasks'][0]['result'][0].items){
     })
     }
   }
-  
+}else {
+    res.status(402).send('Unable to scrape')
+}
 }
 
 res.send({
