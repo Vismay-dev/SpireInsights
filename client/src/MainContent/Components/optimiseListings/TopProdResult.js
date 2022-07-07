@@ -257,7 +257,7 @@ Read Reviews
 
                 {
    props.analysis.competitorData.length==0? 
-<h1 class = 'text-2xl text-center block pb-[70px] mx-auto font-semibold left-2 mt-[50px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+<h1 class = 'text-2xl text-center block pb-[90px] mb-[100px] mx-auto font-semibold left-2 mt-[50px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
 </svg> Unable to Fetch Results..</h1>
    :''
@@ -436,7 +436,7 @@ Read Reviews
                 </div>
                 
                 <div class = 'w-full py-4  md:w-full  xl:w-1/2 px-4'>
-                    <div class="bg-white flex shadow-sm xl:pb-0 sm:pb-9 pb-12 xl:mx-0 mx-auto h-full xl:text-left lg:text-center sm:text-left text-center rounded-lg overflow-hidden mb-1">
+                    <div class="bg-white flex shadow-sm xl:pb-0 lg:pb-[53px] sm:pb-9 pb-12 xl:mx-0 mx-auto h-full xl:text-left lg:text-center sm:text-left text-center rounded-lg overflow-hidden mb-1">
                     <IoPricetags class = 'text-blue-700 xl:block lg:hidden sm:block hidden  relative text-7xl top-6 left-14'/>
                     <div class = 'xl:ml-[104px] xl:mr-7 md:left-0 sm:left-3 mx-auto md:top-[24px] top-[22px] relative font-semibold'> <h1 class = ' relative inline underline text-xl'><FcMoneyTransfer class = 'mr-[8px] inline text-2xl bottom-[0px] relative sm:uppercase'/>Average Pricing Range:</h1> <br/>
  <span class = {` relative text-center sm:text-2xl text-xl top-[8px] left-5 mx-auto inline font-bold mr-2.5 text-blue-700`}>AED {props.analysis&&props.analysis.averagePricingRange.low} - {props.analysis&&props.analysis.averagePricingRange.high}</span>
