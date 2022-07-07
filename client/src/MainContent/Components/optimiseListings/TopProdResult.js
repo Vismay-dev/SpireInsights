@@ -23,6 +23,7 @@ const TopProdResult = (props) => {
    const [avgDemandState, setAvgDemandState] = useState(0)
    const [avgSupplyState, setAvgSupplyState] = useState(0)
    const [keyWordsNum, setKeyWordsNum] = useState(0)
+   console.log(props.analysis)
       const data = useMemo(
          
          () =>
