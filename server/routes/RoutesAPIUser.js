@@ -56,8 +56,11 @@ await axios({
   headers: {
     'content-type': 'application/json'
   }
-}).then(function (response) {
+}).then(async(response) => {
   var result = response['data']['tasks'];
+  if(!result){
+    res.status(400).send('Unable to scrape')
+  }
   for(let x = 0; x<result[0].result.length; x++){
     for(let y = 0; y< result[0].result[x].items.length; y++ ){
 
@@ -68,11 +71,8 @@ await axios({
 
     }
   }
-}).catch(function (error) {
-  console.log(error);
-});
 
-for(let y = 0; y< searchVolumeData.length; y++ ){    
+  for(let y = 0; y< searchVolumeData.length; y++ ){    
     await amazonResults(searchVolumeData[y].keyWord,'ae').then(res=> {
         searchVolumeData[y] = {
             ...searchVolumeData[y],
@@ -106,6 +106,9 @@ await axios({
     }
   }).then(async (response) => {
     var result = response['data']['tasks'];
+    if(!result){
+        res.status(400).send('Unable to scrape')
+      }
     for(let x = 0; x<result[0].result.length; x++){
         for(let y = 0; y< result[0].result[x].items.length; y++ ){
                 if(result[0].result[x].items[y].keyword_data.keyword!==req.body.sentence){
@@ -137,6 +140,14 @@ await axios({
     console.log(error);
     res.status(400).send(error.response)
   });
+
+
+
+}).catch(function (error) {
+  console.log(error);
+});
+
+
 
 
     }else if(req.body.platform ==='Noon') {
@@ -182,6 +193,9 @@ await axios({
     'content-type': 'application/json'
   }
 }).then(async(response) => {
+    if(!response['data']['tasks'][0]['result'][0].items){
+        res.status(400).send('Unable to scrape')
+      }
 if(response['data']['tasks'][0]['result'][0].items){
   var result = response['data']['tasks'][0]['result'][0].items
   for(let i = 0; i < result.length;i++) {
@@ -219,7 +233,7 @@ res.send({
 
 }).catch(function (error) {
   console.log(error);
-  res.status(400).send(error.response.data)
+  res.status(400).send(error.response)
 });
 
     }else if(req.body.platform ==='Noon') {
