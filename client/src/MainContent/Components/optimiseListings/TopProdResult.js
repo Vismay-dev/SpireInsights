@@ -128,13 +128,13 @@ return (<>
 
 
 {
-   props.analysis.productAnalysis==={}? 
+   Object.keys(props.analysis.productAnalysis).length===0? 
 <h1 class = 'text-2xl text-center block pb-[70px] mx-auto font-semibold left-2 mt-[50px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
 </svg> Unable to Fetch Results..</h1>
    :''
 }
-            <div class = 'lg:flex block  lg:mb-1 mb-5 xl:container mx-auto xl:right-[39px] xl:px-0 px-7 xl:gap-x-0 gap-x-7  relative -top-2'>
+            <div class = {`${Object.keys(props.analysis.productAnalysis).length===0?'hidden':'lg:flex block'} lg:mb-1 mb-5 xl:container mx-auto xl:right-[39px] xl:px-0 px-7 xl:gap-x-0 gap-x-7  relative -top-2`}>
                <div class = 'lg:w-1/2 md:w-[80%] sm:w-[90%] w-[96%] block mx-auto mt-[30px] xl:top-0 lg:top-[20px] relative'>
     <div class="flex flex-col items-center justify-center h-fit xl:max-w-[500px] max-w-[700px] left-2 mx-auto">
         <div class="w-full h-72 bg-gray-800 border-2 border-blue-700 bg-no-repeat bg-center  ring-2 ring-blue-700 ring-offset-2 ring-offset-indigo-200 bg-contain rounded-lg shadow-md" style={{'background-image': `url(${props.analysis.productAnalysis.image})`}}></div>
@@ -256,7 +256,7 @@ Read Reviews
 
 
                 {
-   props.analysis.relatedData==={}? 
+   props.analysis.competitorData.length==0? 
 <h1 class = 'text-2xl text-center block pb-[70px] mx-auto font-semibold left-2 mt-[50px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
 </svg> Unable to Fetch Results..</h1>
