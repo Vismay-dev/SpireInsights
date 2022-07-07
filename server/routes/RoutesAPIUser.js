@@ -104,7 +104,7 @@ await axios({
     headers: {
       'content-type': 'application/json'
     }
-  }).then(function (response) {
+  }).then(async (response) => {
     var result = response['data']['tasks'];
     for(let x = 0; x<result[0].result.length; x++){
         for(let y = 0; y< result[0].result[x].items.length; y++ ){
