@@ -42,9 +42,13 @@ const fetchResults2 = async (sentence,domain) => {
     }catch{
         return await fetchResults2(sentence,domain)    
     }
-    
+
+    if($('h1 > div > div.sg-col-14-of-20.sg-col.s-breadcrumb.sg-col-10-of-16.sg-col-6-of-12 > div > div > span:nth-child(1)').text().split(' ')[3]){
         const resultNum = parseInt($('h1 > div > div.sg-col-14-of-20.sg-col.s-breadcrumb.sg-col-10-of-16.sg-col-6-of-12 > div > div > span:nth-child(1)').text().split(' ')[3].replace(',',''))
         return resultNum;
+    }else {
+        return null;
+    }
 }
 
 const keyWordAnalysis = async(sentence, domain) => {

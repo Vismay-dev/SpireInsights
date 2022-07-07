@@ -111,7 +111,7 @@ return (<>
     }
     {
       props.loading?
-      <div class = 'h-[450px] -mb-4 bg-gradient-to-br mt-6 from-blue-100 to-indigo-100'>
+      <div class = 'h-[450px] -mb-4 bg-gradient-to-br mt-6 from-blue-100 to-indigo-200'>
 <div class = 'top-[144px] left-[2.5px] relative mx-auto block text-center'>
 <ClipLoader color={'#0A74FE'} loading={props.loading} size={110} />
 </div>
