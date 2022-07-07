@@ -32,7 +32,7 @@ router.post('/topProductAnalysis',auth,(req,res)=> {
 })
 
 router.post('/marketPlaceOverview',auth, async(req,res)=> {
-console.log('yahi pe')
+try{
     console.log('\nPlatform: ' + req.body.platform)
     if(req.body.platform==='Amazon'){
  let post_array = [
@@ -49,8 +49,8 @@ await axios({
   method: 'post',
   url: 'https://api.dataforseo.com/v3/dataforseo_labs/amazon/bulk_search_volume/live',
   auth: {
-    username: 'vismaysuramwar@gmail.com',
-    password: 'b00eb30c75c58fdc'
+    username: process.env.EMAIL ,
+    password:  process.env.seoPASS
   },
   data: post_array,
   headers: {
@@ -97,8 +97,8 @@ await axios({
     method: 'post',
     url: 'https://api.dataforseo.com/v3/dataforseo_labs/amazon/related_keywords/live',
     auth: {
-      username: 'vismaysuramwar@gmail.com',
-      password: 'b00eb30c75c58fdc'
+        username: process.env.EMAIL ,
+        password:  process.env.seoPASS
     },
     data: post_array2,
     headers: {
@@ -137,16 +137,22 @@ res.send({
     relatedKeyWordData: relatedKeyWordData
 })
 
-
+ 
 
 
     }else if(req.body.platform ==='Noon') {
         
     }
+
+
+}catch(err){
+    res.status(400).send(err.response)
+}
 })
 
 router.post('/trackProductPerformance',auth, async(req,res)=> {
     console.log('\nPlatform: ' + req.body.platform)
+    try{
     if(req.body.platform==='Amazon'){
 
 let productAnalysis = {
@@ -169,8 +175,8 @@ await axios({
   method: 'post',
   url: 'https://api.dataforseo.com/v3/dataforseo_labs/amazon/product_competitors/live',
   auth: {
-    username: 'vismaysuramwar@gmail.com',
-    password: 'b00eb30c75c58fdc'
+    username: process.env.EMAIL ,
+    password:  process.env.seoPASS
   },
   data: post_array,
   headers: {
@@ -219,6 +225,10 @@ res.send({
     }else if(req.body.platform ==='Noon') {
         
     }
+
+}catch(err){
+    res.status(400).send(err.response)
+}
 })
 
 router.post('/register', async(req,res)=> {
