@@ -884,7 +884,7 @@ props.analysis.relatedKeyWordData.length===0?
         <div class = 'h-[447px] -mb-4 bg-gradient-to-br mt-6 from-blue-100 to-indigo-200'>
                 <img class = 'w-16 block top-[122px] mt-1 mx-auto relative' src = {logo}></img><br/>
 
-                 <h1 class = 'text-3xl font-bold text-center top-[122px] relative text-gray-500'>E-Commerce Optimization<br/> with <span class = 'text-blue-700'>Spire Insights</span></h1>
+                 <h1 class = 'text-3xl px-3 font-bold text-center top-[122px] relative text-gray-500'>E-Commerce Optimization<br/> with <span class = 'text-blue-700'>Spire Insights</span></h1>
 
         </div>
     }
