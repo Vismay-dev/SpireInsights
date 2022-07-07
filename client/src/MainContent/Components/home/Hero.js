@@ -308,10 +308,10 @@ anim();
                   <div class="relative  lg:inline-block block lg:mx-0 mx-auto z-10 pt-11 lg:pt-0">
                    
 
-                   <img src = {img} class = 'relative xl:-left-[200px] lg:mx-0 mx-auto -left-[60px] xl:top-8 top-5'/>
+                   <img src = {img} class = 'relative xl:-left-[184px] lg:mx-0 mx-auto -left-[60px] xl:top-8 top-5'/>
        
 
-                  <canvas id='c' class = 'absolute xl:block hidden -top-[85px]  -right-20 rounded-bl-[70%] shadow-lg'/>
+                  <canvas id='c' class = 'absolute xl:block hidden -top-[85px]  -right-24 rounded-bl-[70%] shadow-lg'/>
 
 
                     <span class="absolute right-2 lg:block hidden top-[370px] z-[-1]">

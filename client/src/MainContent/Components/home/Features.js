@@ -1,8 +1,8 @@
 const Features = () => {
 
     return (
-<section class="pt-20 lg:pt-[100px] px-16 lg:px-0 pb-12 lg:pb-[78px]">
-   <div class="xl:container xl:px-0 px-12 block mx-auto">
+<section class="pt-[90px] lg:pt-[100px] px-16 lg:px-0 pb-12 lg:pb-[78px]">
+   <div class="xl:container xl:px-0 sm:px-12 px-0 block mx-auto">
       <div class="flex flex-wrap -mx-4">
          <div class="w-full px-4">
             <div class="text-center mx-auto mb-14 lg:mb-20 max-w-[680px]">
@@ -27,12 +27,12 @@ const Features = () => {
             </div>
          </div>
       </div>
-      <div class="flex flex-wrap bg-gradient-to-br from-blue-100 to-indigo-100 pt-7 px-6  relative  lg:-mt-4 mt-2 lg:mb-0 mb-2 rounded-xl -mx-4">
+      <div class="flex flex-wrap bg-gradient-to-br from-blue-100 to-indigo-100 pt-7 sm:px-6 px-3  relative   lg:-mt-4 mt-2 lg:mb-0 mb-2 rounded-xl -mx-4">
          
          <div class="w-full md:w-1/2 lg:w-1/3 px-2">
             <div
                class="
-               p-10
+               sm:p-10 py-7 px-5
                md:px-7
                xl:px-10
                rounded-[20px]
@@ -72,10 +72,10 @@ const Features = () => {
                </p>
             </div>
          </div>
-         <div class="w-full md:w-1/2 lg:w-1/3 px-2">
+         <div class="w-full md:w-1/2 md:top-0 -top-2 relative lg:w-1/3 px-2">
             <div
                class="
-               p-10
+               sm:p-10 py-7 px-5
                md:px-7
                xl:px-10
                rounded-[20px]
@@ -112,7 +112,7 @@ const Features = () => {
                   Management of Product Listings
                </h4>
                <h4 class="font-semibold xl:hidden block  text-xl text-center text-dark mb-3">
-                  Manage Product Listings
+                  Manage <span class = 'lg:inline hidden'>Product</span> Listings
                </h4>
                <p class="text-body-color text-center">
                   We simplify the <span class = 'xl:inline lg:hidden'>nuanced</span> process of managing your listings, 
@@ -120,10 +120,10 @@ const Features = () => {
                </p>
             </div>
          </div>
-         <div class="w-full md:w-1/2 lg:mx-0 mx-auto block lg:w-1/3 px-2">
+         <div class="w-full md:w-1/2 lg:mx-0 lg:top-0 -top-3.5 relative lg:mb-0 -mb-5 mx-auto block lg:w-1/3 px-2">
             <div
                class="
-               p-10
+               sm:p-10 py-7 px-5
                md:px-7
                xl:px-10
                rounded-[20px]
