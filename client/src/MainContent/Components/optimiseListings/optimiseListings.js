@@ -39,7 +39,7 @@ const OptimiseListings = () => {
     })
 
   }else if(operation === 'marketplace-overview'){
-
+console.log({platform:currentPlatform,sentence:document.getElementById('keywords').value})
     axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/marketPlaceOverview":'http://localhost:4000/api/user/marketPlaceOverview',
     {platform:currentPlatform,sentence:document.getElementById('keywords').value, token:sessionStorage.getItem('token')}).then(res=> {
       setAnalysis(res.data)
