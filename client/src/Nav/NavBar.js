@@ -126,14 +126,14 @@ useEffect(() => {
                      history('/home')
 
           }} 
-          className={`uppercase items-center justify-center ${location.pathname==='/home'?'text-blue-700':'text-gray-700'} px-3 top-[5px] active:shadow-sm hover:font-semibold relative mr-3.5 py-[9px]  pb-2.5 border border-transparent rounded-md text-md tracking-wide font-semibold hover:text-blue-700 text-gray-700 bg-gradient-to-r  `}>
+          className={`uppercase items-center justify-center ${location.pathname==='/home'||location.pathname==='/home/'?'text-blue-700':'text-gray-700'} px-3 top-[5px] active:shadow-sm hover:font-semibold relative mr-3.5 py-[9px]  pb-2.5 border border-transparent rounded-md text-md tracking-wide font-semibold hover:text-blue-700 text-gray-700 bg-gradient-to-r  `}>
           Home
          </a>
 
          <a  href="#" onClick = {()=> {
           history('/team')
           }} 
-          className={`uppercase items-center justify-center ${location.pathname==='/team'?'text-blue-700':'text-gray-700'} px-3 top-[5px] active:shadow-sm hover:font-semibold relative mr-4 py-[9px]  pb-2.5 border border-transparent rounded-md text-md tracking-wide font-semibold hover:text-blue-700  text-gray-700 bg-gradient-to-r  `}>
+          className={`uppercase items-center justify-center ${location.pathname==='/team'||location.pathname==='/team/'?'text-blue-700':'text-gray-700'} px-3 top-[5px] active:shadow-sm hover:font-semibold relative mr-4 py-[9px]  pb-2.5 border border-transparent rounded-md text-md tracking-wide font-semibold hover:text-blue-700  text-gray-700 bg-gradient-to-r  `}>
           Team
          </a>
 
@@ -158,22 +158,22 @@ useEffect(() => {
     </ul> :
     <ul class="flex-col mt-6 top-[4px] md:mr-2 md:flex hidden relative md:flex-row md:space-x-9 md:mt-0 md:text-sm md:font-medium">
       <li>
-        <a class={`block py-2 cursor-pointer pr-4 pl-3  bg-blue-700 rounded md:bg-transparent ${location.pathname === '/profile'?'text-blue-700':'text-gray-700'} md:p-0 text-sm uppercase `} aria-current="page" onClick={()=> {
+        <a class={`block py-2 cursor-pointer pr-4 pl-3  bg-blue-700 rounded md:bg-transparent ${location.pathname === '/profile' || location.pathname === '/profile/'?'text-blue-700':'text-gray-700'} md:p-0 text-sm uppercase `} aria-current="page" onClick={()=> {
           history('/profile')
         }}>Profile</a>
       </li>
       <li>
-        <a class={`block py-2 pr-4 cursor-pointer  pl-3 ${location.pathname === '/setupListings'?'text-blue-700':'text-gray-700'} border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-sm uppercase md:p-0`} onClick={()=> {
+        <a class={`block py-2 pr-4 cursor-pointer  pl-3 ${location.pathname === '/setupListings' || location.pathname === '/setupListings/'?'text-blue-700':'text-gray-700'} border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-sm uppercase md:p-0`} onClick={()=> {
           history('/setupListings')
         }}> SET-UP</a>
       </li>
       <li>
-        <a  class={`block py-2 pr-4 pl-3 cursor-pointer  ${location.pathname === '/manageListings'?'text-blue-700':'text-gray-700'} border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-sm uppercase md:p-0`} onClick={()=> {
+        <a  class={`block py-2 pr-4 pl-3 cursor-pointer  ${location.pathname === '/manageListings' || location.pathname === '/manageListings/'?'text-blue-700':'text-gray-700'} border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-sm uppercase md:p-0`} onClick={()=> {
           history('/manageListings')
         }}>MANAGE</a>
       </li>
       <li>
-        <a class={`block py-2 pr-4 pl-3 cursor-pointer  ${location.pathname === '/optimiseListings'?'text-blue-700':'text-gray-700'}  border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-sm uppercase md:p-0`} onClick={()=> {
+        <a class={`block py-2 pr-4 pl-3 cursor-pointer  ${location.pathname === '/optimiseListings' || location.pathname === '/optimiseListings/'?'text-blue-700':'text-gray-700'}  border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-sm uppercase md:p-0`} onClick={()=> {
           history('/optimiseListings')
         }}>OPTIMIZE </a>
       </li>

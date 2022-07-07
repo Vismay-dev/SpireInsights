@@ -66,7 +66,7 @@ const TopProdResult = (props) => {
     )
 
    useEffect(()=> {
-      if(props.operation === 'marketplace-overview' && props.analysis && props.analysis.searchVolumeData && props.analysis.relatedKeyWordData){
+      if(props.operation === 'marketplace-overview' && props.analysis && props.analysis.searchVolumeData && props.analysis.searchVolumeData[0] && props.analysis.relatedKeyWordData){
 
          let h = props.analysis.searchVolumeData[0].searchResults
          for(let i = 0;i< props.analysis.searchVolumeData.length; i++){
@@ -124,7 +124,16 @@ return (<>
            <h1 class = 'text-4xl text-center bottom-12 font-bold relative underline'>Overview</h1>
                 <h3 class = 'text-xl text-center bottom-10 lg:mb-4 mb-2 font-semibold relative '>Entered ID = {props.keyword&&props.keyword.toUpperCase()}</h3>
 
-            <div class = 'lg:flex block lg:mb-1 mb-5 xl:container mx-auto xl:right-[39px] xl:px-0 px-7 xl:gap-x-0 gap-x-7  relative -top-2'>
+
+
+{
+   props.analysis.productAnalysis==={}? 
+<h1 class = 'text-2xl text-center block pb-[70px] mx-auto font-semibold left-2 mt-[50px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+</svg> Unable to Fetch Results..</h1>
+   :''
+}
+            <div class = 'lg:flex block  lg:mb-1 mb-5 xl:container mx-auto xl:right-[39px] xl:px-0 px-7 xl:gap-x-0 gap-x-7  relative -top-2'>
                <div class = 'lg:w-1/2 md:w-[80%] sm:w-[90%] w-[96%] block mx-auto mt-[30px] xl:top-0 lg:top-[20px] relative'>
     <div class="flex flex-col items-center justify-center h-fit xl:max-w-[500px] max-w-[700px] left-2 mx-auto">
         <div class="w-full h-72 bg-gray-800 border-2 border-blue-700 bg-no-repeat bg-center  ring-2 ring-blue-700 ring-offset-2 ring-offset-indigo-200 bg-contain rounded-lg shadow-md" style={{'background-image': `url(${props.analysis.productAnalysis.image})`}}></div>
@@ -241,6 +250,18 @@ Read Reviews
 
 <h1 class = 'text-4xl text-center bottom-12 font-bold relative underline'>Direct Competition</h1>
                 <h3 class = 'text-xl text-center bottom-10 mb-7 font-semibold relative '>View Immediate Alternatives/Substitutes for Entered ASIN ID</h3>
+
+
+
+
+                {
+   props.analysis.relatedData==={}? 
+<h1 class = 'text-2xl text-center block pb-[70px] mx-auto font-semibold left-2 mt-[50px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+</svg> Unable to Fetch Results..</h1>
+   :''
+}
+
 
 <div class = 'mt-3 relative block -mb-24'>
 {
@@ -773,7 +794,7 @@ props.analysis.relatedKeyWordData.length===0?
                     {keyWord.searchVolume}
                   </td>
                   <td class="sm:px-8 px-3 py-1  border-r-[1px] border-gray-600 text-gray-900">
-                  {keyWord.searchResults}
+                  {keyWord&&keyWord.searchResults}
                   </td>
               </tr>
                )
@@ -824,17 +845,19 @@ props.analysis.relatedKeyWordData.length===0?
                return (
                   <tr class="bg-white border-b text-base border-t-2 border-black">
                   <th scope="row" class="sm:px-7 px-3 py-6 uppercase border-r-[1px] border-gray-600 font-medium text-gray-900  whitespace-nowrap">
-                      {keyWord.keyWord}
+                      {keyWord&&keyWord.keyWord}
                   </th>
-                  <td class={`sm:px-6 px-3 py-6  border-r-[1px] border-gray-600 ${keyWord.searchVolume===null?'text-red-700 font-semibold':'text-gray-900'}`}>
-                    {keyWord.searchVolume===null?'Unable to Fetch':keyWord.searchVolume}
+                  <td class={`sm:px-6 px-3 py-6  border-r-[1px] border-gray-600 ${keyWord&&keyWord.searchVolume===null?'text-red-700 font-semibold':'text-gray-900'}`}>
+                    {keyWord&&keyWord.searchVolume===null?'Unable to Fetch':keyWord&&keyWord.searchVolume}
                   </td>
                   <td class="sm:px-6 px-3 py-6  border-r-[1px] border-gray-600 text-gray-900">
-                  {keyWord.searchResults}
+                  {keyWord&&keyWord.searchResults}
                   </td>
                   <td class="sm:px-6 px-3 py-6 text-gray-900">
                       {
+                        keyWord?
             Math.round(keyWord.searchVolume/parseFloat(keyWord.searchResults) * 100) / 100
+            :0
                       }
                   </td>
               </tr>
