@@ -145,7 +145,7 @@ await axios({
 
 
 }catch(err){
-    res.status(401).send(err.response)
+    res.status(400).send(err.response)
 }
 })
 
@@ -219,7 +219,7 @@ res.send({
 
 }).catch(function (error) {
   console.log(error);
-  res.status(401).send(error.response)
+  res.status(400).send(error.response)
 });
 
     }else if(req.body.platform ==='Noon') {
@@ -227,7 +227,7 @@ res.send({
     }
 
 }catch(err){
-    res.status(401).send(err.response)
+    res.status(400).send(err.response)
 }
 })
 

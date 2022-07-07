@@ -46,7 +46,7 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
       console.log(res.data)
       setLoading(false)
 }).catch(err=> {
-    console.log(err.response.message)
+    console.log(err)
   })
 
   }else if(operation === 'track-product'){
@@ -55,7 +55,7 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
       console.log(res.data)
       setLoading(false)
 }).catch(err=> {
-    console.log(err.response.message)
+    console.log(err)
   })
 
   }
