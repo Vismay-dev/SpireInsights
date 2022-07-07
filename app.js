@@ -24,7 +24,13 @@ mongoose.connect(process.env.MONGODB,{useUnifiedTopology:true,useNewUrlParser:tr
 mongoose.connection.on('error', function (err) { console.log(err) });
 
 
-app.use(cors())
+app.use(cors({
+    origin:'https://spire-insights.herokuapp.com',
+    credentials:true
+    // :'http://localhost:3000'
+    // 'https://www.ideastack.org'
+
+}))
 
 app.use('/api/user',RoutesAPIUser)
 
@@ -41,6 +47,6 @@ if(process.env.NODE_ENV === 'production') {
 }
 
 const server = app.listen(process.env.PORT || 4000, () => {
-    const port = server.address().port;
-    console.log(`Express is working on port ${port}`);
-  });
+  const port = server.address().port;
+  console.log(`Express is working on port ${port}`);
+});
