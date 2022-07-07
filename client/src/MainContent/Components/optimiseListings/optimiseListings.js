@@ -30,7 +30,7 @@ const OptimiseListings = () => {
     setKeyWord(document.getElementById('keywords').value.toLowerCase())
     if(operation === 'top-prod'){
 
-   await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/topProductAnalysis":'http://localhost:4000/api/user/topProductAnalysis',{platform:currentPlatform,sentence:document.getElementById('keywords').value, token:sessionStorage.getItem('token')}).then(res=> {
+   await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/topProductAnalysis":'http://localhost:4000/api/user/topProductAnalysis',{platform:currentPlatform,sentence:document.getElementById('keywords').value.trim(), token:sessionStorage.getItem('token')}).then(res=> {
         setAnalysis(res.data)
         console.log(res.data)
         setLoading(false)
@@ -41,7 +41,7 @@ const OptimiseListings = () => {
   }else if(operation === 'marketplace-overview'){
 console.log({platform:currentPlatform,sentence:document.getElementById('keywords').value})
     await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/marketPlaceOverview":'http://localhost:4000/api/user/marketPlaceOverview',
-    {platform:currentPlatform,sentence:document.getElementById('keywords').value, token:sessionStorage.getItem('token')}).then(res=> {
+    {platform:currentPlatform,sentence:document.getElementById('keywords').value.trim(), token:sessionStorage.getItem('token')}).then(res=> {
       setAnalysis(res.data)
       console.log(res.data)
       setLoading(false)
