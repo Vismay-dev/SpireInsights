@@ -79,7 +79,7 @@ const Profile = () => {
                 editModalShow?
                 <EditModal setUser = {(userData)=> {
                   setUserInfo(userData)
-                  console.log('User Profile Updated!')
+                  console.log(userData)
                 }} type = {modalType} close = {()=> {setEditModalShow(false)}}/>
                  :''
             }

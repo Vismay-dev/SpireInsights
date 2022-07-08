@@ -28,6 +28,7 @@ console.log(user)
 axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/updateUser':'http://localhost:4000/api/user/updateUser',{user, token:sessionStorage.getItem('token')}).then(res=> {
     currentUser.setUser(res.data)
     props.setUser(res.data)
+    console.log('Updated User')
     setTimeout(()=> {
       setLoading(false)
       props.close()
@@ -45,6 +46,7 @@ axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuap
     e.preventDefault()
     setPicLoading(true)
     const data = new FormData();
+    data.append('image',e.target.files[0]);
     data.append('token',sessionStorage.getItem('token') )
     axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/uploadProfPic':'http://localhost:4000/api/user/uploadProfPic',data).then(res=> {
         console.log(res.data)
