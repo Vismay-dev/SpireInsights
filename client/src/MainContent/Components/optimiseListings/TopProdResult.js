@@ -431,8 +431,8 @@ Read Reviews
 }
 
   <div class = {`w-full ${(props.analysis)===null?'hidden':'block'} py-4   md:w-full xl:w-1/2 px-4`}>
-                <div class="bg-white shadow-sm   p-3 h-full flex rounded-lg overflow-hidden mb-1">
-                <div class = 'w-[200px] md:right-0 right-3.5 xl:block lg:hidden sm:block hidden top-1 relative '><GaugeChart id="gauge-chart2" 
+                <div class="bg-white shadow-sm   p-2 py-3 pt-2 h-full flex rounded-lg overflow-hidden mb-1">
+                <div class = 'w-[200px] md:right-0 right-3.5 xl:block lg:hidden sm:block hidden top-1.5 relative '><GaugeChart id="gauge-chart2" 
   nrOfLevels={5} 
   percent={(props.analysis.avgCompetitiveRating/5.0)} 
   arcWidth={0.2}
