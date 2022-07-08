@@ -36,6 +36,16 @@ const LogModal = (props)=> {
 
 const myRef = useRef()
 
+const useAnalyticsEventTracker = (category="Authentication Actions") => {
+  const eventTracker = (action = "Logged In", label = "Log In Modal") => {
+    ReactGA.event({category, action, label});
+  }
+  return eventTracker;
+}
+
+const gaEventTracker = useAnalyticsEventTracker('Log In');
+
+
 
 useEffect(
   () => {
@@ -98,8 +108,8 @@ sessionStorage.setItem('token',res.data.userToken)
   //   localStorage.removeItem('cookieExpires');
   // }
   // gaEventTracker('Logged In')
-  console.log(res.data.user)
   user.setUser(res.data.user)
+  gaEventTracker('Logged In')
   history('/profile')
   setLoading(false)
   props.close()
@@ -187,16 +197,6 @@ const resetPass = (e) => {
     setLoading(false)
   })
 }
-
-// const useAnalyticsEventTracker = (category="Logins") => {
-//   const eventTracker = (action = "Logged In", label = "Log In Modal") => {
-//     ReactGA.event({category, action, label});
-//   }
-//   return eventTracker;
-// }
-
-// const gaEventTracker = useAnalyticsEventTracker('Log In');
-
 
   //create change handlers
 

@@ -22,6 +22,14 @@ const PersonalInfo = (props) => {
 
 const history = useNavigate()
 
+const useAnalyticsEventTracker = (category="Authentication Actions") => {
+  const eventTracker = (action = "Registered", label = "Registration Modal") => {
+    ReactGA.event({category, action, label});
+  }
+  return eventTracker;
+}
+
+const gaEventTracker = useAnalyticsEventTracker('Register');
 
 const handleChange = (e) => {
     setUser({
@@ -42,6 +50,7 @@ console.log(User)
 axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/register':'http://localhost:4000/api/user/register',User).then(res=> {
     sessionStorage.setItem('token',res.data.userToken)
     currentUser.setUser(res.data.user)
+    gaEventTracker('Registered')
     history('/profile')
     props.close()
     setLoading(false)

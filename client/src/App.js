@@ -6,6 +6,10 @@ import MainContent from './MainContent/MainContent';
 import userContext from './context/userContext'
 import {useLocation} from 'react-router-dom'
 
+import ReactGA from 'react-ga';
+const TRACKING_ID = "UA-233931477-1"
+ReactGA.initialize(TRACKING_ID);
+
 function App() {
 
   const [user, setUser] = useState({
