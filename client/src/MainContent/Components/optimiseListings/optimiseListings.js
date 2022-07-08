@@ -72,7 +72,11 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
   })
 
   }
-  }
+  }   
+  
+  
+  const [showToolTip2, setShowToolTip2] = useState(false)
+
 
     return (
         <>
@@ -153,14 +157,14 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
    </a>
    
    <a
-   onClick={()=> {
-    setCurrentPlatform('Al Anees')
-   }}
+ onMouseOver={() => setShowToolTip2(true)}
+ onMouseLeave={() => setShowToolTip2(false)}
    class={`
       py-[11.5px]
       sm:py-3
       w-[50%]
-      cursor-pointer
+      cursor-default
+
       sm:px-6 px-5
       sm:top-0
       -top-[4.9px] relative
@@ -176,11 +180,15 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
       border border-light
       text-center  text-sm
       sm:text-base
-      ${currentPlatform === 'Al Anees' ? 'bg-blue-700 text-white':'text-black bg-white'}
-      hover:bg-blue-700 hover:text-white hover:border-primary
+     bg-gray-200
+     text-gray-700
       `}>
     <FiShoppingCart class = 'mr-2 text-xl sm:inline hidden top-[0.5px] font-bold relative'/> Al Anees (Qatar)
    </a>
+
+   <Tooltip show={showToolTip2} position = 'right' fontSize = '16px' padding = '3px 5px'>
+  <span class = 'font-semibold text-center font-sans bottom-0.5'>Currently unavailable for this region.</span>
+</Tooltip>
 </div>
 
 </div>
