@@ -1421,7 +1421,9 @@ currentPlatform==='Amazon'?
     props.segment-1===2?
     <>
     <a onClick={()=> {
-      saveAllDetailsKeyWords()
+       if(userCon.user && userCon.user.pipeline && userCon.user.pipeline.current !== 'seo'){
+         saveAllDetailsKeyWords()
+      }
     }} class={`
     lg:py-2 py-2.5
     px-5
