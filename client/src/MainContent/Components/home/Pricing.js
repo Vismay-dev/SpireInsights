@@ -5,7 +5,7 @@ const Pricing = () => {
 
    const [showToolTip, setShowToolTip] = useState(false)
 
-    return (
+return (
 <section
    class="
    bg-gradient-to-br from-blue-50 to-indigo-50
@@ -473,8 +473,10 @@ const Pricing = () => {
                      Customer Support
                   </p>
                </div>
+            
                <a
-                onMouseOver={() => setShowToolTip(true)}
+                onMouseOver={() => {
+                  setShowToolTip(true)}}
                 onMouseLeave={() => setShowToolTip(false)}
                   class="
                   w-full
@@ -493,9 +495,7 @@ const Pricing = () => {
                   >
                Choose Business
                </a>
-               <Tooltip show={showToolTip} position = 'right' fontSize = '16px' padding = '3px 5px'>
-  <span class = 'font-semibold text-center font-sans bottom-0.5'>Paid version will be available soon...</span>
-</Tooltip>
+        
                <div>
                   <span class="absolute right-0 top-7 z-[-1]">
                      <svg
@@ -761,7 +761,15 @@ const Pricing = () => {
                   </span>
                </div>
             </div>
+
+            <div class = 'block relative right-[55%] bottom-16'>
+               <Tooltip show={showToolTip} position = 'bottom' fontSize = '16px' padding = '3px 5px'>
+  <span class = 'font-semibold text-center font-sans bottom-0.5'>Paid version will be available soon...</span>
+</Tooltip>
+</div>
+
          </div>
+      
         
       </div>
    </div>
