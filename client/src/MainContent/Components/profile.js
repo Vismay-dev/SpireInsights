@@ -9,7 +9,13 @@ import free from '.././free.png'
 const Profile = () => {
 
     const currentUser = useContext(userContext)
-    const userInfo = currentUser.user
+    const [userInfo,setUserInfo] = useState(currentUser.user)
+
+    useEffect(()=> {
+      setUserInfo(currentUser.user)
+    },[currentUser.user])
+
+
     const [hours, setHours] = useState()
     const [days, setDays] = useState()
 
