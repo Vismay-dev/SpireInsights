@@ -1,5 +1,9 @@
+import { useState } from "react"
+import Tooltip from 'react-power-tooltip'
+
 const Pricing = () => {
 
+   const [showToolTip, setShowToolTip] = useState(false)
 
     return (
 <section
@@ -470,24 +474,28 @@ const Pricing = () => {
                   </p>
                </div>
                <a
-                  href="javascript:void(0)"
+                onMouseOver={() => setShowToolTip(true)}
+                onMouseLeave={() => setShowToolTip(false)}
                   class="
                   w-full
                   block
                   text-base
                   font-semibold
-                  text-black
+                  text-gray-700
                   bg-primary
                   border border-primary
                   rounded-md
                   text-center
                   p-4
-                  hover:bg-blue-700 hover:text-white hover:shadow-md
                   transition
+                  bg-gray-200
                   "
                   >
                Choose Business
                </a>
+               <Tooltip show={showToolTip} position = 'right' fontSize = '16px' padding = '3px 5px'>
+  <span class = 'font-semibold text-center font-sans bottom-0.5'>Paid version will be available soon...</span>
+</Tooltip>
                <div>
                   <span class="absolute right-0 top-7 z-[-1]">
                      <svg
