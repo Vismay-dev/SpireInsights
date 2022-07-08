@@ -118,11 +118,11 @@ const avgCompetitiveRating = async (res) => {
 
 const pricingResults = async (res) => {
 
-     let l = parseFloat(res[0].price.substring(4))
-     let h = parseFloat(res[0].price.substring(4))
+     let l = parseFloat(res[0].price.split('AED')[1].trim().replace(',',''))
+     let h = parseFloat(res[0].price.split('AED')[1].trim().replace(',',''))
 
      for(let i = 0; i < 5; i++){
-        let currPrice = parseFloat(res[i].price.substring(4))
+        let currPrice = parseFloat(res[i].price.split('AED')[1].trim().replace(',',''))
         if(currPrice<l){
             l = currPrice
         }else if(currPrice>h){
