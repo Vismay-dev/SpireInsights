@@ -215,7 +215,7 @@ anim();
         <div class="relative pt-[100px] lg:pt-[100px] xl:pt-[150px] -mb-10 -mt-16 mx-auto block xl:pb-[97px] lg:pb-[110px] pb-[80px] bg-gradient-to-br from-blue-50 to-indigo-50">
           <div class="container mx-auto block  relative ">
             <div class="flex flex-wrap mx-auto lg:right-0 right-[44px]  relative pointer-events-auto">
-              <div class="w-full xl:w-5/12 lg:w-[47%] lg:top-[15px]  pointer-events-auto px-4 xl:-mr-8 xl:ml-8 ml-10 lg:-mr-4 -mr-14 xl:-left-1 lg:left-2 left-2 xl:top-0 top-0 relative">
+              <div class="w-full xl:w-5/12 lg:w-[47%] lg:top-[15px]  pointer-events-auto px-4 xl:-mr-8 xl:ml-8 ml-10 lg:-mr-4 -mr-14 xl:-left-1 lg:left-2 sm:left-2 xl:top-0 top-0 relative">
                 <div class="hero-content lg:text-left sm:px-0 px-3 text-center top-5 relative block pointer-events-auto">
                   <h1
                     class="
