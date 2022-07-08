@@ -13,7 +13,7 @@ const Profile = () => {
 
     useEffect(()=> {
       setUserInfo(currentUser.user)
-    },[currentUser.user])
+    },[currentUser])
 
 
     const [hours, setHours] = useState()

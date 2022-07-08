@@ -460,8 +460,11 @@ const ContentSetup = (props)=> {
          </div>
       
          <a 
-
-      onClick= {()=>{saveAllDetailsPrep()}}
+         onClick= {()=>{
+            if(userCon.user && userCon.user.pipeline && userCon.user.pipeline.current !== 'preparation'){
+               saveAllDetailsPrep()
+            }
+            }}
          class={`
 xl:py-2 py-2.5
 px-5

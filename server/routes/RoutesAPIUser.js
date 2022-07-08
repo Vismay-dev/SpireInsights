@@ -278,7 +278,7 @@ router.post('/register', async(req,res)=> {
                          },
                          pricing: {
                             productPricing: 0,
-                            currency: '',
+                            currency: 'AED',
                             beingEdited:false,
                             isSaved:false
                    
@@ -382,7 +382,7 @@ router.post('/updateUser',auth, async(req,res)=> {
         console.log(updateInfo)
         const newUser = await User.findByIdAndUpdate(req.user._id, updateInfo)
         const updatedUser = await newUser.save()
-        res.send(updatedUser)
+        res.send(updateInfo)
     }catch (err) {
         console.log(err)
         res.status(400).send(err)

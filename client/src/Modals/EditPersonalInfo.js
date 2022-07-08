@@ -89,7 +89,7 @@ axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuap
                     {
                       picLoading?
 
-                      <div class ='relative mx-auto my-10 mb-10 pb-3 pt-1.5 bottom-6 text-center block justify-center'>
+                      <div class ='relative mx-auto my-11 mb-10 pb-3 pt-1.5 bottom-6 text-center block justify-center'>
       <ClipLoader color={'#0b0bbf'} loading={picLoading}  size={70} />
       </div>
 
