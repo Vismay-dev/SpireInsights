@@ -67,7 +67,9 @@ const TopProdResult = (props) => {
     )
 
    useEffect(()=> {
-      if(props.operation === 'marketplace-overview' && props.analysis && props.analysis.searchVolumeData && props.analysis.searchVolumeData[0] && props.analysis.relatedKeyWordData){
+      if(props.operation === 'marketplace-overview' && 
+      props.analysis && props.analysis.searchVolumeData 
+      && props.analysis.searchVolumeData[0] && props.analysis.relatedKeyWordData){
 
          let h = props.analysis.searchVolumeData[0].searchResults
          for(let i = 0;i< props.analysis.searchVolumeData.length; i++){
@@ -79,8 +81,7 @@ const TopProdResult = (props) => {
         }
         
         
-        for(let i = 0;i<
-         props.analysis.searchVolumeData.length; i++){
+        for(let i = 0;i<props.analysis.searchVolumeData.length; i++){
           if(props.analysis.searchVolumeData[i].searchResults!==h){
            curr += props.analysis.searchVolumeData[i].searchResults/parseFloat(h)
           }
@@ -94,9 +95,17 @@ const TopProdResult = (props) => {
         avgSupply = avgSupply/curr
         avgDemand = avgDemand/parseFloat(props.analysis.searchVolumeData.length)
 
+        let amnt = 0.03*(avgSupply+avgDemand)
+        if(Math.round(avgDemand/parseFloat(avgSupply+avgDemand)*100)===100 || Math.round(avgDemand/parseFloat(avgSupply+avgDemand)*100)=== 99){
+         avgDemand -= amnt
+         avgSupply += amnt
+        }else if(Math.round(avgDemand/parseFloat(avgSupply+avgDemand)*100)===0||Math.round(avgDemand/parseFloat(avgSupply+avgDemand)*100)===1){
+         avgDemand += amnt  
+         avgSupply -= amnt
+        }
+
         setAvgSupplyState(avgSupply);
         setAvgDemandState(avgDemand)
-
       }
 
    },[props.analysis, props.operation])
@@ -725,8 +734,8 @@ Read Reviews
 
 <div class = 'h-fit z-[400] mt-3  block relative'>
 
-<div class = 'w-[18px] h-[18px] bg-blue-800 inline-block  mt-2 mb-2'></div> <p class = 'inline  mb-2 mt-1 relative bottom-3 left-1 '> - <strong>Demand</strong> (Search Volume) - <span class = 'font-semibold'>{props.analysis&&props.analysis.searchVolumeData&&props.analysis.searchVolumeData.length === 1 && props.analysis.searchVolumeData[0].searchVolume === null? 'Error' : `${String(Math.round(avgDemandState/parseFloat(avgSupplyState+avgDemandState)*100)).substring(0,2)}%`}</span></p><br/>
-   <div class = 'w-[18px] h-[18px] bg-indigo-500 inline-block'></div> <p class = 'inline left-1 bottom-1  relative '>- <strong>Supply</strong> (Available Products Options) - <span class = 'font-semibold'>{props.analysis&&props.analysis.searchVolumeData&&props.analysis.searchVolumeData.length === 1 && props.analysis.searchVolumeData[0].searchResults === null? 'Error' : `${String(Math.round(avgSupplyState/parseFloat(avgSupplyState+avgDemandState)*100)).substring(0,2)}%`}</span></p>
+<div class = 'w-[18px] h-[18px] bg-blue-800 inline-block  mt-2 mb-2'></div> <p class = 'inline  mb-2 mt-1 relative bottom-3 left-1 '> - <strong>Demand</strong> (Search Volume) - <span class = 'font-semibold'>{props.analysis&&props.analysis.searchVolumeData&&props.analysis.searchVolumeData.length === 1 && props.analysis.searchVolumeData[0].searchVolume === null? 'Error' : `${String(Math.round(avgDemandState/parseFloat(avgSupplyState+avgDemandState)*100))}%`}</span></p><br/>
+   <div class = 'w-[18px] h-[18px] bg-indigo-500 inline-block'></div> <p class = 'inline left-1 bottom-1  relative '>- <strong>Supply</strong> (Available Products Options) - <span class = 'font-semibold'>{props.analysis&&props.analysis.searchVolumeData&&props.analysis.searchVolumeData.length === 1 && props.analysis.searchVolumeData[0].searchResults === null? 'Error' : `${String(Math.round(avgSupplyState/parseFloat(avgSupplyState+avgDemandState)*100))}%`}</span></p>
    
     <div class = 'sm:w-[200px] w-[150px] sm:left-0 left-[25px] relative sm:mt-3.5 mt-[18px] block mx-auto'>
 <ReactSvgPieChart
