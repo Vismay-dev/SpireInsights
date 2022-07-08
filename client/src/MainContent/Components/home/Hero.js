@@ -1,9 +1,12 @@
 import styles from './Hero.module.css'
 import $ from 'jquery'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import img from './image.png'
+import RegModal from '../../../Modals/RegModal';
 
 const Hero = () => {
+
+
 
     useEffect(()=> {
         var s = document.getElementById('c').width = document.getElementById('c').height = 400,
@@ -208,9 +211,18 @@ anim();
     })
     
     
-
+	const [showReg, setShowReg] = useState(false)
 
     return (
+		<>
+
+		{
+			showReg?
+			<RegModal close = {()=> {
+				setShowReg(false)
+			}}/>
+			:''
+		}
         
         <div class="relative pt-[100px] lg:pt-[100px] xl:pt-[150px] -mb-10 -mt-16 mx-auto block xl:pb-[97px] lg:pb-[110px] pb-[80px] bg-gradient-to-br from-blue-50 to-indigo-50">
           <div class="container mx-auto block  relative ">
@@ -238,6 +250,9 @@ anim();
                   </p>
 
                       <button
+					  onClick={()=> {
+						setShowReg(true)
+					  }}
                         class="
                           py-4
                           px-10
@@ -355,6 +370,8 @@ anim();
             </div>
           </div>
         </div>
+
+		</>
     )
 }
 
