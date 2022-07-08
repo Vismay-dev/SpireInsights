@@ -95,7 +95,7 @@ axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuap
 
                       :
 
-                      <img class={`rounded-full -mt-12 mx-auto shadow-lg w-64 ${currentUser.user.profilePic?'':'p-2'} relative`} src={currentUser.user.profilePic?currentUser.user.profilePic:"https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0="}/>
+                      <img class={`rounded-full -mt-12 mx-auto shadow-lg w-64 ${image?'':'p-2'} relative`} src={image?image:"https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0="}/>
 
                     }
                     <input ref={inputRef} onChange = {profPicUpload} type="file" name="article_picture" style={{'display': 'none'}}/>

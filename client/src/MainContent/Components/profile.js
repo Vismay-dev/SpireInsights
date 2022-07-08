@@ -148,7 +148,7 @@ const Profile = () => {
                      </div>
                       :
 
-                      <img class={`rounded-full -mt-16 -mb-2  md:w-48 w-40 h-40 md:h-48 object-contain bg-white  shadow-lg block ${currentUser.user.profilePic?'':'p-2'} relative`}
+                      <img class={`rounded-full -mt-16 -mb-2  md:w-48 w-40 h-40 md:h-48 object-cover bg-white  shadow-lg block ${currentUser.user.profilePic?'':'p-2'} relative`}
                     src={currentUser.user.profilePic?currentUser.user.profilePic:"https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0="} /> }
 
 
