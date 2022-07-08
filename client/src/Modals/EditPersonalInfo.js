@@ -27,6 +27,7 @@ setLoading(true)
 console.log(user)
 axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/updateUser':'http://localhost:4000/api/user/updateUser',{user, token:sessionStorage.getItem('token')}).then(res=> {
     currentUser.setUser(res.data)
+    props.setUser(res.data)
     setTimeout(()=> {
       setLoading(false)
       props.close()
@@ -48,6 +49,7 @@ axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuap
     axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/uploadProfPic':'http://localhost:4000/api/user/uploadProfPic',data).then(res=> {
         console.log(res.data)
         currentUser.setUser(res.data)
+        props.setUser(res.data)
         setImage(res.data.profilePic)
         setPicLoading(false)
     }).catch(err=> {
@@ -62,6 +64,7 @@ axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuap
     console.log(removedProfPic)
     axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/updateUser':'http://localhost:4000/api/user/updateUser',{user:removedProfPic, token:sessionStorage.getItem('token')}).then(res=> {
       currentUser.setUser(res.data)
+      props.setUser(res.data)
     }).catch(err=> {
       console.log(err.response?err.response.data:null)
     })

@@ -61,7 +61,7 @@ useEffect(
                   <p class="text-lg text-gray-500 pt-5">
     
 
-<EditPersonalInfo close = {props.close}/>
+<EditPersonalInfo setUser = {props.setUser} close = {props.close}/>
     
     
                   </p>
