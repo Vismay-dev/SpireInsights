@@ -24,13 +24,7 @@ mongoose.connect(process.env.MONGODB,{useUnifiedTopology:true,useNewUrlParser:tr
 mongoose.connection.on('error', function (err) { console.log(err) });
 
 
-app.use(cors({
-    origin:process.env.NODE_ENV==='production'?'https://spire-insights.herokuapp.com':'http://localhost:3000',
-    credentials:true
-    // :'http://localhost:3000'
-    // 'https://www.ideastack.org'
-
-}))
+app.use(cors())
 
 app.use('/api/user',RoutesAPIUser)
 
