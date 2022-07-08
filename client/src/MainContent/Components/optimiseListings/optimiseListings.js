@@ -25,7 +25,8 @@ const OptimiseListings = () => {
       setOperation(op)
     }
 
-  const subHandle = async ()=> {
+  const subHandle = async(e)=> {
+    e.preventDefault()
     setLoading(true)
     setKeyWord(document.getElementById('keywords').value.toLowerCase())
     if(operation === 'top-prod'){
@@ -37,7 +38,7 @@ const OptimiseListings = () => {
 }).catch(err=> {
       console.log(err.response.message)
       setLoading(false)
-
+      setAnalysis()
     })
 
   }else if(operation === 'marketplace-overview'){
@@ -50,6 +51,10 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
 }).catch(err=> {
     console.log(err)
     setLoading(false)
+    setAnalysis({
+      searchVolumeData: [],
+      relatedKeyWordData: []
+    })
   })
 
   }else if(operation === 'track-product'){
@@ -60,6 +65,10 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
 }).catch(err=> {
     console.log(err)
     setLoading(false)
+    setAnalysis({
+      productAnalysis: {},
+      competitorData: []
+    })
   })
 
   }
@@ -74,6 +83,7 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
             <ButtonGroup operation = {operation} changeOp = {changeOp}/>
             </div>
             <hr class = 'relative top-1 w-[150%] my-1 right-[25%]'/>
+         <form onSubmit= {subHandle}>
             <div class="flex flex-wrap md:pb-0 pb-1  -mx-4 relative lg:w-[120%] w-[96%] right-[-3.8%] lg:right-[8%] mt-8">
    <div class="md:w-1/3 sm:w-1/2 w-[75%] sm:left-0 left-1.5 mx-auto block md:mt-0 -mt-2  px-4">
       <div class="sm:mb-12 mb-10 block relative ">
@@ -95,7 +105,7 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
   <span class = 'font-semibold text-center relative  font-sans'>ASIN is a unique ID given on Amazon product pages.</span>
 </Tooltip></div>
          </label>
-         <input type="text" id = 'keywords' placeholder={`Ex. ${operation==='track-product'?'B001TJ3HUG':'Wireless Mouse'}`} class="
+         <input type="text" min={3} required id = 'keywords' placeholder={`Ex. ${operation==='track-product'?'B001TJ3HUG':'Wireless Mouse'}`} class="
             w-full
             border-[1.5px] border-form-stroke
             rounded-lg
@@ -175,9 +185,7 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
 
 </div>
 
-<a onClick={()=> {
-    subHandle()
-}} href="javascript:void(0)" class="
+<button type = 'submit'  href="javascript:void(0)" class="
    py-3
    px-6
    lg:px-8
@@ -202,7 +210,8 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
    rounded-md
    ">
 <TbReportSearch class = 'mr-2 text-xl font-bold relative'/> Show Insights
-</a>
+</button>
+</form>
 </div>
 <hr class = 'relative md:mt-6 mt-10 w-[90%] mx-auto'/>
 <TopProdResult loading={loading} operation = {operation} analysis = {analysis} keyword = {keyword}/>

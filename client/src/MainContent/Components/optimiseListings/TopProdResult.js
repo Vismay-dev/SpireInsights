@@ -126,6 +126,7 @@ return (<>
                 <h3 class = 'text-xl text-center bottom-10 lg:mb-4 mb-2 font-semibold relative '>Entered ID = {props.keyword&&props.keyword.toUpperCase()}</h3>
 
 
+            
 
 {
    Object.keys(props.analysis.productAnalysis).length===0? 
@@ -421,7 +422,15 @@ Read Reviews
                 <h3 class = 'text-xl text-center bottom-10 -mb-2 font-semibold relative '>Understand the Competition</h3>
 
              <div class="flex flex-wrap bg-gradient-to-tr from-blue-100 to-indigo-200 sm:p-5 px-1 xl:pt-6 pt-3 xl:pb-5 pb-2 mb-16 shadow-lg mx-auto">             
-                <div class = 'w-full py-4   md:w-full xl:w-1/2 px-4'>
+             {
+   (props.analysis)===null? 
+<h1 class = 'text-2xl text-center block pb-[70px] mx-auto font-semibold left-2 mt-[50px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+</svg> Unable to Fetch Results..</h1>
+   :''
+}
+
+  <div class = {`w-full ${(props.analysis)===null?'hidden':'block'} py-4   md:w-full xl:w-1/2 px-4`}>
                 <div class="bg-white shadow-sm   p-3 h-full flex rounded-lg overflow-hidden mb-1">
                 <div class = 'w-[200px] md:right-0 right-3.5 xl:block lg:hidden sm:block hidden top-1 relative '><GaugeChart id="gauge-chart2" 
   nrOfLevels={5} 
@@ -435,7 +444,7 @@ Read Reviews
                 </div>
                 </div>
                 
-                <div class = 'w-full py-4  md:w-full  xl:w-1/2 px-4'>
+                <div class = {`w-full py-4 ${(props.analysis)===null?'hidden':'block'} md:w-full  xl:w-1/2 px-4`}>
                     <div class="bg-white flex shadow-sm xl:pb-0 lg:pb-[53px] sm:pb-9 pb-12 xl:mx-0 mx-auto h-full xl:text-left lg:text-center sm:text-left text-center rounded-lg overflow-hidden mb-1">
                     <IoPricetags class = 'text-blue-700 xl:block lg:hidden sm:block hidden  relative text-7xl top-6 left-14'/>
                     <div class = 'xl:ml-[104px] xl:mr-7 md:left-0 sm:left-3 mx-auto md:top-[24px] top-[22px] relative font-semibold'> <h1 class = ' relative inline underline text-xl'><FcMoneyTransfer class = 'mr-[8px] inline text-2xl bottom-[0px] relative sm:uppercase'/>Average Pricing Range:</h1> <br/>
@@ -454,9 +463,15 @@ Read Reviews
             <div class="container mx-auto -mt-1">
              <div class="flex flex-wrap bg-gradient-to-tr from-blue-100 to-indigo-200 p-5 pt-6 pb-5 mb-16 shadow-lg mx-auto">             
         
+             {
+   (props.analysis)===null? 
+<h1 class = 'text-2xl text-center block pb-[70px] mx-auto font-semibold left-2 mt-[50px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+</svg> Unable to Fetch Results..</h1>
+   :''
+}
 
-
-                <div class = 'w-full py-4 xl:px-20 lg:px-0  px-4'>
+                <div class = {`w-full py-4 ${(props.analysis)===null?'hidden':'block'}  xl:px-20 lg:px-0  px-4`}>
                     <div class="bg-white sm:flex block mx-auto shadow-sm h-full p-4 px-10 pt-6 rounded-lg overflow-hidden mb-1">
                     
                     
@@ -595,9 +610,19 @@ Read Reviews
 
            <div class="lg:container lg:w-full w-[95%] lg:mt-0 mt-2 lg:mb-0 mb-8 mx-auto">
               <div class="flex flex-wrap bg-gradient-to-tr from-blue-100 to-indigo-200 p-5 pt-6 pb-5 shadow-lg mx-auto">             
+               
+              {
+   (props.analysis)===null? 
+<h1 class = 'text-2xl text-center block pb-[70px] mx-auto font-semibold left-2 mt-[50px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+</svg> Unable to Fetch Results..</h1>
+   :''
+}
+               
+               
                  {props.analysis.currentCompetition.map((product,i)=> {
                     return (
-                        <div key = {i} class="w-full py-4   md:w-1/2 xl:w-1/3 px-4">
+                        <div key = {i} class={`w-full py-4 ${(props.analysis)===null?'hidden':'block'}  md:w-1/2 xl:w-1/3 px-4`}>
                     <div class="bg-white shadow-sm h-full rounded-lg overflow-hidden mb-1">
                        <img
                           src={product.image}
