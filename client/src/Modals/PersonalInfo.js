@@ -3,6 +3,7 @@ import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import userContext from '../context/userContext'
 import ClipLoader from "react-spinners/ClipLoader"
+import ReactGA from "react-ga";
 
 const PersonalInfo = (props) => {
 
