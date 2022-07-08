@@ -118,17 +118,17 @@ axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuap
 <div class="grid grid-cols-6 gap-6">
 <div class="col-span-6 sm:col-span-3  relative">
   <label for="first-name" class="block text-sm font-semibold left-0.5 text-gray-700">First name</label>
-  <input type="text"     onChange = {handleChange} name="repFirstName" min = {2} id="first-name" placeholder={currentUser?currentUser.user.repFirstName:''} value = {user?user.repFirstName:''} class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2   shadow-md sm:text-sm border-gray-300 rounded-md"/>
+  <input type="text"     onChange = {handleChange} name="repFirstName" min = {2} id="first-name" placeholder={currentUser?currentUser.user.repFirstName:''} value = {user?user.repFirstName:''} class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2 text-black  shadow-md sm:text-sm border-gray-300 rounded-md"/>
 </div>
 
 <div class="col-span-6 sm:col-span-4 relative">
   <label for="last-name" class="block text-sm font-semibold left-0.5 text-gray-700">Last name</label>
-  <input type="text"     onChange = {handleChange} name="repLastName" id="last-name" min = {2} placeholder={currentUser?currentUser.user.repLastName:''} value = {user?user.repLastName:''} class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2   shadow-md sm:text-sm border-gray-300 rounded-md"/>
+  <input type="text"     onChange = {handleChange} name="repLastName" id="last-name" min = {2} placeholder={currentUser?currentUser.user.repLastName:''} value = {user?user.repLastName:''} class="mt-1 focus:ring-indigo-500 text-black focus:border-indigo-500 block w-full p-2   shadow-md sm:text-sm border-gray-300 rounded-md"/>
 </div>
 
 <div class="col-span-6 sm:col-span-3">
   <label for="email-address" class="block text-sm font-semibold left-0.5 text-gray-700">Email address</label>
-  <input type="text"     onChange = {handleChange} name="email" id="email-address" placeholder={currentUser?currentUser.user.email:''} value = {user?user.email:''}  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2 bg-white   shadow-md sm:text-sm border-gray-300 rounded-md"/>
+  <input type="text"     onChange = {handleChange} name="email" id="email-address" placeholder={currentUser?currentUser.user.email:''} value = {user?user.email:''}  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block text-black w-full p-2 bg-white   shadow-md sm:text-sm border-gray-300 rounded-md"/>
 </div>
 
 <div class="col-span-6 sm:col-span-5">
@@ -386,7 +386,7 @@ axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuap
 
 <div class="col-span-6 sm:col-span-4 lg:col-span-3">
   <label for="city" class="block text-sm font-semibold left-0.5 text-gray-700">City</label>
-  <input type="text"  value = {user?user.city:''}   onChange = {handleChange} placeholder={currentUser?currentUser.user.city:''} name="city" id="city"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2   shadow-md text-sm border-gray-300 rounded-md"/>
+  <input type="text"  value = {user?user.city:''}   onChange = {handleChange} placeholder={currentUser?currentUser.user.city:''} name="city" id="city"  class="mt-1 focus:ring-indigo-500 text-black focus:border-indigo-500 block w-full p-2   shadow-md text-sm border-gray-300 rounded-md"/>
 </div>
 
 <div class="col-span-6 sm:col-span-8 lg:col-span-3">
