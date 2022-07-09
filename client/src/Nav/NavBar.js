@@ -104,7 +104,7 @@ useEffect(() => {
 <nav class="bg-white border-gray-200 px-2 z-[1] block relative sm:px-4 py-3.5 shadow-md rounded ">
 <div class="container flex flex-wrap justify-between items-center mx-auto">
   <a onClick={()=>{history('/')}} class="flex sm:ml-2 ml-3 items-center">
-      <img src={logo} class="mr-1 md:h-9 h-9 -top-[2px] relative md:ml-0 sm:ml-3 ml-2" alt="Flowbite Logo"/>
+      <img src={logo} class="mr-1 md:h-9 h-9 -top-[1px] relative md:ml-0 sm:ml-3 ml-2" alt="Flowbite Logo"/>
       <span class="self-center text-xl relative lg:bottom-0 bottom-[1.5px] font-semibold whitespace-nowrap ">Spire Insights</span>
   </a>
   {/* <button
