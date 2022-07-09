@@ -390,7 +390,6 @@ router.post('/updateUser',auth, async(req,res)=> {
 router.post('/saveCurrentPipelinePrep', auth, async(req,res)=> {
     try{
     const user = await User.findById(req.user._id)
-    console.log(user)
     let details = req.body.details
     let detailObj = details
     let chk = true
@@ -416,7 +415,8 @@ router.post('/saveCurrentPipelinePrep', auth, async(req,res)=> {
 
     if(currPipeline.current !== 'preparation' && chk){
         let newData = {pipeline:{...currPipeline, prepBeingEdited:false}}
-         newUser = await User.findByIdAndUpdate(req.user._id , newData)
+        let newUser = await User.findByIdAndUpdate(req.user._id , newData)
+        currPipeline = {...currPipeline, prepBeingEdited:false}
      }else if(chk){
         currPipeline.current = 'seo'
         let newUser = user;
@@ -459,7 +459,8 @@ router.post('/saveCurrentPipelineKeyWords', auth, async(req,res)=> {
 
     if(currPipeline.current !== 'seo' && chk){
         let newData = {pipeline:{...currPipeline, keyWordsBeingEdited:false}}
-         newUser = await User.findByIdAndUpdate(req.user._id , newData)
+         let newUser = await User.findByIdAndUpdate(req.user._id , newData)
+         currPipeline = {...currPipeline, keyWordsBeingEdited:false}
      }else if(chk){
         currPipeline.current = 'completed'
         let newUser = user;

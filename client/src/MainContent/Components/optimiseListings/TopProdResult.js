@@ -439,7 +439,7 @@ Read Reviews
    :''
 }
 
-  <div class = {`w-full ${(props.analysis)===null?'hidden':'block'} py-4   md:w-full xl:w-1/2 px-4`}>
+  <div class = {`w-full ${(props.analysis)===null?'hidden':'block'} py-4   md:w-full xl:w-1/2 px-2`}>
                 <div class="bg-white shadow-sm   p-2 py-3 pt-2 h-full flex rounded-lg overflow-hidden mb-1">
                 <div class = 'w-[200px] md:right-0 right-3.5 xl:block lg:hidden sm:block hidden top-1.5 relative '><GaugeChart id="gauge-chart2" 
   nrOfLevels={5} 
@@ -455,7 +455,7 @@ Read Reviews
                 <div class = {`w-full py-4 ${(props.analysis)===null?'hidden':'block'} md:w-full  xl:w-1/2 px-4`}>
                     <div class="bg-white flex shadow-sm xl:pb-2 lg:pb-[53px] sm:pb-9 pb-12 xl:mx-0 mx-auto h-full xl:text-left lg:text-center sm:text-left text-center rounded-lg overflow-hidden mb-1">
                     <IoPricetags class = 'text-blue-700 xl:block lg:hidden sm:block hidden  relative text-7xl top-6 left-14'/>
-                    <div class = 'xl:ml-[104px] xl:mr-7 md:left-0 sm:left-3 mx-auto md:top-[24px] top-[22px] relative font-semibold'> <h1 class = ' relative inline underline text-xl'><FcMoneyTransfer class = 'mr-[8px] inline text-2xl bottom-[0px] relative sm:uppercase'/>Average Pricing Range:</h1> <br/>
+                    <div class = 'xl:ml-[104px] xl:mr-7 md:left-0 sm:left-3 mx-auto md:top-[22px] top-[22px] relative font-semibold'> <h1 class = ' relative inline underline text-xl'><FcMoneyTransfer class = 'mr-[8px] inline text-2xl bottom-[0px] relative sm:uppercase'/>Average Pricing Range:</h1> <br/>
  <span class = {` relative text-center sm:text-2xl text-xl top-[8px] left-5 mx-auto inline font-bold mr-2.5 text-blue-700`}>AED {props.analysis&&props.analysis.averagePricingRange.low} - {props.analysis&&props.analysis.averagePricingRange.high}</span>
 </div>
                 </div>

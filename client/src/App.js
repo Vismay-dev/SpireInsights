@@ -5,7 +5,8 @@ import Footer from './Footer/Footer';
 import MainContent from './MainContent/MainContent';
 import userContext from './context/userContext'
 import {useLocation} from 'react-router-dom'
-
+import HashLoader from "react-spinners/HashLoader"
+import logo from './logo.png'
 import ReactGA from 'react-ga';
 const TRACKING_ID = "UA-233931477-1"
 ReactGA.initialize(TRACKING_ID);
@@ -22,6 +23,14 @@ function App() {
     city: '',
     id:''
   })
+
+  const [loading, setLoading] = useState(false)
+  useEffect(()=> {
+    setLoading(true)
+    setTimeout(()=> {
+      setLoading(false)
+    },2500)
+  },[])
 
   const location = useLocation()
 
@@ -53,27 +62,35 @@ useEffect(() => {
     <div className="App">
     <userContext.Provider value = {{user:user, setUser:setUser}}>
 
-          <NavBar/>
+          
+
+          {!loading?<>
+            <NavBar/>
           <div class = 'relative block overflow-hidden -mb-[18px]'>
           <MainContent/>
           </div>
-<Footer/>
+          <Footer/>
+          </>:
+
+          <div class = 'bg-gradient-to-br sm:pl-1 pl-2.5 sm:pt-0 pt-3 from-blue-100 to-indigo-100 h-screen w-screen'>
+                <img class = 'block mx-auto sm:w-[240px] w-[180px] top-[11%] right-0.5  relative' src = {logo}></img>
+                    <hr class = 'block border-t-2 border-blue-700 my-11 w-[200px] mx-auto top-[15%] relative border-dotted'/>
+                    
+                      <div 
+      class = ' w-[127px]   m-0 relative mx-auto top-[29%]  left-[1.5px]  translate-y-[-50%]  pl-4'>
+                      
+
+                      <HashLoader
+                      size = {90}
+                      loading= {true}
+                      color= {'#1034A6'}/>
+             
+                  </div>
+                  </div>
+               } 
+
 </userContext.Provider>
 
-
-        {/* <div class = ' relative mx-auto text-center  space-x-4'>
-          <div class = 'mx-auto relative font-bold mt-8 text-4xl'>Analyze Best-Selling Products</div>
-        <button onClick={()=>setCurrentPlatform('Amazon.ae')} class = 'bg-gray-300  mt-11 w-[170px] mx-auto shadow-md hover:shadow-lg'>AMAZON.AE</button>
-        <button onClick={()=>setCurrentPlatform('Noon.com')} class = 'bg-gray-300 w-[170px] mx-auto shadow-md hover:shadow-lg '>NOON.COM</button>
-    
-        </div>
-        <div class = 'mx-auto relative text-center'>
-        <h1 class = 'mt-7 font-semibold relative text-center'>{currentPlatform==''?'No Platform Selected':'Platform Selected: ' + currentPlatform}</h1>
-        <input id = 'platform' placeholder = 'Enter Product Keywords....' class = 'w-[210px] p-2 px-2 mt-7 mr-3 ml-2 items-center mx-auto relative  bg-white border-2 border-gray-300  rounded-md'></input><button onClick={()=> {
-          submitHandler()
-        }} class = 'bg-gradient-to-br from-blue-700 to-blue-400 p-2 px-2 rounded-md shadow-sm hover:shadow-md text-white font-semibold'>Submit and Gain Insights</button>
-        </div>
-       */}
     </div>
   );
 }

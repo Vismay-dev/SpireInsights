@@ -38,7 +38,7 @@ const MainContent = () => {
 <Route  path = '/manageListings' element={sessionStorage.getItem('token')!==null?<Manage/>:<Navigate to = '/home'/>}>
 </Route>
 
-<Route  path = '/home' element={<Home/>}>
+<Route  path = '/home' element={sessionStorage.getItem('token')!==null?<Navigate to = '/profile'/>:<Home/>}>
 </Route>
 
 <Route path = '/' element = {sessionStorage.getItem('token')!==null?<Navigate to = '/profile'/>:<Navigate to = '/home'/>}>

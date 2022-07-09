@@ -225,10 +225,10 @@ anim();
 		}
         
         <div class="relative pt-[100px] lg:pt-[100px] xl:pt-[150px] -mb-10 -mt-16 mx-auto block xl:pb-[97px] lg:pb-[110px] pb-[80px] bg-gradient-to-br from-blue-50 to-indigo-50">
-          <div class="container mx-auto block  relative ">
-            <div class="flex flex-wrap mx-auto lg:right-0 right-[44px]  relative pointer-events-auto">
-              <div class="w-full xl:w-5/12 lg:w-[47%] lg:top-[15px]  pointer-events-auto px-4 xl:-mr-8 xl:ml-8 ml-10 lg:-mr-4 -mr-14 xl:-left-1 lg:left-2 sm:left-2 xl:top-0 top-0 relative">
-                <div class="hero-content lg:text-left sm:px-0 px-3 text-center top-5 relative block pointer-events-auto">
+          <div class="container xl:max-w-full mx-auto block  relative ">
+            <div class="flex flex-wrap mx-auto lg:right-0 right-[44px]   relative pointer-events-auto">
+              <div class="w-full xl:w-5/12 lg:w-[47%] lg:top-[15px]  pointer-events-auto px-4 xl:-mr-8 xl:ml-0 ml-10 lg:-mr-4 -mr-14 xl:left-12 lg:left-2 sm:left-2 xl:top-2 top-0 relative">
+                <div class="hero-content lg:text-left sm:px-0 px-3 text-center top-5 xl:top-5 xl:left-[44px] 2xl:left-[200px] 2xl:text-center  xl:absolute relative block pointer-events-auto">
                   <h1
                     class="
                       text-dark
@@ -270,7 +270,7 @@ anim();
                           rounded-lg
                           text-base
 						  sm:left-0 left-[4px]
-						  lg:mx-0 mx-auto 
+						  lg:mx-0 2xl:mx-auto mx-auto 
                           relative
                           font-semibold
                           z-[10]
@@ -318,12 +318,12 @@ anim();
                 </div>
               </div>
               <div class="hidden lg:block lg:w-1/12 px-4"></div>
-              <div class="xl:w-6/12 lg:left-6 relative xl:left-0 lg:w-5/12  sm:block hidden lg:mx-0 left-[110px] lg:top-0 top-4 mx-auto w-[270px] lg:px-4">
+              <div class="xl:w-6/12 lg:left-6 relative xl:-left-[46px] lg:w-5/12  sm:block hidden lg:mx-0 left-[110px] lg:top-0 top-4 mx-auto w-[270px] lg:px-4">
                 <div class="lg:text-right lg:ml-auto mx-auto block">
                   <div class="relative  lg:inline-block block lg:mx-0 mx-auto z-10 pt-11 lg:pt-0">
                    
 
-                   <img src = {img} class = 'relative xl:-left-[184px] lg:mx-0 mx-auto -left-[60px] xl:top-8 top-5'/>
+                   <img src = {img} class = 'relative 2xl:-left-[160px] xl:-left-[140px] lg:mx-0 mx-auto -left-[60px] xl:top-8 top-12'/>
        
 
                   <canvas id='c' class = 'absolute xl:block hidden -top-[85px]  -right-24 rounded-bl-[70%] shadow-lg'/>

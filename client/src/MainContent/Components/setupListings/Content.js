@@ -437,7 +437,7 @@ const ContentSetup = (props)=> {
 <div class="xl:container w-full lg:my-0 -my-20 lg:mt-0 -mt-12  ">
    <div class="flex flex-wrap w-full xl:-mx-4">
       <div class="w-full px-4">
-         <div class="text-center mx-auto mb-12 lg:mb-14 lg:max-w-[800px] max-w-[700px]">
+         <div class="text-center relative left-4 mx-auto mb-12 lg:mb-14 lg:max-w-[800px] max-w-[700px]">
             <span class="font-semibold text-lg text-primary mb-2 block">
              Step-By-Step Guide
             </span>
@@ -492,9 +492,9 @@ Save All Details & Continue
 
 {
    userCon.user && userCon.user.pipeline && userCon.user.pipeline.current !== 'preparation'?
-   <div class = 'block mx-auto -mt-1 -top-2 mb-2 relative'>{
+   <div class = 'block mx-auto -mt-1 -top-2 mb-2 left-4 relative'>{
    !userCon.user.pipeline.prepBeingEdited?
-   <TiTick class = 'text-green-600 text-center mx-auto relative mb-3 mt-1 text-4xl bg-gradient-to-br block from-blue-100 to-indigo-100 rounded-full'/>:
+   <TiTick class = 'text-green-600 text-center mx-auto relative mb-3  mt-1 text-4xl bg-gradient-to-br block from-blue-100 to-indigo-100 rounded-full'/>:
    <><ImCross class = 'text-red-600 text-center mx-auto relative mb-3 -top-[1px] text-4xl p-1 bg-gradient-to-br block from-blue-100 to-indigo-100 rounded-full'/> <h1 class = 'text-center uppercase mb-3 font-semibold underline'>Being Edited...</h1></>
 }</div>
    :
@@ -1018,7 +1018,7 @@ Save Details
      </div>
 </section>,
 
-<section class="pt-[30px] lg:pt-[20px] lg:mb-0 md:-mb-6 sm:-mb-8 -mb-4 -mt-2 block pb-12 lg:pb-[12px]  px-10 mx-auto relative">
+<section class="pt-[30px] lg:pt-[30px] lg:mb-0 md:-mb-6 sm:-mb-8 -mb-4 -mt-2 block pb-12 lg:pb-[12px]  px-10 mx-auto relative">
 <div class="lg:container">
    <div class="flex flex-wrap -mx-4">
       <div class="w-full px-4">

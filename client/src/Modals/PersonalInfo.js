@@ -100,7 +100,11 @@ loading?
               <p class = 'xl:text-center lg:text-base text-sm font-semibold lg:font-normal xl:mb-4 mb-6 text-red-500'><span class = 'black underline text-black font-semibold'>Error:</span> {error?error:''}</p>
             :''}
             
-              <h1 class = 'font-bold text-blue-700 mb-7 -mt-[1px] underline text-2xl text-center mx-auto block'>Free Trial Registration</h1>
+              <h1 class = 'font-bold text-blue-700 mb-7 sm:-mt-[1px] mt-2.5 underline md:normal-case uppercase lg:text-2xl text-xl text-center mx-auto block'>
+              <svg xmlns="http://www.w3.org/2000/svg" class="lg:h-7 lg:w-7 h-6 w-6 inline mr-[7px] relative text-gray-800 bottom-[1px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+                <p class = 'inline'>Free Trial Registration</p></h1>
               
               <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6 sm:col-span-3">

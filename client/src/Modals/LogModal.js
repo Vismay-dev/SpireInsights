@@ -213,9 +213,9 @@ return (<div class="fixed z-[100] inset-0 overflow-y-auto" aria-labelledby="moda
     
       {/* Modal panel, show/hide based on modal state. */}
 
-    <div data-aos={"fade-up"} data-aos-once='true' ref = {myRef} class="pr-6 relative top-9 inline-block align-bottom bg-white rounded-lg sm:text-left text-center overflow-hidden shadow-xl transform transition-all sm:my-8 sm:mb-28 mb-32 sm:align-middle sm:max-w-md sm:w-12/12 w-10/12">
+    <div data-aos={"fade-up"} data-aos-once='true' ref = {myRef} class="pr-6 relative top-9 inline-block align-bottom bg-white rounded-lg sm:text-left text-center overflow-hidden shadow-xl transform transition-all sm:my-8 sm:mb-28 mb-32 sm:align-middle sm:max-w-md sm:w-12/12 max-w-[400px] w-11/12">
       <div class="bg-white px-1 pt-5 pb-2 sm:p-6 sm:px-1 sm:pb-4 w-4/4 mx-auto relative">
-        <div class="sm:flex sm:left-0 left-[2px] relative sm:items-start">
+        <div class="sm:flex sm:left-0 left-[12px] relative sm:items-start">
           <div class=" text-center sm:mt-0 sm:ml-4 sm:text-left">   
             <div>
               <p class="text-lg text-gray-500">
@@ -502,7 +502,7 @@ passReset?
 :
     <form class="mt-24 space-y-6 pb-2 relative" onSubmit={handleSubmit}>
       <input class="text-md" type="hidden" name="remember"  id = 'remember'/>
-      <div class="rounded-md sm:shadow-sm relative sm:mb-0 sm:w-full w-[117%] sm:right-0 right-[6%] -mb-4 block -space-y-px ">
+      <div class="rounded-md sm:shadow-sm relative sm:mb-0 sm:w-full max-w-[320px] sm:right-1  mx-auto -mb-4 block -space-y-px ">
       {error==='User not found'?<p class="text-red-500 text-center text-md relative bottom-3 underline mt-4 pt-3 pb-2 mb-2">Login Failed: User Not Found</p>:error==='Incorrect password'?<p class="text-red-500 underline text-center text-md relative bottom-3 mt-4 pt-3 pb-2 mb-2">Login Failed: Incorrect Password</p>:
        error==='Free Trial Expired.'?<p class="text-red-500 text-center text-md relative bottom-5 -mt-1 underline pt-3 pb-2 mb-1">Login Failed: Free Trial Expired</p>:null}
 
@@ -516,8 +516,8 @@ passReset?
         </div>
       </div>
 
-      <div class="flex items-center sm:-mt-0 sm:left-0 left-[14px] -mt-2 relative sm:justify-between">
-        <div class="flex items-center">
+      <div class="flex items-center sm:-mt-0 sm:left-0 left-[14px] -mt-4 relative sm:justify-between">
+        <div class="flex sm:text-left text-center items-center">
           <input id="rememberme" name="rememberme" onChange={handleChange} type="checkbox" class="cursor-pointer h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"/>
           <label for="rememberme" class="ml-2 block text-sm text-gray-900">
             Remember me

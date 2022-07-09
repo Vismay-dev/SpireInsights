@@ -168,7 +168,7 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
       sm:px-6 px-5
       sm:top-0
       -top-[4.9px] relative
-      lg:px-20
+      lg:px-16
       inline-flex
       items-center
       rounded-r-md
