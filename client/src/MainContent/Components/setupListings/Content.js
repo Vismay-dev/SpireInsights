@@ -1395,7 +1395,7 @@ cursor-default
    </div>
    </div> */}
 
-   <img class = 'mx-auto block  w-[250px] p-14 sm:right-[12px] right-[19px] -mt-[76px] -mb-8 relative top-[12px]' src = {image}></img>
+   <img class = 'mx-auto block h-auto w-auto  scale-[40%] sm:right-[12px] right-[20px] -mt-[95px] -mb-11 relative top-[12px]' src = {image}></img>
 
 
    </div>
