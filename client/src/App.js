@@ -73,11 +73,11 @@ useEffect(() => {
           </>:
 
           <div class = 'bg-gradient-to-br sm:pl-1 pl-2.5 sm:pt-0 pt-3 from-blue-100 to-indigo-100 h-screen w-screen'>
-                <img class = 'block mx-auto sm:w-[240px] w-[180px] top-[11%] right-0.5  relative' src = {logo}></img>
-                    <hr class = 'block border-t-2 border-blue-700 my-11 w-[200px] mx-auto top-[15%] relative border-dotted'/>
+                <img class = 'block mx-auto sm:w-[140px] w-[80px] top-[20%] right-0.5  relative' src = {logo}></img>
+                    <hr class = 'block border-t-2 border-blue-700 my-11 w-[200px] mx-auto top-[24%] relative border-dotted'/>
                     
                       <div 
-      class = ' w-[127px]   m-0 relative mx-auto top-[29%]  left-[1.5px]  translate-y-[-50%]  pl-4'>
+      class = ' w-[127px]   m-0 relative mx-auto top-[38%]  left-[1.5px]  translate-y-[-50%]  pl-4'>
                       
 
                       <HashLoader
