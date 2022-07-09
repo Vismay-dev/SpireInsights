@@ -29,7 +29,7 @@ function App() {
     setLoading(true)
     setTimeout(()=> {
       setLoading(false)
-    },2500)
+    },3000)
   },[])
 
   const location = useLocation()
