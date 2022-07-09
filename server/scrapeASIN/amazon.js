@@ -15,15 +15,15 @@ const keyWordAnalysis = async(asin, domain) => {
 
 const fetchResults = async (asin,domain) => {
         let url = `https://www.amazon.${domain}/dp/` + asin
-    let response = await axios.get(url).catch(err=>{
-        return fetchResults(asin,domain==='ae'?'com':'com')                
+    let response = await axios.get(url).catch(async(err)=>{
+        return await fetchResults(asin,domain==='ae'?'com':'ae')                
     });
     const html = response.data
     let $
     try{
         $ = cheerio.load(html)
     }catch(err){
-        return fetchResults(asin,domain)                
+        return await fetchResults(asin,domain==='ae'?'com':'ae')                
     }
 
  
@@ -57,25 +57,6 @@ const fetchResults = async (asin,domain) => {
         }
 
 
-        console.log(data)
-
-
-                // let element = {
-                //     title,
-                //     image,
-                //     link: `https://amazon.ae${link}`,
-                //     price,
-                // }
-            
-                // if (reviews) {
-                //     element.reviews = reviews
-                // }
-            
-                // if (stars) {
-                //     element.stars = stars
-                // }
-    
- 
         return data;
 };
 

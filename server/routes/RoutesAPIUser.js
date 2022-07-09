@@ -164,23 +164,20 @@ await axios({
 router.post('/trackProductPerformance',auth, async(req,res)=> {
     try{
         console.log('\nPlatform: ' + req.body.platform)
-    if(req.body.platform==='Amazon'){
+if(req.body.platform==='Amazon'){
 
-let productAnalysis = {
+    let productAnalysis = {}
 
-}
+    let competitorData = []
 
-let competitorData = [
-
-]
-
-post_array = [];
-post_array.push({
-  "asin": req.body.asin,
-  "language_name": "English",
-  "location_code": 2840,
-  'limit': 6
-});
+    post_array = [];
+    
+    post_array.push({
+    "asin": req.body.asin,
+    "language_name": "English",
+    "location_code": 2840,
+    'limit': 6
+    });
 
 await axios({
   method: 'post',
@@ -194,7 +191,7 @@ await axios({
     'content-type': 'application/json'
   }
 }).then(async(response) => {
-    if(!response['data']['tasks'][0]||!response['data']['tasks'][0]['result'][0].items){
+    if(!response['data']['tasks'][0]||!response['data']['tasks'][0]['result']||!response['data']['tasks'][0]['result'][0].items){
         console.log(response['data']['tasks'][0])
         res.status(402).send('Unable to scrape')
       }
@@ -393,10 +390,9 @@ router.post('/updateUser',auth, async(req,res)=> {
 router.post('/saveCurrentPipelinePrep', auth, async(req,res)=> {
     try{
     const user = await User.findById(req.user._id)
+    console.log(user)
     let details = req.body.details
-    user.pipeline.data = details
-    let newUser = await User.findByIdAndUpdate(req.user._id , user)
-    let detailObj = newUser.pipeline.data
+    let detailObj = details
     let chk = true
 
     for(let x = 0;x<Object.values(detailObj).length;x++){
@@ -405,9 +401,6 @@ router.post('/saveCurrentPipelinePrep', auth, async(req,res)=> {
             if(!['one','two','three','four','five','beingEdited'].includes(Object.keys(subObj)[y])){
             if(Object.values(subObj)[y]===null||Object.values(subObj)[y]===false||Object.values(subObj)[y]===''||Object.values(subObj)[y]===[]){
                 chk = false;
-                console.log(Object.values(subObj)[y]===[])
-                console.log(Object.keys(subObj)[y])
-                console.log(Object.values(subObj)[y])
                 break;
             }
         }
@@ -419,20 +412,19 @@ router.post('/saveCurrentPipelinePrep', auth, async(req,res)=> {
 
     
     let currPipeline = user.pipeline;
+    currPipeline = {...currPipeline, data:detailObj}
 
     if(currPipeline.current !== 'preparation' && chk){
         let newData = {pipeline:{...currPipeline, prepBeingEdited:false}}
          newUser = await User.findByIdAndUpdate(req.user._id , newData)
      }else if(chk){
         currPipeline.current = 'seo'
+        let newUser = user;
         newUser.pipeline = currPipeline
-        console.log(newUser)
         newUser = await User.findByIdAndUpdate(req.user._id , newUser)
     }
 
-   
-
-    res.send(newUser)
+       res.send(currPipeline)
 
 }catch(err){
     console.log(err)
@@ -444,9 +436,8 @@ router.post('/saveCurrentPipelineKeyWords', auth, async(req,res)=> {
     try{
     let user = await User.findById(req.user._id)
     let details = req.body.details
-    user.pipeline.data = details
-    let newUser = await User.findByIdAndUpdate(req.user._id , user)
-    let detailObj = user.pipeline.data
+    let detailObj = details
+
     let chk = true
     for(let x = 0;x<Object.values(detailObj).length;x++){
         let subObj = Object.values(detailObj)[x];
@@ -464,19 +455,19 @@ router.post('/saveCurrentPipelineKeyWords', auth, async(req,res)=> {
     }
 
     let currPipeline = user.pipeline;
-    // console.log(currPipeline.data.keyWords)
+    currPipeline = {...currPipeline, data:detailObj}
 
     if(currPipeline.current !== 'seo' && chk){
         let newData = {pipeline:{...currPipeline, keyWordsBeingEdited:false}}
          newUser = await User.findByIdAndUpdate(req.user._id , newData)
-         res.send(newUser)
      }else if(chk){
         currPipeline.current = 'completed'
-        newUser.pipeline = currPipeline
-        console.log(newUser.pipeline)
+        let newUser = user;
+        newUser.pipeline = currPipeline   
         newUser = await User.findByIdAndUpdate(req.user._id , newUser)
-        res.send(newUser)
     }
+
+    res.send(currPipeline)
 
 }catch(err){
     console.log(err)
@@ -489,7 +480,6 @@ router.post('/saveCurrentPipeline', auth, async(req,res)=> {
     const user = await User.findById(req.user._id)
     let pipeNewLine  = req.body.pipeline
     let newUser = await User.findByIdAndUpdate(req.user._id , {pipeline:{...user.pipeline,...pipeNewLine}})
-    // console.log(newUser)
     res.send(newUser)
 }catch(err){
     console.log(err)

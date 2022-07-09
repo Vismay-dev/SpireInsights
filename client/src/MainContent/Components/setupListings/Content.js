@@ -99,7 +99,7 @@ const ContentSetup = (props)=> {
          ...upload,
          image:res.data,
          title: currTitle
-     }], isBeingEdited:true,
+     }], beingEdited:true,
      isSaved:false
      })
      if(userCon.user.pipeline.current!=='preparation'){
@@ -109,7 +109,7 @@ const ContentSetup = (props)=> {
          prepBeingEdited:true
       }})
       axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/saveCurrentPipeline':'http://localhost:4000/api/user/saveCurrentPipeline',
-{pipeline:{...currentPrep, prepBeingEdited:true },token:sessionStorage.getItem('token')}).then(res=> {
+{pipeline:{data:{...currentPrep}, prepBeingEdited:true },token:sessionStorage.getItem('token')}).then(res=> {
       userCon.setUser(res.data)
   }).catch(err=> {
       console.log(err.response)
@@ -172,7 +172,7 @@ const ContentSetup = (props)=> {
             keyWordsBeingEdited:true
          }})
          axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/saveCurrentPipeline':'http://localhost:4000/api/user/saveCurrentPipeline',
-   {pipeline:{...currentPrep, keyWordsBeingEdited:true },token:sessionStorage.getItem('token')}).then(res=> {
+   {pipeline:{data:{...currentPrep}, keyWordsBeingEdited:true },token:sessionStorage.getItem('token')}).then(res=> {
          userCon.setUser(res.data)
      }).catch(err=> {
          console.log(err.response)
@@ -200,7 +200,7 @@ const ContentSetup = (props)=> {
             prepBeingEdited:true
          }})
          axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/saveCurrentPipeline':'http://localhost:4000/api/user/saveCurrentPipeline',
-   {pipeline:{...currentPrep, prepBeingEdited:true },token:sessionStorage.getItem('token')}).then(res=> {
+   {pipeline:{data:{...currentPrep}, prepBeingEdited:true },token:sessionStorage.getItem('token')}).then(res=> {
          userCon.setUser(res.data)
      }).catch(err=> {
          console.log(err.response)
@@ -262,7 +262,7 @@ const ContentSetup = (props)=> {
             prepBeingEdited:true
          }})
          axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/saveCurrentPipeline':'http://localhost:4000/api/user/saveCurrentPipeline',
-   {pipeline:{...currentPrep, prepBeingEdited:true },token:sessionStorage.getItem('token')}).then(res=> {
+   {pipeline:{...userCon.user.pipeline,data:{...currentPrep}, prepBeingEdited:true },token:sessionStorage.getItem('token')}).then(res=> {
          userCon.setUser(res.data)
      }).catch(err=> {
          console.log(err.response)
@@ -295,8 +295,8 @@ const ContentSetup = (props)=> {
 
       axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/saveCurrentPipelineKeyWords':'http://localhost:4000/api/user/saveCurrentPipelineKeyWords',
       {details,token:sessionStorage.getItem('token')}).then(res=> {
-            console.log(res.data.pipeline.data)
-            userCon.setUser(res.data)
+         console.log({...userCon.user,pipeline:res.data})
+         userCon.setUser({...userCon.user,pipeline:res.data})
         }).catch(err=> {
             console.log(err.response)
         })
@@ -375,8 +375,8 @@ const ContentSetup = (props)=> {
 
       await axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/saveCurrentPipelinePrep':'http://localhost:4000/api/user/saveCurrentPipelinePrep',
       {details,token:sessionStorage.getItem('token')}).then(res=> {
-            console.log(res.data.pipeline.data)
-            userCon.setUser(res.data)
+            console.log({...userCon.user,pipeline:res.data})
+            userCon.setUser({...userCon.user,pipeline:res.data})
         }).catch(err=> {
             console.log(err.response)
         })
@@ -715,7 +715,7 @@ Save Details
       </label>
       <select 
       name = 'currency'
-      defaultValue={pricing.currency===""?null:pricing.currency}
+      defaultValue={pricing.currency===""?'AED':pricing.currency}
       class="
             w-full
             border-[1.5px] border-form-stroke
@@ -822,7 +822,7 @@ Save Details
       <label for="" class="font-medium text-base text-black block mb-3">
       <span class = 'xl:inline hidden'>Product</span> Dimensions
       </label>
-      <input type="text" name = 'productDimension' defaultValue = {shipping.productDimension} onChange={shippingChange} placeholder="Dimensions" class="
+      <input type="text" name = 'productDimension' defaultValue = {shipping.productDimension} onChange={shippingChange} placeholder="Ex. 30 x 40 cm" class="
          w-full
          border-[1.5px] border-form-stroke
          rounded-lg
@@ -1003,7 +1003,7 @@ Save Details
 <div class = 'relative inline top-[1.5px] left-6'>
 
 {
-   images.isBeingEdited?
+   images.beingEdited?
    images.isSaved?
    <TiTick class = 'text-green-600 text-4xl inline bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full'/>:
    <ImCross class = 'text-red-600 text-4xl p-1 inline bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full'/>:
@@ -1046,7 +1046,9 @@ Save Details
          <div class = 'grid bottom-2 md:w-[80%] sm:w-[95%] w-[100%] mx-auto relative mb-8  sm:grid-cols-2 grid-cols-1 gap-x-7'>
             <div onClick={()=> {
                window.scrollTo(0,0)
-               history('/optimiseListings')
+               let id = sessionStorage.getItem('token')
+               localStorage.setItem('tempToken', id)
+               window.open(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/optimiseListings':'http://localhost:3000/optimiseListings', '_blank')
             }} class = 'bg-white sm:mb-0 mb-8 hover:cursor-pointer hover:bg-gray-200 h-[250px] rounded-sm shadow-md'>
             <GiSellCard class = 'text-[120px] rounded-lg text-white bg-blue-700 p-5 px-8 text-center mx-auto block top-4 mt-2 mb-4.5 relative'/>
             <h2 class = 'text-xl mt-[35px]  text-center font-semibold'>Analyze Top Products <br/><hr class = 'w-2/3 mx-auto text-center block mt-1.5 my-[2px]'/> <span class = 'text-lg font-medium text-gray-600'>Listings & Keywords</span></h2>
@@ -1054,7 +1056,9 @@ Save Details
             <div onClick={()=> {
                sessionStorage.setItem('redirect','toMarket')
                window.scrollTo(0,0)
-               history('/optimiseListings')
+               let id = sessionStorage.getItem('token')
+               localStorage.setItem('tempToken', id)
+               window.open(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/optimiseListings':'http://localhost:3000/optimiseListings', '_blank')
             }}  class = 'bg-white h-[250px] hover:cursor-pointer hover:bg-gray-200 rounded-sm shadow-md'>
             <MdSell class = 'text-[120px] rounded-lg text-white bg-blue-700 p-5 px-8 text-center mx-auto block top-4 mt-2 mb-4.5 relative'/>
             <h2 class = 'text-xl mt-[35px]  text-center font-semibold'>Market Analysis <br/><hr class = 'w-2/3 mx-auto text-center block mt-1.5 my-[2px]'/> <span class = 'text-lg font-medium text-gray-600'>Demand & Sales</span></h2>

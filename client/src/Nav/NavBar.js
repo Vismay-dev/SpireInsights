@@ -430,6 +430,7 @@ useEffect(() => {
           onClick={()=> {
             setIsMenuOpen(false)
             sessionStorage.removeItem('token')
+            localStorage.removeItem('tempToken')
             history('/home')
           }}
           className="whitespace-nowrap bottom-1 relative uppercase items-center justify-center px-3 py-2 border border-transparent rounded-sm shadow-sm text-lg  font-semibold hover:cursor-pointer  text-white bg-blue-600 hover:bg-blue-700"

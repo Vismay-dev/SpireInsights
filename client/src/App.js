@@ -42,6 +42,10 @@ useEffect(() => {
       }).catch(err=> {
         console.log(err.response)
       })
+  }else {
+    if(localStorage.getItem('tempToken')!==null){
+      sessionStorage.setItem('token',localStorage.getItem('tempToken'))
+    }
   }
 },[location.pathname])
   
