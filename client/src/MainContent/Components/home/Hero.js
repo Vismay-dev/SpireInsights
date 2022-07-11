@@ -224,11 +224,11 @@ anim();
 			:''
 		}
         
-        <div class="relative pt-[100px] lg:pt-[100px] xl:pt-[150px] -mb-10 -mt-16 mx-auto block xl:pb-[97px] lg:pb-[110px] pb-[80px] bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div class="relative sm:pt-[105px] pt-[110px] lg:pt-[100px] xl:pt-[150px] -mb-10 -mt-16 mx-auto block xl:pb-[97px] lg:pb-[110px] sm:pb-[85px] pb-[100px] bg-gradient-to-br from-blue-50 to-indigo-50">
           <div class="container xl:max-w-full mx-auto block  relative ">
             <div class="flex flex-wrap mx-auto lg:right-0 right-[44px]   relative pointer-events-auto">
               <div class="w-full xl:w-5/12 lg:w-[47%] lg:top-[15px]  pointer-events-auto px-4 xl:-mr-8 xl:ml-0 ml-10 lg:-mr-4 -mr-14 xl:left-12 lg:left-2 sm:left-2 xl:top-2 top-0 relative">
-                <div class="hero-content lg:text-left sm:px-0 px-3 text-center top-5 xl:top-5 xl:left-[44px] 2xl:left-[200px] 2xl:text-center  xl:absolute relative block pointer-events-auto">
+                <div class="hero-content lg:text-left sm:px-0 px-3 text-center top-5 xl:top-5 xl:left-[48px] 2xl:left-[200px] 2xl:text-center  xl:absolute relative block pointer-events-auto">
                   <h1
                     class="
                       text-dark
@@ -273,7 +273,7 @@ anim();
 						  lg:mx-0 2xl:mx-auto mx-auto 
                           relative
                           font-semibold
-                          z-[10]
+                          z-[30]
                           block
                            pointer-events-auto
                            cursor-pointer
@@ -318,7 +318,7 @@ anim();
                 </div>
               </div>
               <div class="hidden lg:block lg:w-1/12 px-4"></div>
-              <div class="xl:w-6/12 lg:left-6 relative xl:-left-[46px] lg:w-5/12  sm:block hidden lg:mx-0 left-[110px] lg:top-0 top-4 mx-auto w-[270px] lg:px-4">
+              <div class="xl:w-6/12 lg:left-6 relative xl:-left-[46px] lg:w-5/12  sm:block hidden lg:mx-0 left-[110px] lg:top-0  -top-5 mx-auto w-[240px] lg:px-4">
                 <div class="lg:text-right lg:ml-auto mx-auto block">
                   <div class="relative  lg:inline-block block lg:mx-0 mx-auto z-10 pt-11 lg:pt-0">
                    
@@ -326,7 +326,7 @@ anim();
                    <img src = {img} class = 'relative 2xl:-left-[160px] xl:-left-[140px] lg:mx-0 mx-auto -left-[60px] xl:top-8 top-12'/>
        
 
-                  <canvas id='c' class = 'absolute xl:block hidden -top-[85px]  -right-24 rounded-bl-[70%] shadow-lg'/>
+                  <canvas id='c' class = 'absolute xl:block hidden -top-[85px]  -right-[105px] rounded-bl-[70%] shadow-lg'/>
 
 
                     <span class="absolute right-2 lg:block hidden top-[370px] z-[-1]">

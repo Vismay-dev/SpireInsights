@@ -5,6 +5,8 @@ import SetupListings from './Components/setupListings/setupListings'
 import Home from './Components/home/home'
 import Manage from './Components/Manage/Manage'
 import {useEffect, useState} from 'react'
+import Team from './Components/team/team'
+import LiveDetails from './Components/liveDetails/liveDetails'
 
 const MainContent = () => {
 
@@ -29,6 +31,9 @@ const MainContent = () => {
 <Route  path = '/optimiseListings' element={sessionStorage.getItem('token')!==null?<OptimiseListings/>:<Navigate to = '/home'/>}>
 </Route>
 
+<Route  path = '/liveDetails' element={sessionStorage.getItem('token')!==null?<LiveDetails/>:<Navigate to = '/home'/>}>
+</Route>
+
 <Route  path = '/setupListings' element={sessionStorage.getItem('token')!==null?<SetupListings/>:<Navigate to = '/home'/>}>
 </Route>
 
@@ -39,6 +44,9 @@ const MainContent = () => {
 </Route>
 
 <Route  path = '/home' element={sessionStorage.getItem('token')!==null?<Navigate to = '/profile'/>:<Home/>}>
+</Route>
+
+<Route  path = '/team' element={<Team/>}>
 </Route>
 
 <Route path = '/' element = {sessionStorage.getItem('token')!==null?<Navigate to = '/profile'/>:<Navigate to = '/home'/>}>

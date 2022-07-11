@@ -20,67 +20,80 @@ const OptimiseListings = () => {
         setOperation('marketplace-overview')
       }
     },[])
-    const changeOp = (op) => {
-      setAnalysis()
+
+    let operationDummy = operation
+
+    const changeOp = async(op) => {
       setOperation(op)
+      operationDummy = op
+      setAnalysis()
+      if(initialSearched && document.getElementById('keywords').value !== '' && operationDummy!=='track-product'){
+        await subMethod()
+      }
     }
 
-  const subHandle = async(e)=> {
-    e.preventDefault()
-    setLoading(true)
-    setKeyWord(document.getElementById('keywords').value.toLowerCase())
-    if(operation === 'top-prod'){
 
-   await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/topProductAnalysis":'http://localhost:4000/api/user/topProductAnalysis',{platform:currentPlatform,sentence:document.getElementById('keywords').value.trim(), token:sessionStorage.getItem('token')}).then(res=> {
+  const subMethod = async() => {
+      setLoading(true)
+      setKeyWord(document.getElementById('keywords').value.toLowerCase())
+      if(operationDummy === 'top-prod'){
+  
+     await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/topProductAnalysis":'http://localhost:4000/api/user/topProductAnalysis',{platform:currentPlatform,sentence:document.getElementById('keywords').value.trim(), token:sessionStorage.getItem('token')}).then(res=> {
+          setAnalysis(res.data)
+          console.log(res.data)
+          setLoading(false)
+  }).catch(err=> {
+        console.log(err.response.message)
+        setLoading(false)
+        setAnalysis()
+      })
+  
+    }else if(operationDummy === 'marketplace-overview'){
+  console.log({platform:currentPlatform,sentence:document.getElementById('keywords').value})
+      await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/marketPlaceOverview":'http://localhost:4000/api/user/marketPlaceOverview',
+      {platform:currentPlatform,sentence:document.getElementById('keywords').value.trim(), token:sessionStorage.getItem('token')}).then(res=> {
         setAnalysis(res.data)
         console.log(res.data)
         setLoading(false)
-}).catch(err=> {
-      console.log(err.response.message)
+  }).catch(err=> {
+      console.log(err)
       setLoading(false)
-      setAnalysis()
+      setAnalysis({
+        searchVolumeData: [],
+        relatedKeyWordData: []
+      })
     })
-
-  }else if(operation === 'marketplace-overview'){
-console.log({platform:currentPlatform,sentence:document.getElementById('keywords').value})
-    await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/marketPlaceOverview":'http://localhost:4000/api/user/marketPlaceOverview',
-    {platform:currentPlatform,sentence:document.getElementById('keywords').value.trim(), token:sessionStorage.getItem('token')}).then(res=> {
-      setAnalysis(res.data)
-      console.log(res.data)
+  
+    }else if(operationDummy === 'track-product'){
+     await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/trackProductPerformance":'http://localhost:4000/api/user/trackProductPerformance',{platform:currentPlatform,asin:document.getElementById('keywords').value.toUpperCase(), token:sessionStorage.getItem('token')}).then(res=> {
+        setAnalysis(res.data)
+        console.log(res.data)
+        setLoading(false)
+  }).catch(err=> {
+      console.log(err)
       setLoading(false)
-}).catch(err=> {
-    console.log(err)
-    setLoading(false)
-    setAnalysis({
-      searchVolumeData: [],
-      relatedKeyWordData: []
+      setAnalysis({
+        productAnalysis: {},
+        competitorData: []
+      })
     })
-  })
-
-  }else if(operation === 'track-product'){
-   await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/trackProductPerformance":'http://localhost:4000/api/user/trackProductPerformance',{platform:currentPlatform,asin:document.getElementById('keywords').value.toUpperCase(), token:sessionStorage.getItem('token')}).then(res=> {
-      setAnalysis(res.data)
-      console.log(res.data)
-      setLoading(false)
-}).catch(err=> {
-    console.log(err)
-    setLoading(false)
-    setAnalysis({
-      productAnalysis: {},
-      competitorData: []
-    })
-  })
-
+  
+    }
   }
+
+  const subHandle = async(e)=> {
+    e.preventDefault()
+    setInitialSearched(true)
+    await subMethod()
   }   
   
   
   const [showToolTip2, setShowToolTip2] = useState(false)
 
-
+  const [initialSearched, setInitialSearched] = useState(false)
     return (
         <>
-        <div class = 'relative mx-auto  z-[100]  w-fit'>
+        <div class = 'relative mx-auto  z-[40]  w-fit'>
             <h1 class = 'sm:text-4xl text-3xl font-bold mt-[40px] mb-4 px-4 bottom-2 relative text-center'>Optimize E-Commerce Listings</h1>
             <hr class = 'relative top-1 w-[150%] mt-1 right-[25%]'/>
             <div class = 'md:px-2.5 sm:px-12 px-6'>
@@ -89,8 +102,8 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
             <hr class = 'relative top-1 w-[150%] my-1 right-[25%]'/>
          <form onSubmit= {subHandle}>
             <div class="flex flex-wrap md:pb-0 pb-1  -mx-4 relative lg:w-[120%] w-[96%] right-[-3.8%] lg:right-[8%] mt-8">
-   <div class="md:w-1/3 sm:w-1/2 w-[75%] sm:left-0 left-1.5 mx-auto block md:mt-0 -mt-2  px-4">
-      <div class="sm:mb-12 mb-10 block relative ">
+   <div class="md:w-1/3 sm:w-1/2 w-[75%] sm:left-0 left-5 mx-auto block md:mt-0 -mt-2  px-4">
+      <div class="sm:mb-12 mb-10 sm:left-0 left-1 block relative ">
          <label for="" class="font-medium text-base text-black block mb-3">
          Enter Product {operation==='track-product'?'ASIN ID':'Keywords'} {operation==='track-product'?
          <svg 
@@ -127,7 +140,7 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
       </div>
    </div>
 
-   <div class="w-[95%] md:left-0 sm:left-[2.9%] left-[4%] md:mt-0 -mt-5 md:w-2/3 px-2   relative">
+   <div class="w-[95%] md:left-0 sm:left-[2.9%] left-[4.5%] md:mt-0 -mt-5 md:w-2/3 px-2   relative">
    <label for="" class="font-semibold text-base text-black block mb-3">
          Select E-Commerce Platform
          </label>
@@ -186,9 +199,11 @@ console.log({platform:currentPlatform,sentence:document.getElementById('keywords
     <FiShoppingCart class = 'mr-2 text-xl sm:inline hidden top-[0.5px] font-bold relative'/> Al Anees (Qatar)
    </a>
 
-   <Tooltip show={showToolTip2} position = 'right' fontSize = '16px' padding = '3px 5px'>
+<div class = 'relative sm:right-40 right-24 block'>
+   <Tooltip show={showToolTip2} position = 'bottom' fontSize = '16px' padding = '3px 5px'>
   <span class = 'font-semibold text-center font-sans bottom-0.5'>Currently unavailable for this region.</span>
 </Tooltip>
+</div>
 </div>
 
 </div>

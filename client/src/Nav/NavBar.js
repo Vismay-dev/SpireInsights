@@ -69,7 +69,7 @@ useEffect(
 
 useEffect(() => {
   AOS.init({
-    duration : 650
+    duration : 400
   });
 }, []);
 
@@ -101,7 +101,7 @@ useEffect(() => {
                 }}/>
                  :''
               }
-<nav class="bg-white border-gray-200 px-2 z-[1] block relative sm:px-4 py-3.5 shadow-md rounded ">
+<nav class="bg-white border-gray-200 px-2 z-[50] block relative sm:px-4 py-3.5 shadow-md rounded ">
 <div class="container flex flex-wrap justify-between items-center mx-auto">
   <a onClick={()=>{history('/')}} class="flex sm:ml-2 ml-3 items-center">
       <img src={logo} class="mr-1 md:h-9 h-9 -top-[1px] relative md:ml-0 sm:ml-3 ml-2" alt="Flowbite Logo"/>
@@ -178,7 +178,12 @@ useEffect(() => {
         }}>OPTIMIZE </a>
       </li>
       <li>
-        <a class={`block  cursor-pointer  -mt-2 -ml-4  border-b border-gray-100  md:hover:bg-transparent md:border-0 hover:text-white text-sm uppercase p-2 border border-transparent rounded-md hover:shadow-lg tracking-wide font-semibold  text-gray-700 bg-gradient-to-r  hover:from-blue-600 hover:to-blue-600 active:bg-blue-500`} onClick={()=> {
+        <a class={`block py-2 pr-6 pl-2.5 cursor-pointer  ${location.pathname === '/liveDetails' || location.pathname === '/optimiseListings/'?'text-blue-700':'text-gray-700'}  border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-sm uppercase md:p-0`} onClick={()=> {
+          history('/liveDetails')
+        }}>LIVE</a>
+      </li>
+      <li>
+        <a class={`block  cursor-pointer  -mt-2 -ml-3  border-b border-gray-100  md:hover:bg-transparent md:border-0 hover:text-white text-sm uppercase p-2 border border-transparent rounded-md hover:shadow-lg tracking-wide font-semibold  text-gray-700 bg-gradient-to-r  hover:from-blue-600 hover:to-blue-600 active:bg-blue-500`} onClick={()=> {
         logOutHandle()
         }}>LOG OUT</a>
       </li>
@@ -209,7 +214,7 @@ useEffect(() => {
          </svg>
        </button>
        {isMenuOpen && (
-         <div data-aos = 'zoom-in-down' data-aos-once = 'true'  class="absolute  top-0 z-50 w-screen left-0">
+         <div data-aos = 'zoom-down' data-aos-once = 'true'  class="absolute  top-0 z-50 w-screen left-0">
            <div ref = {myRef} class="p-5 bg-white border rounded shadow-xl z-50">
              <div class="flex items-center justify-between mb-4">
                <div>
@@ -415,6 +420,20 @@ useEffect(() => {
                    Optimize
                   </a>
                 </li>
+
+                <li class = "text-center">
+                  <a
+                       onClick={()=> {
+                        setIsMenuOpen(false)
+                        history('/liveDetails')
+                      }}
+                    aria-label="Our product"
+                    title="Our product"
+                    class="hover:cursor-pointer font-semibold tracking-wide text-gray-700  right-1.5 relative transition-colors duration-200 hover:text-indigo-500"
+                  >
+                   Live
+                  </a>
+                </li>
                
            
      
@@ -425,7 +444,7 @@ useEffect(() => {
               </ul>
               <div className="align-middle justify-items-center justify-center mt-7 mb-3.5 bottom-[2px] mx-auto relative">
         
-        <div  class = 'relative right-[3px] block mx-auto w-fit'>
+        <div  class = 'relative right-[5px] block mx-auto w-fit'>
         <a
           onClick={()=> {
             setIsMenuOpen(false)

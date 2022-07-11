@@ -1,8 +1,13 @@
 const router = require('express').Router()
-const amazon = require('../topProductAnalysis/amazon')
+
+const amazonTop = require('../topProductAnalysis/amazon')
 const amazonASIN = require('../scrapeASIN/amazon')
-const noon = require('../topProductAnalysis/noon')
+const amazonNew  = require('../deals/amazon')
+const amazonBest = require('../bestSellers/amazon')
+const amazonWished = require('../mostWished/amazon')
 const amazonResults = require('../searchResultFinder/amazon')
+
+const noon = require('../topProductAnalysis/noon')
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
@@ -19,10 +24,52 @@ const fileStorageEngine = multer.diskStorage({
 const upload = multer({ storage: fileStorageEngine })
 
 
+router.post('/mostWished',auth,(req,res)=> {
+    console.log('\nPlatform: ' + req.body.platform)
+
+    if(req.body.platform==='Amazon'){
+        amazonWished('ae').then(analysis=> {
+            res.send(analysis)
+        })
+    }else if(req.body.platform ==='Noon') {
+        // noon(req.body.sentence,'uae-en')
+        // res.send({})
+    }
+
+})
+
+router.post('/bestSellers',auth,(req,res)=> {
+    console.log('\nPlatform: ' + req.body.platform)
+
+    if(req.body.platform==='Amazon'){
+        amazonBest('ae').then(analysis=> {
+            res.send(analysis)
+        })
+    }else if(req.body.platform ==='Noon') {
+        // noon(req.body.sentence,'uae-en')
+        // res.send({})
+    }
+
+})
+
+router.post('/newProductEntries',auth,(req,res)=> {
+    console.log('\nPlatform: ' + req.body.platform)
+
+    if(req.body.platform==='Amazon'){
+        amazonNew('ae').then(analysis=> {
+            res.send(analysis)
+        })
+    }else if(req.body.platform ==='Noon') {
+        // noon(req.body.sentence,'uae-en')
+        // res.send({})
+    }
+
+})
+
 router.post('/topProductAnalysis',auth,(req,res)=> {
     console.log('\nPlatform: ' + req.body.platform)
     if(req.body.platform==='Amazon'){
-        amazon(req.body.sentence.toLowerCase(),'ae').then(analysis=> {
+        amazonTop(req.body.sentence.toLowerCase(),'ae').then(analysis=> {
             res.send(analysis)
         })
     }else if(req.body.platform ==='Noon') {

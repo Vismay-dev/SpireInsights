@@ -674,17 +674,19 @@ Read Reviews
                                 window.open(product.reviews)
                             }}
                              class="
-                             inline-block
+                             sm:inline-block
+                             block
                              py-2
                              px-5
-                             border border-[#E5E7EB]
+                             border border-[#b1b4b9]
                              rounded-lg
                              text-base text-body-color
                              font-medium
                              hover:border-primary hover:bg-blue-700 hover:text-white
                              transition
                              cursor-pointer
-                             mr-2
+                             sm:mr-2
+                             sm:mb-0 mb-3
                              "
                              >
                           View Reviews
@@ -694,11 +696,12 @@ Read Reviews
                                 window.open(product.link)
                             }}
                              class="
-                             inline-block
+                             sm:inline-block 
+                             block
                              py-2
-                             ml-2
+                             sm:ml-2
                              px-5
-                             border border-[#E5E7EB]
+                             border border-[#b1b4b9]
                              rounded-lg
                              text-base text-body-color
                              font-medium
@@ -775,7 +778,7 @@ title:`${props.analysis.searchVolumeData.length === 1 && props.analysis.searchVo
 {
 props.analysis.relatedKeyWordData.length===0?
 <>
-<h1 class = 'text-2xl text-center font-semibold mt-[70px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+<h1 class = 'text-2xl text-center font-semibold mt-[70px] lg:mb-0 mb-16'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
 </svg> Oops.. No Valid Alternatives Found</h1>
 </>

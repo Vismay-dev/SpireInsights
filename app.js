@@ -5,6 +5,7 @@ const { http, https } = require('follow-redirects');
 const cors           = require('cors')
 const mongoose = require('mongoose')
 const cloudinary = require('cloudinary')
+const axios = require('axios')
 
 const RoutesAPIUser = require('./server/routes/RoutesAPIUser.js')
 
@@ -27,6 +28,8 @@ mongoose.connection.on('error', function (err) { console.log(err) });
 app.use(cors())
 
 app.use('/api/user',RoutesAPIUser)
+
+
 
 const port = process.env.PORT||4000;
 
