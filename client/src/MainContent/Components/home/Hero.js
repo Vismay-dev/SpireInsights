@@ -228,7 +228,7 @@ anim();
           <div class="container xl:max-w-full mx-auto block  relative ">
             <div class="flex flex-wrap mx-auto lg:right-0 right-[44px]   relative pointer-events-auto">
               <div class="w-full xl:w-5/12 lg:w-[47%] lg:top-[15px]  pointer-events-auto px-4 xl:-mr-8 xl:ml-0 ml-10 lg:-mr-4 -mr-14 xl:left-12 lg:left-2 sm:left-2 xl:top-2 top-0 relative">
-                <div class="hero-content lg:text-left sm:px-0 px-3 text-center top-5 xl:top-5 xl:left-[48px] 2xl:left-[200px] 2xl:text-center  xl:absolute relative block pointer-events-auto">
+                <div class="hero-content lg:text-left sm:px-0 px-3 text-center top-5 xl:top-5 xl:left-[53px] 2xl:left-[200px] 2xl:text-center  xl:absolute relative block pointer-events-auto">
                   <h1
                     class="
                       text-dark
@@ -326,7 +326,7 @@ anim();
                    <img src = {img} class = 'relative 2xl:-left-[160px] xl:-left-[140px] lg:mx-0 mx-auto -left-[60px] xl:top-8 top-12'/>
        
 
-                  <canvas id='c' class = 'absolute xl:block hidden -top-[85px]  -right-[105px] rounded-bl-[70%] shadow-lg'/>
+                  <canvas id='c' class = 'absolute xl:block hidden -top-[85px]  -right-[110px] rounded-bl-[70%] shadow-lg'/>
 
 
                     <span class="absolute right-2 lg:block hidden top-[370px] z-[-1]">
