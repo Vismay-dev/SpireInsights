@@ -43,7 +43,7 @@ router.post('/sendUserQuery',(req,res)=> {
           
             oauth2Client.setCredentials({
               refresh_token: process.env.REFRESH_TOKEN,
-              access_token: process.env.ACCESS_TOKEN
+              access_token: process.env.ACCESS_TOKEN,
             });
 
             const accessToken = await new Promise((resolve, reject) => {
@@ -57,7 +57,7 @@ router.post('/sendUserQuery',(req,res)=> {
 
               const transporter = nodemailer.createTransport({
                 service: "gmail",
-                port:465,
+                port:587,
                 name: 'mail.google.com', // mail.example.com or smtp.mail.com
                 host: 'mail.google.com', // mail.example.com or smtp.mail.com
                 secure:true,
@@ -67,7 +67,8 @@ router.post('/sendUserQuery',(req,res)=> {
                   accessToken,
                   clientId: process.env.CLIENT_ID,
                   clientSecret: process.env.CLIENT_SECRET,
-                  refreshToken: process.env.REFRESH_TOKEN
+                  refreshToken: process.env.REFRESH_TOKEN,
+                  expires_in: 3599 
                 }
               });
 
@@ -131,6 +132,8 @@ Reply to this email or contact us at - +971 58 581 2510 - to be added to our lis
 Explore our website at - spire-insights.herokuapp.com
 Instagram - @spireinsights
 Facebook - Spire Insights
+
+Your Message: '${req.body.message}'
             
             We'll get back to you as soon as possible!
             
@@ -184,6 +187,8 @@ Reply to this email or contact us at - +971 58 581 2510 - to be added to our lis
 Explore our website at - spire-insights.herokuapp.com<br/>
 Instagram - @spireinsights<br/>
 Facebook - Spire Insights<br/></i><br/>
+
+Your Message: '${req.body.message}'<br/><br/>
             
             We'll get back to you as soon as possible!</p>
             
