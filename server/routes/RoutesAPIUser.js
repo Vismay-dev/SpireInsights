@@ -1,5 +1,7 @@
 const router = require('express').Router()
 const nodemailer = require('nodemailer')
+const { google } = require("googleapis");
+const OAuth2 = google.auth.OAuth2;
 
 const amazonTop = require('../topProductAnalysis/amazon')
 const amazonASIN = require('../scrapeASIN/amazon')
@@ -29,19 +31,49 @@ router.post('/sendUserQuery',(req,res)=> {
     async function sendMail(){
     try {
       
-        const transport = await nodemailer.createTransport({
-            host: "smtp.gmail.com",
-port: 465,
-            auth: {
-                type: "OAuth2",
-                user: "spireinsights1@gmail.com",
-                clientId: process.env.CLIENT_ID,
-                clientSecret:process.env.CLIENT_SECRET,
-                refreshToken: process.env.REFRESH_TOKEN,
-                accessToken: process.env.ACCESS_TOKEN,
-                expires_in:3599
-            } 
-        })
+//           
+
+
+        const createTransporter = async () => {
+            const oauth2Client = new OAuth2(
+              process.env.CLIENT_ID,
+              process.env.CLIENT_SECRET,
+              "https://developers.google.com/oauthplayground"
+            );
+          
+            oauth2Client.setCredentials({
+              refresh_token: process.env.REFRESH_TOKEN,
+              access_token: process.env.ACCESS_TOKEN
+            });
+
+            const accessToken = await new Promise((resolve, reject) => {
+                oauth2Client.getAccessToken((err, token) => {
+                  if (err) {
+                    reject("Failed to create access token :(");
+                  }
+                  resolve(token);
+                });
+              });
+
+              const transporter = nodemailer.createTransport({
+                service: "gmail",
+                auth: {
+                  type: "OAuth2",
+                  user: 'spireinsights1@gmail.com',
+                  accessToken,
+                  clientId: process.env.CLIENT_ID,
+                  clientSecret: process.env.CLIENT_SECRET,
+                  refreshToken: process.env.REFRESH_TOKEN
+                }
+              });
+
+              return transporter;
+          };
+
+         
+        const transport = await createTransporter()
+
+          
     
         const mailOptions = {
             from:'Spire Insights <spireinsights1@gmail.com>',
