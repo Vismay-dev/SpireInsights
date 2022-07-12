@@ -45,7 +45,7 @@ port: 465,
         const mailOptions = {
             from:'Spire Insights <spireinsights1@gmail.com>',
             to: [req.body.mailId],
-            bcc:['vismaysuramwar@gmail.com','hunarmiglani@gmail.com','kathaneaditya@gmail.com'],
+            // bcc:['vismaysuramwar@gmail.com','hunarmiglani@gmail.com','kathaneaditya@gmail.com'],
             subject:'Contacting Spire Insights',
             text:`
             Dear ${req.body.name},
@@ -105,17 +105,17 @@ Facebook - Spire Insights
     
             <p>Your message on behalf of ${req.body.businessName} has been noted.<br/>
 
-            <h4>Thank you for showing interest in our e-commerce services. Before we go any further, we'd like to give you a quick overview of our organization and the services we provide.<br/>
+            <h4>Thank you for showing interest in our e-commerce services.<br/> Before we go any further, we'd like to give you a quick overview of our organization and the services we provide.<br/><br/>
 
-We are students at a formerly MIT-backed entrepreneurship program - LaunchX, and are currently on a mission to help more businesses access the E-commerce front, you needn’t stay on hold for hours anymore with amazon! We’re a call away to make the pain go away!<br/>
+We are students at a formerly MIT-backed entrepreneurship program - LaunchX, and are currently on a mission to help more businesses access the E-commerce front, you needn’t stay on hold for hours anymore with amazon! We’re a call away to make the pain go away!<br/><br/>
 
-Our product has been launched for a free trial, spanning 2 days from the setting up of your profile, with a special 20% discount for the first 50 businesses that join us with a three month package. <br/>
+Our product has been launched for a free trial, spanning 2 days from the setting up of your profile, with a special 20% discount for the first 50 businesses that join us with a three month package. <br/><br/>
 
-Our 3-month package is priced at $47.99 after a 20% discount on our original price of $59.99. <br/>
+Our 3-month package is priced at $47.99 after a 20% discount on our original price of $59.99. <br/><br/>
 
-We are also offering a monthly package worth $19.99. <br/>
+We are also offering a monthly package worth $19.99. <br/><br/>
 
-The following are the list of product management services we provide:<br/>
+The following are the list of product management services we provide:<br/><br/>
 
 Set up -<br/>
 
@@ -136,17 +136,17 @@ Optimization - <br/>
 - Market Analysis <br/>
 - No. of SERPs (Search Result Pages) in which the product appeared<br/>
 - No. of SERPs (Search Result Pages) in which the product ranked 1, 2-3, 4-10 and 11-100<br/>
-- 4-5 Consumer Reviews for the Product IDs entered.<br/>
+- 4-5 Consumer Reviews for the Product IDs entered.<br/><br/>
 
-Though our offering is completely hands-free and online we do offer free consultancy zoom sessions and an active call center in case you require any guidance around our website or have general questions regarding our services.</h4><br/>
+Though our offering is completely hands-free and online we do offer free consultancy zoom sessions and an active call center in case you require any guidance around our website or have general questions regarding our services.</h4>
 
-Looking forward to a positive reply from your end and getting started on your journey to enhanced growth.<br/>
+Looking forward to a positive reply from your end and getting started on your journey to enhanced growth.<br/><br/>
 
-Reply to this email or contact us at - +971 58 581 2510 - to be added to our list of customers for the free trial. Keep in mind the slots are filling up quickly! <br/>
-
+Reply to this email or contact us at - +971 58 581 2510 - to be added to our list of customers for the free trial. Keep in mind the slots are filling up quickly! <br/><br/>
+<i>
 Explore our website at - spire-insights.herokuapp.com<br/>
 Instagram - @spireinsights<br/>
-Facebook - Spire Insights<br/>
+Facebook - Spire Insights<br/></i><br/>
             
             We'll get back to you as soon as possible!</p>
             

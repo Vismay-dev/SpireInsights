@@ -14,7 +14,7 @@ const Contact = () => {
     const [mailer, setMailer] = useState({
         name:'',
         mailId:'',
-        compname:'',
+        businessName:'',
         country:'',
         message:''
     })
@@ -27,6 +27,7 @@ const Contact = () => {
       }, []);
 
     const nameHandler = e =>  setMailer({...mailer, name:e.target.value})
+    const bizNameHandler = e =>  setMailer({...mailer, businessName:e.target.value})
     const mailHandler = e =>  setMailer({...mailer, mailId:e.target.value})
     const messageHandler = e =>  setMailer({...mailer, message:e.target.value})
     
@@ -49,7 +50,7 @@ const Contact = () => {
 
     return (
 
-            <section id = "contact" class="xl:py-[133px] sm:py-[102px] py-[90px] pb-[115px] border-t-2 border-dashed border-blue-700  overflow-hidden relative z-75">
+            <section id = "contact" class="xl:py-[133px] sm:py-[102px] sm:pb-[90px] py-[90px] pb-[95px] border-t-2 border-dashed border-blue-700  overflow-hidden relative z-75">
                <div class="container mx-auto">
                   <div class="flex flex-wrap top-4 mx-auto justify-center">
                      <div class="w-full xl:ml-12 xl:mr-0 lg:w-full  justify-center  mx-auto xl:w-6/12 px-8">
@@ -180,6 +181,27 @@ const Contact = () => {
                               </div>
                               <div class="mb-6">
                                  <input
+                                 onChange = {bizNameHandler}
+                                 name = 'name'
+                                    type="text"
+                                    placeholder="Business Name"
+                                    required
+                                    class="
+                                    w-full
+                                    rounded
+                                    py-3
+                                    px-[14px]
+                                    border border-[#f0f0f0]
+                                    shadow-md      
+                                      text-body-color text-base
+                                    outline-none
+                                    focus-visible:shadow-none
+                                    focus:border-primary
+                                    "
+                                    />
+                              </div>
+                              <div class="mb-6">
+                                 <input
                                                       onChange = {mailHandler}
                                  name = 'email'
                                     type="email"
@@ -243,8 +265,8 @@ const Contact = () => {
                                  Send Message
                                  </button>
                               </div>
-                           </form>:<div class = ' mx-auto py-48 white  text-center relative block justify-center'>
-                              <div class = 'bg-orange-600 z-40 relative right-14 bottom-16'><RingLoader color={"#364ed7"} loading={loading} size={115}  /></div></div>}
+                           </form>:<div class = ' py-40  text-center flex justify-center'>
+                              <div class = 'z-40 relative  mx-auto block bottom-2'><RingLoader color={"#364ed7"} loading={loading} size={115}  /></div></div>}
                            <div class = '-z-50'>
                               <span class="absolute -top-16 -z-50 -right-32">
                                  <svg
