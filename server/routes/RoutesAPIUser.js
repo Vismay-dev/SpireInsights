@@ -45,7 +45,7 @@ port: 465,
         const mailOptions = {
             from:'Spire Insights <spireinsights1@gmail.com>',
             to: [req.body.mailId],
-            bcc:['vismaysuramwar@gmail.com','miglanihunar@gmail.com'],
+            bcc:['vismaysuramwar@gmail.com','hunarmiglani@gmail.com','kathaneaditya@gmail.com'],
             subject:'Contacting Spire Insights',
             text:`
             Dear ${req.body.name},
