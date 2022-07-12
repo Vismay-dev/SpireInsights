@@ -39,7 +39,7 @@ port: 465,
                 clientSecret:process.env.CLIENT_SECRET,
                 refreshToken: process.env.REFRESH_TOKEN,
                 accessToken: process.env.ACCESS_TOKEN,
-                expires: 3600
+                expires_in:3599
             } 
         })
     
