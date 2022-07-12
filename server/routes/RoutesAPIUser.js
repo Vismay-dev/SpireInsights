@@ -37,8 +37,9 @@ port: 465,
                 user: "spireinsights1@gmail.com",
                 clientId: process.env.CLIENT_ID,
                 clientSecret:process.env.CLIENT_SECRET,
-                accessToken: process.env.ACCESS_TOKEN,   
-                refreshToken: process.env.REFRESH_TOKEN
+                refreshToken: process.env.REFRESH_TOKEN,
+                accessToken: process.env.ACCESS_TOKEN,
+                expires: 3600
             } 
         })
     
