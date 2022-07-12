@@ -57,6 +57,10 @@ router.post('/sendUserQuery',(req,res)=> {
 
               const transporter = nodemailer.createTransport({
                 service: "gmail",
+                port:465,
+                name: 'mail.google.com', // mail.example.com or smtp.mail.com
+                host: 'mail.google.com', // mail.example.com or smtp.mail.com
+                secure:true,
                 auth: {
                   type: "OAuth2",
                   user: 'spireinsights1@gmail.com',
