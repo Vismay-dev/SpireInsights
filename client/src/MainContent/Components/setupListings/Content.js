@@ -305,10 +305,24 @@ const ContentSetup = (props)=> {
 
    const saveFunc = async(type) => {
 
-      console.log(currentPrep)
+      let details = 
 
-
-      let details = type === 'storeDetails' ? {
+      type === 'all'?
+      {
+         ...currentPrep, storeDetails : {
+            ...storeDetails, isSaved:true
+         },
+         pricing: {
+            ...pricing, isSaved:true
+         },
+         images: {
+            ...currentPrep.images, isSaved:true
+         },
+         shipping: {
+            ...shipping, isSaved: true
+         }
+      }:
+      type === 'storeDetails' ? {
          ...currentPrep, storeDetails : {
             ...storeDetails, isSaved:true
          }
@@ -321,6 +335,8 @@ const ContentSetup = (props)=> {
             ...shipping, isSaved:true
          }      } : type === 'image' ? {
             ...currentPrep, images : {...images, isSaved:true}} : {}
+
+      console.log(details)
 
       if(type === 'storeDetails') {
          setStoreDetails({
@@ -375,7 +391,6 @@ const ContentSetup = (props)=> {
 
       await axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/saveCurrentPipelinePrep':'http://localhost:4000/api/user/saveCurrentPipelinePrep',
       {details,token:sessionStorage.getItem('token')}).then(res=> {
-            console.log({...userCon.user,pipeline:res.data})
             userCon.setUser({...userCon.user,pipeline:res.data})
         }).catch(err=> {
             console.log(err.response)
@@ -400,18 +415,52 @@ const ContentSetup = (props)=> {
       saveFunc('image')
    }
 
-   const saveAllDetailsPrep = () => {
-      saveDetails1()
-      saveDetails2()
-      saveDetails3()
-      saveDetails4()
-      props.changeSeg(3)
+   const saveAllDetailsPrep = async() => {
+      setCurrentPrep({
+         ...currentPrep,
+         storeDetails:{
+            ...currentPrep.storeDetails,isSaved:true
+         },
+         pricing: {
+            ...currentPrep.pricing, isSaved:true
+         },
+         images: {
+            ...currentPrep.images, isSaved:true
+         },
+         shipping: {
+            ...currentPrep.shipping, isSaved:true
+         }
+      })
+      setStoreDetails({...storeDetails, isSaved:true})
+      setPricing({...pricing, isSaved:true})
+      setImages({...images, isSaved:true})
+      setShipping({...shipping, isSaved:true})
+      
+
+      userCon.setUser({
+         ...userCon.user, pipeline:{
+            ...userCon.user.pipeline, prepBeingEdited:false
+         } 
+      })
+
+      await saveDetails1()
+      await saveDetails2()
+      await saveDetails3()
+      if(images.collection.length!==0){
+         await saveDetails4()
+      }
+
+
+
+      await saveFunc('all')
+      // props.changeSeg(3)
    }
 
    const saveAllDetailsKeyWords = () => {
       subKeyWords()
-      props.changeSeg(4)
-   }
+      setTimeout(()=> {
+         props.changeSeg(4)
+      },200)   }
 
     const contentList = [
                     <div className="mt-12 relative mx-auto lg:mt-14 lg:mb-14 mb-12">
@@ -437,8 +486,8 @@ const ContentSetup = (props)=> {
 <div class="xl:container w-full lg:my-0 -my-20 lg:mt-0 -mt-12  ">
    <div class="flex flex-wrap w-full xl:-mx-4">
       <div class="w-full px-4">
-         <div class="text-center relative left-4 mx-auto mb-12 lg:mb-14 lg:max-w-[800px] max-w-[700px]">
-            <span class="font-semibold text-lg text-primary mb-2 block">
+         <div class="text-center relative left-2 mx-auto mb-12 lg:mb-14 lg:max-w-[800px] max-w-[700px]">
+            <span class="font-semibold text-lg left-1 relative text-primary mb-2 block">
              Step-By-Step Guide
             </span>
             <h2
@@ -449,6 +498,7 @@ const ContentSetup = (props)=> {
                md:text-[40px]
                text-dark
                mb-4
+               relative 
                "
                >
                Plan Your Listings
@@ -472,7 +522,7 @@ px-5
 xl:w-1/4 lg:w-1/3 lg:-top-[14px] -top-[3px] sm:w-[50%] w-[90%]
 lg:px-8 
 lg:mb-6 mb-[34px]
-
+left-3
 mx-auto
 block
 relative
@@ -692,7 +742,7 @@ Save Details
       <label for="" class="font-medium text-base text-black block mb-3">
       Product Pricing
       </label>
-      <input type="number"  name = 'productPricing' defaultValue={pricing.productPricing} onChange={pricingChange} placeholder="Pricing" disabled="" class="
+      <input type="number" min = {0}  name = 'productPricing' defaultValue={pricing.productPricing} onChange={pricingChange} placeholder="Pricing" disabled="" class="
          w-full
          border-[1.5px] border-form-stroke
          rounded-lg
@@ -845,7 +895,7 @@ Save Details
       <label for="" class="font-medium text-base text-black block mb-3">
        Weight (<span class = 'lg:inline hidden'>Estimated - </span>Kg)
       </label>
-      <input onChange={shippingChange} name = 'productWeight' defaultValue = {shipping.productWeight} type="number" placeholder="Weight" class="
+      <input onChange={shippingChange} min = {0} name = 'productWeight' defaultValue = {shipping.productWeight} type="number" placeholder="Weight" class="
          w-full
          border-[1.5px] border-primary
          rounded-lg

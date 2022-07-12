@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const nodemailer = require('nodemailer')
 
 const amazonTop = require('../topProductAnalysis/amazon')
 const amazonASIN = require('../scrapeASIN/amazon')
@@ -22,6 +23,160 @@ const fileStorageEngine = multer.diskStorage({
     }
 })
 const upload = multer({ storage: fileStorageEngine })
+
+
+router.post('/sendUserQuery',(req,res)=> {
+    async function sendMail(){
+    try {
+      
+        const transport = await nodemailer.createTransport({
+            host: "smtp.gmail.com",
+port: 465,
+            auth: {
+                type: "OAuth2",
+                user: "spireinsights1@gmail.com",
+                clientId: process.env.CLIENT_ID,
+                clientSecret:process.env.CLIENT_SECRET,
+                accessToken: process.env.ACCESS_TOKEN,   
+                refreshToken: process.env.REFRESH_TOKEN
+            } 
+        })
+    
+        const mailOptions = {
+            from:'Spire Insights <spireinsights1@gmail.com>',
+            to: [req.body.mailId],
+            bcc:['vismaysuramwar@gmail.com','miglanihunar@gmail.com'],
+            subject:'Contacting Spire Insights',
+            text:`
+            Dear ${req.body.name},
+    
+            Your message on behalf of ${req.body.businessName} has been noted.
+
+            Thank you for showing interest in our e-commerce services. Before we go any further, we'd like to give you a quick overview of our organization and the services we provide.
+
+We are students at a formerly MIT-backed entrepreneurship program - LaunchX, and are currently on a mission to help more businesses access the E-commerce front, you needn’t stay on hold for hours anymore with amazon! We’re a call away to make the pain go away!
+
+Our product has been launched for a free trial, spanning 2 days from the setting up of your profile, with a special 20% discount for the first 50 businesses that join us with a three month package. 
+
+Our 3-month package is priced at $47.99 after a 20% discount on our original price of $59.99. 
+
+We are also offering a monthly package worth $19.99. 
+
+The following are the list of product management services we provide:
+
+Set up -
+
+- E-commerce store setup on marketplaces on Amazon.
+- Unique and keywords optimized Product title, short description, long description & attributes.
+
+Management - 
+
+- Enhanced Product visibility, SEO/SEM services.
+- Partial automation of online store management.
+- Amazon Storefront Design & Development.
+
+Optimization - 
+
+- Average Competitive Rating & Pricing.
+- High Performing Keywords for listing enhancement.
+- 6 Top Products with Title, Description, Image, Rating, Price, Link to Product Page, Link to Reviews Page.
+- Market Analysis 
+- No. of SERPs (Search Result Pages) in which the product appeared
+- No. of SERPs (Search Result Pages) in which the product ranked 1, 2-3, 4-10 and 11-100
+- 4-5 Consumer Reviews for the Product IDs entered.
+
+Though our offering is completely hands-free and online we do offer free consultancy zoom sessions and an active call center in case you require any guidance around our website or have general questions regarding our services. 
+
+Looking forward to a positive reply from your end and getting started on your journey to enhanced growth. 
+
+Reply to this email or contact us at - +971 58 581 2510 - to be added to our list of customers for the free trial. Keep in mind the slots are filling up quickly! 
+
+Explore our website at - spire-insights.herokuapp.com
+Instagram - @spireinsights
+Facebook - Spire Insights
+            
+            We'll get back to you as soon as possible!
+            
+            Thank you,
+            Regards,
+            The Spire Insights Team`,
+            html: `
+            <p>Dear ${req.body.name},</p>
+    
+            <p>Your message on behalf of ${req.body.businessName} has been noted.<br/>
+
+            <h4>Thank you for showing interest in our e-commerce services. Before we go any further, we'd like to give you a quick overview of our organization and the services we provide.<br/>
+
+We are students at a formerly MIT-backed entrepreneurship program - LaunchX, and are currently on a mission to help more businesses access the E-commerce front, you needn’t stay on hold for hours anymore with amazon! We’re a call away to make the pain go away!<br/>
+
+Our product has been launched for a free trial, spanning 2 days from the setting up of your profile, with a special 20% discount for the first 50 businesses that join us with a three month package. <br/>
+
+Our 3-month package is priced at $47.99 after a 20% discount on our original price of $59.99. <br/>
+
+We are also offering a monthly package worth $19.99. <br/>
+
+The following are the list of product management services we provide:<br/>
+
+Set up -<br/>
+
+- E-commerce store setup on marketplaces on Amazon.<br/>
+- Unique and keywords optimized Product title, short description, long description & attributes.<br/>
+<br/>
+Management - <br/>
+<br/>
+- Enhanced Product visibility, SEO/SEM services.<br/>
+- Partial automation of online store management.<br/>
+- Amazon Storefront Design & Development.<br/>
+<br/>
+Optimization - <br/>
+<br/>
+- Average Competitive Rating & Pricing.<br/>
+- High Performing Keywords for listing enhancement.<br/>
+- 6 Top Products with Title, Description, Image, Rating, Price, Link to Product Page, Link to Reviews Page.<br/>
+- Market Analysis <br/>
+- No. of SERPs (Search Result Pages) in which the product appeared<br/>
+- No. of SERPs (Search Result Pages) in which the product ranked 1, 2-3, 4-10 and 11-100<br/>
+- 4-5 Consumer Reviews for the Product IDs entered.<br/>
+
+Though our offering is completely hands-free and online we do offer free consultancy zoom sessions and an active call center in case you require any guidance around our website or have general questions regarding our services.</h4><br/>
+
+Looking forward to a positive reply from your end and getting started on your journey to enhanced growth.<br/>
+
+Reply to this email or contact us at - +971 58 581 2510 - to be added to our list of customers for the free trial. Keep in mind the slots are filling up quickly! <br/>
+
+Explore our website at - spire-insights.herokuapp.com<br/>
+Instagram - @spireinsights<br/>
+Facebook - Spire Insights<br/>
+            
+            We'll get back to you as soon as possible!</p>
+            
+            <p>Thank you,<br/>
+            Regards,<br/>
+            The Spire Insights Team</p>`,
+            attachments:[
+                {
+                  fileName: 'Spire.jpg',
+                  path: 'server/routes/Spire.jpg',
+                  cid: 'spireinsights@orgae.ee'
+                }
+              ]
+        }
+        const result = await transport.sendMail(mailOptions)
+        return result
+    }catch (err) {
+        return(err)
+    }
+    } 
+
+    sendMail().then(result=> {
+        res.send('Successfully sent Email !')
+        console.log(result)
+    }).catch(err=> {
+        console.log(err)
+        res.status(400).send(err)
+    })
+    
+})
 
 
 router.post('/mostWished',auth,(req,res)=> {
@@ -441,6 +596,8 @@ router.post('/saveCurrentPipelinePrep', auth, async(req,res)=> {
     let detailObj = details
     let chk = true
 
+    console.log(detailObj)
+
     for(let x = 0;x<Object.values(detailObj).length;x++){
         let subObj = Object.values(detailObj)[x];
         for(let y = 0; y<Object.values(subObj).length;y++){
@@ -566,7 +723,7 @@ router.post('/uploadProfPic',upload.single('image'),async(req,res)=> {
 
     console.log(fileUrl)
         let userUpdated = await User.findOneAndUpdate({_id:id}, {profilePic : fileUrl}).catch(err=> console.log(err))
-    res.send(userUpdated);
+    res.send(fileUrl);
 })
 
 

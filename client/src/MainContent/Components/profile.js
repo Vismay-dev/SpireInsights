@@ -47,9 +47,8 @@ const Profile = () => {
         data.append('image',e.target.files[0]);
         data.append('token',sessionStorage.getItem('token') )
         axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/uploadProfPic':'http://localhost:4000/api/user/uploadProfPic',data).then(res=> {
-            console.log(res.data)
-            currentUser.setUser(res.data)
-            setImage(res.data.profilePic)
+            currentUser.setUser({...currentUser.user,profilePic:res.data})
+            setImage(res.data)
             setPicLoading(false)
         }).catch(err=> {
           setPicLoading(false)
@@ -160,7 +159,7 @@ const Profile = () => {
                  <i data-tip="Remove Picture" onMouseOver={() => setShowToolTip2(true)} 
                  onMouseLeave={() => setShowToolTip2(false)} onClick = {()=> {
                   setShowToolTip2(false);
-                 removeProfPic()}} className={`fas hover:cursor-pointer hover:text-orange-700  fa-trash font-semibold text-2xl absolute right-0 ${picLoading?'bottom-5 -right-2':'lg:bottom-12 bottom-1 -right-1 '} text-red-600`}>
+                 removeProfPic()}} className={`fas hover:cursor-pointer hover:text-orange-700  fa-trash font-semibold text-2xl absolute right-0 ${picLoading?'bottom-5 hidden -right-2':'lg:bottom-12 bottom-1 -right-1 '} text-red-600`}>
 <Tooltip show={showToolTip2} position = 'right' fontSize = '16px' padding = '3px 5px'>
   <span class = 'font-semibold text-center font-sans bottom-0.5'>Remove Picture</span>
 </Tooltip>
@@ -172,7 +171,7 @@ const Profile = () => {
 
                   <i     onMouseOver={() => setShowToolTip(true)} 
         onMouseLeave={() => setShowToolTip(false)}
-          onClick={()=>{setShowToolTip(false); inputRef.current.click()}}  className={`fas hover:cursor-pointer hover:text-indigo-700 text-2xl fa-camera font-semibold  ${currentUser.user.profilePic?'lg:bottom-5 -bottom-7 lg:right-9 right-7 absolute':'lg:right-1 -right-1 absolute lg:bottom-9 bottom-0'} ${picLoading?'mt-3':''} text-gray-800`}>
+          onClick={()=>{setShowToolTip(false); inputRef.current.click()}}  className={`fas hover:cursor-pointer hover:text-indigo-700 text-2xl fa-camera font-semibold  ${currentUser.user.profilePic?'lg:bottom-5 -bottom-7 lg:right-9 right-7 absolute':'lg:right-1 -right-1 absolute lg:bottom-9 bottom-0'} ${picLoading?'mt-4 -mr-8':''} text-gray-800`}>
             <Tooltip position = 'bottom' fontSize = '16px' padding = '3px 5px' show={showToolTip} className = 'p-1'>
   <span class = 'font-semibold text-center font-sans bottom-0.5'>{currentUser.user.profilePic?'Change Picture':'Upload Picture'}</span>
 </Tooltip></i>                    </div>
