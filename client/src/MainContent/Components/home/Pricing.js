@@ -12,8 +12,8 @@ return (
    bg-gradient-to-br from-blue-50 to-indigo-50
    pt-[74px]
    lg:pt-[66px]
-   pb-8
-   lg:pb-[43px]
+   pb-10
+   lg:pb-[50px]
    relative
    z-20
    overflow-hidden
@@ -822,9 +822,10 @@ Test out our services.               </p>
 
                <p
                   class="
-                  text-base text-body-color
+                  text-xl
                   pb-8
                   mb-8
+                  font-bold text-indigo-600
                   border-b border-[#F2F2F2]
                   block lg:hidden
                   "

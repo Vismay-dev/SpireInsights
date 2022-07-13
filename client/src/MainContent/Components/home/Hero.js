@@ -224,11 +224,13 @@ anim();
 			:''
 		}
         
-        <div class="relative sm:pt-[105px] pt-[110px] lg:pt-[100px] xl:pt-[150px] -mb-10 -mt-16 mx-auto block xl:pb-[97px] lg:pb-[110px] sm:pb-[85px] pb-[100px] bg-gradient-to-br from-blue-50 to-indigo-50">
-          <div class="container xl:max-w-full mx-auto block  relative ">
-            <div class="flex flex-wrap mx-auto lg:right-0 right-[44px]   relative pointer-events-auto">
-              <div class="w-full xl:w-5/12 lg:w-[47%] lg:top-[15px]  pointer-events-auto px-4 xl:-mr-8 xl:ml-0 ml-10 lg:-mr-4 -mr-14 xl:left-12 lg:left-2 sm:left-2 xl:top-2 top-0 relative">
-                <div class="hero-content lg:text-left sm:px-0 px-3 text-center top-5 xl:top-5 xl:left-[53px] 2xl:left-[200px] 2xl:text-center  xl:absolute relative block pointer-events-auto">
+        <div class="relative sm:pt-[100px] pt-[90px] lg:pt-[100px] xl:pt-[150px] -mb-10 -mt-16 mx-auto block xl:pb-[155px] lg:pb-[100px] sm:pb-[95px] pb-[90px] bg-gradient-to-br from-blue-50 to-indigo-50">
+          <div class=" xl:max-w-screen mx-auto block  relative ">
+            <div class="flex flex-wrap mx-auto lg:-right-8    relative pointer-events-auto">
+             
+			 
+			  <div class="w-full lg:w-6/12 lg:-mr-5 lg:ml-5 xl:mx-0 lg:-right-6 xl:right-0 2xl:-right-12  lg:top-[2px] xl:top-[-5px] relative  pointer-events-auto px-4 lg:pr-10 xl:pr-[55px] pr-4 ">
+                <div class="hero-content  sm:px-0 px-3 text-center top-5 xl:top-5    relative block pointer-events-auto">
                   <h1
                     class="
                       text-dark
@@ -245,7 +247,7 @@ anim();
                     Your E-Commerce Listings <br />
                     <span class = ' xl:text-[33px] sm:block hidden relative ml-0.5'> with <span class = 'text-blue-700 ml-[2px] relative'>Spire Insights</span>.</span>
                   </h1>
-                  <p class="text-base  lg:mx-0 mx-auto block mb-12 mt-2 sm:px-0 px-4 relative text-body-color max-w-[480px]">
+                  <p class="text-base  mb-12 mt-2 sm:px-0 px-4 relative text-center block mx-auto text-body-color max-w-[480px]">
                     With our algorithms & management system, e-commerce businesses & sellers can now reposition themselves in online marketplaces. 
                   </p>
 
@@ -269,8 +271,9 @@ anim();
                           hover:bg-opacity-90
                           rounded-lg
                           text-base
-						  sm:left-0 left-[4px]
-						  lg:mx-0 2xl:mx-auto mx-auto 
+						  
+						  lg:left-0 left-[0px]
+						   xl:mx-auto mx-auto 
                           relative
                           font-semibold
                           z-[30]
@@ -317,13 +320,14 @@ anim();
                   </div> */}
                 </div>
               </div>
-              <div class="hidden lg:block lg:w-1/12 px-4"></div>
-              <div class="xl:w-6/12 lg:left-6 relative xl:-left-[46px] lg:w-5/12  sm:block hidden lg:mx-0 left-[110px] lg:top-0  -top-5 mx-auto w-[240px] lg:px-4">
+
+
+              <div class="xl:w-6/12  xl:absolute xl:right-[85px] relative  lg:w-[400px]  sm:block hidden lg:ml-[85px] lg:mr-0  xl:-ml-8 lg:top-0  -top-5 mx-auto w-[240px] lg:px-4">
                 <div class="lg:text-right lg:ml-auto mx-auto block">
                   <div class="relative  lg:inline-block block lg:mx-0 mx-auto z-10 pt-11 lg:pt-0">
                    
 
-                   <img src = {img} class = 'relative 2xl:-left-[160px] xl:-left-[140px] lg:mx-0 mx-auto -left-[60px] xl:top-8 top-12'/>
+                   <img src = {img} class = 'relative 2xl:-left-[160px] xl:-left-[140px] lg:mx-0 mx-auto lg:-left-[60px] xl:top-8 top-12'/>
        
 
                   <canvas id='c' class = 'absolute xl:block hidden -top-[85px]  -right-[110px] rounded-bl-[70%] shadow-lg'/>
