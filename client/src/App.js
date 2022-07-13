@@ -77,7 +77,7 @@ useEffect(() => {
                     <hr class = 'block border-t-2 border-blue-700 my-11 w-[200px] mx-auto top-[24%] relative border-dotted'/>
                     
                       <div 
-      class = ' w-[127px]   m-0 relative mx-auto top-[38%]  left-[1.5px]  translate-y-[-50%]  pl-4'>
+      class = ' w-[127px]   m-0 relative mx-auto top-[38%]  sm:left-[1.5px]  translate-y-[-50%]  pl-4'>
                       
 
                       <HashLoader
