@@ -168,7 +168,7 @@ const Team = () => {
                 </p>
                 <p className="mb-7 text-xs text-gray-100">Marketing Head (CMO)</p>
                 <p className="mb-10 text-xs font-semibold tracking-wide text-gray-200">
-                 "Striving for Excellence, Reliability & Credibility."
+                 “Our service helps your business gain powerful insights that contribute to incredible growth. We hope that through a relationship based on data and insights, Spire can inspire you to join the online frontier."
                 </p>
                 <div className="flex items-center justify-center space-x-3">
                 
