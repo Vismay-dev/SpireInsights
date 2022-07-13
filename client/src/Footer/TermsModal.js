@@ -56,7 +56,7 @@ useEffect(
       <div ref = {myRef} data-aos={"fade-up"} data-aos-once='true' class={`lg:pr-6 px-3 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:mt-5 sm:align-middle lg:w-10/12 ${loading?'sm:w-8/12':'sm:w-11/12'} md:w-11/12 w-[98%]`}>
       <div  class="bg-white px-1 pt-3 pb-2 sm:p-6 sm:pb-4">
         <h1 class ='text-4xl top-1 relative font-bold mx-auto text-center underline'>Terms & conditions</h1>
-        <hr class = 'border-t-2 border-blue-700 border-dotted mx-auto mb-2 mt-8 block w-[70%]'/>
+        <hr class = 'border-t-2 border-blue-700 border-dotted mx-auto mb-4 mt-10 block w-[70%]'/>
 
           <div class="mx-auto block ">
 
@@ -74,8 +74,8 @@ useEffect(
                              rounded
                              overflow-hidden
                              py-12
-                             md:mt-0
-                             -mt-14
+                             mt-8
+                            
                              mx-auto block
                              px-8
                              xl:w-[900px]
@@ -83,12 +83,12 @@ useEffect(
                              p-[70px]
                             pt-[50px]
                             lg:pt-[30px]
-                            pb-[50px]
-                            lg:pb-[30px]
+                            pb-[65px]
+                            lg:pb-[45px]
                              z-10
                              "
                              >
-                             <div class="flex flex-wrap items-center -mb-16 -mt-3 -mx-4">
+                             <div class="flex flex-wrap items-center -mb-8 -mt-3 -mx-4">
                                 <div class="w-full px-4">
                                         <div>
                                             <img class = 'mx-auto block p-1.5 w-14 h-14 mb-6 bg-white rounded-full' src = {logo}></img>
@@ -111,7 +111,6 @@ useEffect(
                                       lg:mb-0
                                       "
                                       >
-<h1>Terms and conditions</h1>
 <p>These terms and conditions (“Agreement”) set forth the general terms and conditions of your use of the <a target="_blank" rel="nofollow" href="https://www.spire-insights.com">spire-insights.com</a> website (“Website” or “Service”) and any of its related products and services (collectively, “Services”). This Agreement is legally binding between you (“User”, “you” or “your”) and this Website operator (“Operator”, “we”, “us” or “our”). If you are entering into this agreement on behalf of a business or other legal entity, you represent that you have the authority to bind such entity to this agreement, in which case the terms “User”, “you” or “your” shall refer to such entity. If you do not have such authority, or if you do not agree with the terms of this agreement, you must not accept this agreement and may not access and use the Website and Services. By accessing and using the Website and Services, you acknowledge that you have read, understood, and agree to be bound by the terms of this Agreement. You acknowledge that this Agreement is a contract between you and the Operator, even though it is electronic and is not physically signed by you, and it governs your use of the Website and Services.</p><br/>
 <h2 class = 'underline mb-1 sm:text-lg text-md'>Accounts and membership</h2>
 <p>If you create an account on the Website, you are responsible for maintaining the security of your account and you are fully responsible for all activities that occur under the account and any other actions taken in connection with it. We may, but have no obligation to, monitor and review new accounts before you may sign in and start using the Services. Providing false contact information of any kind may result in the termination of your account. You must immediately notify us of any unauthorized uses of your account or any other breaches of security. We will not be liable for any acts or omissions by you, including any damages of any kind incurred as a result of such acts or omissions.</p><br/>
