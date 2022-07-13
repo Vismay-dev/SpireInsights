@@ -1,7 +1,7 @@
 import Vismay from './images/vismay.jpg'
 import Hunar from './images/hunar.jpg'
 import Aditya from './images/aditya.jpg'
-import Tina from './images/tina.jpg'
+import Tina from './images/tina2.jpg'
 
 
 const Team = () => {
