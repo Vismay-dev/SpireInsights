@@ -137,7 +137,7 @@ useEffect(
 <h2 class = 'underline mb-1 sm:text-lg text-md'>Contacting us</h2>
 <p>If you have any questions, concerns, or complaints regarding this Agreement, we encourage you to contact us using the details below:</p><br/>
 <p>sp&#105;re&#105;nsi&#103;h&#116;s&#49;&#64;gm&#97;il&#46;&#99;o&#109;</p><br/>
-<p>This document was last updated on July 13, 2022</p><br/>
+<p>This document was last updated on July 13, 2022</p><br/></h2>
                                 </div>
                                 
                              </div>
