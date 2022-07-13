@@ -43,7 +43,7 @@ useEffect(
 );
 
     return (<div class="fixed z-[100] inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <div class="flex items-end justify-center min-h-screen pt-4 sm:px-4 px-6 pb-20 text-center sm:block sm:p-0">
         {/* Background overlay, show/hide based on modal state. */}
       <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
   
@@ -54,8 +54,8 @@ useEffect(
         {/* Modal panel, show/hide based on modal state. */}
   
       <div ref = {myRef} data-aos={"fade-up"} data-aos-once='true' class={`lg:pr-6 px-3 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:mt-5 sm:align-middle lg:w-10/12 ${loading?'sm:w-8/12':'sm:w-11/12'} md:w-11/12 w-[98%]`}>
-        <div  class="bg-white px-1 pt-3 pb-2 sm:p-6 sm:pb-4">
-        <h1 class ='text-4xl top-1 relative font-bold mx-auto text-center underline'>Privacy Policy</h1>
+        <div  class="bg-white sm:px-1 px-[2px] pt-5 pb-2 sm:p-6 sm:pb-4">
+        <h1 class ='sm:text-4xl text-3xl top-1 relative font-bold mx-auto text-center underline'>Privacy Policy</h1>
         <hr class = 'border-t-2 border-blue-700 border-dotted mx-auto mb-2 mt-8 block w-[70%]'/>
 
           <div class="mx-auto block ">
@@ -71,15 +71,17 @@ useEffect(
                              text-center
                              relative
                              rounded
+                             sm:left-0 left-[2px]
                              overflow-hidden
                              py-12
                              md:mt-0
-                             -mt-14
+                             -mt-8
                              mx-auto block
-                             px-8
                              xl:w-[900px]
-                             w-[90%]
-                             p-[70px]
+                             sm:w-[90%]
+                             w-[95%]
+                             sm:px-[70px]
+                             px-[20px]
                             pt-[50px]
                             lg:pt-[30px]
                             pb-[50px]
@@ -88,7 +90,7 @@ useEffect(
                              "
                              >
                              <div class="flex flex-wrap items-center -mb-16 -mt-3 -mx-4">
-                                <div class="w-full px-4">
+                                <div class="w-full sm:px-4 px-1">
                                         <div>
                                             <img class = 'mx-auto block p-1.5 w-14 h-14 mb-6 bg-white rounded-full' src = {logo}></img>
                                         </div>

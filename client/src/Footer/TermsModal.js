@@ -54,17 +54,16 @@ useEffect(
         {/* Modal panel, show/hide based on modal state. */}
   
       <div ref = {myRef} data-aos={"fade-up"} data-aos-once='true' class={`lg:pr-6 px-3 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:mt-5 sm:align-middle lg:w-10/12 ${loading?'sm:w-8/12':'sm:w-11/12'} md:w-11/12 w-[98%]`}>
-      <div  class="bg-white px-1 pt-3 pb-2 sm:p-6 sm:pb-4">
-        <h1 class ='text-4xl top-1 relative font-bold mx-auto text-center underline'>Terms & conditions</h1>
-        <hr class = 'border-t-2 border-blue-700 border-dotted mx-auto mb-4 mt-10 block w-[70%]'/>
+      <div  class="bg-white sm:px-1 px-[2px] pt-5 pb-2 sm:p-6 sm:pb-4">
+        <h1 class ='sm:text-4xl text-3xl top-1 relative font-bold mx-auto text-center underline'>Terms & Conditions</h1>
+        <hr class = 'border-t-2 border-blue-700 border-dotted mx-auto mb-2 mt-8 block w-[70%]'/>
 
           <div class="mx-auto block ">
 
             <div class="sm:mt-3 text-center  w-full  mx-auto block">   
 
-
-                    
-            <section class="py-6 lg:-mb-6 mb-0  lg:py-[40px] w-full  lg:pt-0 mx-auto block text-center">
+  
+                    <section class="py-6 lg:-mb-6 mb-0  lg:py-[40px] w-full  lg:pt-0 mx-auto block text-center">
                        <div class="mx-auto    block text-center">
                           <div
                              class="
@@ -72,19 +71,21 @@ useEffect(
                              text-center
                              relative
                              rounded
+                             sm:left-0 left-[2px]
                              overflow-hidden
                              py-12
-                             mt-8
-                            
+                             md:mt-0
+                             -mt-8
                              mx-auto block
-                             px-8
                              xl:w-[900px]
-                             w-[90%]
-                             p-[70px]
+                             sm:w-[90%]
+                             w-[95%]
+                             sm:px-[70px]
+                             px-[20px]
                             pt-[50px]
                             lg:pt-[30px]
-                            pb-[65px]
-                            lg:pb-[45px]
+                            pb-[50px]
+                            lg:pb-[30px]
                              z-10
                              "
                              >
