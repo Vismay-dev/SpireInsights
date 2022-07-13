@@ -430,7 +430,7 @@ Test out our services.               </p>
                Business
                </span>
                <h2 class="font-bold text-dark mb-5 text-[42px]">
-                  $20
+                  $19.99
                   <span class="text-base text-body-color font-medium">
                   / month
                   </span>
@@ -803,7 +803,7 @@ Test out our services.               </p>
                Business
                </span>
                <h2 class="font-bold text-dark mb-5 text-[42px]">
-                  $50
+                  $47.99
                   <span class="text-base text-body-color font-medium">
                   / 3 months
                   </span>
