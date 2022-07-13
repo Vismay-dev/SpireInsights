@@ -38,7 +38,7 @@ router.post('/sendUserQuery',(req,res)=> {
             const oauth2Client = new OAuth2(
               process.env.CLIENT_ID,
               process.env.CLIENT_SECRET,
-              "https://developers.google.com/oauthplayground/#step2&apisSelect=https%3A%2F%2Fmail.google.com%2F&auth_code=4%2F0AdQt8qjdWbH--5Un7q7Qx2ZYir1XCCilQpFboTKaJKRGBa-BH4R1SjBvb7HeSxUGbCfkHQ&refresh_token=1%2F%2F04Q51Ze7GJTpLCgYIARAAGAQSNwF-L9IrcYhHEQ2tiz2rxaZvFNTryCTSwJZE8BnOBMlXeKzhwjXVo8Q7cu7lrUcjAS6CTyTJ1bk&access_token_field=ya29.A0AVA9y1v-iEJalYyfcdP0lqZGV1ELe3s0CF925F-_6cAmRKhbeWOaJBL7NrT9Y0G-SjwgBra3kP1HAi45D0z2ASqM39dTmLFaXMpt5dgr_GMoOJ2WTcj0p6p9Xm-8oUAk3hMcFZcfm6WcaCVmBfCaK-tQiPKEYUNnWUtBVEFTQVRBU0ZRRTY1ZHI4dVJ3TFgyaUh3ZlZ6MlhScm5ETGRnUQ0163&url=https%3A%2F%2F&content_type=application%2Fjson&http_method=GET&useDefaultOauthCred=checked&oauthEndpointSelect=Google&oauthAuthEndpointValue=https%3A%2F%2Faccounts.google.com%2Fo%2Foauth2%2Fv2%2Fauth&oauthTokenEndpointValue=https%3A%2F%2Foauth2.googleapis.com%2Ftoken&oauthClientId=250994565412-epr58ogcmcl3fu7o2j2n56ofqaatk5t0.apps.googleusercontent.com&expires_in=3598&oauthClientSecret=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&access_token_issue_date=1657634305&for_access_token=ya29.A0AVA9y1v-iEJalYyfcdP0lqZGV1ELe3s0CF925F-_6cAmRKhbeWOaJBL7NrT9Y0G-SjwgBra3kP1HAi45D0z2ASqM39dTmLFaXMpt5dgr_GMoOJ2WTcj0p6p9Xm-8oUAk3hMcFZcfm6WcaCVmBfCaK-tQiPKEYUNnWUtBVEFTQVRBU0ZRRTY1ZHI4dVJ3TFgyaUh3ZlZ6MlhScm5ETGRnUQ0163&includeCredentials=checked&accessTokenType=bearer&autoRefreshToken=unchecked&accessType=offline&prompt=consent&response_type=code&wrapLines=on"
+              process.env.OAUTHPLAYGROUND
             );
           
             oauth2Client.setCredentials({
