@@ -1416,7 +1416,7 @@ cursor-default
 <p class = 'font-medium top-2.5 block mx-auto text-center relative mb-1'>  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline relative bottom-[1.3px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg> This feature is currently <strong>unavailable</strong>....<br/> <p class = 'relative mt-2 lg:w-[75%] md:w-[90%] w-[105%] md:right-0 right-[2.5%] text-center mx-auto block'>Just by entering your Seller Central LWA token, you'll be able to  <strong class = 'text-center'>set-up, manage, refine & analyse all your product listings on Spire</strong>, soon.</p></p>
-<div class="flex flex-wrap mt-14 -mb-6 relative left-[20px] mx-auto">
+<div class="flex flex-wrap flex-col mt-14 -mb-6 relative left-[20px] mx-auto">
 {/* <div class="w-full md:w-1/2 lg:w-1/3 px-4 -right-[70px] relative mx-auto">
       <div class="mb-12">
          <label for="" class="font-medium text-base text-black block mb-3">
@@ -1445,7 +1445,7 @@ cursor-default
    </div>
    </div> */}
 
-   <img class = 'mx-auto block h-auto w-auto  scale-[40%] sm:right-[12px] right-[20px] -mt-[95px] -mb-11 relative top-[12px]' src = {image}></img>
+   <img class = 'mx-auto block h-max w-[130px]  scale-[40%] sm:right-[12px] right-[20px] -mt-[25px] mb-7 relative top-[12px]' src = {image}></img>
 
 
    </div>
