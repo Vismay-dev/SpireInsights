@@ -56,14 +56,14 @@ const Team = () => {
                 alt="Person"
               />
               <div className="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
-                <p className="mb-1 text-lg font-bold text-gray-100">
+                <p className="mb-1 text-lg xl:top-0 lg:top-4 md:top-2 top-4 relative font-bold text-gray-100">
                   Hunar Miglani
                 </p>
-                <p className="mb-7 text-xs text-gray-100">Executive Head (CEO)</p>
+                <p className="mb-7 xl:top-0 lg:top-4 md:top-2 top-4 relative text-xs text-gray-100">Executive Head (CEO)</p>
                 <p className="mb-10 text-xs font-semibold tracking-wide text-gray-200">
                   "We help local businesses gain insights they wouldn't elsewhere, and at sustainable costs. The catch is: we help them realize the potential of modern e-commerce."
                 </p>
-                <div className="flex items-center justify-center space-x-3">
+                <div className="flex xl:bottom-0 lg:bottom-5 md:bottom-3 bottom-5  relative items-center justify-center space-x-3">
               
                     <a
                     target="_blank"
@@ -86,14 +86,14 @@ const Team = () => {
                 alt="Person"
               />
               <div className="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
-                <p className="mb-1 text-lg font-bold text-gray-100">
+                <p className="mb-1 text-lg xl:top-0 lg:top-4 md:top-3.5 top-4 relative font-bold text-gray-100">
                   Vismay Suramwar
                 </p>
-                <p className="mb-7 text-xs text-gray-100">Technology Lead (CTO)</p>
+                <p className="mb-7 xl:top-0 lg:top-4 md:top-2 top-4 relative text-xs text-gray-100">Technology Lead (CTO)</p>
                 <p className="mb-10 text-xs font-semibold tracking-wide text-gray-200">
                   "Spire's biggest advantage is its deep-level data fetching capability - we're able to provide our users data analytics that are generally unavailable and uncommon."
                 </p>
-                <div className="flex items-center justify-center space-x-3">
+                <div className="flex  xl:bottom-0 lg:bottom-5 md:bottom-4 bottom-5  relative items-center justify-center space-x-3">
                   <a
                   target="_blank"
                     href="https://www.linkedin.com/in/vismay-suramwar-08513718b/"
@@ -132,14 +132,14 @@ const Team = () => {
                 alt="Person"
               />
               <div className="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
-                <p className="mb-1 text-lg font-bold text-gray-100">
+                <p className="mb-1 text-lg xl:top-0 lg:top-4 md:top-2 top-4 relative font-bold text-gray-100">
                   Aditya Kathane
                 </p>
-                <p className="mb-7 text-xs text-gray-100">Financial Head (CFO)</p>
+                <p className="mb-7 xl:top-0 lg:top-4 md:top-2 top-4 relative text-xs text-gray-100">Financial Head (CFO)</p>
                 <p className="mb-10 text-xs font-semibold tracking-wide text-gray-200">
                   "I visualize our offering as an opportunity for businesses to not only increase consumer exposure, but also double down on conversion rates."
                 </p>
-                <div className="flex items-center justify-center space-x-3">
+                <div className="flex  xl:bottom-0 lg:bottom-5 md:bottom-3 bottom-5 relative  items-center justify-center space-x-3">
                 
 
 
@@ -163,11 +163,11 @@ const Team = () => {
                 alt="Person"
               />
               <div className="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
-                <p className="mb-1 text-lg font-bold text-gray-100">
+                <p className="mb-1 text-lg xl:top-0 lg:top-4 md:top-2 top-4 relative font-bold text-gray-100">
                   Ziran Sun
                 </p>
-                <p className="mb-7 text-xs text-gray-100">Marketing Head (CMO)</p>
-                <p className="mb-10 text-xs font-semibold tracking-wide text-gray-200">
+                <p className="mb-7 xl:top-0 lg:top-4 md:top-2 top-4 relative text-xs text-gray-100">Marketing Head (CMO)</p>
+                <p className="mb-10 sm:top-1 top-2 relative text-xs font-semibold tracking-wide text-gray-200">
                  “Our service helps your business gain powerful insights that contribute to incredible growth. We hope that through a relationship based on data and insights, Spire can inspire you to join the online frontier."
                 </p>
                 <div className="flex items-center justify-center space-x-3">
