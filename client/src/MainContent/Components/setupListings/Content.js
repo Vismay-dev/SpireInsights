@@ -56,6 +56,24 @@ const ContentSetup = (props)=> {
    })
 
 
+   const [width, setWidth] = useState(window.innerWidth);
+
+   function handleWindowSizeChange() {
+       setWidth(window.innerWidth);
+   }
+   useEffect(() => {
+       window.addEventListener('resize', handleWindowSizeChange);
+       return () => {
+           window.removeEventListener('resize', handleWindowSizeChange);
+       }
+   }, []);
+   
+   const isMobile = width <= 768;
+   
+   
+   
+
+
    const [keyWords,setKeyWords] = useState(currentPrep.keyWords)
 
    const [storeDetails, setStoreDetails] = useState(currentPrep.storeDetails)
@@ -1095,10 +1113,16 @@ Save Details
 
          <div class = 'grid bottom-2 md:w-[80%] sm:w-[95%] w-[100%] mx-auto relative mb-8  sm:grid-cols-2 grid-cols-1 gap-x-7'>
             <div onClick={()=> {
+
                window.scrollTo(0,0)
                let id = sessionStorage.getItem('token')
                window.localStorage.setItem('tempToken', id)
-               window.open(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/optimiseListings':'http://localhost:3000/optimiseListings', '_blank')
+               if(isMobile){
+                  history('/optimiseListings')
+               }else {
+                  window.open(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/optimiseListings':'http://localhost:3000/optimiseListings', '_blank')
+               }
+
             }} class = 'bg-white sm:mb-0 mb-8 hover:cursor-pointer hover:bg-gray-200 h-[250px] rounded-sm shadow-md'>
             <GiSellCard class = 'text-[120px] rounded-lg text-white bg-blue-700 p-5 px-8 text-center mx-auto block top-4 mt-2 mb-4.5 relative'/>
             <h2 class = 'text-xl mt-[35px]  text-center font-semibold'>Analyze Top Products <br/><hr class = 'w-2/3 mx-auto text-center block mt-1.5 my-[2px]'/> <span class = 'text-lg font-medium text-gray-600'>Listings & Keywords</span></h2>
@@ -1108,8 +1132,11 @@ Save Details
                window.scrollTo(0,0)
                let id = sessionStorage.getItem('token')
                window.localStorage.setItem('tempToken', id)
-               window.open(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/optimiseListings':'http://localhost:3000/optimiseListings', '_blank')
-            }}  class = 'bg-white h-[250px] hover:cursor-pointer hover:bg-gray-200 rounded-sm shadow-md'>
+  if(isMobile){
+                  history('/optimiseListings')
+               }else {
+                  window.open(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/optimiseListings':'http://localhost:3000/optimiseListings', '_blank')
+               }            }}  class = 'bg-white h-[250px] hover:cursor-pointer hover:bg-gray-200 rounded-sm shadow-md'>
             <MdSell class = 'text-[120px] rounded-lg text-white bg-blue-700 p-5 px-8 text-center mx-auto block top-4 mt-2 mb-4.5 relative'/>
             <h2 class = 'text-xl mt-[35px]  text-center font-semibold'>Market Analysis <br/><hr class = 'w-2/3 mx-auto text-center block mt-1.5 my-[2px]'/> <span class = 'text-lg font-medium text-gray-600'>Demand & Sales</span></h2>
 
