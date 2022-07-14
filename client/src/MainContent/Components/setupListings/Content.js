@@ -1097,7 +1097,7 @@ Save Details
             <div onClick={()=> {
                window.scrollTo(0,0)
                let id = sessionStorage.getItem('token')
-               localStorage.setItem('tempToken', id)
+               window.localStorage.setItem('tempToken', id)
                window.open(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/optimiseListings':'http://localhost:3000/optimiseListings', '_blank')
             }} class = 'bg-white sm:mb-0 mb-8 hover:cursor-pointer hover:bg-gray-200 h-[250px] rounded-sm shadow-md'>
             <GiSellCard class = 'text-[120px] rounded-lg text-white bg-blue-700 p-5 px-8 text-center mx-auto block top-4 mt-2 mb-4.5 relative'/>
@@ -1107,7 +1107,7 @@ Save Details
                sessionStorage.setItem('redirect','toMarket')
                window.scrollTo(0,0)
                let id = sessionStorage.getItem('token')
-               localStorage.setItem('tempToken', id)
+               window.localStorage.setItem('tempToken', id)
                window.open(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/optimiseListings':'http://localhost:3000/optimiseListings', '_blank')
             }}  class = 'bg-white h-[250px] hover:cursor-pointer hover:bg-gray-200 rounded-sm shadow-md'>
             <MdSell class = 'text-[120px] rounded-lg text-white bg-blue-700 p-5 px-8 text-center mx-auto block top-4 mt-2 mb-4.5 relative'/>

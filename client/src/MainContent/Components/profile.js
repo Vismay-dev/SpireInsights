@@ -288,9 +288,9 @@ const Profile = () => {
         userInfo.paid?
         userInfo.subscription === 'one'?
 <>
-<h1 class = 'text-2xl font-bold text-center top-[60px] left-[4px] relative text-gray-500 underline'>Premium - <span class = 'text-blue-700'>1 Month Subscription</span></h1>
+<h1 class = 'text-2xl sm:mt-0 -mt-3 sm:px-0 px-8 font-bold text-center top-[60px] left-[4px] relative text-gray-500 underline'>Premium <span class = 'sm:inline hidden'>-</span> <span class = 'text-blue-700 sm:inline block sm:underline no-underline'>1 Month Subscription</span></h1>
 
-<div class = ' w-[200px] mb-9 mt-7 left-1 top-[76px] relative block mx-auto text-center justify-center'>
+<div class = ' w-[200px] sm:mb-9 mb-5 sm:mt-7 mt-3 left-1 top-[76px] relative block mx-auto text-center justify-center'>
     <div class="grid  grid-flow-col mx-auto gap-5 text-center">
   <div class="flex   flex-col">
     <span class="countdown font-mono text-4xl">
@@ -313,15 +313,15 @@ const Profile = () => {
 </div>
 
 </div>
-                  <img src = {paid} class = 'mx-auto block mt-[105px] pb-14 left-[8px] mb-6 relative w-32'></img>
+                  <img src = {paid} class = 'mx-auto block sm:mt-[105px] mt-[100px] pb-14 left-[8px] mb-6 relative sm:w-32 w-28'></img>
 
 </>
         :
         userInfo.subscription === 'three' ?
 <>
-<h1 class = 'text-2xl font-bold text-center top-[60px] left-[4px] relative text-gray-500 underline'>Premium - <span class = 'text-blue-700'>3 Month Subscription</span></h1>
+<h1 class = 'text-2xl sm:mt-0 -mt-3 sm:px-0 px-8 font-bold text-center top-[60px] left-[4px] relative text-gray-500 underline'>Premium <span class = 'sm:inline hidden'>-</span> <span class = 'text-blue-700 sm:inline block sm:underline no-underline'>3 Month Subscription</span></h1>
 
-<div class = ' w-[200px] mb-9 mt-7 left-1 top-[76px] relative block mx-auto text-center justify-center'>
+<div class = ' w-[200px] sm:mb-9 mb-5 sm:mt-7 mt-3 left-1 top-[76px] relative block mx-auto text-center justify-center'>
     <div class="grid  grid-flow-col mx-auto gap-5 text-center">
   <div class="flex   flex-col">
     <span class="countdown font-mono text-4xl">
@@ -344,7 +344,7 @@ const Profile = () => {
 </div>
 
 </div>
-                  <img src = {paid} class = 'mx-auto block mt-[105px] pb-14 left-[8px] mb-6 relative w-32'></img>
+                  <img src = {paid} class = 'mx-auto block sm:mt-[105px] mt-[100px] pb-14 left-[8px] mb-6 relative sm:w-32 w-28'></img>
 
 
 
