@@ -15,7 +15,7 @@ const About = () => {
     }, []);
 
     return (
-<section class="pt-20 lg:pt-[120px] mx-auto block pb-12 lg:pb-[90px] overflow-hidden">
+<section class="pt-20 lg:pt-[120px] mx-auto block pb-12 lg:pb-[0px] xl:pb-[40px] 2xl:pb-[90px] overflow-hidden">
     <hr class = 'border-t-2 border-blue-700 border-dashed w-[95%] -mt-6 mx-auto block relative bottom-24'/>
    <div class="container mx-auto block">
       <div class="flex flex-wrap justify-between items-center -mx-4">
