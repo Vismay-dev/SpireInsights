@@ -1116,7 +1116,7 @@ Save Details
 
                window.scrollTo(0,0)
                let id = sessionStorage.getItem('token')
-               window.localStorage.setItem('tempToken', id)
+               localStorage.setItem('tempToken', id)
                if(isMobile){
                   history('/optimiseListings')
                }else {
@@ -1131,7 +1131,7 @@ Save Details
                sessionStorage.setItem('redirect','toMarket')
                window.scrollTo(0,0)
                let id = sessionStorage.getItem('token')
-               window.localStorage.setItem('tempToken', id)
+               localStorage.setItem('tempToken', id)
   if(isMobile){
                   history('/optimiseListings')
                }else {

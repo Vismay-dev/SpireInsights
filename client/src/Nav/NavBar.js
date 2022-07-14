@@ -74,6 +74,7 @@ useEffect(() => {
 }, []);
 
 
+
   const logOutHandle = () => {
     setExitModalShow(true)
   }
@@ -122,25 +123,25 @@ useEffect(() => {
                   
                 <div class = 'relative mx-auto w-fit bottom-[5px]'>
 
-                <a  href="#" onClick = {()=> {
+                <a  onClick = {()=> {
                      history('/home')
 
           }} 
-          className={`uppercase items-center justify-center ${location.pathname==='/home'||location.pathname==='/home/'?'text-blue-700':'text-gray-700'} px-3 top-[5px] active:shadow-sm hover:font-semibold relative mr-3.5 py-[9px]  pb-2.5 border border-transparent rounded-md text-md tracking-wide font-semibold hover:text-blue-700 text-gray-700 bg-gradient-to-r  `}>
+          className={`uppercase cursor-pointer items-center justify-center ${location.pathname==='/home'||location.pathname==='/home/'?'text-blue-700':'text-gray-700'} px-3 top-[5px] active:shadow-sm hover:font-semibold relative mr-3.5 py-[9px]  pb-2.5 border border-transparent rounded-md text-md tracking-wide font-semibold hover:text-blue-700  bg-gradient-to-r  `}>
           Home
          </a>
 
-         <a  href="#" onClick = {()=> {
+         <a  onClick = {()=> {
           history('/team')
           }} 
-          className={`uppercase items-center justify-center ${location.pathname==='/team'||location.pathname==='/team/'?'text-blue-700':'text-gray-700'} px-3 top-[5px] active:shadow-sm hover:font-semibold relative mr-4 py-[9px]  pb-2.5 border border-transparent rounded-md text-md tracking-wide font-semibold hover:text-blue-700  text-gray-700 bg-gradient-to-r  `}>
+          className={`uppercase cursor-pointer items-center justify-center ${location.pathname==='/team'||location.pathname==='/team/'?'text-blue-700':'text-gray-700'} px-3 top-[5px] active:shadow-sm hover:font-semibold relative mr-4 py-[9px]  pb-2.5 border border-transparent rounded-md text-md tracking-wide font-semibold hover:text-blue-700   bg-gradient-to-r  `}>
           Team
          </a>
 
-         <a  href="#" onClick = {()=> {
+         <a  onClick = {()=> {
           setLogModal(true)
           }} 
-          className="uppercase items-center justify-center top-[5px] hover:font-semibold relative mr-4  p-2 border border-transparent rounded-md hover:shadow-lg text-md tracking-wide font-semibold hover:text-white text-gray-700 bg-gradient-to-r  hover:from-blue-600 hover:to-blue-600 active:bg-blue-500">
+          className="uppercase cursor-pointer items-center justify-center top-[5px] hover:font-semibold relative mr-4  p-2 border border-transparent rounded-md hover:shadow-lg text-md tracking-wide font-semibold hover:text-white text-gray-700 bg-gradient-to-r  hover:from-blue-600 hover:to-blue-600 active:bg-blue-500">
           Log in
          </a>
 
@@ -148,8 +149,8 @@ useEffect(() => {
          onClick = {() => { 
           setRegModal(true)
           }}
-           href="#"
-           className="uppercase items-center justify-center  top-[5px] hover:font-semibold relative p-2 border border-transparent rounded-md hover:shadow-lg text-md tracking-wide font-semibold hover:text-white text-gray-700 bg-gradient-to-r  hover:from-blue-600 hover:to-blue-600 active:bg-blue-500"
+          
+           className="uppercase cursor-pointer items-center justify-center  top-[5px] hover:font-semibold relative p-2 border border-transparent rounded-md hover:shadow-lg text-md tracking-wide font-semibold hover:text-white text-gray-700 bg-gradient-to-r  hover:from-blue-600 hover:to-blue-600 active:bg-blue-500"
          >
            Sign up
          </a>

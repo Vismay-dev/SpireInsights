@@ -1,8 +1,14 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Tooltip from 'react-power-tooltip'
+import AOS from 'aos';
+import "aos/dist/aos.css";
 
 const Pricing = () => {
-
+   useEffect(() => {
+      AOS.init({
+        duration : 1000
+      });
+    }, []);
    const [showToolTip, setShowToolTip] = useState(false)
    const [showToolTip2, setShowToolTip2] = useState(false)
 
@@ -10,7 +16,7 @@ return (
 <section
    class="
    bg-gradient-to-br from-blue-50 to-indigo-50
-   pt-[74px]
+   pt-[85px]
    lg:pt-[66px]
    pb-10
    lg:pb-[50px]
@@ -38,15 +44,14 @@ return (
                   >
                   Our Pricing Plan
                </h2>
-               <p class="text-base px-3 lg:top-0 top-3 relative text-body-color">
-                  There are many variations of passages of Lorem Ipsum available
-                  but the majority have suffered alteration in some form.
+               <p class="text-base px-3 lg:top-4 lg:-mb-2 block top-3 relative text-body-color">
+                  Have a look at our subscription packages and choose what works the best for you! Join our user-base and advance your e-commerce sales to the next level.
                </p>
             </div>
          </div>
       </div>
-      <div class="flex flex-wrap justify-center lg:w-[98%] md:w-[97%] sm:w-[80%] w-[90%] mx-auto relative ">
-         <div class="w-full lg:w-1/3 md:w-1/2 md:px-4 px-1">
+      <div  class="flex flex-wrap justify-center lg:w-[98%] md:w-[97%] sm:w-[80%] w-[90%] mx-auto relative ">
+         <div data-aos="fade-up" data-aos-once='true' data-aos-delay = '400' class="w-full lg:w-1/3 md:w-1/2 md:px-4 px-1">
             <div
                class="
                bg-white
@@ -406,7 +411,7 @@ Test out our services.               </p>
                </div>
             </div>
          </div>
-         <div class="w-full lg:w-1/3 md:w-1/2 md:px-4 px-1">
+         <div data-aos="fade-up" data-aos-once='true' data-aos-delay = '200' class="w-full lg:w-1/3 md:w-1/2 md:px-4 px-1">
             <div
                class="
                bg-white
@@ -779,7 +784,7 @@ Test out our services.               </p>
          </div>
 
 
-         <div class="w-full lg:w-1/3 md:w-1/2 md:px-4 px-1">
+         <div data-aos="fade-up" data-aos-once='true' class="w-full lg:w-1/3 md:w-1/2 md:px-4 px-1">
             <div
                class="
                bg-white

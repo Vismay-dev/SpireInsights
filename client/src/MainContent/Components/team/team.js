@@ -2,9 +2,19 @@ import Vismay from './images/vismay.jpg'
 import Hunar from './images/hunar.jpg'
 import Aditya from './images/aditya.jpg'
 import Tina from './images/tina2.jpg'
+import AOS from 'aos';
+import "aos/dist/aos.css";
+
+import { useEffect } from 'react';
 
 
 const Team = () => {
+
+  useEffect(() => {
+    AOS.init({
+      duration : 1000
+    });
+  }, []);
 
     return (
         <div class = 'bg-gradient-to-br px-3 from-blue-100 to-indigo-100 h-full w-screen'>
@@ -48,7 +58,7 @@ const Team = () => {
           </p>
         </div>
         <div className="grid md:max-w-[550px] sm:max-w-full max-w-[260px] lg:max-w-[1000px] mx-auto xl:max-w-full gap-10 relative sm:grid-cols-2 lg:grid-cols-4">
-          <div>
+          <div data-aos="fade-left" data-aos-once='true' data-aos-delay = '100'>
             <div className="relative overflow-hidden transition duration-300 transform rounded-md shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
               <img
                 className="object-cover p-1.5 bg-blue-700 grayscale w-full sm:h-56 h-[250px] md:h-64 xl:h-80"
@@ -78,7 +88,7 @@ const Team = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div data-aos="fade-left" data-aos-once='true' data-aos-delay = '200'>
             <div className="relative overflow-hidden transition duration-300 transform rounded-md shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
               <img
                 className="object-cover p-1.5 bg-blue-700 grayscale w-full sm:h-56 h-[250px] md:h-64 xl:h-80"
@@ -124,7 +134,7 @@ const Team = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div data-aos="fade-left" data-aos-once='true' data-aos-delay = '300'>
             <div className="relative overflow-hidden transition duration-300 transform rounded-md shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
               <img
                 className="object-cover sm:object-center  p-1.5 bg-blue-700 grayscale w-full sm:sm:h-56 h-[250px] md:h-64 xl:h-80"
@@ -155,7 +165,7 @@ const Team = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div data-aos="fade-left" data-aos-once='true' data-aos-delay = '400'>
             <div className="relative overflow-hidden transition duration-300 transform rounded-md shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
               <img
                 className="object-cover p-1.5 bg-blue-700 grayscale w-full sm:h-56 h-[250px] md:h-64 xl:h-80"

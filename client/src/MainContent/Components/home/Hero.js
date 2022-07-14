@@ -3,18 +3,24 @@ import $ from 'jquery'
 import { useEffect, useState } from 'react';
 import img from './image.png'
 import RegModal from '../../../Modals/RegModal';
+import AOS from 'aos';
+import "aos/dist/aos.css";
 
 const Hero = () => {
 
-
+	useEffect(() => {
+        AOS.init({
+          duration : 1400
+        });
+      }, []);
 
     useEffect(()=> {
         var s = document.getElementById('c').width = document.getElementById('c').height = 400,
 		ctx = document.getElementById('c').getContext( '2d' ),
 		
 		opts = {
-			globeRadius: 150,
-			depth: 300,
+			globeRadius: 135,
+			depth: 330,
 			focalLength: 300,
 			center: s / 2,
 			
@@ -229,7 +235,7 @@ anim();
             <div class="flex flex-wrap mx-auto lg:-right-8    relative pointer-events-auto">
              
 			 
-			  <div class="w-full lg:w-6/12 lg:-mr-5 lg:ml-5 xl:mx-0 lg:-right-6 xl:right-0 2xl:-right-12  lg:top-[2px] xl:top-[-5px] relative  pointer-events-auto px-4 lg:pr-10 xl:pr-[55px] pr-4 ">
+			  <div data-aos="fade-up" data-aos-once='true' data-aos-delay ='300' class="w-full lg:w-6/12 lg:-mr-5 lg:ml-5 xl:mx-0 lg:-right-6 xl:right-0 2xl:-right-12  lg:top-[2px] xl:top-[-5px] relative  pointer-events-auto px-4 lg:pr-10 xl:pr-[55px] pr-4 ">
                 <div class="hero-content  sm:px-0 px-3 text-center top-5 xl:top-5    relative block pointer-events-auto">
                   <h1
                     class="
@@ -322,7 +328,7 @@ anim();
               </div>
 
 
-              <div class="xl:w-6/12  xl:absolute xl:right-[85px] relative  lg:w-[400px]  sm:block hidden lg:ml-[85px] lg:mr-0  xl:-ml-8 lg:top-0  -top-5 mx-auto w-[240px] lg:px-4">
+              <div data-aos="fade-up" data-aos-once='true' class="xl:w-6/12  xl:absolute xl:right-[85px] relative  lg:w-[400px]  sm:block hidden lg:ml-[85px] lg:mr-0  xl:-ml-8 lg:top-0  -top-5 mx-auto w-[240px] lg:px-4">
                 <div class="lg:text-right lg:ml-auto mx-auto block">
                   <div class="relative  lg:inline-block block lg:mx-0 mx-auto z-10 pt-11 lg:pt-0">
                    
@@ -330,7 +336,7 @@ anim();
                    <img src = {img} class = 'relative 2xl:-left-[160px] xl:-left-[140px] lg:mx-0 mx-auto lg:-left-[60px] xl:top-8 top-12'/>
        
 
-                  <canvas id='c' class = 'absolute xl:block hidden -top-[85px]  -right-[110px] rounded-bl-[70%] shadow-lg'/>
+                  <canvas id='c' class = 'absolute xl:block hidden -top-[110px]  -right-[100px] rounded-bl-[70%] shadow-lg'/>
 
 
                     <span class="absolute right-2 lg:block hidden top-[370px] z-[-1]">

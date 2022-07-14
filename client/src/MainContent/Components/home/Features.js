@@ -1,7 +1,15 @@
-const Features = () => {
+import AOS from 'aos';
+import "aos/dist/aos.css";
+import { useEffect } from 'react';
 
+const Features = () => {
+   useEffect(() => {
+      AOS.init({
+        duration : 1600
+      });
+    }, []);
     return (
-<section class="pt-[90px] lg:pt-[100px] px-16 lg:px-0 pb-[50px] lg:pb-[85px]">
+<section class="pt-[90px] lg:pt-[100px] px-16 lg:px-0 pb-[45px] lg:pb-[80px]">
    <div class="xl:container xl:px-0 sm:px-12 px-0 block mx-auto">
       <div class="flex flex-wrap -mx-4">
          <div class="w-full px-4">
@@ -29,7 +37,7 @@ const Features = () => {
       </div>
       <div class="flex flex-wrap bg-gradient-to-br from-blue-100 to-indigo-100 pt-7 sm:px-6 px-3  relative   lg:-mt-4 mt-2 lg:mb-0 mb-2 rounded-xl -mx-4">
          
-         <div class="w-full  lg:w-1/3 px-2">
+         <div data-aos="fade-up" data-aos-once='true' class="w-full  lg:w-1/3 px-2">
             <div
                class="
                sm:p-10 py-7 px-5
@@ -72,7 +80,7 @@ const Features = () => {
                </p>
             </div>
          </div>
-         <div class="w-full  md:top-0 -top-2 relative lg:w-1/3 px-2">
+         <div data-aos="fade-up" data-aos-once='true' data-aos-delay = '200' class="w-full  md:top-0 -top-2 relative lg:w-1/3 px-2">
             <div
                class="
                sm:p-10 py-7 px-5
@@ -120,7 +128,7 @@ const Features = () => {
                </p>
             </div>
          </div>
-         <div class="w-full lg:mx-0 lg:top-0 -top-3.5 relative lg:mb-0 -mb-5 mx-auto block lg:w-1/3 px-2">
+         <div data-aos="fade-up" data-aos-once='true' data-aos-delay = '400' class="w-full lg:mx-0 lg:top-0 -top-3.5 relative lg:mb-0 -mb-5 mx-auto block lg:w-1/3 px-2">
             <div
                class="
                sm:p-10 py-7 px-5
@@ -166,6 +174,8 @@ const Features = () => {
          </div>
       </div>
    </div>
+
+   <hr class = 'lg:hidden block mx-auto border-t-2 border-blue-700 border-dashed w-[95%] relative top-[60px]'/>
 </section>
     )
 }
