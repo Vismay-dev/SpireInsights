@@ -6,6 +6,11 @@ import ClipLoader from "react-spinners/ClipLoader"
 import axios from 'axios'
 import logo from '../../logo.png'
 import free from '.././free.png'
+import paid from '.././paid.png'
+
+import Countdown from 'react-countdown';
+
+
 const Profile = () => {
 
     const currentUser = useContext(userContext)
@@ -19,11 +24,43 @@ const Profile = () => {
     const [hours, setHours] = useState()
     const [days, setDays] = useState()
 
+    const [daysLeft, setDaysLeft]  = useState(0)
+    const [minutesLeft, setMinutesLeft] = useState(0)
+    const [hoursLeft, setHoursLeft] = useState(0)
+
     useEffect(()=> {
       setHours(Math.abs((new Date()) - new Date(userInfo.createdAt)) / (36*Math.pow(10,5)))
       setDays(Math.abs((new Date()) - new Date(userInfo.createdAt)) / (36*Math.pow(10,5)*24))
+   
+      const interval = setInterval(()=>{
+        if(userInfo.paid){
+          if(userInfo.subscription === 'one'){
 
-    })
+            setDaysLeft(Math.floor((24*30-(Math.abs((new Date()) - new Date(userInfo.createdAt)) / (36*Math.pow(10,5))))/24))
+            setHoursLeft(Math.floor((24*30-(Math.abs((new Date()) - new Date(userInfo.createdAt)) / (36*Math.pow(10,5))))%24))
+            setMinutesLeft(Math.floor(((24*30-(Math.abs((new Date()) - new Date(userInfo.createdAt)) / (36*Math.pow(10,5))))%24*60%60)))
+
+          }else if(userInfo.subscription === 'three'){
+
+            setDaysLeft(Math.floor((24*90-(Math.abs((new Date()) - new Date(userInfo.createdAt)) / (36*Math.pow(10,5))))/24))
+            setHoursLeft(Math.floor((24*90-(Math.abs((new Date()) - new Date(userInfo.createdAt)) / (36*Math.pow(10,5))))%24))
+            setMinutesLeft(Math.floor(((24*90-(Math.abs((new Date()) - new Date(userInfo.createdAt)) / (36*Math.pow(10,5))))%24*60%60)))
+
+          }
+        }else {
+
+          setDaysLeft(Math.floor((48-(Math.abs((new Date()) - new Date(userInfo.createdAt)) / (36*Math.pow(10,5))))/24))
+          setHoursLeft(Math.floor((48-(Math.abs((new Date()) - new Date(userInfo.createdAt)) / (36*Math.pow(10,5))))%24))
+          setMinutesLeft(Math.floor(((48-(Math.abs((new Date()) - new Date(userInfo.createdAt)) / (36*Math.pow(10,5))))%24*60%60)))
+
+        }
+      },1000)
+   
+      return () => clearInterval(interval); 
+
+    },[userInfo.createdAt])
+
+   
 
     const inputRef = useRef(null)
     const dummyRef = useRef(null)
@@ -68,7 +105,7 @@ const Profile = () => {
         })
       }
 
-
+     
     return (
 
 
@@ -245,9 +282,121 @@ const Profile = () => {
                 <img class = 'md:w-10 w-8  mr-1.5 -top-[3px] inline mx-auto relative' src = {logo}></img>
                   Your Subscription Plan</h1>
                 
-    <div class = 'h-[300px] relative top-[26px] md:left-1.5 '>
-    <h1 class = 'text-2xl font-bold text-center top-[60px] left-[4px] relative text-gray-500 underline'>Free Trial - <span class = 'text-blue-700'>{hours?48-Math.floor(hours):''} hours left!</span></h1>
-                  <img src = {free} class = 'mx-auto block mt-[86px] pb-14 left-[8px] mb-6 relative w-48'></img>
+    <div class = 'h-[378px] relative top-[26px] md:left-1.5 '>
+
+      {
+        userInfo.paid?
+        userInfo.subscription === 'one'?
+<>
+<h1 class = 'text-2xl font-bold text-center top-[60px] left-[4px] relative text-gray-500 underline'>Premium - <span class = 'text-blue-700'>1 Month Subscription</span></h1>
+
+<div class = ' w-[200px] mb-9 mt-7 left-1 top-[76px] relative block mx-auto text-center justify-center'>
+    <div class="grid  grid-flow-col mx-auto gap-5 text-center">
+  <div class="flex   flex-col">
+    <span class="countdown font-mono text-4xl">
+      <span style={{"--value":daysLeft}}>{daysLeft}</span>
+    </span>
+    days
+  </div> 
+  <div class="flex flex-col">
+    <span class="countdown font-mono text-4xl">
+      <span style={{"--value":hoursLeft}}>{hoursLeft}</span>
+    </span>
+    hours
+  </div> 
+  <div class="flex flex-col">
+    <span class="countdown font-mono text-4xl">
+      <span style={{'--value':minutesLeft}}>{minutesLeft}</span>
+    </span>
+    min
+  </div> 
+</div>
+
+</div>
+                  <img src = {paid} class = 'mx-auto block mt-[105px] pb-14 left-[8px] mb-6 relative w-32'></img>
+
+</>
+        :
+        userInfo.subscription === 'three' ?
+<>
+<h1 class = 'text-2xl font-bold text-center top-[60px] left-[4px] relative text-gray-500 underline'>Premium - <span class = 'text-blue-700'>3 Month Subscription</span></h1>
+
+<div class = ' w-[200px] mb-9 mt-7 left-1 top-[76px] relative block mx-auto text-center justify-center'>
+    <div class="grid  grid-flow-col mx-auto gap-5 text-center">
+  <div class="flex   flex-col">
+    <span class="countdown font-mono text-4xl">
+      <span style={{"--value":daysLeft}}>{daysLeft}</span>
+    </span>
+    days
+  </div> 
+  <div class="flex flex-col">
+    <span class="countdown font-mono text-4xl">
+      <span style={{"--value":hoursLeft}}>{hoursLeft}</span>
+    </span>
+    hours
+  </div> 
+  <div class="flex flex-col">
+    <span class="countdown font-mono text-4xl">
+      <span style={{'--value':minutesLeft}}>{minutesLeft}</span>
+    </span>
+    min
+  </div> 
+</div>
+
+</div>
+                  <img src = {paid} class = 'mx-auto block mt-[105px] pb-14 left-[8px] mb-6 relative w-32'></img>
+
+
+
+
+</>
+
+
+        : 
+<>
+
+</>
+
+:
+
+
+<>
+<h1 class = 'text-2xl font-bold text-center top-[60px] left-[4px] relative text-gray-500 underline'>Free Trial - <span class = 'text-blue-700'>{hours?48-Math.floor(hours):''} hours left!</span></h1>
+
+<div class = ' w-[200px] mb-9 mt-7 left-1 top-[76px] relative block mx-auto text-center justify-center'>
+    <div class="grid  grid-flow-col mx-auto gap-5 text-center">
+  <div class="flex   flex-col">
+    <span class="countdown font-mono text-4xl">
+      <span style={{"--value":daysLeft}}>{daysLeft}</span>
+    </span>
+    days
+  </div> 
+  <div class="flex flex-col">
+    <span class="countdown font-mono text-4xl">
+      <span style={{"--value":hoursLeft}}>{hoursLeft}</span>
+    </span>
+    hours
+  </div> 
+  <div class="flex flex-col">
+    <span class="countdown font-mono text-4xl">
+      <span style={{'--value':minutesLeft}}>{minutesLeft}</span>
+    </span>
+    min
+  </div> 
+</div>
+
+</div>
+                  <img src = {free} class = 'mx-auto block mt-[105px] pb-14 left-[8px] mb-6 relative w-44'></img>
+
+
+
+</>
+        
+      }
+   
+{/* <Countdown date={new Date(userInfo.createdAt) + 1000 * 3600 * 48} renderer={renderer}/> */}
+
+
     </div>
 
     </div>

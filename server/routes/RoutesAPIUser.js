@@ -510,6 +510,8 @@ router.post('/register', async(req,res)=> {
                 businessName: req.body.businessName,
                 country: req.body.country,
                 city: req.body.city,
+                paid: false,
+                subscription: 'none',
                 pipeline:{
                     current:'preparation',
                     data: {
@@ -575,7 +577,8 @@ router.post('/login', async(req,res)=> {
                 console.log('- Incorrect password')
                 res.status(401).send('Incorrect password')
             }else {
-                if(Math.abs((new Date()) - new Date(user.createdAt)) / (36*Math.pow(10,5))>48){
+
+                if(user.paid===false&&Math.abs((new Date()) - new Date(user.createdAt)) / (36*Math.pow(10,5))>48){
                     console.log('- Free Trial Expired')
                     res.status(401).send('Free Trial Expired.')
                 }

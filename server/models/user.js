@@ -13,6 +13,14 @@ const userSchema = new mongoose.Schema({
       type: String,
       required: true
     },
+    paid: {
+      type: Boolean,
+      required:true
+    },
+    subscription: {
+      type: String,
+      required:true
+    },
     password:{
       type: String,
       required: true

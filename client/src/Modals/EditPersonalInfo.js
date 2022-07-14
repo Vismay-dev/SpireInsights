@@ -401,11 +401,6 @@ axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuap
 
 
 
-<div class="col-span-6 sm:col-span-8 lg:col-span-3">
-  <label for="city" class="block text-sm font-semibold left-0.5 text-gray-700">Password</label>
-  <input type="password"   onChange = {handleChange} name="password" id="city" autocomplete="password" placeholder="" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2   shadow-md text-sm border-gray-300 rounded-md"/>
-</div>
-
  
 
 
