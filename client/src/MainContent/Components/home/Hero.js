@@ -10,7 +10,7 @@ const Hero = () => {
 
 	useEffect(() => {
         AOS.init({
-          duration : 1400
+          duration : 1600
         });
       }, []);
 
