@@ -37,7 +37,7 @@ const About = () => {
                <h2 class="font-bold text-3xl sm:text-4xl sm:px-4 px-8 text-dark mb-8">
                  Improve Online Sales & Join the E-Commerce Frontier
                </h2>
-               <p class="text-base text-body-color mb-8 sm:px-4 px-8">
+               <p class="text-base text-body-color mb-[26px] sm:px-4 px-8">
                   It is a long established fact that e-commerce drives a company's sales up by 30-40%. Sellers
                   in the Middle East are unable to implement such an increase, as otherwise seen in the West.
                   <br/><br/>We provide sellers with the tools necessary to perform well in online market-places such as Amazon.
