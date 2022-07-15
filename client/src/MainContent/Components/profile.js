@@ -123,8 +123,8 @@ const Profile = () => {
             <h1 class = 'relative mx-auto -mt-[75px] px-4 text-center md:text-[53px] text-[49px] font-semibold'><span class = 'text-blue-600'>Your</span> Profile</h1>
             <div class="relative xl:-mt-[52px] lg:-mt-[20px] md:mt-[0px] sm:mt-[15px] mt-[75px] -mb-60  max-h-80">
       <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-          <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
+        <g stroke="none" stroke-width="1" fill="none" fillRule="evenodd">
+          <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fillRule="nonzero">
             <path d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496" opacity="0.100000001"></path>
             <path
               d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"
@@ -409,8 +409,8 @@ const Profile = () => {
 
         <div class="relative -mt-6 max-h-96  lg:mt-5">
       <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-          <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
+        <g stroke="none" stroke-width="1" fill="none" fillRule="evenodd">
+          <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fillRule="nonzero">
             <path d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496" opacity="0.100000001"></path>
             <path
               d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"

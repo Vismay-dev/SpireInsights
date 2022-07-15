@@ -227,22 +227,22 @@ Read Reviews
 
                         <h1 class = 'font-normal sm:px-10 px-6 text-[16px] pt-1 pb-1.5 mt-1 xl:pl-16  xl:text-left text-center'>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 relative mr-1 inline bottom-[1px]" viewBox="0 0 20 20" fill="currentColor">
-  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
 </svg>
                            Appeared in <strong>Rank #1</strong> in <strong>{props.analysis.productAnalysis.pos_1}</strong> Search Result Page{props.analysis.productAnalysis.pos_1===1?'':'s'} (SERPS).</h1>
                         <h1 class = 'font-normal text-[16px] sm:px-10 px-6 pb-1.5 xl:pl-16  xl:text-left text-center'>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 relative mr-1 inline bottom-[1px]" viewBox="0 0 20 20" fill="currentColor">
-  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
 </svg>
                            Appeared in <strong>Ranks #2-3</strong> in <strong>{props.analysis.productAnalysis.pos_2_3}</strong> Search Result Page{props.analysis.productAnalysis.pos_2_3===1?'':'s'} (SERPS).</h1>
                         <h1 class = 'font-normal text-[16px] sm:px-10 px-6 pb-1.5 xl:pl-16  xl:text-left text-center'>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 relative mr-1 inline bottom-[1px]" viewBox="0 0 20 20" fill="currentColor">
-  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
 </svg>
                            Appeared in <strong>Ranks #4-10</strong> in <strong>{props.analysis.productAnalysis.pos_4_10}</strong> Search Result Page{props.analysis.productAnalysis.pos_4_10===1?'':'s'} (SERPS).</h1>
                         <h1 class = 'font-normal text-[16px] sm:px-10 px-6 pb-1.5 xl:pl-16  xl:text-left text-center'>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 relative mr-1 inline bottom-[1px]" viewBox="0 0 20 20" fill="currentColor">
-  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
 </svg>
                            Appeared in <strong>Ranks #11-100</strong> in <strong>{props.analysis.productAnalysis.pos_11_100}</strong> Search Result Page{props.analysis.productAnalysis.pos_11_100===1?'':'s'} (SERPS).</h1>
 
@@ -368,22 +368,22 @@ Read Reviews
 
                         <h1 class = 'font-normal sm:px-10 px-6 text-[16px] pt-1 pb-1.5 mt-1 xl:pl-16  xl:text-left text-center'>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 relative mr-1 inline bottom-[1px]" viewBox="0 0 20 20" fill="currentColor">
-  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
 </svg>
                            Appeared in <strong>Rank #1</strong> in <strong>{elem.pos_1}</strong> Search Result Page{elem.pos_1===1?'':'s'} (SERPS).</h1>
                         <h1 class = 'font-normal text-[16px] sm:px-10 px-6 pb-1.5 xl:pl-16  xl:text-left text-center'>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 relative mr-1 inline bottom-[1px]" viewBox="0 0 20 20" fill="currentColor">
-  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
 </svg>
                            Appeared in <strong>Ranks #2-3</strong> in <strong>{elem.pos_2_3}</strong> Search Result Page{elem.pos_2_3===1?'':'s'} (SERPS).</h1>
                         <h1 class = 'font-normal text-[16px] sm:px-10 px-6 pb-1.5 xl:pl-16  xl:text-left text-center'>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 relative mr-1 inline bottom-[1px]" viewBox="0 0 20 20" fill="currentColor">
-  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
 </svg>
                            Appeared in <strong>Ranks #4-10</strong> in <strong>{elem.pos_4_10}</strong> Search Result Page{elem.pos_4_10===1?'':'s'} (SERPS).</h1>
                         <h1 class = 'font-normal text-[16px] sm:px-10 px-6 pb-1.5 xl:pl-16  xl:text-left text-center'>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 relative mr-1 inline bottom-[1px]" viewBox="0 0 20 20" fill="currentColor">
-  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
 </svg>
                            Appeared in <strong>Ranks #11-100</strong> in <strong>{elem.pos_11_100}</strong> Search Result Page{elem.pos_11_100===1?'':'s'} (SERPS).</h1>
 
