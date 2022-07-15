@@ -29,7 +29,7 @@ return (
       <div class="flex flex-wrap -mx-4">
          <div class="w-full px-4">
             <div class="text-center mx-auto lg:bottom-0 bottom-4 relative mb-[60px] lg:mb-20 max-w-[510px]">
-               <span class="font-semibold text-lg text-primary mb-2 block">
+               <span class="font-semibold relative bottom-2 text-lg text-primary mb-2 block">
                Pricing Table
                </span>
                <h2
@@ -40,6 +40,8 @@ return (
                   md:text-[40px]
                   text-dark
                   mb-4
+                  relative
+                  bottom-2
                   "
                   >
                   Our Pricing Plan
