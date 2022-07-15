@@ -69,7 +69,7 @@ useEffect(
 
 useEffect(() => {
   AOS.init({
-    duration : 400
+    duration : 300
   });
 }, []);
 
