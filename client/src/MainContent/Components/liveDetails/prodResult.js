@@ -63,10 +63,10 @@ return (<>
             
             <h1 class = 'mx-auto block font-bold underline text-4xl sm:my-6 sm:mb-6 my-6 mb-9 sm:col-span-3 col-span-2'>Select Category</h1>
             {
-            props.analysis.map(elem=> {
+            props.analysis.map((elem,i)=> {
 
                return(
-               <div onClick={()=> {
+               <div key = {i} onClick={()=> {
                   setCategory(elem.category.toLowerCase())
                }} class = 'bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-400 hover:to-blue-400 pt-2 sm:h-52 h-[168px] col-span-1 rounded-md shadow-sm hover:shadow-lg cursor-pointer'>
                  

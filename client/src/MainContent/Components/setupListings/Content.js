@@ -531,6 +531,7 @@ const ContentSetup = (props)=> {
          onClick= {()=>{
             if(userCon.user && userCon.user.pipeline && userCon.user.pipeline.current !== 'preparation'){
                saveAllDetailsPrep()
+               props.changeSeg(3)
             }
             }}
          class={`
@@ -1504,6 +1505,7 @@ currentPlatform==='Amazon'?
     <a onClick={()=> {
        if(userCon.user && userCon.user.pipeline && userCon.user.pipeline.current !== 'seo'){
          saveAllDetailsKeyWords()
+         props.changeSeg(4)
       }
     }} class={`
     lg:py-2 py-2.5

@@ -23,7 +23,6 @@ const TopProdResult = (props) => {
    const [avgDemandState, setAvgDemandState] = useState(0)
    const [avgSupplyState, setAvgSupplyState] = useState(0)
    const [keyWordsNum, setKeyWordsNum] = useState(0)
-   console.log(props.analysis)
       const data = useMemo(
          
          () =>
@@ -147,7 +146,7 @@ return (<>
             <div class = {`${Object.keys(props.analysis.productAnalysis).length===0?'hidden':'lg:flex block'} lg:mb-1 mb-5 xl:container mx-auto xl:right-[39px] xl:px-0 px-7 xl:gap-x-0 gap-x-7  relative -top-2`}>
                <div class = 'lg:w-1/2 md:w-[80%] sm:w-[90%] w-[96%] block mx-auto mt-[30px] xl:top-0 lg:top-[20px] relative'>
     <div class="flex flex-col items-center justify-center h-fit xl:max-w-[500px] max-w-[700px] left-2 mx-auto">
-        <div class="w-full h-72 bg-gray-800 border-2 border-blue-700 bg-no-repeat bg-center  ring-2 ring-blue-700 ring-offset-2 ring-offset-indigo-200 bg-contain rounded-lg shadow-md" style={{'background-image': `url(${props.analysis.productAnalysis.image})`}}></div>
+        <div class="w-full h-72 bg-gray-800 border-2 border-blue-700 bg-no-repeat bg-center  ring-2 ring-blue-700 ring-offset-2 ring-offset-indigo-200 bg-contain rounded-lg shadow-md" style={{'backgroundImage': `url(${props.analysis.productAnalysis.image})`}}></div>
 
         <div class=" -mt-10 overflow-hidden  rounded-lg shadow-lg sm:w-[293px] w-[260px] top-[3px] relative bg-gray-800">
             <h3 class="py-2 pb-1 font-bold truncate px-3 tracking-wide text-center  uppercase text-white">{props.analysis.productAnalysis.title}</h3>
@@ -278,8 +277,7 @@ Read Reviews
 {
    props.analysis.competitorData.map((elem,i)=> {
       return (
-         <>
-         <div class = ' bottom-10 -top-9 relative mb-4'>
+         <div key = {i} class = ' bottom-10 -top-9 relative mb-4'>
          <h3 class = 'text-3xl text-center font-bold relative '>Competitive <strong class = 'text-blue-700'>Product</strong> <strong class = 'text-4xl'>#{i+1}</strong></h3>
          <h2 class = 'text-xl mt-1 font-semibold underline text-center'>ASIN ID: {elem.ASIN}</h2>
          
@@ -289,7 +287,7 @@ Read Reviews
              
          <div class = 'lg:w-1/2 md:w-[80%] sm:w-[90%] w-[96%] block mx-auto mt-[30px] xl:top-0 lg:top-[20px] relative'>
     <div class="flex flex-col items-center justify-center h-fit xl:max-w-[500px] max-w-[700px] left-2 mx-auto">
-        <div class="w-full h-72 bg-gray-800 border-2 border-blue-700 bg-no-repeat bg-center  ring-2 ring-blue-700 ring-offset-2 ring-offset-indigo-200 bg-contain rounded-lg shadow-md" style={{'background-image': `url(${elem.image})`}}></div>
+        <div class="w-full h-72 bg-gray-800 border-2 border-blue-700 bg-no-repeat bg-center  ring-2 ring-blue-700 ring-offset-2 ring-offset-indigo-200 bg-contain rounded-lg shadow-md" style={{'backgroundimage': `url(${elem.image})`}}></div>
 
         <div class=" -mt-10 overflow-hidden  rounded-lg shadow-lg sm:w-[293px] w-[260px] top-[3px] relative bg-gray-800">
             <h3 class="py-2 pb-1 font-bold truncate px-3 tracking-wide text-center  uppercase text-white">{elem.title}</h3>
@@ -414,7 +412,6 @@ Read Reviews
 }
 
          </div>
-         </>
 
       )
    })
@@ -541,7 +538,7 @@ Read Reviews
                             props.analysis.topKeyWords.words.map((word,i)=> {
                                 if(i<4){
                                 return (
-                                    <li class="flex text-base text-center text-body-color md:mb-8 mb-12 relative  xl:mb-4">
+                                    <li key = {i} class="flex text-base text-center text-body-color md:mb-8 mb-12 relative  xl:mb-4">
       <span class="
          bg-blue-700
          text-white
@@ -575,7 +572,7 @@ Read Reviews
                             props.analysis.topKeyWords.words.map((word,i)=> {
                                 if(i>=4){
                                 return (
-                                    <li class="flex text-base text-center text-body-color md:mb-8 mb-14 lg:top-2 xl:top-0 top-10 relative xl:mb-4">
+                                    <li key = {i} class="flex text-base text-center text-body-color md:mb-8 mb-14 lg:top-2 xl:top-0 top-10 relative xl:mb-4">
       <span class="
          bg-blue-700
          text-white
