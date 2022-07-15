@@ -287,7 +287,7 @@ Read Reviews
              
          <div class = 'lg:w-1/2 md:w-[80%] sm:w-[90%] w-[96%] block mx-auto mt-[30px] xl:top-0 lg:top-[20px] relative'>
     <div class="flex flex-col items-center justify-center h-fit xl:max-w-[500px] max-w-[700px] left-2 mx-auto">
-        <div class="w-full h-72 bg-gray-800 border-2 border-blue-700 bg-no-repeat bg-center  ring-2 ring-blue-700 ring-offset-2 ring-offset-indigo-200 bg-contain rounded-lg shadow-md" style={{'backgroundimage': `url(${elem.image})`}}></div>
+        <div class="w-full h-72 bg-gray-800 border-2 border-blue-700 bg-no-repeat bg-center  ring-2 ring-blue-700 ring-offset-2 ring-offset-indigo-200 bg-contain rounded-lg shadow-md" style={{'backgroundImage': `url(${elem.image})`}}></div>
 
         <div class=" -mt-10 overflow-hidden  rounded-lg shadow-lg sm:w-[293px] w-[260px] top-[3px] relative bg-gray-800">
             <h3 class="py-2 pb-1 font-bold truncate px-3 tracking-wide text-center  uppercase text-white">{elem.title}</h3>

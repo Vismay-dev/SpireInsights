@@ -8,8 +8,6 @@ import logo from '../../logo.png'
 import free from '.././free.png'
 import paid from '.././paid.png'
 
-import Countdown from 'react-countdown';
-
 
 const Profile = () => {
 
