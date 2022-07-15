@@ -26,7 +26,11 @@ const MainContent = () => {
     return (
         <>
             <Routes>
+
+
             <Route path="/:url*(/+)" element = {<Navigate to = {location.pathname.slice(0, -1)} replace={true}/>} />
+
+
 <Route  path = '/optimiseListings' element={sessionStorage.getItem('token')!==null?<OptimiseListings/>:<Navigate to = '/home'/>}>
 </Route>
 
