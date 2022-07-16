@@ -29,13 +29,13 @@ const Features = () => {
                   >
                   What We Offer
                </h2>
-               <p class="text-base lg:top-0 top-3 relative text-body-color">
+               <p class="text-base lg:top-3 top-3 relative text-body-color">
                   Our features & services are oriented around the objective of helping businesses thrive and compete in online marketplaces without having to conduct their own market research or undergo technical training for setting up listings.
                </p>
             </div>
          </div>
       </div>
-      <div class="flex flex-wrap bg-gradient-to-br from-blue-100 to-indigo-100 pt-7 sm:px-6 px-3  relative   lg:-mt-4 mt-2 lg:mb-0 mb-2 rounded-xl -mx-4">
+      <div class="flex flex-wrap bg-gradient-to-br from-blue-100 to-indigo-100 pt-7 sm:px-6 px-3  relative   lg:-mt-1 mt-2 lg:mb-0 mb-2 rounded-xl -mx-4">
          
          <div data-aos="fade-up" data-aos-once='true' class="w-full  lg:w-1/3 px-2">
             <div
