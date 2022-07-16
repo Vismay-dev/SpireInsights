@@ -29,7 +29,7 @@ const Features = () => {
                   >
                   What We Offer
                </h2>
-               <p class="text-base lg:top-3 top-3 relative text-body-color">
+               <p class="text-base lg:top-5 top-3 relative text-body-color">
                   Our features & services are oriented around the objective of helping businesses thrive and compete in online marketplaces without having to conduct their own market research or undergo technical training for setting up listings.
                </p>
             </div>
