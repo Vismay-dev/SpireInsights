@@ -9,7 +9,7 @@ const Features = () => {
       });
     }, []);
     return (
-<section class="pt-[90px] lg:pt-[100px] px-16 lg:px-0 pb-[45px] lg:pb-[80px]">
+<section class="pt-[90px] lg:pt-[100px] px-16 lg:px-0 pb-[45px] lg:pb-[60px]">
    <div class="xl:container xl:px-0 sm:px-12 px-0 block mx-auto">
       <div class="flex flex-wrap -mx-4">
          <div class="w-full px-4">
