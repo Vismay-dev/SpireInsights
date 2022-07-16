@@ -17,7 +17,7 @@ const About = () => {
     return (
 <section class="pt-20 lg:pt-[100px] mx-auto block pb-8 lg:pb-[0px] xl:pb-[26px] 2xl:pb-[90px] overflow-hidden">
     <hr class = 'border-t-2 border-blue-700 border-dashed w-[95%] lg:-mt-4 -mt-5  mx-auto block relative lg:bottom-16 bottom-24'/>
-   <div class="container lg:-mt-1 mx-auto block">
+   <div class="container lg:mt-2 mx-auto block">
       <div class="flex flex-wrap justify-between items-center -mx-4">
          <div data-aos="fade-up" data-aos-once='true' class="w-full xl:right-6 right-10 top-7 relative lg:w-[50%] lg:px-20 px-32">
             <div class="flex items-center -mx-3 sm:-mx-4">
