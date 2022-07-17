@@ -44,7 +44,7 @@ const About = () => {
                   <strong> Build, Manage & Optimize with Spire Insights.</strong>
                </p>
                <p class="text-base text-body-color mb-12 sm:px-4 px-8">
-                  Such services, when provided via a consultancy model, drives e-commerce costs drastically high. With Spire, you have a bird's eye view over aggregated data regarding online markets.<br/><br/> Supported by streamlined listing set-up & management - supplemented by algortihmized market research - dominate your product category on the marketplace of your choice. <i>(Amazon)</i>
+                  Such services, when provided via a consultancy model, drives e-commerce costs drastically high. With Spire, you have a bird's eye view over aggregated data from online markets- all at a minimal cost.<br/><br/> Supported by streamlined listing set-up & management - supplemented by algortihmized market research - dominate your product category on the marketplace of your choice. <i>(Amazon)</i>
                </p>
                <a
                   href="javascript:void(0)"
