@@ -28,6 +28,7 @@ const upload = multer({ storage: fileStorageEngine })
 
 
 router.post('/sendUserQuery',(req,res)=> {
+    try{
     async function sendMail(){
     try {
       
@@ -220,13 +221,15 @@ Your Message: '${req.body.message}'<br/><br/>
         console.log(err)
         res.status(400).send(err)
     })
-    
+}catch(err){
+    console.log(err)
+    res.status(400).send(err)
+}
 })
 
 
 router.post('/mostWished',auth,(req,res)=> {
-    console.log('\nPlatform: ' + req.body.platform)
-
+try{
     if(req.body.platform==='Amazon'){
         amazonWished('ae').then(analysis=> {
             res.send(analysis)
@@ -235,12 +238,14 @@ router.post('/mostWished',auth,(req,res)=> {
         // noon(req.body.sentence,'uae-en')
         // res.send({})
     }
-
+}catch(err){
+    console.log(err)
+    res.status(400).send(err)
+}
 })
 
 router.post('/bestSellers',auth,(req,res)=> {
-    console.log('\nPlatform: ' + req.body.platform)
-
+try{
     if(req.body.platform==='Amazon'){
         amazonBest('ae').then(analysis=> {
             res.send(analysis)
@@ -249,12 +254,14 @@ router.post('/bestSellers',auth,(req,res)=> {
         // noon(req.body.sentence,'uae-en')
         // res.send({})
     }
-
+}catch(err){
+    console.log(err)
+    res.status(400).send(err)
+}
 })
 
 router.post('/newProductEntries',auth,(req,res)=> {
-    console.log('\nPlatform: ' + req.body.platform)
-
+    try{
     if(req.body.platform==='Amazon'){
         amazonNew('ae').then(analysis=> {
             res.send(analysis)
@@ -263,11 +270,15 @@ router.post('/newProductEntries',auth,(req,res)=> {
         // noon(req.body.sentence,'uae-en')
         // res.send({})
     }
+}catch(err){
+    console.log(err)
+    res.status(400).send(err)
+}
 
 })
 
 router.post('/topProductAnalysis',auth,(req,res)=> {
-    console.log('\nPlatform: ' + req.body.platform)
+    try{
     if(req.body.platform==='Amazon'){
         amazonTop(req.body.sentence.toLowerCase(),'ae').then(analysis=> {
             res.send(analysis)
@@ -276,6 +287,10 @@ router.post('/topProductAnalysis',auth,(req,res)=> {
         noon(req.body.sentence,'uae-en')
         res.send({})
     }
+}catch(err){
+    console.log(err)
+    res.status(400).send(err)
+}
 })
 
 router.post('/marketPlaceOverview',auth, async(req,res)=> {
@@ -495,7 +510,6 @@ res.send({
 })
 
 router.post('/register', async(req,res)=> {
-    console.log(req.body)
     try {
         let hash = await bcrypt.hash(req.body.password.trim(), 10)
         let existingUser = await User.findOne({email: req.body.email.trim()})
@@ -741,6 +755,7 @@ router.post('/saveCurrentPipeline', auth, async(req,res)=> {
 })
 
 router.post('/uploadPic',upload.single('image'),async(req,res)=> {
+    try{
     const decoded = jwt.verify(req.body.token, process.env.TOKEN_SECRET);
     let id = decoded._id;
     
@@ -754,9 +769,14 @@ router.post('/uploadPic',upload.single('image'),async(req,res)=> {
     }).catch(err=> console.log(err.response))
    
     res.send(fileUrl);
+}catch(err){
+    console.log(err)
+    res.status(400).send(err)
+}
 })
 
 router.post('/uploadProfPic',upload.single('image'),async(req,res)=> {
+    try{
     const decoded = jwt.verify(req.body.token, process.env.TOKEN_SECRET);
     let id = decoded._id;
     const user = await User.findOne({userId:id})
@@ -772,6 +792,10 @@ router.post('/uploadProfPic',upload.single('image'),async(req,res)=> {
     console.log(fileUrl)
         let userUpdated = await User.findOneAndUpdate({_id:id}, {profilePic : fileUrl}).catch(err=> console.log(err))
     res.send(fileUrl);
+}catch(err){
+    console.log(err)
+    res.status(400).send(err)
+}
 })
 
 
