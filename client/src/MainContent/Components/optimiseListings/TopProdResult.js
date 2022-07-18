@@ -262,7 +262,7 @@ Read Reviews
 
 <hr class = 'border-b-2 border-dotted border-blue-700 w-[80%] mx-auto block my-14 mb-[92px] mt-14'/>
 
-<h1 class = 'text-4xl text-center bottom-12 font-bold relative underline'>Direct Competition</h1>
+<h1 class = 'text-4xl text-center bottom-12 font-bold relative underline'>Direct Competition (Substitutes)</h1>
                 <h3 class = 'text-xl text-center bottom-10 mb-7 font-semibold relative '>View Immediate Alternatives/Substitutes for Entered ASIN ID</h3>
 
 
@@ -282,7 +282,7 @@ Read Reviews
    props.analysis.competitorData.map((elem,i)=> {
       return (
          <div key = {i} class = ' bottom-10 -top-9 relative mb-4'>
-         <h3 class = 'text-3xl text-center font-bold relative '>Competitive <strong class = 'text-blue-700'>Product</strong> <strong class = 'text-4xl'>#{i+1}</strong></h3>
+         <h3 class = 'text-3xl text-center font-bold relative '>Substitute <strong class = 'text-blue-700'>Product</strong> <strong class = 'text-4xl'>#{i+1}</strong></h3>
          <h2 class = 'text-xl mt-1 font-semibold underline text-center'>ASIN ID: {elem.ASIN}</h2>
          
          <div class = 'lg:flex block lg:mb-1 xl:container mx-auto xl:right-[39px] xl:px-0 px-7 xl:gap-x-0 gap-x-7 lg:mt-14 mt-16 mb-[10px] pb-[58px]  relative -top-2'>
