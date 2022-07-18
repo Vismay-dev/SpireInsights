@@ -32,7 +32,6 @@ const fetchResults2 = async (sentence,domain) => {
     fword = words.shift()
     let url = `https://www.amazon.${domain}/s?k=` + String(fword) + String(words.length>0?'+'+words.join('+'):'')
     let response = await axios.get(url).catch(async(err)=>{
-        console.log(err.response.data)
             let result = await fetchResults2(sentence,domain)  
             return result 
     });
