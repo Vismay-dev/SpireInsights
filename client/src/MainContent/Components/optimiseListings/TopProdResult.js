@@ -130,7 +130,7 @@ return (<>
       :
         props.analysis?
         props.operation === 'track-product'?
-        <section class="pt-[86px] lg:pt-[77px] -mb-5 pb-10 lg:pb-20 bg-[#F3F4F6]">
+        <section class="pt-[86px] lg:pt-[77px] -mb-5 pb-10 lg:pb-[68px] bg-[#F3F4F6]">
            <h1 class = 'text-4xl text-center bottom-12 font-bold relative underline'>Overview</h1>
                 <h3 class = 'text-xl text-center bottom-8 lg:mb-4 mb-2 font-semibold relative '>Entered ID = {props.keyword&&props.keyword.toUpperCase()}</h3>
 
@@ -260,7 +260,7 @@ Read Reviews
             <TableRanked data = {props.analysis.rankedKeywords}></TableRanked>
 
 
-<hr class = 'border-b-2 border-dotted border-blue-700 w-[80%] mx-auto block my-14 mb-[92px] mt-14'/>
+<hr class = 'border-b-2 border-dotted border-blue-700 w-[80%] mx-auto block my-14 mb-[92px] lg:mt-14 mt-10'/>
 
 <h1 class = 'text-4xl text-center bottom-12 font-bold relative underline'>Direct Competition (Substitutes)</h1>
                 <h3 class = 'text-xl text-center bottom-10 mb-7 font-semibold relative '>View Immediate Alternatives/Substitutes for Entered ASIN ID</h3>
@@ -283,9 +283,9 @@ Read Reviews
       return (
          <div key = {i} class = ' bottom-10 -top-9 relative mb-4'>
          <h3 class = 'text-3xl text-center font-bold relative '>Substitute <strong class = 'text-blue-700'>Product</strong> <strong class = 'text-4xl'>#{i+1}</strong></h3>
-         <h2 class = 'text-xl mt-1 font-semibold underline text-center'>ASIN ID: {elem.ASIN}</h2>
+         <h2 class = 'text-xl mt-1 top-[7px] relative font-semibold underline text-center'>ASIN ID: {elem.ASIN}</h2>
          
-         <div class = 'lg:flex block lg:mb-1 xl:container mx-auto xl:right-[39px] xl:px-0 px-7 xl:gap-x-0 gap-x-7 lg:mt-14 mt-16 mb-[10px] pb-[58px]  relative -top-2'>
+         <div class = 'lg:flex block lg:mb-1 xl:container mx-auto xl:right-[39px] xl:px-0 px-7 xl:gap-x-0 gap-x-7 lg:mt-[58px] mt-16 mb-[10px] pb-[58px]  relative -top-2'>
              
              
              
@@ -412,7 +412,7 @@ Read Reviews
 
 {
    i===props.analysis.competitorData.length-1?'':
-   <hr class = 'border-b-2 w-[600px] relative bottom-8 mt-2 mb-4 border-dashed block mx-auto border-blue-700'/>
+   <hr class = 'border-b-2 w-[600px] relative bottom-8 mt-4 mb-4 border-dashed block mx-auto border-blue-700'/>
 }
 
          </div>
@@ -425,7 +425,7 @@ Read Reviews
          </section>
         :
         props.operation === 'top-prod'?
-        <section class="pt-16 lg:pt-[80px] -mb-5 pb-10 lg:pb-20 bg-[#F3F4F6]">
+        <section class="pt-16 lg:pt-[80px] -mb-5 pb-10 lg:pb-[72px] bg-[#F3F4F6]">
             
              <div class="container mx-auto px-3">
                 <h1 class = 'sm:text-4xl text-3xl px-2 mt-3 lg:mt-0 text-center bottom-12 font-bold relative underline'>Overview - {props.keyword&&props.keyword.split(' ').map(str=>{return (str.charAt(0).toUpperCase() + str.slice(1))}).join(' ')}</h1>
