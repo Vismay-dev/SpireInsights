@@ -8,6 +8,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import logo from '../../../logo.png'
 import ReactSvgPieChart from "react-svg-piechart"
 import { Chart } from 'react-charts'
+import TableRanked from './TableRanked'
 
 import Reviews from '../../../Modals/Reviews'
 
@@ -131,7 +132,7 @@ return (<>
         props.operation === 'track-product'?
         <section class="pt-[86px] lg:pt-[77px] -mb-5 pb-10 lg:pb-20 bg-[#F3F4F6]">
            <h1 class = 'text-4xl text-center bottom-12 font-bold relative underline'>Overview</h1>
-                <h3 class = 'text-xl text-center bottom-10 lg:mb-4 mb-2 font-semibold relative '>Entered ID = {props.keyword&&props.keyword.toUpperCase()}</h3>
+                <h3 class = 'text-xl text-center bottom-8 lg:mb-4 mb-2 font-semibold relative '>Entered ID = {props.keyword&&props.keyword.toUpperCase()}</h3>
 
 
             
@@ -254,6 +255,9 @@ Read Reviews
 
 
             </div>
+
+
+            <TableRanked data = {props.analysis.rankedKeywords}></TableRanked>
 
 
 <hr class = 'border-b-2 border-dotted border-blue-700 w-[80%] mx-auto block my-14 mb-[92px] mt-14'/>
@@ -429,31 +433,31 @@ Read Reviews
 
              <div class="flex flex-wrap bg-gradient-to-tr from-blue-100 to-indigo-200 sm:p-5 px-1 xl:pt-6 pt-3 xl:pb-5 pb-2 mb-16 shadow-lg mx-auto">             
              {
-   (props.analysis)===null? 
+   (props.analysis.analysis)===null||props.analysis===null? 
 <h1 class = 'text-2xl text-center block pb-[70px] mx-auto font-semibold left-2 mt-[50px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
 </svg> Unable to Fetch Results..</h1>
    :''
 }
 
-  <div class = {`w-full ${(props.analysis)===null?'hidden':'block'} py-4   md:w-full xl:w-1/2 px-2`}>
+  <div class = {`w-full ${(props.analysis.analysis)===null?'hidden':'block'} py-4   md:w-full xl:w-1/2 px-2`}>
                 <div class="bg-white shadow-sm   p-2 py-3 pt-2 h-full flex rounded-lg overflow-hidden mb-1">
                 <div class = 'w-[200px] md:right-0 right-3.5 xl:block lg:hidden sm:block hidden top-1.5 relative '><GaugeChart id="gauge-chart2" 
   nrOfLevels={5} 
-  percent={(props.analysis.avgCompetitiveRating/5.0)} 
+  percent={(props.analysis.analysis.avgCompetitiveRating/5.0)} 
   arcWidth={0.2}
 /></div>
-<div class = 'xl:ml-2.5 xl:mr-5 mx-auto xl:top-[5px] top-[4px] xl:mb-0 mb-6 mt-1 relative xl:text-left lg:text-center sm:text-left text-center font-semibold md:right-0 sm:right-3.5'> <h1 class = ' relative inline underline '><FcRatings class = 'mr-[6px] inline text-2xl bottom-[1px] relative'/>Average Competitive Rating:</h1> <span class = 'text-2xl top-[2px] left-[6px] relative inline font-bold mr-2.5 text-blue-700'>{props.analysis.avgCompetitiveRating}</span>/5<br/>
-<h1 class = 'mt-4 top-[9px] relative inline xl:text-left lg:text-center sm:text-left text-center underline '><SiMarketo class = 'mr-[6px] inline text-2xl bottom-[1px] relative'/>Evaluation:</h1> <span class = {`${props.analysis.avgCompetitiveRating>=4.5||props.analysis.avgCompetitiveRating<2?'text-lg left-[1px] mr-0.5 top-[10px]':'text-xl left-[6px] top-[10px] mr-1.5 relative'}   relative inline font-bold  text-blue-700`}>{props.analysis.avgCompetitiveRating>=4.5?'Very Strong':props.analysis.avgCompetitiveRating>3.5?'Strong':props.analysis.avgCompetitiveRating>3?'Moderate':props.analysis.avgCompetitiveRating>2?'Poor':'Very Poor'}</span><span class = 'relative top-[9px]'> {props.analysis.avgCompetitiveRating>4.5||props.analysis.avgCompetitiveRating<2?'C':'c'}ompetition</span>
+<div class = 'xl:ml-2.5 xl:mr-5 mx-auto xl:top-[5px] top-[4px] xl:mb-0 mb-6 mt-1 relative xl:text-left lg:text-center sm:text-left text-center font-semibold md:right-0 sm:right-3.5'> <h1 class = ' relative inline underline '><FcRatings class = 'mr-[6px] inline text-2xl bottom-[1px] relative'/>Average Competitive Rating:</h1> <span class = 'text-2xl top-[2px] left-[6px] relative inline font-bold mr-2.5 text-blue-700'>{props.analysis.analysis.avgCompetitiveRating}</span>/5<br/>
+<h1 class = 'mt-4 top-[9px] relative inline xl:text-left lg:text-center sm:text-left text-center underline '><SiMarketo class = 'mr-[6px] inline text-2xl bottom-[1px] relative'/>Evaluation:</h1> <span class = {`${props.analysis.analysis.avgCompetitiveRating>=4.5||props.analysis.analysis.avgCompetitiveRating<2?'text-lg left-[1px] mr-0.5 top-[10px]':'text-xl left-[6px] top-[10px] mr-1.5 relative'}   relative inline font-bold  text-blue-700`}>{props.analysis.analysis.avgCompetitiveRating>=4.5?'Very Strong':props.analysis.analysis.avgCompetitiveRating>3.5?'Strong':props.analysis.analysis.avgCompetitiveRating>3?'Moderate':props.analysis.analysis.avgCompetitiveRating>2?'Poor':'Very Poor'}</span><span class = 'relative top-[9px]'> {props.analysis.analysis.avgCompetitiveRating>4.5||props.analysis.analysis.avgCompetitiveRating<2?'C':'c'}ompetition</span>
 </div>
                 </div>
                 </div>
                 
-                <div class = {`w-full py-4 ${(props.analysis)===null?'hidden':'block'} md:w-full  xl:w-1/2 px-4`}>
+                <div class = {`w-full py-4 ${(props.analysis.analysis)===null?'hidden':'block'} md:w-full  xl:w-1/2 px-4`}>
                     <div class="bg-white flex shadow-sm xl:pb-2 lg:pb-[53px] sm:pb-9 pb-12 xl:mx-0 mx-auto h-full xl:text-left lg:text-center sm:text-left text-center rounded-lg overflow-hidden mb-1">
                     <IoPricetags class = 'text-blue-700 xl:block lg:hidden sm:block hidden  relative text-7xl top-6 left-14'/>
                     <div class = 'xl:ml-[104px] xl:mr-7 md:left-0 sm:left-3 mx-auto md:top-[22px] top-[22px] relative font-semibold'> <h1 class = ' relative inline underline text-xl'><FcMoneyTransfer class = 'mr-[8px] inline text-2xl bottom-[0px] relative sm:uppercase'/>Average Pricing Range:</h1> <br/>
- <span class = {` relative text-center sm:text-2xl text-xl top-[8px] left-5 mx-auto inline font-bold mr-2.5 text-blue-700`}>AED {props.analysis&&props.analysis.averagePricingRange.low} - {props.analysis&&props.analysis.averagePricingRange.high}</span>
+ <span class = {` relative text-center sm:text-2xl text-xl top-[8px] left-5 mx-auto inline font-bold mr-2.5 text-blue-700`}>AED {props.analysis&&props.analysis.analysis&&props.analysis.analysis.averagePricingRange.low} - {props.analysis&&props.analysis.analysis&&props.analysis.analysis.averagePricingRange.high}</span>
 </div>
                 </div>
                 </div>
@@ -464,8 +468,11 @@ Read Reviews
             <hr class = 'w-[95%] left-[2.5%] border-b-blue-700 border-b-2 bottom-8 relative border-dotted'/>
 <h1 class = 'xl:text-4xl text-3xl px-2 text-center bottom-6 mt-9 font-bold relative underline'>High-Performing Keywords</h1>
                 <h3 class = 'text-xl text-center bottom-4 mb-6 font-semibold relative '>Increase Consumer Exposure</h3>
+{
+   props.analysis.relatedKeyWordData.length===0?
 
-            <div class="container mx-auto -mt-1">
+
+<div class="container mx-auto -mt-1">
              <div class="flex flex-wrap bg-gradient-to-tr from-blue-100 to-indigo-200 p-5 pt-6 pb-5 mb-16 shadow-lg mx-auto">             
         
              {
@@ -476,7 +483,7 @@ Read Reviews
    :''
 }
 
-                <div class = {`w-full py-4 ${(props.analysis)===null?'hidden':'block'}  xl:px-20 lg:px-0  px-4`}>
+                <div class = {`w-full py-4 ${(props.analysis.analysis)===null?'hidden':'block'}  xl:px-20 lg:px-0  px-4`}>
                     <div class="bg-white sm:flex block mx-auto shadow-sm h-full p-4 px-10 pt-6 rounded-lg overflow-hidden mb-1">
                     
                     
@@ -535,7 +542,7 @@ Read Reviews
                     
                     <ol class = {` sm:w-1/2  w-[85%]  ${keyWordsNum===1?'block sm:top-5 top-7 relative sm:right-3 sm:mx-0 mx-auto':'hidden sm:block sm:bottom-3 relative'} lg:top-2 xl:top-0 lg:-mb-4 block text-center`}>
                         {
-                            props.analysis.topKeyWords.words.map((word,i)=> {
+                            props.analysis.analysis.topKeyWords.words.map((word,i)=> {
                                 if(i<4){
                                 return (
                                     <li key = {i} class="flex text-base text-center text-body-color md:mb-8 mb-12 relative  xl:mb-4">
@@ -555,7 +562,7 @@ Read Reviews
          ">
       {i+1}
       </span>
-      <p><span class = 'font-semibold ml-2 xl:text-xl text-lg underline xl:uppercase'>{word&&word.replace('.','').replace(',','')}</span> - Appeared in <span class = 'text-blue-700 text-2xl font-semibold'>{props.analysis.topKeyWords.count[i]}</span> out of <span class = 'text-blue-700 text-2xl font-semibold'>{props.analysis.topKeyWords.totalNum}</span> products. </p>
+      <p><span class = 'font-semibold ml-2 xl:text-xl text-lg underline xl:uppercase'>{word&&word.replace('.','').replace(',','')}</span> - Appeared in <span class = 'text-blue-700 text-2xl font-semibold'>{props.analysis.analysis.topKeyWords.count[i]}</span> out of <span class = 'text-blue-700 text-2xl font-semibold'>{props.analysis.analysis.topKeyWords.totalNum}</span> products. </p>
    </li>
 
                                 )}else {
@@ -569,7 +576,7 @@ Read Reviews
 
 <ol class = {`relative sm:w-1/2 w-[85%] ${keyWordsNum===2?'block sm:-top-4 -top-2 sm:-left-[17px] sm:mx-0 mx-auto relative':'hidden sm:block'} block text-center `}>
                         {
-                            props.analysis.topKeyWords.words.map((word,i)=> {
+                            props.analysis.analysis.topKeyWords.words.map((word,i)=> {
                                 if(i>=4){
                                 return (
                                     <li key = {i} class="flex text-base text-center text-body-color md:mb-8 mb-14 lg:top-2 xl:top-0 top-10 relative xl:mb-4">
@@ -589,7 +596,7 @@ Read Reviews
          ">
       {i+1}
       </span>
-      <p><span class = 'font-semibold ml-2 xl:text-xl text-lg underline xl:uppercase'>{word&&word.replace('.','').replace(',','')}</span> - Appeared in <span class = 'text-blue-700 text-2xl font-semibold'>{props.analysis.topKeyWords.count[i]}</span> out of <span class = 'text-blue-700 text-2xl font-semibold'>{props.analysis.topKeyWords.totalNum}</span> products. </p>
+      <p><span class = 'font-semibold ml-2 xl:text-xl text-lg underline xl:uppercase'>{word&&word.replace('.','').replace(',','')}</span> - Appeared in <span class = 'text-blue-700 text-2xl font-semibold'>{props.analysis.analysis.topKeyWords.count[i]}</span> out of <span class = 'text-blue-700 text-2xl font-semibold'>{props.analysis.analysis.topKeyWords.totalNum}</span> products. </p>
    </li>
 
                                 )}else {
@@ -606,6 +613,225 @@ Read Reviews
             </div>
             </div>
 
+   :
+
+<div class="container mx-auto -mt-1">
+             <div class="flex flex-wrap  bg-gradient-to-tr from-blue-100 to-indigo-200 p-5 pt-6 pb-5 mb-16 shadow-lg mx-auto">    
+
+
+             <div class = 'w-full mb-4 xl:px-20 lg:px-0  lg:mt-1.5 mt-10 block mx-auto    rounded-sm pb-6 '>
+                        <h1 class = 'font-semibold text-[20px] pt-2 pb-2.5  bg-white text-center truncate md:px-16 sm:px-10 px-4 border-b-2 border-blue-700'>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-800 relative inline bottom-[2.5px] mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+
+  <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+</svg>
+                           Related Key Word Data</h1>
+                           
+                        <h1 class = 'font-normal bg-blue-50 sm:px-7 px-3 underline text-[16px] pt-5 pb-1.5  text-center'>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-[20px] w-[20px] inline relative bottom-[1.3px] right-[3px]" viewBox="0 0 20 20" fill="currentColor">
+  <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z" />
+</svg>
+
+ Demand = Search Volume/Quantity for a Keyword</h1>
+
+<h1 class = 'font-normal sm:px-7  bg-blue-50 px-3 underline text-[16px] pt-2.5 pb-[22px] -mb-[16px] block relative  text-center'>
+
+<svg xmlns="http://www.w3.org/2000/svg" class="h-[20px] w-[20px] inline relative bottom-[1.3px] right-[3px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+
+ Supply = Approximate Search Results / Variety of Products</h1>
+
+
+
+         <hr class = 'border-t-2 bg-blue-50 border-blue-700 border-dotted w-[100%] py-[20px] top-4 relative mx-auto block'/>
+
+         <div class="relative overflow-x-auto bg-blue-50  text-center w-full  sm:pr-0 pr-1 shadow-md sm:rounded-lg mx-auto block ">
+    <table class=" text-sm text-center block mx-auto  relative text-gray-500">
+        <thead class="text-sm mx-auto w-full text-center text-gray-700 uppercase bg-gray-200  ">
+            <tr class = 'w-full'>
+                <th scope="col" class="sm:px-6 px-2 w-full  py-1.5">
+                   Metric
+                </th>
+                <th scope="col" class="sm:px-6 px-2 w-full  py-1.5">
+                   Demand
+                </th>
+                <th scope="col" class="sm:px-6 px-2 w-full  py-1.5">
+                   Supply
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+         {
+            props.analysis.relatedKeyWordData.map((keyWord,i)=> {
+
+               return (
+                  <tr class="bg-white border-b text-sm border-t-2 border-black">
+                  <th scope="row" class={`sm:px-8 px-3 py-2 border-r-[1px] uppercase border-gray-600 font-semibold ${i===0?'text-red-600':i===1?'text-yellow-600':i===2?'text-green-600':''}  whitespace-nowrap`}>
+                      {keyWord.keyWordSentence}
+                  </th>
+                  <td class={`sm:px-8 px-3 py-2  border-r-[1px] font-semibold border-gray-600 ${keyWord.searchVolume===null?'text-red-700 font-semibold':'text-gray-900'}`}>
+                    {keyWord.searchVolume}
+                  </td>
+                  <td class="sm:px-8 px-3 py-2  border-r-[1px] font-semibold border-gray-600 text-gray-900">
+                  {keyWord&&keyWord.searchResults}
+                  </td>
+              </tr>
+               )
+            })
+         }
+        </tbody>
+    </table>
+
+
+               </div>
+
+</div>
+
+
+        
+             {
+   (props.analysis)===null? 
+<h1 class = 'text-2xl text-center block pb-[70px] mx-auto font-semibold left-2 mt-[50px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+</svg> Unable to Fetch Results..</h1>
+   :''
+}
+
+                <div class = {`w-full py-4 ${(props.analysis.analysis)===null?'hidden':'block'} -mb-1.5 -mt-7  xl:px-20 lg:px-0  px-4`}>
+                    <div class="bg-white sm:flex block mx-auto shadow-md h-full p-4 px-10 pt-6 rounded-lg overflow-hidden mb-1">
+                    
+                    
+                    <div class={`sm:flex block mx-auto sm:mb-1 mb-3 sm:mt-0 mt-1 ${keyWordsNum === 1 || keyWordsNum === 2 ? 'sm:ml-2 sm:flex sm:mx-0 mx-auto block':''} items-center text-center sm:hidden sm:bottom-[3px] bottom-[-4px] relative rounded-lg`}>
+   <a onClick={()=> {
+      setKeyWordsNum(1)
+   }} class={`
+   py-[10px]
+   sm:py-3
+   px-[12px]
+   cursor-pointer
+   sm:px-6
+   inline-flex
+   items-center
+   justify-center
+   font-semibold
+   border-blue-700
+   border border-light
+   text-center 
+   hover:bg-blue-700 hover:text-white
+   rounded-l-lg
+ 
+   transition-all
+   ${keyWordsNum===1?"border-blue-700 text-center text-white text-base bg-blue-700":'text-black bg-white'}
+   hover:bg-blue-700 hover:text-white hover:border-gray-300
+   `}>
+   # 1-4
+   </a>
+  
+   <a onClick={()=> {
+      setKeyWordsNum(2)
+   }} class={`
+      py-[10px]
+      sm:py-3
+      px-[12px]
+      sm:px-6
+      inline-flex
+      items-center
+      justify-center
+      font-semibold
+      border-blue-700
+      border border-light
+      text-center text-base
+      cursor-pointer
+      hover:bg-blue-700 hover:text-white 
+       
+      transition-all
+      ${keyWordsNum===2?"border-blue-700 text-center text-white text-base bg-blue-700":'text-black bg-white'}
+      hover:bg-blue-700 hover:text-white hover:border-gray-300
+   
+      rounded-r-lg
+      `}>
+   # 5-8
+   </a>
+</div>
+                    
+                    <ol class = {` sm:w-1/2  w-[85%]  ${keyWordsNum===1?'block sm:top-5 top-7 relative sm:right-3 sm:mx-0 mx-auto':'hidden sm:block sm:bottom-3 relative'} lg:top-2 xl:top-0 lg:-mb-4 block text-center`}>
+                        {
+                            props.analysis.analysis.topKeyWords.words.map((word,i)=> {
+                                if(i<4){
+                                return (
+                                    <li key = {i} class="flex text-base text-center text-body-color md:mb-8 mb-12 relative  xl:mb-4">
+      <span class="
+         bg-blue-700
+         text-white
+         rounded
+         mr-2
+         text-base
+         flex
+         relative top-1.5
+         items-center
+         xl:mb-0 mb-2
+         justify-center
+         h-6
+         sm:w-[24px] w-[29px]
+         ">
+      {i+1}
+      </span>
+      <p><span class = 'font-semibold ml-2 xl:text-xl text-lg underline xl:uppercase'>{word&&word.replace('.','').replace(',','')}</span> - Appeared in <span class = 'text-blue-700 text-2xl font-semibold'>{props.analysis.analysis.topKeyWords.count[i]}</span> out of <span class = 'text-blue-700 text-2xl font-semibold'>{props.analysis.analysis.topKeyWords.totalNum}</span> products. </p>
+   </li>
+
+                                )}else {
+                                    return (<></>)
+                                }
+                            })
+                        }
+   
+   
+</ol>
+
+<ol class = {`relative sm:w-1/2 w-[85%] ${keyWordsNum===2?'block sm:-top-4 -top-2 sm:-left-[17px] sm:mx-0 mx-auto relative':'hidden sm:block'} block text-center `}>
+                        {
+                            props.analysis.analysis.topKeyWords.words.map((word,i)=> {
+                                if(i>=4){
+                                return (
+                                    <li key = {i} class="flex text-base text-center text-body-color md:mb-8 mb-14 lg:top-2 xl:top-0 top-10 relative xl:mb-4">
+      <span class="
+         bg-blue-700
+         text-white
+         rounded
+         mr-1.5
+         text-base
+         flex
+         xl:mb-0 mb-2
+         top-2 relative
+         items-center
+         justify-center
+         h-6
+         sm:w-[24px] w-[29px]
+         ">
+      {i+1}
+      </span>
+      <p><span class = 'font-semibold ml-2 xl:text-xl text-lg underline xl:uppercase'>{word&&word.replace('.','').replace(',','')}</span> - Appeared in <span class = 'text-blue-700 text-2xl font-semibold'>{props.analysis.analysis.topKeyWords.count[i]}</span> out of <span class = 'text-blue-700 text-2xl font-semibold'>{props.analysis.analysis.topKeyWords.totalNum}</span> products. </p>
+   </li>
+
+                                )}else {
+                                    return (<></>)
+                                }
+                            })
+                        }
+   
+   
+</ol>
+
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+}
+            
+
             <hr class = 'w-[95%] left-[2.5%] border-b-blue-700 border-b-2 bottom-8 relative border-dotted'/>
 <h1 class = 'sm:text-4xl text-3xl px-2 text-center bottom-6 mt-9 font-bold relative underline'>Best-Selling Products</h1>
                 <h3 class = 'text-xl text-center bottom-4 mb-5 font-semibold relative '>Insights - Highest Ranking Listings </h3>
@@ -617,7 +843,7 @@ Read Reviews
               <div class="flex flex-wrap bg-gradient-to-tr from-blue-100 to-indigo-200 p-5 pt-6 pb-5 shadow-lg mx-auto">             
                
               {
-   (props.analysis)===null? 
+   (props.analysis.analysis)===null? 
 <h1 class = 'text-2xl text-center block pb-[70px] mx-auto font-semibold left-2 mt-[50px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
 </svg> Unable to Fetch Results..</h1>
@@ -625,7 +851,7 @@ Read Reviews
 }
                
                
-                 {props.analysis.currentCompetition.map((product,i)=> {
+                 {props.analysis.analysis.currentCompetition.map((product,i)=> {
                     return (
                         <div key = {i} class={`w-full py-4 ${(props.analysis)===null?'hidden':'block'}  md:w-1/2 xl:w-1/3 px-4`}>
                     <div class="bg-white shadow-sm h-full rounded-lg overflow-hidden mb-1">
@@ -727,8 +953,8 @@ Read Reviews
 <section class="pt-[73px] lg:pt-[80px] -mb-5 pb-10 lg:pb-20 bg-[#F3F4F6]">
             
 <h1 class = 'sm:text-4xl text-3xl px-3 lg:mt-0 mt-[15px] block text-center bottom-12 font-bold relative underline'>Overview - {props.keyword&&props.keyword.split(' ').map(str=>{return (str.charAt(0).toUpperCase() + str.slice(1))}).join(' ')}</h1>
-                <h3 class = 'text-xl text-center bottom-10 -mb-2 font-semibold relative '>Understand the Market</h3>
-                <h1 class = 'text-xl px-2 font-semibold text-center left-[3.5px] top-[8px] relative underline uppercase mb-6'><span class = 'no-underline'>1. </span><span class = 'text-blue-900'>Demand</span>-<span class = 'text-indigo-700'>Supply</span> Balance</h1>
+                <h3 class = 'text-xl text-center bottom-8 -mb-2 font-semibold relative '>Understand the Market</h3>
+                <h1 class = 'text-xl px-2 font-semibold text-center left-[3.5px] top-[8px] relative underline uppercase mb-[30px]'><span class = 'no-underline'>1. </span><span class = 'text-blue-900'>Demand</span>-<span class = 'text-indigo-700'>Supply</span> Balance</h1>
                  
                 <div class="container mx-auto bg-white px-12 py-2  rounded-sm shadow-md  sm:w-[620px] w-[90%] sm:pt-2 pt-2 sm:pb-5 pb-5 sm:pl-14 pl-4 z-[5] mb-[46px] left-[2px] relative">
 
@@ -756,13 +982,13 @@ title:`${props.analysis.searchVolumeData.length === 1 && props.analysis.searchVo
 
       </div>
       </div>
-      <h1 class = 'text-xl px-2 font-semibold text-center left-[3.5px]  relative underline -mt-2 uppercase mb-[22px]'><span class = 'no-underline'>2. </span><span class = 'text-blue-700'>Alternative Key Words</span> - Analysis</h1>
+      <h1 class = 'text-xl px-2 font-semibold text-center left-[3.5px]  relative underline -mt-2 uppercase mb-[26px]'><span class = 'no-underline'>2. </span><span class = 'text-blue-700'>Alternative Key Words</span> - Analysis</h1>
       <div class="container mx-auto -mt-1 lg:px-0 px-5">
             <div class="flex flex-wrap bg-gradient-to-tr from-blue-100 to-indigo-200 p-5 pt-6 pb-5 mt-1 relative mb-16 shadow-lg mx-auto">             
        
        <div class = {`lg:w-[48%] w-[100%] ${props.analysis.relatedKeyWordData.length===0?'h-[310px]':props.analysis.relatedKeyWordData.length===2?'h-[375px]':'h-[430px]'}   lg:left-[1%] rounded-md shadow-md relative bg-white`}>
             <div
-      class = {`w-[90%] ${props.analysis.relatedKeyWordData.length===0?'h-[290px]':props.analysis.relatedKeyWordData.length===2?'h-[355px]':'h-[410px]'} top-[10px] z-[400] relative block mx-auto right-1`}
+      class = {`w-[90%] ${props.analysis.relatedKeyWordData.length===0?'h-[290px]':props.analysis.relatedKeyWordData.length===1?'h-[323px]':props.analysis.relatedKeyWordData.length===2?'h-[355px]':'h-[410px]'} top-[10px] z-[400] relative block mx-auto right-1`}
 
     >
       <Chart data={data} axes={axes} tooltip />
@@ -846,8 +1072,8 @@ props.analysis.relatedKeyWordData.length===0?
            
     
 
-           <hr class = 'w-[95%] left-[2.5%] border-b-blue-700 border-b-2 sm:bottom-[23px] bottom-[26px] sm:mb-0 -mb-1 relative border-dotted'/>
-<h1 class = 'sm:text-4xl text-3xl text-center bottom-6 mt-[45px] font-bold relative underline px-4'>Key Word - Demand Analysis</h1>
+           <hr class = 'w-[95%] left-[2.5%] border-b-blue-700 border-b-2 sm:bottom-[20px] bottom-[23px] sm:mb-0 -mb-1 relative border-dotted'/>
+<h1 class = 'sm:text-4xl text-3xl text-center bottom-6 mt-[48px] font-bold relative underline px-4'>Key Word - Demand Analysis</h1>
                <h3 class = 'text-xl text-center bottom-4 mb-6 font-semibold relative '>Gauge Market Demand</h3>
 
            <div class="container mx-auto -mt-1 px-2">

@@ -32,15 +32,17 @@ const fetchResults2 = async (sentence,domain) => {
     fword = words.shift()
     let url = `https://www.amazon.${domain}/s?k=` + String(fword) + String(words.length>0?'+'+words.join('+'):'')
     let response = await axios.get(url).catch(async(err)=>{
-        let result = await fetchResults2(sentence,domain)  
-        return result 
+        console.log(err.response.data)
+            let result = await fetchResults2(sentence,domain)  
+            return result 
     });
-    const html = response.data
     let $
     try{
+        const html = response.data
+
         $ = cheerio.load(html)
     }catch{
-        return await fetchResults2(sentence,domain)    
+        return await fetchResults2(sentence,domain) 
     }
 
     if($('h1 > div > div.sg-col-14-of-20.sg-col.s-breadcrumb.sg-col-10-of-16.sg-col-6-of-12 > div > div > span:nth-child(1)').text().split(' ')[3]){

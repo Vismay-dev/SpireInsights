@@ -279,9 +279,75 @@ router.post('/newProductEntries',auth,(req,res)=> {
 
 router.post('/topProductAnalysis',auth,(req,res)=> {
     try{
+        console.log(req.body.platform)
     if(req.body.platform==='Amazon'){
-        amazonTop(req.body.sentence.toLowerCase(),'ae').then(analysis=> {
-            res.send(analysis)
+        amazonTop(req.body.sentence.toLowerCase(),'ae').then(async(analysis)=> {
+            let post_array2 = [];
+
+post_array2.push({
+  "keyword": req.body.sentence,
+  "language_name": "English",
+  "location_code": 2840,
+  "limit": 3,
+  "include_seed_keyword": false
+});
+
+let relatedKeyWordData = []
+console.log('reached here1')
+
+await axios({
+    method: 'post',
+    url: 'https://api.dataforseo.com/v3/dataforseo_labs/amazon/related_keywords/live',
+    auth: {
+        username: process.env.EMAIL ,
+        password:  process.env.seoPASS
+    },
+    data: post_array2,
+    headers: {
+      'content-type': 'application/json'
+    }
+  }).then(async(response) => {
+    var result = response['data']['tasks'];
+    console.log('reached here2')
+
+    if(!result){
+        res.status(400).send('Unable to scrape')
+      }
+    for(let x = 0; x<result[0].result.length; x++){
+        for(let y = 0; y< result[0].result[x].items.length; y++ ){
+            console.log('reached here3')
+
+                if(result[0].result[x].items[y].keyword_data.keyword!==req.body.sentence){
+                    relatedKeyWordData.push({
+                        keyWordSentence: result[0].result[x].items[y].keyword_data.keyword,
+                        searchVolume : parseInt(result[0].result[x].items[y].keyword_data.keyword_info.search_volume)
+                    })
+                }
+        } 
+      }
+
+
+      for(let y = 0; y< relatedKeyWordData.length; y++ ){    
+        await amazonResults(relatedKeyWordData[y].keyWordSentence,'ae').then(res=> {
+            console.log('reached here4')
+            relatedKeyWordData[y] = {
+                ...relatedKeyWordData[y],
+                searchResults: res
+            }
+            console.log('reached here5')
+        })
+    }
+
+
+console.log(relatedKeyWordData)
+    res.send({analysis:analysis, relatedKeyWordData:relatedKeyWordData})
+
+  }).catch(function (error) {
+    console.log(error);
+    res.status(400).send(error.response)
+  });
+           
+           
         })
     }else if(req.body.platform ==='Noon') {
         noon(req.body.sentence,'uae-en')
@@ -490,8 +556,46 @@ if(response['data']['tasks'][0]['result'][0].items){
 }
 }
 
+
+const post_array = [];
+let rankedKeywords = []
+post_array.push({
+  "asin": req.body.asin,
+  "language_name": "English",
+  "location_code": 2840
+});
+
+await axios({
+  method: 'post',
+  url: 'https://api.dataforseo.com/v3/dataforseo_labs/amazon/ranked_keywords/live',
+  auth: {
+    username: process.env.EMAIL ,
+    password:  process.env.seoPASS
+  },
+  data: post_array,
+  headers: {
+    'content-type': 'application/json'
+  }
+}).then(function (response) {
+  var result = response['data']['tasks'][0]['result'][0].items;
+  for(let i = 0; i< result.length; i++){
+    let item = result[i]
+    rankedKeywords.push({
+        keyWord: item.keyword_data.keyword,
+        searchVolume: item.keyword_data.keyword_info.search_volume,
+        rank: item.ranked_serp_element.serp_item.rank_absolute,
+        searchResults: item.ranked_serp_element.se_results_count
+    })
+  }
+}).catch(function (error) {
+  console.log(error);
+});
+
+console.log(rankedKeywords)
+
 res.send({
     productAnalysis,
+    rankedKeywords,
     competitorData
 })
 

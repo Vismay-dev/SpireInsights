@@ -122,12 +122,14 @@ const pricingResults = async (res) => {
      let h = parseFloat(res[0].price.split('AED')[1].trim().replace(',',''))
 
      for(let i = 0; i < 5; i++){
+        if(res[i].price.split('AED')[1]){
         let currPrice = parseFloat(res[i].price.split('AED')[1].trim().replace(',',''))
         if(currPrice<l){
             l = currPrice
         }else if(currPrice>h){
             h = currPrice
         }
+    }
     }
     analysis.averagePricingRange.low=l;
     analysis.averagePricingRange.high=h;

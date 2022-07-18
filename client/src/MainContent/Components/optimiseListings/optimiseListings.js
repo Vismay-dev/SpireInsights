@@ -24,10 +24,23 @@ const OptimiseListings = () => {
     let operationDummy = operation
 
     const changeOp = async(op) => {
+      setLoading(false)
+      let currentBool = false
+      if(initialSearched !== 'track-product'){
+        currentBool = true
+      }
+      if(initialSearched === 'track-product') {
+        document.getElementById('keywords').value = ''
+      }
       setOperation(op)
+      if(op==='track-product'){
+        setInitialSearched(op)
+      }else if (initialSearched === 'track-product') {
+        setInitialSearched(false)
+      }
       operationDummy = op
       setAnalysis()
-      if(initialSearched && document.getElementById('keywords').value !== '' && operationDummy!=='track-product'){
+      if(currentBool && initialSearched && document.getElementById('keywords').value !== '' && operationDummy!=='track-product'){
         await subMethod()
       }
     }
@@ -37,7 +50,7 @@ const OptimiseListings = () => {
       setLoading(true)
       setKeyWord(document.getElementById('keywords').value.toLowerCase())
       if(operationDummy === 'top-prod'){
-  
+        setInitialSearched('top-prod')
      await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/topProductAnalysis":'http://localhost:4000/api/user/topProductAnalysis',{platform:currentPlatform,sentence:document.getElementById('keywords').value.trim(), token:sessionStorage.getItem('token')}).then(res=> {
           setAnalysis(res.data)
           console.log(res.data)
@@ -49,7 +62,7 @@ const OptimiseListings = () => {
       })
   
     }else if(operationDummy === 'marketplace-overview'){
-  console.log({platform:currentPlatform,sentence:document.getElementById('keywords').value})
+      setInitialSearched('marketplace-overview')
       await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/marketPlaceOverview":'http://localhost:4000/api/user/marketPlaceOverview',
       {platform:currentPlatform,sentence:document.getElementById('keywords').value.trim(), token:sessionStorage.getItem('token')}).then(res=> {
         setAnalysis(res.data)
@@ -65,6 +78,7 @@ const OptimiseListings = () => {
     })
   
     }else if(operationDummy === 'track-product'){
+      setInitialSearched('track-product')
      await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/trackProductPerformance":'http://localhost:4000/api/user/trackProductPerformance',{platform:currentPlatform,asin:document.getElementById('keywords').value.toUpperCase(), token:sessionStorage.getItem('token')}).then(res=> {
         setAnalysis(res.data)
         console.log(res.data)
@@ -83,6 +97,7 @@ const OptimiseListings = () => {
 
   const subHandle = async(e)=> {
     e.preventDefault()
+    setLoading(false)
     setInitialSearched(true)
     await subMethod()
   }   
