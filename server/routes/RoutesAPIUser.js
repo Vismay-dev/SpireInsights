@@ -310,7 +310,7 @@ await axios({
     var result = response['data']['tasks'];
     console.log('reached here2')
 
-    if(!result){
+    if(!result || !result[0] || !result[0].result || !result[0].result[0].items){
         res.status(400).send('Unable to scrape')
       }
     for(let x = 0; x<result[0].result.length; x++){
@@ -386,7 +386,7 @@ await axios({
   }
 }).then(async(response) => {
   var result = response['data']['tasks'];
-  if(!result || !result[0].result){
+  if(!result || !result[0] || !result[0].result[0] || !result[0].result[0].items){
     res.status(400).send('Unable to scrape')
   }
   console.log(result)
@@ -435,7 +435,7 @@ await axios({
     }
   }).then(async (response) => {
     var result = response['data']['tasks'];
-    if(!result){
+    if(!result || !result[0] || !result[0].result[0] || !result[0].result[0].items){
         res.status(400).send('Unable to scrape')
       }
     for(let x = 0; x<result[0].result.length; x++){
@@ -519,11 +519,11 @@ await axios({
     'content-type': 'application/json'
   }
 }).then(async(response) => {
-    if(!response['data']['tasks'][0]||!response['data']['tasks'][0]['result']||!response['data']['tasks'][0]['result'][0].items){
+    if(!response['data']['tasks'][0]||!response['data']['tasks'][0]['result'][0]||!response['data']['tasks'][0]['result'][0].items){
         console.log(response['data']['tasks'][0])
         res.status(402).send('Unable to scrape')
       }
-if(response['data']['tasks'][0]['result'][0].items){
+if(response['data']&& response['data']['tasks'] && response['data']['tasks'][0] && response['data']['tasks'][0]['result'] && response['data']['tasks'][0]['result'][0].items){
   var result = response['data']['tasks'][0]['result'][0].items
   if(result){
   for(let i = 0; i < result.length;i++) {
