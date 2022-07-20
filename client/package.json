@@ -27,7 +27,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-   "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

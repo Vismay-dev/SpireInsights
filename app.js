@@ -9,6 +9,11 @@ const axios = require('axios')
 
 const RoutesAPIUser = require('./server/routes/RoutesAPIUser.js')
 
+var timeout = require('connect-timeout'); //express v4
+
+app.use(timeout(120000));
+
+
 dotenv.config()
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,

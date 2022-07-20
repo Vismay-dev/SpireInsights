@@ -16,6 +16,7 @@
     "bcrypt": "^5.0.1",
     "cheerio": "^1.0.0-rc.11",
     "cloudinary": "^1.30.0",
+    "connect-timeout": "^1.9.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
@@ -27,5 +28,6 @@
     "okhttp": "^1.1.0",
     "react-charts": "^2.0.0-beta.7",
     "react-spinners": "^0.13.1",
-    "react-svg-piechart": "^2.4.2"  }
+    "react-svg-piechart": "^2.4.2"
+  }
 }

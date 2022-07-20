@@ -9,7 +9,7 @@ import logo from '../../../logo.png'
 import ReactSvgPieChart from "react-svg-piechart"
 import { Chart } from 'react-charts'
 import TableRanked from './TableRanked'
-
+import loadingImg from './loading.png'
 import Reviews from '../../../Modals/Reviews'
 
 import {useEffect, useState, useMemo} from 'react'
@@ -120,10 +120,16 @@ return (<>
     }
     {
       props.loading?
-      <div class = 'h-[450px] -mb-4 bg-gradient-to-br mt-6 from-blue-100 to-indigo-200'>
+      <div class = 'h-[560px] -mb-4 bg-gradient-to-br mt-6 from-blue-100 to-indigo-200'>
 <div class = 'top-[144px] left-[2.5px] relative mx-auto block text-center'>
-<ClipLoader color={'#0A74FE'} loading={props.loading} size={110} />
+<ClipLoader color={'#3b5fcb'} loading={props.loading} size={90} />
+<img src = {loadingImg} class = 'mx-auto block mt-2 relative w-[500px] mb-2'></img>
+
 </div>
+
+
+
+
 
 </div>
 
@@ -634,7 +640,7 @@ Read Reviews
 
  Demand = Search Volume/Quantity for a Keyword</h1>
 
-<h1 class = 'font-normal sm:px-7  bg-blue-50 px-3 underline text-[16px] pt-2.5 pb-[22px] -mb-[16px] block relative  text-center'>
+<h1 class = 'font-normal sm:px-7  bg-blue-50 px-3 underline text-[16px] pt-2.5 pb-[24px] -mb-[16px] block relative  text-center'>
 
 <svg xmlns="http://www.w3.org/2000/svg" class="h-[20px] w-[20px] inline relative bottom-[1.3px] right-[3px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -644,9 +650,8 @@ Read Reviews
 
 
 
-         <hr class = 'border-t-2 bg-blue-50 border-blue-700 border-dotted w-[100%] py-[20px] top-4 relative mx-auto block'/>
 
-         <div class="relative overflow-x-auto bg-blue-50  text-center w-full  sm:pr-0 pr-1 shadow-md sm:rounded-lg mx-auto block ">
+         <div class="relative overflow-x-auto bg-blue-50  text-center w-full  sm:pr-0 pr-1 mt-3.5 shadow-md sm:rounded-lg mx-auto block ">
     <table class=" text-sm text-center block mx-auto  relative text-gray-500">
         <thead class="text-sm mx-auto w-full text-center text-gray-700 uppercase bg-gray-200  ">
             <tr class = 'w-full'>
@@ -832,7 +837,7 @@ Read Reviews
 }
             
 
-            <hr class = 'w-[95%] left-[2.5%] border-b-blue-700 border-b-2 bottom-8 relative border-dotted'/>
+            <hr class = 'w-[95%] left-[2.5%] border-b-blue-700 border-b-2 bottom-7 relative border-dotted'/>
 <h1 class = 'sm:text-4xl text-3xl px-2 text-center bottom-6 mt-9 font-bold relative underline'>Best-Selling Products</h1>
                 <h3 class = 'text-xl text-center bottom-4 mb-5 font-semibold relative '>Insights - Highest Ranking Listings </h3>
 
