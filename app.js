@@ -10,7 +10,7 @@ const RoutesAPIUser = require('./server/routes/RoutesAPIUser.js')
 
 var timeout = require('connect-timeout'); //express v4
 
-app.use(timeout('20s'));
+app.use(timeout('25s'));
 
 
 
