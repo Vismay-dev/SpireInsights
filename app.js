@@ -10,16 +10,9 @@ const RoutesAPIUser = require('./server/routes/RoutesAPIUser.js')
 
 var timeout = require('connect-timeout'); //express v4
 
-app.use(timeout(25000));
+app.use(timeout('20s'));
 
-function slowFunction (callback) {
-    // let's do something that could take a while...
-  }
-   
-  app.use(function (req, res) {
-    var delayed = new DelayedResponse(req, res);
-    slowFunction(delayed.wait());
-  });
+
 
 dotenv.config()
 cloudinary.config({
