@@ -6,13 +6,20 @@ const cors           = require('cors')
 const mongoose = require('mongoose')
 const cloudinary = require('cloudinary')
 const axios = require('axios')
-
 const RoutesAPIUser = require('./server/routes/RoutesAPIUser.js')
 
 var timeout = require('connect-timeout'); //express v4
 
-app.use(timeout(120000));
+app.use(timeout(25000));
 
+function slowFunction (callback) {
+    // let's do something that could take a while...
+  }
+   
+  app.use(function (req, res) {
+    var delayed = new DelayedResponse(req, res);
+    slowFunction(delayed.wait());
+  });
 
 dotenv.config()
 cloudinary.config({

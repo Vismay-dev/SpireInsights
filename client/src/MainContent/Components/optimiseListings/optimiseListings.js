@@ -48,7 +48,7 @@ const OptimiseListings = () => {
 
   const subMethod = async() => {
       setLoading(true)
-      setKeyWord(document.getElementById('keywords').value.toLowerCase())
+      setKeyWord(document.getElementById('keywords').value.toLowerCase().trim())
       if(operationDummy === 'top-prod'){
         setInitialSearched('top-prod')
      await axios.post(process.env.NODE_ENV ==='production'?"https://spire-insights.herokuapp.com/api/user/topProductAnalysis":'http://localhost:4000/api/user/topProductAnalysis',{platform:currentPlatform,sentence:document.getElementById('keywords').value.trim(), token:sessionStorage.getItem('token')}).then(res=> {
