@@ -262,8 +262,11 @@ Read Reviews
 
             </div>
 
-
-            <TableRanked data = {props.analysis.rankedKeywords}></TableRanked>
+{
+props.analysis&&props.analysis.rankedKeywords&&props.analysis.rankedKeywords.length>0?
+         <TableRanked data = {props.analysis.rankedKeywords}/>
+:''
+}
 
 
 <hr class = 'border-b-2 border-dotted border-blue-700 w-[80%] mx-auto block my-14 mb-[92px] lg:mt-14 mt-10'/>

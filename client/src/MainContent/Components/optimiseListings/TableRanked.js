@@ -29,7 +29,7 @@ const TableRanked = (props) => {
         <tbody>
 
             {
-                props.data.map(keyword=> {
+                props&&props.data&&props.data.length>0&&props.data.map(keyword=> {
                     return (
                         <tr class="border-b border-gray-800">
                 <th scope="row" class="py-4 px-6 font-bold uppercase  whitespace-nowrap text-white bg-gray-800">

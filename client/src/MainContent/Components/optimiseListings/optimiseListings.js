@@ -88,7 +88,8 @@ const OptimiseListings = () => {
       setLoading(false)
       setAnalysis({
         productAnalysis: {},
-        competitorData: []
+        competitorData: [],
+        rankedKeywords: []
       })
     })
   
