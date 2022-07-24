@@ -179,11 +179,14 @@ const keyWordAnalysis = async(sentence, domain) => {
    
     
     await fetchResults(sentence,domain).then(async(res)=> {
-
+        try{
         topKeyWords(res)
         avgCompetitiveRating(res)
         pricingResults(res)
         await currentCompetition(res)
+        }catch(err){
+            console.log(err)
+        }
     })
 
     return analysis;

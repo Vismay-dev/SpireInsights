@@ -24,6 +24,9 @@ const TopProdResult = (props) => {
    const [avgDemandState, setAvgDemandState] = useState(0)
    const [avgSupplyState, setAvgSupplyState] = useState(0)
    const [keyWordsNum, setKeyWordsNum] = useState(0)
+
+   console.log(props.analysis)
+
       const data = useMemo(
          
          () =>
@@ -442,27 +445,27 @@ Read Reviews
 
              <div class="flex flex-wrap bg-gradient-to-tr from-blue-100 to-indigo-200 sm:p-5 px-1 xl:pt-6 pt-3 xl:pb-5 pb-2 mb-16 shadow-lg mx-auto">             
              {
-   (props.analysis.analysis)===null||props.analysis===null? 
+   props.analysis===null||(props.analysis.analysis)===null? 
 <h1 class = 'text-2xl text-center block pb-[70px] mx-auto font-semibold left-2 mt-[50px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
 </svg> Unable to Fetch Results..</h1>
-   :''
-}
-
-  <div class = {`w-full ${(props.analysis.analysis)===null?'hidden':'block'} py-4   md:w-full xl:w-1/2 px-2`}>
-                <div class="bg-white shadow-sm   p-2 py-3 pt-2 h-full flex rounded-lg overflow-hidden mb-1">
-                <div class = 'w-[200px] md:right-0 right-3.5 xl:block lg:hidden sm:block hidden top-1.5 relative '><GaugeChart id="gauge-chart2" 
-  nrOfLevels={5} 
-  percent={(props.analysis.analysis.avgCompetitiveRating/5.0)} 
-  arcWidth={0.2}
+   : <div class = {`w-full ${(props.analysis===null||props.analysis.analysis)===null?'hidden':'block'} py-4   md:w-full xl:w-1/2 px-2`}>
+   <div class="bg-white shadow-sm   p-2 py-3 pt-2 h-full flex rounded-lg overflow-hidden mb-1">
+   <div class = 'w-[200px] md:right-0 right-3.5 xl:block lg:hidden sm:block hidden top-1.5 relative '><GaugeChart id="gauge-chart2" 
+nrOfLevels={5} 
+percent={(props.analysis && props.analysis.analysis?props.analysis.analysis.avgCompetitiveRating/5.0:0)} 
+arcWidth={0.2}
 /></div>
 <div class = 'xl:ml-2.5 xl:mr-5 mx-auto xl:top-[5px] top-[4px] xl:mb-0 mb-6 mt-1 relative xl:text-left lg:text-center sm:text-left text-center font-semibold md:right-0 sm:right-3.5'> <h1 class = ' relative inline underline '><FcRatings class = 'mr-[6px] inline text-2xl bottom-[1px] relative'/>Average Competitive Rating:</h1> <span class = 'text-2xl top-[2px] left-[6px] relative inline font-bold mr-2.5 text-blue-700'>{props.analysis.analysis.avgCompetitiveRating}</span>/5<br/>
 <h1 class = 'mt-4 top-[9px] relative inline xl:text-left lg:text-center sm:text-left text-center underline '><SiMarketo class = 'mr-[6px] inline text-2xl bottom-[1px] relative'/>Evaluation:</h1> <span class = {`${props.analysis.analysis.avgCompetitiveRating>=4.5||props.analysis.analysis.avgCompetitiveRating<2?'text-lg left-[1px] mr-0.5 top-[10px]':'text-xl left-[6px] top-[10px] mr-1.5 relative'}   relative inline font-bold  text-blue-700`}>{props.analysis.analysis.avgCompetitiveRating>=4.5?'Very Strong':props.analysis.analysis.avgCompetitiveRating>3.5?'Strong':props.analysis.analysis.avgCompetitiveRating>3?'Moderate':props.analysis.analysis.avgCompetitiveRating>2?'Poor':'Very Poor'}</span><span class = 'relative top-[9px]'> {props.analysis.analysis.avgCompetitiveRating>4.5||props.analysis.analysis.avgCompetitiveRating<2?'C':'c'}ompetition</span>
 </div>
-                </div>
-                </div>
+   </div>
+   </div>
+}
+
+ 
                 
-                <div class = {`w-full py-4 ${(props.analysis.analysis)===null?'hidden':'block'} md:w-full  xl:w-1/2 px-4`}>
+                <div class = {`w-full py-4 ${props.analysis===null||(props.analysis.analysis)===null?'hidden':'block'} md:w-full  xl:w-1/2 px-4`}>
                     <div class="bg-white flex shadow-sm xl:pb-2 lg:pb-[53px] sm:pb-9 pb-12 xl:mx-0 mx-auto h-full xl:text-left lg:text-center sm:text-left text-center rounded-lg overflow-hidden mb-1">
                     <IoPricetags class = 'text-blue-700 xl:block lg:hidden sm:block hidden  relative text-7xl top-6 left-14'/>
                     <div class = 'xl:ml-[104px] xl:mr-7 md:left-0 sm:left-3 mx-auto md:top-[22px] top-[22px] relative font-semibold'> <h1 class = ' relative inline underline text-xl'><FcMoneyTransfer class = 'mr-[8px] inline text-2xl bottom-[0px] relative sm:uppercase'/>Average Pricing Range:</h1> <br/>
@@ -478,14 +481,14 @@ Read Reviews
 <h1 class = 'xl:text-4xl text-3xl px-2 text-center bottom-6 mt-9 font-bold relative underline'>High-Performing Keywords</h1>
                 <h3 class = 'text-xl text-center bottom-4 mb-6 font-semibold relative '>Increase Consumer Exposure</h3>
 {
-   props.analysis.relatedKeyWordData.length===0?
+  !(props.analysis)||!(props.analysis.relatedKeyWordData)|| props.analysis&&props.analysis.relatedKeyWordData&&props.analysis.relatedKeyWordData.length===0?
 
 
 <div class="container mx-auto -mt-1">
              <div class="flex flex-wrap bg-gradient-to-tr from-blue-100 to-indigo-200 p-5 pt-6 pb-5 mb-16 shadow-lg mx-auto">             
         
              {
-   (props.analysis)===null? 
+   !(props.analysis)||!(props.analysis.relatedKeyWordData)||props.analysis.analysis===null? 
 <h1 class = 'text-2xl text-center block pb-[70px] mx-auto font-semibold left-2 mt-[50px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
 </svg> Unable to Fetch Results..</h1>
@@ -551,7 +554,7 @@ Read Reviews
                     
                     <ol class = {` sm:w-1/2  w-[85%]  ${keyWordsNum===1?'block sm:top-5 top-7 relative sm:right-3 sm:mx-0 mx-auto':'hidden sm:block sm:bottom-3 relative'} lg:top-2 xl:top-0 lg:-mb-4 block text-center`}>
                         {
-                            props.analysis.analysis.topKeyWords.words.map((word,i)=> {
+                            props.analysis&&props.analysis.analysis && props.analysis.analysis.topKeyWords.words.map((word,i)=> {
                                 if(i<4){
                                 return (
                                     <li key = {i} class="flex text-base text-center text-body-color md:mb-8 mb-12 relative  xl:mb-4">
@@ -585,7 +588,7 @@ Read Reviews
 
 <ol class = {`relative sm:w-1/2 w-[85%] ${keyWordsNum===2?'block sm:-top-4 -top-2 sm:-left-[17px] sm:mx-0 mx-auto relative':'hidden sm:block'} block text-center `}>
                         {
-                            props.analysis.analysis.topKeyWords.words.map((word,i)=> {
+                            props.analysis&&props.analysis.analysis&&props.analysis.analysis.topKeyWords.words.map((word,i)=> {
                                 if(i>=4){
                                 return (
                                     <li key = {i} class="flex text-base text-center text-body-color md:mb-8 mb-14 lg:top-2 xl:top-0 top-10 relative xl:mb-4">
@@ -859,7 +862,7 @@ Read Reviews
 }
                
                
-                 {props.analysis.analysis.currentCompetition.map((product,i)=> {
+                 {props.analysis&&props.analysis.analysis&&props.analysis.analysis.currentCompetition.map((product,i)=> {
                     return (
                         <div key = {i} class={`w-full py-4 ${(props.analysis)===null?'hidden':'block'}  md:w-1/2 xl:w-1/3 px-4`}>
                     <div class="bg-white shadow-sm h-full rounded-lg overflow-hidden mb-1">
@@ -962,183 +965,211 @@ Read Reviews
             
 <h1 class = 'sm:text-4xl text-3xl px-3 lg:mt-0 mt-[15px] block text-center bottom-12 font-bold relative underline'>Overview - {props.keyword&&props.keyword.split(' ').map(str=>{return (str.charAt(0).toUpperCase() + str.slice(1))}).join(' ')}</h1>
                 <h3 class = 'text-xl text-center bottom-8 -mb-2 font-semibold relative '>Understand the Market</h3>
-                <h1 class = 'text-xl px-2 font-semibold text-center left-[3.5px] top-[8px] relative underline uppercase mb-[30px]'><span class = 'no-underline'>1. </span><span class = 'text-blue-900'>Demand</span>-<span class = 'text-indigo-700'>Supply</span> Balance</h1>
-                 
-                <div class="container mx-auto bg-white px-12 py-2  rounded-sm shadow-md  sm:w-[620px] w-[90%] sm:pt-2 pt-2 sm:pb-5 pb-5 sm:pl-14 pl-4 z-[5] mb-[46px] left-[2px] relative">
 
-<div class = 'h-fit z-[400] mt-3  block relative'>
 
-<div class = 'w-[18px] h-[18px] bg-blue-800 inline-block  mt-2 mb-2'></div> <p class = 'inline  mb-2 mt-1 relative bottom-3 left-1 '> - <strong>Demand</strong> (Search Volume) - <span class = 'font-semibold'>{props.analysis&&props.analysis.searchVolumeData&&props.analysis.searchVolumeData.length === 1 && props.analysis.searchVolumeData[0].searchVolume === null? 'Error' : `${String(Math.round(avgDemandState/parseFloat(avgSupplyState+avgDemandState)*100))}%`}</span></p><br/>
-   <div class = 'w-[18px] h-[18px] bg-indigo-500 inline-block'></div> <p class = 'inline left-1 bottom-1  relative '>- <strong>Supply</strong> (Available Products Options) - <span class = 'font-semibold'>{props.analysis&&props.analysis.searchVolumeData&&props.analysis.searchVolumeData.length === 1 && props.analysis.searchVolumeData[0].searchResults === null? 'Error' : `${String(Math.round(avgSupplyState/parseFloat(avgSupplyState+avgDemandState)*100))}%`}</span></p>
-   
-    <div class = 'sm:w-[200px] w-[150px] sm:left-0 left-[25px] relative sm:mt-3.5 mt-[18px] block mx-auto'>
-<ReactSvgPieChart
-         label={props => { return props.dataEntry.title}}
+                {
+                  !props.analysis||props.analysis&&props.analysis.searchVolumeData.length===0||props.analysis.relatedKeyWordData.length===0?
 
-    data={[{
-   color:'#004999',
-   title:`${props.analysis.searchVolumeData.length === 1 && props.analysis.searchVolumeData[0].searchVolume === null? 'Error' : `Demand ${String(Math.round(avgDemandState/parseFloat(avgSupplyState+avgDemandState)*100)).substring(0,2)}%`}`, value :avgDemandState
-},
-{
-   color:'#6600ff',
-title:`${props.analysis.searchVolumeData.length === 1 && props.analysis.searchVolumeData[0].searchVolume === null? 'Error' : `Supply ${String(Math.round(avgSupplyState/parseFloat(avgSupplyState+avgDemandState)*100)).substring(0,2)}%`}`,  value :  avgSupplyState
-}]}
-    // If you need expand on hover (or touch) effect
-    expandOnHover
-    // If you need custom behavior when sector is hovered (or touched)
-  /></div>
-
-      </div>
-      </div>
-      <h1 class = 'text-xl px-2 font-semibold text-center left-[3.5px]  relative underline -mt-2 uppercase mb-[26px]'><span class = 'no-underline'>2. </span><span class = 'text-blue-700'>Alternative Key Words</span> - Analysis</h1>
-      <div class="container mx-auto -mt-1 lg:px-0 px-5">
-            <div class="flex flex-wrap bg-gradient-to-tr from-blue-100 to-indigo-200 p-5 pt-6 pb-5 mt-1 relative mb-16 shadow-lg mx-auto">             
-       
-       <div class = {`lg:w-[48%] w-[100%] ${props.analysis.relatedKeyWordData.length===0?'h-[310px]':props.analysis.relatedKeyWordData.length===2?'h-[375px]':'h-[430px]'}   lg:left-[1%] rounded-md shadow-md relative bg-white`}>
-            <div
-      class = {`w-[90%] ${props.analysis.relatedKeyWordData.length===0?'h-[290px]':props.analysis.relatedKeyWordData.length===1?'h-[323px]':props.analysis.relatedKeyWordData.length===2?'h-[355px]':'h-[410px]'} top-[10px] z-[400] relative block mx-auto right-1`}
-
-    >
-      <Chart data={data} axes={axes} tooltip />
-    </div>
-    </div>
-    <div
-      class = 'lg:w-[48%] w-[100%] lg:mt-0 mt-6 lg:left-[3%] relative rounded-md shadow-md bg-white px-1 pt-2 overflow-hidden'>
-      <h1 class = 'text-center text-lg -mb-[3px] underline font-semibold relative px-2 top-[7px] uppercase right-[1px]'>Alternative/Related Keywords</h1>
-
-{
-props.analysis.relatedKeyWordData.length===0?
 <>
-<h1 class = 'text-2xl text-center font-semibold mt-[70px] lg:mb-0 mb-16'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+
+<h1 class = 'text-2xl text-center block  mx-auto font-semibold left-2 mt-[60px]'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-</svg> Oops.. No Valid Alternatives Found</h1>
-</>
-:
-<>
-<div class = 'relative mx-auto block text-left top-[30px] left-3'>
-<div class = {`w-[15px]  h-[15px] bg-blue-500 inline-block mt-2 `}></div><p class = 'inline text-sm  mb-2 mt-1 relative bottom-[3px] left-1 '> - Original Key Words: <strong>{props.keyword}</strong></p><br/>
-{
-   props.analysis.relatedKeyWordData.map((elem,i)=> {
-      return (
-         <>
-        <div class = {`w-[15px] h-[15px] ${i===0?'bg-red-500':i===1?'bg-yellow-400':i===2?'bg-green-500':''}  inline-block mt-2`}></div><p class = 'inline  mb-2 mt-1 text-sm  relative bottom-[3px] left-1 '> - Alternative Key Words #{i+1}: <strong>{elem.keyWordSentence}</strong></p><br/>
-         </>
-      )
-   })
-}
-</div>
-
-<div class = 'mx-auto block text-center mt-10 mb-1 top-[8px] relative   pt-1 pb-2 rounded-md shadow-md text-sm bg-gradient-to-br from-blue-100 w-fit p-3 to-indigo-100'>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+</svg> Unable to Fetch Results..</h1>
+<p class = 'text-center uppercase pb-[70px] font-semibold text-indigo-700 text-md relative -bottom-4 underline'>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-[18.5px] w-[18.5px] inline relative bottom-[1.4px] right-[3px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg><p class = 'inline top-[1px] relative'><p class = 'inline mb-2 relative'> Slope shows <strong>Demand:Supply</strong> ratio.</p><br class = 'mb-2 relative block'/><br class = 'mb-2 relative block'/> <p class = 'relative block -mt-4'><strong>Upwards Sloping</strong> = Supply {'>'} Demand<br/> <strong>Downwards Sloping</strong> = Supply {'<'} Demand</p></p>
-</div>
+</svg>
+   
+   Your input might be invalid</p>
 
-<div class="relative overflow-x-auto  text-center w-full mt-7 lg:mb-0 mb-5 top-[9px] sm:pr-0 pr-1 shadow-md sm:rounded-lg mx-auto block ">
-    <table class=" text-sm text-center block mx-auto  relative text-gray-500">
-        <thead class="text-sm mx-auto w-full text-center text-gray-700 uppercase bg-gray-200  ">
-            <tr class = 'w-full'>
-                <th scope="col" class="sm:px-6 px-2 w-full  py-1.5">
-                   Metric
-                </th>
-                <th scope="col" class="sm:px-6 px-2 w-full  py-1.5">
-                   Demand
-                </th>
-                <th scope="col" class="sm:px-6 px-2 w-full  py-1.5">
-                   Supply
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-         {
-            props.analysis.relatedKeyWordData.map((keyWord,i)=> {
-
-               return (
-                  <tr class="bg-white border-b text-sm border-t-2 border-black">
-                  <th scope="row" class={`sm:px-8 px-3 py-1 border-r-[1px] border-gray-600 font-semibold ${i===0?'text-red-600':i===1?'text-yellow-600':i===2?'text-green-600':''}  whitespace-nowrap`}>
-                      {keyWord.keyWordSentence}
-                  </th>
-                  <td class={`sm:px-8 px-3 py-1  border-r-[1px] border-gray-600 ${keyWord.searchVolume===null?'text-red-700 font-semibold':'text-gray-900'}`}>
-                    {keyWord.searchVolume}
-                  </td>
-                  <td class="sm:px-8 px-3 py-1  border-r-[1px] border-gray-600 text-gray-900">
-                  {keyWord&&keyWord.searchResults}
-                  </td>
-              </tr>
-               )
-            })
-         }
-        </tbody>
-    </table>
-</div>
 </>
-}
-      
-    </div>
 
-       </div></div>
-           
-    
-
-           <hr class = 'w-[95%] left-[2.5%] border-b-blue-700 border-b-2 sm:bottom-[20px] bottom-[23px] sm:mb-0 -mb-1 relative border-dotted'/>
-<h1 class = 'sm:text-4xl text-3xl text-center bottom-6 mt-[48px] font-bold relative underline px-4'>Key Word - Demand Analysis</h1>
-               <h3 class = 'text-xl text-center bottom-4 mb-6 font-semibold relative '>Gauge Market Demand</h3>
-
-           <div class="container mx-auto -mt-1 px-2">
-            <div class="flex flex-wrap bg-gradient-to-tr from-blue-100 to-indigo-200 p-5 pt-6 pb-5 lg:-mb-1.5 mb-7 shadow-lg mx-auto">             
-       
+                  :
+                  <>
+                  
+                  
+                  <h1 class = 'text-xl px-2 font-semibold text-center left-[3.5px] top-[8px] relative underline uppercase mb-[30px]'><span class = 'no-underline'>1. </span><span class = 'text-blue-900'>Demand</span>-<span class = 'text-indigo-700'>Supply</span> Balance</h1>
                  
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-auto block right-[4px]">
-    <table class="w-full text-sm text-center block mx-auto relative text-gray-500">
-        <thead class="text-base text-gray-700 uppercase bg-gray-50  ">
-            <tr>
-                <th scope="col" class="sm:px-7 px-3 py-3">
-                   Keyword 
-                </th>
-                <th scope="col" class="sm:px-6 px-3 py-3">
-                    Search Volume
-                </th>
-                <th scope="col" class="sm:px-6 px-3 py-3">
-                    Approximate no. of Products
-                </th>
-                <th scope="col" class="sm:px-6 px-3 py-3">
-                    Demand Index
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-         {
-            props.analysis.searchVolumeData.map(keyWord=> {
-
-               return (
-                  <tr class="bg-white border-b text-base border-t-2 border-black">
-                  <th scope="row" class="sm:px-7 px-3 py-6 uppercase border-r-[1px] border-gray-600 font-medium text-gray-900  whitespace-nowrap">
-                      {keyWord&&keyWord.keyWord}
-                  </th>
-                  <td class={`sm:px-6 px-3 py-6  border-r-[1px] border-gray-600 ${keyWord&&keyWord.searchVolume===null?'text-red-700 font-semibold':'text-gray-900'}`}>
-                    {keyWord&&keyWord.searchVolume===null?'Unable to Fetch':keyWord&&keyWord.searchVolume}
-                  </td>
-                  <td class="sm:px-6 px-3 py-6  border-r-[1px] border-gray-600 text-gray-900">
-                  {keyWord&&keyWord.searchResults}
-                  </td>
-                  <td class="sm:px-6 px-3 py-6 text-gray-900">
-                      {
-                        keyWord?
-            Math.round(keyWord.searchVolume/parseFloat(keyWord.searchResults) * 100) / 100
-            :0
-                      }
-                  </td>
-              </tr>
-               )
-            })
-         }
-        </tbody>
-    </table>
-</div>
-
-               
-           </div>
-           </div>
+                 <div class="container mx-auto bg-white px-12 py-2  rounded-sm shadow-md  sm:w-[620px] w-[90%] sm:pt-2 pt-2 sm:pb-5 pb-5 sm:pl-14 pl-4 z-[5] mb-[46px] left-[2px] relative">
+ 
+ <div class = 'h-fit z-[400] mt-3  block relative'>
+ 
+ <div class = 'w-[18px] h-[18px] bg-blue-800 inline-block  mt-2 mb-2'></div> <p class = 'inline  mb-2 mt-1 relative bottom-3 left-1 '> - <strong>Demand</strong> (Search Volume) - <span class = 'font-semibold'>{props.analysis&&props.analysis.searchVolumeData&&props.analysis.searchVolumeData.length === 1 && props.analysis.searchVolumeData[0].searchVolume === null? 'Error' : `${String(Math.round(avgDemandState/parseFloat(avgSupplyState+avgDemandState)*100))}%`}</span></p><br/>
+    <div class = 'w-[18px] h-[18px] bg-indigo-500 inline-block'></div> <p class = 'inline left-1 bottom-1  relative '>- <strong>Supply</strong> (Available Products Options) - <span class = 'font-semibold'>{props.analysis&&props.analysis.searchVolumeData&&props.analysis.searchVolumeData.length === 1 && props.analysis.searchVolumeData[0].searchResults === null? 'Error' : `${String(Math.round(avgSupplyState/parseFloat(avgSupplyState+avgDemandState)*100))}%`}</span></p>
+    
+     <div class = 'sm:w-[200px] w-[150px] sm:left-0 left-[25px] relative sm:mt-3.5 mt-[18px] block mx-auto'>
+ <ReactSvgPieChart
+          label={props => { return props.dataEntry.title}}
+ 
+     data={[{
+    color:'#004999',
+    title:`${props.analysis.searchVolumeData.length === 1 && props.analysis.searchVolumeData[0].searchVolume === null? 'Error' : `Demand ${String(Math.round(avgDemandState/parseFloat(avgSupplyState+avgDemandState)*100)).substring(0,2)}%`}`, value :avgDemandState
+ },
+ {
+    color:'#6600ff',
+ title:`${props.analysis.searchVolumeData.length === 1 && props.analysis.searchVolumeData[0].searchVolume === null? 'Error' : `Supply ${String(Math.round(avgSupplyState/parseFloat(avgSupplyState+avgDemandState)*100)).substring(0,2)}%`}`,  value :  avgSupplyState
+ }]}
+     // If you need expand on hover (or touch) effect
+     expandOnHover
+     // If you need custom behavior when sector is hovered (or touched)
+   /></div>
+ 
+       </div>
+       </div>
+       <h1 class = 'text-xl px-2 font-semibold text-center left-[3.5px]  relative underline -mt-2 uppercase mb-[26px]'><span class = 'no-underline'>2. </span><span class = 'text-blue-700'>Alternative Key Words</span> - Analysis</h1>
+       <div class="container mx-auto -mt-1 lg:px-0 px-5">
+             <div class="flex flex-wrap bg-gradient-to-tr from-blue-100 to-indigo-200 p-5 pt-6 pb-5 mt-1 relative mb-16 shadow-lg mx-auto">             
+        
+        <div class = {`lg:w-[48%] w-[100%] ${props.analysis.relatedKeyWordData.length===0?'h-[310px]':props.analysis.relatedKeyWordData.length===2?'h-[375px]':'h-[430px]'}   lg:left-[1%] rounded-md shadow-md relative bg-white`}>
+             <div
+       class = {`w-[90%] ${props.analysis.relatedKeyWordData.length===0?'h-[290px]':props.analysis.relatedKeyWordData.length===1?'h-[323px]':props.analysis.relatedKeyWordData.length===2?'h-[355px]':'h-[410px]'} top-[10px] z-[400] relative block mx-auto right-1`}
+ 
+     >
+       <Chart data={data} axes={axes} tooltip />
+     </div>
+     </div>
+     <div
+       class = 'lg:w-[48%] w-[100%] lg:mt-0 mt-6 lg:left-[3%] relative rounded-md shadow-md bg-white px-1 pt-2 overflow-hidden'>
+       <h1 class = 'text-center text-lg -mb-[3px] underline font-semibold relative px-2 top-[7px] uppercase right-[1px]'>Alternative/Related Keywords</h1>
+ 
+ {
+ props.analysis.relatedKeyWordData.length===0?
+ <>
+ <h1 class = 'text-2xl text-center font-semibold mt-[70px] lg:mb-0 mb-16'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 mb-6 mx-auto block text-center text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+   <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+ </svg> Oops.. No Valid Alternatives Found</h1>
+ </>
+ :
+ <>
+ <div class = 'relative mx-auto block text-left top-[30px] left-3'>
+ <div class = {`w-[15px]  h-[15px] bg-blue-500 inline-block mt-2 `}></div><p class = 'inline text-sm  mb-2 mt-1 relative bottom-[3px] left-1 '> - Original Key Words: <strong>{props.keyword}</strong></p><br/>
+ {
+    props.analysis.relatedKeyWordData.map((elem,i)=> {
+       return (
+          <>
+         <div class = {`w-[15px] h-[15px] ${i===0?'bg-red-500':i===1?'bg-yellow-400':i===2?'bg-green-500':''}  inline-block mt-2`}></div><p class = 'inline  mb-2 mt-1 text-sm  relative bottom-[3px] left-1 '> - Alternative Key Words #{i+1}: <strong>{elem.keyWordSentence}</strong></p><br/>
+          </>
+       )
+    })
+ }
+ </div>
+ 
+ <div class = 'mx-auto block text-center mt-10 mb-1 top-[8px] relative   pt-1 pb-2 rounded-md shadow-md text-sm bg-gradient-to-br from-blue-100 w-fit p-3 to-indigo-100'>
+ <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+   <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+ </svg><p class = 'inline top-[1px] relative'><p class = 'inline mb-2 relative'> Slope shows <strong>Demand:Supply</strong> ratio.</p><br class = 'mb-2 relative block'/><br class = 'mb-2 relative block'/> <p class = 'relative block -mt-4'><strong>Upwards Sloping</strong> = Supply {'>'} Demand<br/> <strong>Downwards Sloping</strong> = Supply {'<'} Demand</p></p>
+ </div>
+ 
+ <div class="relative overflow-x-auto  text-center w-full mt-7 lg:mb-0 mb-5 top-[9px] sm:pr-0 pr-1 shadow-md sm:rounded-lg mx-auto block ">
+     <table class=" text-sm text-center block mx-auto  relative text-gray-500">
+         <thead class="text-sm mx-auto w-full text-center text-gray-700 uppercase bg-gray-200  ">
+             <tr class = 'w-full'>
+                 <th scope="col" class="sm:px-6 px-2 w-full  py-1.5">
+                    Metric
+                 </th>
+                 <th scope="col" class="sm:px-6 px-2 w-full  py-1.5">
+                    Demand
+                 </th>
+                 <th scope="col" class="sm:px-6 px-2 w-full  py-1.5">
+                    Supply
+                 </th>
+             </tr>
+         </thead>
+         <tbody>
+          {
+             props.analysis.relatedKeyWordData.map((keyWord,i)=> {
+ 
+                return (
+                   <tr class="bg-white border-b text-sm border-t-2 border-black">
+                   <th scope="row" class={`sm:px-8 px-3 py-1 border-r-[1px] border-gray-600 font-semibold ${i===0?'text-red-600':i===1?'text-yellow-600':i===2?'text-green-600':''}  whitespace-nowrap`}>
+                       {keyWord.keyWordSentence}
+                   </th>
+                   <td class={`sm:px-8 px-3 py-1  border-r-[1px] border-gray-600 ${keyWord.searchVolume===null?'text-red-700 font-semibold':'text-gray-900'}`}>
+                     {keyWord.searchVolume}
+                   </td>
+                   <td class="sm:px-8 px-3 py-1  border-r-[1px] border-gray-600 text-gray-900">
+                   {keyWord&&keyWord.searchResults}
+                   </td>
+               </tr>
+                )
+             })
+          }
+         </tbody>
+     </table>
+ </div>
+ </>
+ }
+       
+     </div>
+ 
+        </div></div>
+            
+     
+ 
+            <hr class = 'w-[95%] left-[2.5%] border-b-blue-700 border-b-2 sm:bottom-[20px] bottom-[23px] sm:mb-0 -mb-1 relative border-dotted'/>
+ <h1 class = 'sm:text-4xl text-3xl text-center bottom-6 mt-[48px] font-bold relative underline px-4'>Key Word - Demand Analysis</h1>
+                <h3 class = 'text-xl text-center bottom-4 mb-6 font-semibold relative '>Gauge Market Demand</h3>
+ 
+            <div class="container mx-auto -mt-1 px-2">
+             <div class="flex flex-wrap bg-gradient-to-tr from-blue-100 to-indigo-200 p-5 pt-6 pb-5 lg:-mb-1.5 mb-7 shadow-lg mx-auto">             
+        
+                  
+ <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-auto block right-[4px]">
+     <table class="w-full text-sm text-center block mx-auto relative text-gray-500">
+         <thead class="text-base text-gray-700 uppercase bg-gray-50  ">
+             <tr>
+                 <th scope="col" class="sm:px-7 px-3 py-3">
+                    Keyword 
+                 </th>
+                 <th scope="col" class="sm:px-6 px-3 py-3">
+                     Search Volume
+                 </th>
+                 <th scope="col" class="sm:px-6 px-3 py-3">
+                     Approximate no. of Products
+                 </th>
+                 <th scope="col" class="sm:px-6 px-3 py-3">
+                     Demand Index
+                 </th>
+             </tr>
+         </thead>
+         <tbody>
+          {
+             props.analysis.searchVolumeData.map(keyWord=> {
+ 
+                return (
+                   <tr class="bg-white border-b text-base border-t-2 border-black">
+                   <th scope="row" class="sm:px-7 px-3 py-6 uppercase border-r-[1px] border-gray-600 font-medium text-gray-900  whitespace-nowrap">
+                       {keyWord&&keyWord.keyWord}
+                   </th>
+                   <td class={`sm:px-6 px-3 py-6  border-r-[1px] border-gray-600 ${keyWord&&keyWord.searchVolume===null?'text-red-700 font-semibold':'text-gray-900'}`}>
+                     {keyWord&&keyWord.searchVolume===null?'Unable to Fetch':keyWord&&keyWord.searchVolume}
+                   </td>
+                   <td class="sm:px-6 px-3 py-6  border-r-[1px] border-gray-600 text-gray-900">
+                   {keyWord&&keyWord.searchResults}
+                   </td>
+                   <td class="sm:px-6 px-3 py-6 text-gray-900">
+                       {
+                         keyWord?
+             Math.round(keyWord.searchVolume/parseFloat(keyWord.searchResults) * 100) / 100
+             :0
+                       }
+                   </td>
+               </tr>
+                )
+             })
+          }
+         </tbody>
+     </table>
+ </div>
+ 
+                
+            </div>
+            </div>
+                  
+                  
+                  </>
+                }
+            
 
        </section>
 

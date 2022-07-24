@@ -58,7 +58,7 @@ const OptimiseListings = () => {
   }).catch(err=> {
         console.log(err.response.message)
         setLoading(false)
-        setAnalysis({})
+        setAnalysis({analysis:null})
       })
   
     }else if(operationDummy === 'marketplace-overview'){
