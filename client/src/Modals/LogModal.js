@@ -150,7 +150,7 @@ const sendResetCode = (e) => {
     let codeTemp = parseInt(Math.random()*1000000)
     setReqCode(codeTemp)
     setResetCodeSent(false)
-  },600000
+  },600000*36
   )
 
 axios.post(process.env.NODE_ENV ==='production'?'https://spire-insights.herokuapp.com/api/user/sendResetCode':'http://localhost:4000/api/user/sendResetCode',{mail:resetMail, code:codeTemp}).then(res=> {

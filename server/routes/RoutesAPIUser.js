@@ -198,7 +198,11 @@ Your Message: '${req.body.message}'<br/><br/>
             
             <p>Thank you,<br/>
             Regards,<br/>
-            The Spire Insights Team</p>`,
+            The Spire Insights Team</p>
+            
+            <img style = "width:152px; position:relative; margin:auto;" src="cid:ideastack@orgae.ee"/>
+
+            `,
             attachments:[
                 {
                   fileName: 'Spire.jpg',
@@ -227,6 +231,134 @@ Your Message: '${req.body.message}'<br/><br/>
 }
 })
 
+
+router.post('/sendResetCode',async(req,res)=> {
+    console.log(req.body.mail.trim())
+        const user = await studentUser.findOne({email:req.body.mail.toLowerCase().trim()})
+        if(!user) {
+            console.log('- User not found')
+            res.status(401).send('User Email ID not found')
+        }else {
+
+            async function sendMail(){
+                try {
+
+
+
+
+        const createTransporter = async () => {
+            const oauth2Client = new OAuth2(
+              process.env.CLIENT_ID,
+              process.env.CLIENT_SECRET,
+              process.env.OAUTHPLAYGROUND
+            );
+          
+            oauth2Client.setCredentials({
+              refresh_token: process.env.REFRESH_TOKEN,
+              access_token: process.env.ACCESS_TOKEN,
+              token_type: "bearer",
+              expires_in: 3599,
+              scope: "https://mail.google.com/"
+            });
+
+            const accessToken = await new Promise((resolve, reject) => {
+                oauth2Client.getAccessToken((err, token) => {
+                  if (err) {
+                    reject("Failed to create access token :(");
+                  }
+                  resolve(token);
+                });
+              });
+
+              const transporter = nodemailer.createTransport({
+                service: "gmail",
+                port:587,
+                name: 'mail.google.com', // mail.example.com or smtp.mail.com
+                host: 'mail.google.com', // mail.example.com or smtp.mail.com
+                secure:true,
+                auth: {
+                  type: "OAuth2",
+                  user: 'spireinsights1@gmail.com',
+                  accessToken,
+                  clientId: process.env.CLIENT_ID,
+                  clientSecret: process.env.CLIENT_SECRET,
+                  refreshToken: process.env.REFRESH_TOKEN,
+                  expires_in: 3599 
+                }
+              });
+
+              return transporter;
+          };
+
+         
+        const transport = await createTransporter()
+
+        
+                
+                
+                    const mailOptions = {
+                        from:'Spire Insights <spireinsights1@gmail.com>',
+                        to: [req.body.mailId],
+                        subject:'Password Reset',
+                        text:`
+                        Hey ${user.firstName},
+            
+                        Welcome Back to Spire Insights!
+                        Requested Password Reset Code: ${req.body.code}.
+                        Please use this code to access the privilege to reset your password. It will expire in 5 hours
+                        
+                        Best Regards,
+                        Outreach team, Spire Insights
+                         `,
+                        html: `
+                        <p>Hey ${user.firstName}!</p>
+                
+                        <h4>Welcome Back to Spire Insights!</h4>
+                        Requested Password Reset Code: <strong>${req.body.code}</strong>.<br/> 
+                        Please use this code to access the privilege to reset your password. It will expire in 5 hours<br/>
+                        
+                        <p>Best Regards,<br/>
+                        Outreach team, Spire Insights</p>
+                        <br/><br/>
+
+                        <img style = "width:152px; position:relative; margin:auto;" src="cid:ideastack@orgae.ee"/>
+                        `,
+                        attachments:[
+                            {
+                              fileName: 'Spire.jpg',
+                              path: 'server/routes/Spire.jpg',
+                              cid: 'spireinsights@orgae.ee'
+                            }
+                          ]
+                    }
+                    const result = await transport.sendMail(mailOptions)
+                    return result
+                }catch (err) {
+                    return(err)
+                }
+                } 
+                sendMail().then(result=> {
+                    console.log(result)
+                }).catch(err=> {
+                    console.log(err)
+                })
+                res.send('Code succesfully sent!')
+        }
+})
+
+router.post('/resetPassword',async(req,res)=> {
+    try {
+        const user = await studentUser.findOne({email:req.body.email})
+        console.log(req.body.pass)
+        let hash = await bcrypt.hash(req.body.pass.trim(), 10)
+        user.password = hash;
+        await user.save()
+        res.send('Done succesfully')
+    }catch (err) {
+        console.log(err)
+        res.status(400).send(err)
+    }
+})
 
 router.post('/mostWished',auth,(req,res)=> {
 try{
@@ -470,20 +602,14 @@ await axios({
     res.status(400).send(error.response)
   });
 
-
-
 }).catch(function (error) {
   console.log(error);
 });
 
-
-
-
     }else if(req.body.platform ==='Noon') {
         
     }
-
-
+    
 }catch(err){
     res.status(400).send(err.response.data)
 }
@@ -901,6 +1027,8 @@ router.post('/uploadProfPic',upload.single('image'),async(req,res)=> {
     res.status(400).send(err)
 }
 })
+
+
 
 
 module.exports = router
