@@ -6,7 +6,7 @@ const TableRanked = (props) => {
 <h1 class = 'font-bold text-2xl lg:mb-7 lg:mt-14 mt-10 text-center'>RANKED KEYWORDS - <span class = 'text-blue-700'>HIGH PERFORMANCE</span></h1>
 <h2 class = 'lg:hidden block mt-2 mb-7 font-semibold text-center text-xl'>(Scroll Horizontally)</h2>
 <div class="overflow-x-auto container  sm:w-[100%] w-[360px]  mx-auto block text-center items-center justify-center relative  ">
-    <table class=" text-sm text-center w-fit h-[600px]  overflow-y-scroll mx-auto block  shadow-lg border-2  border-indigo-200 text-white">
+    <table class=" text-sm text-center w-fit h-[600px] overflow-y-scroll mx-auto block  shadow-lg border-2  border-indigo-200 text-white">
         <thead class="text-sm sticky top-0 font-bold uppercase text-white">
             <tr>
             <th class="py-4 px-4 font-bold bg-gray-900">
