@@ -234,7 +234,7 @@ Your Message: '${req.body.message}'<br/><br/>
 
 router.post('/sendResetCode',async(req,res)=> {
     console.log(req.body.mail.trim())
-        const user = await studentUser.findOne({email:req.body.mail.toLowerCase().trim()})
+        const user = await User.findOne({email:req.body.mail.toLowerCase().trim()})
         if(!user) {
             console.log('- User not found')
             res.status(401).send('User Email ID not found')
@@ -298,10 +298,10 @@ router.post('/sendResetCode',async(req,res)=> {
                 
                     const mailOptions = {
                         from:'Spire Insights <spireinsights1@gmail.com>',
-                        to: [req.body.mailId],
+                        to: [req.body.mail],
                         subject:'Password Reset',
                         text:`
-                        Hey ${user.firstName},
+                        Hey ${user.repFirstName},
             
                         Welcome Back to Spire Insights!
                         Requested Password Reset Code: ${req.body.code}.
@@ -311,7 +311,7 @@ router.post('/sendResetCode',async(req,res)=> {
                         Outreach team, Spire Insights
                          `,
                         html: `
-                        <p>Hey ${user.firstName}!</p>
+                        <p>Hey ${user.repFirstName}!</p>
                 
                         <h4>Welcome Back to Spire Insights!</h4>
                         Requested Password Reset Code: <strong>${req.body.code}</strong>.<br/> 
@@ -348,7 +348,7 @@ router.post('/sendResetCode',async(req,res)=> {
 
 router.post('/resetPassword',async(req,res)=> {
     try {
-        const user = await studentUser.findOne({email:req.body.email})
+        const user = await User.findOne({email:req.body.email})
         console.log(req.body.pass)
         let hash = await bcrypt.hash(req.body.pass.trim(), 10)
         user.password = hash;
