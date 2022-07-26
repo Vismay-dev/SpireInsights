@@ -440,10 +440,10 @@ passReset?
     <ClipLoader color={'#0b0bbf'} loading={loading}  size={70} />
     </div>
 :
-  <form class="mt-24 space-y-6 pb-2 relative" onSubmit={handleSubmit}>
+  <form class="mt-24 space-y-6 pb-2 relative" onSubmit={sendResetCode}>
     <input class="text-md" type="hidden" name="remember"  id = 'remember'/>
     <div class="rounded-md relative sm:mb-3 sm:w-full w-[117%] sm:right-0 right-[6%] -mb-1 block -space-y-px ">
-    {error==='User Email ID not found'?<p class="text-red-500 text-center text-md relative bottom-3 mt-2 pt-3 pb-2 mb-2">Login Failed: User Mail Not Found</p>:
+    {error==='User not found'?<p class="text-red-500 text-center text-md relative bottom-3 mt-2 pt-3 pb-2 mb-2">Failed: User Mail Not Found</p>:
    null}
 
       <div>
