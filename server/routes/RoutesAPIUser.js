@@ -418,8 +418,8 @@ router.post('/topProductAnalysis',auth,(req,res)=> {
 
 post_array2.push({
   "keyword": req.body.sentence,
-  "language_name": "English",
-  "location_code": 2840,
+  "language_name": "Arabic",
+  "location_code": 2784,
   "limit": 3,
   "include_seed_keyword": false
 });
@@ -500,8 +500,8 @@ try{
         ];
 post_array.push({
   "keywords": req.body.sentence.toLowerCase().split(' '),
-  "language_name": "English",
-  "location_code": 2840
+  "language_name": "Arabic",
+  "location_code": 2784
 });
 let searchVolumeData = []
 
@@ -546,8 +546,8 @@ await axios({
 let post_array2 = [];
 post_array2.push({
   "keyword": req.body.sentence,
-  "language_name": "English",
-  "location_code": 2840,
+  "language_name": "Arabic",
+  "location_code": 2784,
   "limit": 3,
   "include_seed_keyword": false
 });
@@ -628,8 +628,8 @@ if(req.body.platform==='Amazon'){
     
     post_array.push({
     "asin": req.body.asin,
-    "language_name": "English",
-    "location_code": 2840,
+    "language_name": "Arabic",
+    "location_code": 2784,
     'limit': 6
     });
 
@@ -645,9 +645,10 @@ await axios({
     'content-type': 'application/json'
   }
 }).then(async(response) => {
+    console.log(response['data']['tasks'])
     if(!response['data']['tasks'][0]||!response['data']['tasks'][0]['result'][0]||!response['data']['tasks'][0]['result'][0].items){
         console.log(response['data']['tasks'][0])
-        res.status(402).send('Unable to scrape')
+        res.status(400).send('Unable to scrape')
       }
 if(response['data']&& response['data']['tasks'] && response['data']['tasks'][0] && response['data']['tasks'][0]['result'] && response['data']['tasks'][0]['result'][0].items){
   var result = response['data']['tasks'][0]['result'][0].items
@@ -678,7 +679,7 @@ if(response['data']&& response['data']['tasks'] && response['data']['tasks'][0] 
     }
   }
 }else {
-    res.status(402).send('Unable to scrape')
+    res.status(400).send('Unable to scrape')
 }
 }
 
@@ -687,8 +688,8 @@ const post_array = [];
 let rankedKeywords = []
 post_array.push({
   "asin": req.body.asin,
-  "language_name": "English",
-  "location_code": 2840
+  "language_name": "Arabic",
+  "location_code": 2784
 });
 
 await axios({
@@ -704,6 +705,7 @@ await axios({
   }
 }).then(function (response) {
   var result = response['data']['tasks'][0]['result'][0].items;
+  try{
   for(let i = 0; i< result.length; i++){
     let item = result[i]
     rankedKeywords.push({
@@ -713,7 +715,11 @@ await axios({
         searchResults: item.ranked_serp_element.se_results_count
     })
   }
+}catch(err){
+    res.status(400).send('Unable to Scrape')
+}
 }).catch(function (error) {
+    res.status(400).send('Unable to scrape')
   console.log(error);
 });
 
