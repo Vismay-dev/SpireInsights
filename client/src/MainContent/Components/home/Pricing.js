@@ -154,6 +154,7 @@ const Pricing = () => {
                     setShowReg(true);
                   }}
                   class="
+                  cursor-pointer
                   w-full
                   block
                   text-base
