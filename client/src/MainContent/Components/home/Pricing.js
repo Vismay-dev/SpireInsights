@@ -150,7 +150,9 @@ const Pricing = () => {
                   </p>
                 </div>
                 <a
-                  href="javascript:void(0)"
+                  onClick={() => {
+                    setShowReg(true);
+                  }}
                   class="
                   w-full
                   block
