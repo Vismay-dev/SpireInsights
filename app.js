@@ -10,6 +10,26 @@ const RoutesAPIUser = require("./server/routes/RoutesAPIUser.js");
 
 var timeout = require("connect-timeout"); //express v4
 const Airbrake = require("@airbrake/node");
+var createError = require("http-errors"); //this is required by connect-timeout, so you should already have it
+
+app.get("/long/query/", timeout("25s"), function (req, res, next) {
+  if (req.timedout) return next(createError(503, "Response timeout"));
+  //Something that takes a long time
+  if (req.timedout) return next(createError(503, "Response timeout"));
+  req.send("I processed that for you!");
+});
+
+var errorFilter = function (err, req, res, next) {
+  logger.warn(err.stack); //the stack is actually not going to be helpful in a timeout
+  if (!res.headersSent) {
+    //just because of your current problem, no need to exacerbate it.
+    errcode = err.status || 500; //err has status not statusCode
+    msg = err.message || "server error!";
+    res.status(errcode).send(msg); //the future of send(status,msg) is hotly debated
+  }
+};
+
+app.use(errorFilter);
 
 process.on("uncaughtException", function (err) {
   console.error(err);
@@ -21,8 +41,6 @@ new Airbrake.Notifier({
   projectKey: "2a04aaccc4e9266488bdd72df42d6cf7",
   environment: "production",
 });
-
-app.use(timeout("25s"));
 
 dotenv.config();
 cloudinary.config({
