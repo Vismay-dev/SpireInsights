@@ -12,7 +12,7 @@ var timeout = require("connect-timeout"); //express v4
 const Airbrake = require("@airbrake/node");
 var createError = require("http-errors"); //this is required by connect-timeout, so you should already have it
 
-app.get("/long/query/", timeout("25s"), function (req, res, next) {
+app.get("/long/query/", timeout("30s"), function (req, res, next) {
   if (req.timedout) return next(createError(503, "Response timeout"));
   //Something that takes a long time
   if (req.timedout) return next(createError(503, "Response timeout"));
