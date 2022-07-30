@@ -11,6 +11,11 @@ const RoutesAPIUser = require("./server/routes/RoutesAPIUser.js");
 var timeout = require("connect-timeout"); //express v4
 const Airbrake = require("@airbrake/node");
 
+process.on("uncaughtException", function (err) {
+  console.error(err);
+  console.log("Node NOT Exiting...");
+});
+
 new Airbrake.Notifier({
   projectId: 435256,
   projectKey: "2a04aaccc4e9266488bdd72df42d6cf7",
