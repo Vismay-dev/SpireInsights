@@ -19,6 +19,8 @@ app.get("/long/query/", timeout("30s"), function (req, res, next) {
   req.send("I processed that for you!");
 });
 
+app.use(timeout("30s"));
+
 var errorFilter = function (err, req, res, next) {
   logger.warn(err.stack); //the stack is actually not going to be helpful in a timeout
   if (!res.headersSent) {

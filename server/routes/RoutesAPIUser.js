@@ -131,7 +131,7 @@ Looking forward to a positive reply from your end and getting started on your jo
 
 Reply to this email or contact us at - +971 58 581 2510 - to be added to our list of customers for the free trial. Keep in mind the slots are filling up quickly! 
 
-Explore our website at - spire-insights.herokuapp.com
+Explore our website at - spire-insights.com
 Instagram - @spireinsights
 Facebook - Spire Insights
 
@@ -186,7 +186,7 @@ Looking forward to a positive reply from your end and getting started on your jo
 
 Reply to this email or contact us at - +971 58 581 2510 - to be added to our list of customers for the free trial. Keep in mind the slots are filling up quickly! <br/><br/>
 <i>
-Explore our website at - spire-insights.herokuapp.com<br/>
+Explore our website at - spire-insights.com<br/>
 Instagram - @spireinsights<br/>
 Facebook - Spire Insights<br/></i><br/>
 
