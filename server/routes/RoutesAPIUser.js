@@ -435,7 +435,6 @@ router.post("/topProductAnalysis", auth, (req, res) => {
           })
             .then(async (response) => {
               var result = response["data"]["tasks"];
-              console.log("reached here2");
 
               if (
                 !result ||
@@ -444,41 +443,47 @@ router.post("/topProductAnalysis", auth, (req, res) => {
                 !result[0].result[0].items
               ) {
                 res.status(400);
-              }
-              for (let x = 0; x < result[0].result.length; x++) {
-                if (result[0].result[0] && result[0].result[0].items !== null) {
-                  for (let y = 0; y < result[0].result[x].items.length; y++) {
-                    console.log("reached here3");
+              } else {
+                console.log("reached here2");
 
-                    if (
-                      result[0].result[x].items[y].keyword_data.keyword !==
-                      req.body.sentence
-                    ) {
-                      relatedKeyWordData.push({
-                        keyWordSentence:
-                          result[0].result[x].items[y].keyword_data.keyword,
-                        searchVolume: parseInt(
-                          result[0].result[x].items[y].keyword_data.keyword_info
-                            .search_volume
-                        ),
-                      });
+                for (let x = 0; x < result[0].result.length; x++) {
+                  if (
+                    result[0].result[0] &&
+                    result[0].result[0].items !== null
+                  ) {
+                    for (let y = 0; y < result[0].result[x].items.length; y++) {
+                      console.log("reached here3");
+
+                      if (
+                        result[0].result[x].items[y].keyword_data.keyword !==
+                        req.body.sentence
+                      ) {
+                        relatedKeyWordData.push({
+                          keyWordSentence:
+                            result[0].result[x].items[y].keyword_data.keyword,
+                          searchVolume: parseInt(
+                            result[0].result[x].items[y].keyword_data
+                              .keyword_info.search_volume
+                          ),
+                        });
+                      }
                     }
                   }
                 }
-              }
 
-              for (let y = 0; y < relatedKeyWordData.length; y++) {
-                await amazonResults(
-                  relatedKeyWordData[y].keyWordSentence,
-                  "ae"
-                ).then((res) => {
-                  console.log("reached here4");
-                  relatedKeyWordData[y] = {
-                    ...relatedKeyWordData[y],
-                    searchResults: res,
-                  };
-                  console.log("reached here5");
-                });
+                for (let y = 0; y < relatedKeyWordData.length; y++) {
+                  await amazonResults(
+                    relatedKeyWordData[y].keyWordSentence,
+                    "ae"
+                  ).then((res) => {
+                    console.log("reached here4");
+                    relatedKeyWordData[y] = {
+                      ...relatedKeyWordData[y],
+                      searchResults: res,
+                    };
+                    console.log("reached here5");
+                  });
+                }
               }
 
               console.log(relatedKeyWordData);
@@ -486,20 +491,24 @@ router.post("/topProductAnalysis", auth, (req, res) => {
                 analysis: analysis,
                 relatedKeyWordData: relatedKeyWordData,
               });
+              return;
             })
             .catch(function (error) {
               console.log(error);
-              res.status(400).send(error.response);
+              res.status(400).send(error);
+              return;
             });
         }
       );
     } else if (req.body.platform === "Noon") {
       noon(req.body.sentence, "uae-en");
       res.send({});
+      return;
     }
   } catch (err) {
     console.log(err);
     res.status(400).send(err);
+    return;
   }
 });
 
@@ -536,8 +545,8 @@ router.post("/marketPlaceOverview", auth, async (req, res) => {
             !result[0].result[0].items
           ) {
             res.status(400).send("Unable to scrape");
+            return;
           }
-          console.log(result);
           for (let x = 0; x < result[0].result.length; x++) {
             for (let y = 0; y < result[0].result[x].items.length; y++) {
               searchVolumeData.push({
@@ -627,10 +636,13 @@ router.post("/marketPlaceOverview", auth, async (req, res) => {
                 searchVolumeData: searchVolumeData,
                 relatedKeyWordData: relatedKeyWordData,
               });
+              return;
             })
             .catch(function (error) {
               console.log(error);
               res.status(400).send(error.response);
+
+              return;
             });
         })
         .catch(function (error) {
@@ -639,7 +651,9 @@ router.post("/marketPlaceOverview", auth, async (req, res) => {
     } else if (req.body.platform === "Noon") {
     }
   } catch (err) {
+    console.log(err.response);
     res.status(400).send(err.response.data);
+    return;
   }
 });
 
@@ -742,6 +756,7 @@ router.post("/trackProductPerformance", auth, async (req, res) => {
             } else {
               console.log("here its sent1");
               res.status(400).send("Unable to scrape");
+              return;
             }
           }
 
@@ -793,15 +808,18 @@ router.post("/trackProductPerformance", auth, async (req, res) => {
             rankedKeywords,
             competitorData,
           });
+          return;
         })
         .catch(function (error) {
           console.log(error);
           res.status(400).send(error.response);
+          return;
         });
     } else if (req.body.platform === "Noon") {
     }
   } catch (err) {
     res.status(400).send(err.response);
+    return;
   }
 });
 

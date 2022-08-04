@@ -405,7 +405,9 @@ const TopProdResult = (props) => {
                   Appeared in <strong>Ranks #4-10</strong> in{" "}
                   <strong>{props.analysis.productAnalysis.pos_4_10}</strong>{" "}
                   Search Result Page
-                  {props.analysis.productAnalysis.pos_4_10 === 1 ? "" : "s"}{" "}
+                  {props.analysis.productAnalysis.pos_4_10 === 1
+                    ? ""
+                    : "s"}{" "}
                   (SERPS).
                 </h1>
                 <h1 class="font-normal text-[16px] sm:px-10 px-6 pb-1.5 xl:pl-16  xl:text-left text-center">
@@ -424,7 +426,9 @@ const TopProdResult = (props) => {
                   Appeared in <strong>Ranks #11-100</strong> in{" "}
                   <strong>{props.analysis.productAnalysis.pos_11_100}</strong>{" "}
                   Search Result Page
-                  {props.analysis.productAnalysis.pos_11_100 === 1 ? "" : "s"}{" "}
+                  {props.analysis.productAnalysis.pos_11_100 === 1
+                    ? ""
+                    : "s"}{" "}
                   (SERPS).
                 </h1>
 
@@ -805,7 +809,9 @@ const TopProdResult = (props) => {
                           Average Competitive Rating:
                         </h1>{" "}
                         <span class="text-2xl top-[2px] left-[6px] relative inline font-bold mr-2.5 text-blue-700">
-                          {props.analysis.analysis.avgCompetitiveRating}
+                          {props.analysis &&
+                            props.analysis.analysis &&
+                            props.analysis.analysis.avgCompetitiveRating}
                         </span>
                         /5
                         <br />
@@ -815,8 +821,10 @@ const TopProdResult = (props) => {
                         </h1>{" "}
                         <span
                           class={`${
-                            props.analysis.analysis.avgCompetitiveRating >=
-                              4.5 ||
+                            (props.analysis &&
+                              props.analysis.analysis &&
+                              props.analysis.analysis.avgCompetitiveRating >=
+                                4.5) ||
                             props.analysis.analysis.avgCompetitiveRating < 2
                               ? "text-lg left-[1px] mr-0.5 top-[10px]"
                               : "text-xl left-[6px] top-[10px] mr-1.5 relative"
@@ -1635,8 +1643,11 @@ const TopProdResult = (props) => {
             </h3>
 
             {!props.analysis ||
-            (props.analysis && props.analysis.searchVolumeData.length === 0) ||
-            props.analysis.relatedKeyWordData.length === 0 ? (
+            (props.analysis &&
+              props.analysis.searchVolumeData &&
+              props.analysis.searchVolumeData.length === 0) ||
+            (props.analysis.relatedKeyWordData &&
+              props.analysis.relatedKeyWordData.length === 0) ? (
               <>
                 <h1 class="text-2xl text-center block  mx-auto font-semibold left-2 mt-[60px]">
                   <svg
@@ -1731,6 +1742,8 @@ const TopProdResult = (props) => {
                           {
                             color: "#004999",
                             title: `${
+                              props.analysis &&
+                              props.analysis.searchVolumeData &&
                               props.analysis.searchVolumeData.length === 1 &&
                               props.analysis.searchVolumeData[0]
                                 .searchVolume === null
@@ -1750,6 +1763,8 @@ const TopProdResult = (props) => {
                           {
                             color: "#6600ff",
                             title: `${
+                              props.analysis &&
+                              props.analysis.searchVolumeData &&
                               props.analysis.searchVolumeData.length === 1 &&
                               props.analysis.searchVolumeData[0]
                                 .searchVolume === null
@@ -1783,20 +1798,25 @@ const TopProdResult = (props) => {
                   <div class="flex flex-wrap bg-gradient-to-tr from-blue-100 to-indigo-200 p-5 pt-6 pb-5 mt-1 relative mb-16 shadow-lg mx-auto">
                     <div
                       class={`lg:w-[48%] w-[100%] ${
+                        props.analysis.relatedKeyWordData &&
                         props.analysis.relatedKeyWordData.length === 0
                           ? "h-[310px]"
-                          : props.analysis.relatedKeyWordData.length === 2
+                          : props.analysis.relatedKeyWordData &&
+                            props.analysis.relatedKeyWordData.length === 2
                           ? "h-[375px]"
                           : "h-[430px]"
                       }   lg:left-[1%] rounded-md shadow-md relative bg-white`}
                     >
                       <div
                         class={`w-[90%] ${
+                          props.analysis.relatedKeyWordData &&
                           props.analysis.relatedKeyWordData.length === 0
                             ? "h-[290px]"
-                            : props.analysis.relatedKeyWordData.length === 1
+                            : props.analysis.relatedKeyWordData &&
+                              props.analysis.relatedKeyWordData.length === 1
                             ? "h-[323px]"
-                            : props.analysis.relatedKeyWordData.length === 2
+                            : props.analysis.relatedKeyWordData &&
+                              props.analysis.relatedKeyWordData.length === 2
                             ? "h-[355px]"
                             : "h-[410px]"
                         } top-[10px] z-[400] relative block mx-auto right-1`}
@@ -1809,7 +1829,8 @@ const TopProdResult = (props) => {
                         Alternative/Related Keywords
                       </h1>
 
-                      {props.analysis.relatedKeyWordData.length === 0 ? (
+                      {props.analysis.relatedKeyWordData &&
+                      props.analysis.relatedKeyWordData.length === 0 ? (
                         <>
                           <h1 class="text-2xl text-center font-semibold mt-[70px] lg:mb-0 mb-16">
                             <svg
@@ -1841,31 +1862,32 @@ const TopProdResult = (props) => {
                               <strong>{props.keyword}</strong>
                             </p>
                             <br />
-                            {props.analysis.relatedKeyWordData.map(
-                              (elem, i) => {
-                                return (
-                                  <>
-                                    <div
-                                      class={`w-[15px] h-[15px] ${
-                                        i === 0
-                                          ? "bg-red-500"
-                                          : i === 1
-                                          ? "bg-yellow-400"
-                                          : i === 2
-                                          ? "bg-green-500"
-                                          : ""
-                                      }  inline-block mt-2`}
-                                    ></div>
-                                    <p class="inline  mb-2 mt-1 text-sm  relative bottom-[3px] left-1 ">
-                                      {" "}
-                                      - Alternative Key Words #{i + 1}:{" "}
-                                      <strong>{elem.keyWordSentence}</strong>
-                                    </p>
-                                    <br />
-                                  </>
-                                );
-                              }
-                            )}
+                            {props.analysis.relatedKeyWordData &&
+                              props.analysis.relatedKeyWordData.map(
+                                (elem, i) => {
+                                  return (
+                                    <>
+                                      <div
+                                        class={`w-[15px] h-[15px] ${
+                                          i === 0
+                                            ? "bg-red-500"
+                                            : i === 1
+                                            ? "bg-yellow-400"
+                                            : i === 2
+                                            ? "bg-green-500"
+                                            : ""
+                                        }  inline-block mt-2`}
+                                      ></div>
+                                      <p class="inline  mb-2 mt-1 text-sm  relative bottom-[3px] left-1 ">
+                                        {" "}
+                                        - Alternative Key Words #{i + 1}:{" "}
+                                        <strong>{elem.keyWordSentence}</strong>
+                                      </p>
+                                      <br />
+                                    </>
+                                  );
+                                }
+                              )}
                           </div>
 
                           <div class="mx-auto block text-center mt-10 mb-1 top-[8px] relative   pt-1 pb-2 rounded-md shadow-md text-sm bg-gradient-to-br from-blue-100 w-fit p-3 to-indigo-100">
@@ -1925,40 +1947,41 @@ const TopProdResult = (props) => {
                                 </tr>
                               </thead>
                               <tbody>
-                                {props.analysis.relatedKeyWordData.map(
-                                  (keyWord, i) => {
-                                    return (
-                                      <tr class="bg-white border-b text-sm border-t-2 border-black">
-                                        <th
-                                          scope="row"
-                                          class={`sm:px-8 px-3 py-1 border-r-[1px] border-gray-600 font-semibold ${
-                                            i === 0
-                                              ? "text-red-600"
-                                              : i === 1
-                                              ? "text-yellow-600"
-                                              : i === 2
-                                              ? "text-green-600"
-                                              : ""
-                                          }  whitespace-nowrap`}
-                                        >
-                                          {keyWord.keyWordSentence}
-                                        </th>
-                                        <td
-                                          class={`sm:px-8 px-3 py-1  border-r-[1px] border-gray-600 ${
-                                            keyWord.searchVolume === null
-                                              ? "text-red-700 font-semibold"
-                                              : "text-gray-900"
-                                          }`}
-                                        >
-                                          {keyWord.searchVolume}
-                                        </td>
-                                        <td class="sm:px-8 px-3 py-1  border-r-[1px] border-gray-600 text-gray-900">
-                                          {keyWord && keyWord.searchResults}
-                                        </td>
-                                      </tr>
-                                    );
-                                  }
-                                )}
+                                {props.analysis.relatedKeyWordData &&
+                                  props.analysis.relatedKeyWordData.map(
+                                    (keyWord, i) => {
+                                      return (
+                                        <tr class="bg-white border-b text-sm border-t-2 border-black">
+                                          <th
+                                            scope="row"
+                                            class={`sm:px-8 px-3 py-1 border-r-[1px] border-gray-600 font-semibold ${
+                                              i === 0
+                                                ? "text-red-600"
+                                                : i === 1
+                                                ? "text-yellow-600"
+                                                : i === 2
+                                                ? "text-green-600"
+                                                : ""
+                                            }  whitespace-nowrap`}
+                                          >
+                                            {keyWord.keyWordSentence}
+                                          </th>
+                                          <td
+                                            class={`sm:px-8 px-3 py-1  border-r-[1px] border-gray-600 ${
+                                              keyWord.searchVolume === null
+                                                ? "text-red-700 font-semibold"
+                                                : "text-gray-900"
+                                            }`}
+                                          >
+                                            {keyWord.searchVolume}
+                                          </td>
+                                          <td class="sm:px-8 px-3 py-1  border-r-[1px] border-gray-600 text-gray-900">
+                                            {keyWord && keyWord.searchResults}
+                                          </td>
+                                        </tr>
+                                      );
+                                    }
+                                  )}
                               </tbody>
                             </table>
                           </div>
@@ -1997,41 +2020,42 @@ const TopProdResult = (props) => {
                           </tr>
                         </thead>
                         <tbody>
-                          {props.analysis.searchVolumeData.map((keyWord) => {
-                            return (
-                              <tr class="bg-white border-b text-base border-t-2 border-black">
-                                <th
-                                  scope="row"
-                                  class="sm:px-7 px-3 py-6 uppercase border-r-[1px] border-gray-600 font-medium text-gray-900  whitespace-nowrap"
-                                >
-                                  {keyWord && keyWord.keyWord}
-                                </th>
-                                <td
-                                  class={`sm:px-6 px-3 py-6  border-r-[1px] border-gray-600 ${
-                                    keyWord && keyWord.searchVolume === null
-                                      ? "text-red-700 font-semibold"
-                                      : "text-gray-900"
-                                  }`}
-                                >
-                                  {keyWord && keyWord.searchVolume === null
-                                    ? "Unable to Fetch"
-                                    : keyWord && keyWord.searchVolume}
-                                </td>
-                                <td class="sm:px-6 px-3 py-6  border-r-[1px] border-gray-600 text-gray-900">
-                                  {keyWord && keyWord.searchResults}
-                                </td>
-                                <td class="sm:px-6 px-3 py-6 text-gray-900">
-                                  {keyWord
-                                    ? Math.round(
-                                        (keyWord.searchVolume /
-                                          parseFloat(keyWord.searchResults)) *
-                                          100
-                                      ) / 100
-                                    : 0}
-                                </td>
-                              </tr>
-                            );
-                          })}
+                          {props.analysis.searchVolumeData &&
+                            props.analysis.searchVolumeData.map((keyWord) => {
+                              return (
+                                <tr class="bg-white border-b text-base border-t-2 border-black">
+                                  <th
+                                    scope="row"
+                                    class="sm:px-7 px-3 py-6 uppercase border-r-[1px] border-gray-600 font-medium text-gray-900  whitespace-nowrap"
+                                  >
+                                    {keyWord && keyWord.keyWord}
+                                  </th>
+                                  <td
+                                    class={`sm:px-6 px-3 py-6  border-r-[1px] border-gray-600 ${
+                                      keyWord && keyWord.searchVolume === null
+                                        ? "text-red-700 font-semibold"
+                                        : "text-gray-900"
+                                    }`}
+                                  >
+                                    {keyWord && keyWord.searchVolume === null
+                                      ? "Unable to Fetch"
+                                      : keyWord && keyWord.searchVolume}
+                                  </td>
+                                  <td class="sm:px-6 px-3 py-6  border-r-[1px] border-gray-600 text-gray-900">
+                                    {keyWord && keyWord.searchResults}
+                                  </td>
+                                  <td class="sm:px-6 px-3 py-6 text-gray-900">
+                                    {keyWord
+                                      ? Math.round(
+                                          (keyWord.searchVolume /
+                                            parseFloat(keyWord.searchResults)) *
+                                            100
+                                        ) / 100
+                                      : 0}
+                                  </td>
+                                </tr>
+                              );
+                            })}
                         </tbody>
                       </table>
                     </div>
