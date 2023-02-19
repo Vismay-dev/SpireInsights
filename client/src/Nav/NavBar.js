@@ -268,7 +268,7 @@ const NavBar = (props) => {
                       location.pathname === "/liveDetails/"
                         ? "text-blue-700"
                         : "text-gray-700"
-                    } border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-sm uppercase md:p-0`}
+                    }   md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-sm uppercase md:p-0`}
                     aria-expanded="false"
                   >
                     <span>TOOLS</span>
