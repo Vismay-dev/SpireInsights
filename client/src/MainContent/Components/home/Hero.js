@@ -301,7 +301,7 @@ const Hero = () => {
         ""
       )}
 
-      <div class="relative sm:pt-[100px] pt-[90px] lg:pt-[100px] xl:pt-[150px] -mb-10 -mt-16 mx-auto block xl:pb-[155px] lg:pb-[100px] sm:pb-[95px] pb-[90px] bg-gradient-to-br from-blue-50 to-indigo-50">
+      <div class="relative sm:pt-[100px] pt-[90px] lg:pt-[100px] xl:pt-[150px] -mb-10 -mt-16 mx-auto block xl:pb-[155px] lg:pb-[100px] sm:pb-[95px] pb-[80px] bg-gradient-to-br from-blue-50 to-indigo-50">
         <div class=" xl:max-w-screen mx-auto block  relative ">
           <div class="flex flex-wrap mx-auto lg:-right-8    relative pointer-events-auto">
             <div
@@ -325,11 +325,12 @@ const Hero = () => {
                     "
                 >
                   <span>
-                    All-in-one <span class="text-blue-700">B2B</span> Platform
+                    <span class="text-blue-700">All-in-one</span> Platform
                   </span>{" "}
                   for <br />
-                  <span class="text-blue-700">Digital</span> Services & Tools{" "}
+                  <span class="text-blue-700"> B2B</span> Digital Services{" "}
                   <br />
+                  & Tools <br class="sm:block hidden" />
                 </h1>
                 <p class="text-base  mb-8 -mt-4 sm:px-0 px-4 relative text-center block mx-auto text-body-color max-w-[430px]">
                   With our algorithms, digital services and freelancer networks,
