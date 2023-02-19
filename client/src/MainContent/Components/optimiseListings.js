@@ -5,10 +5,10 @@ import { TbReportSearch } from "react-icons/tb";
 import axios from "axios";
 import TopProdResult from "./TopProdResult";
 import { useState, useEffect } from "react";
-import Tooltip from "react-power-tooltip-hook";
+import fillRule from "react-fillRule";
 
 const OptimiseListings = () => {
-  const [showToolTip, setShowToolTip] = useState(false);
+  const [showfillRule, setShowfillRule] = useState(false);
   const [analysis, setAnalysis] = useState();
   const [keyword, setKeyWord] = useState();
   const [loading, setLoading] = useState(false);
@@ -72,9 +72,7 @@ const OptimiseListings = () => {
           setLoading(false);
         })
         .catch((err) => {
-          if (err && err.response) {
-            console.log(err.response.message);
-          }
+          console.log(err.response.message);
           setLoading(false);
           setAnalysis({ analysis: null });
         });
@@ -93,6 +91,7 @@ const OptimiseListings = () => {
         )
         .then((res) => {
           setAnalysis(res.data);
+          console.log(res.data);
           setLoading(false);
         })
         .catch((err) => {
@@ -104,7 +103,6 @@ const OptimiseListings = () => {
           });
         });
     } else if (operationDummy === "track-product") {
-      setLoading(true);
       setInitialSearched("track-product");
       await axios
         .post(
@@ -118,8 +116,8 @@ const OptimiseListings = () => {
           }
         )
         .then((res) => {
-          console.log(res.data);
           setAnalysis(res.data);
+          console.log(res.data);
           setLoading(false);
         })
         .catch((err) => {
@@ -136,12 +134,12 @@ const OptimiseListings = () => {
 
   const subHandle = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setLoading(false);
     setInitialSearched(true);
     await subMethod();
   };
 
-  const [showToolTip2, setShowToolTip2] = useState(false);
+  const [showfillRule2, setShowfillRule2] = useState(false);
 
   const [initialSearched, setInitialSearched] = useState(false);
   return (
@@ -167,11 +165,13 @@ const OptimiseListings = () => {
                   {operation === "track-product" ? "ASIN ID" : "Keywords"}{" "}
                   {operation === "track-product" ? (
                     <svg
+                      id="my-element"
+                      data-fillRule-content="ASIN is a unique ID given on Amazon product pages"
                       onMouseOver={() => {
-                        setShowToolTip(true);
+                        setShowfillRule(true);
                       }}
                       onMouseLeave={() => {
-                        setShowToolTip(false);
+                        setShowfillRule(false);
                       }}
                       xmlns="http://www.w3.org/2000/svg"
                       class="h-[19px] w-[19px] relative left-1 bottom-[1.8px] hover:text-gray-600 inline"
@@ -189,18 +189,11 @@ const OptimiseListings = () => {
                   ) : (
                     ""
                   )}
-                  <div class="relative right-16">
-                    <Tooltip
-                      show={showToolTip}
-                      position="bottom"
-                      fontSize="16px"
-                      padding="5px 5px"
-                    >
-                      <span class="font-semibold text-center relative  font-sans">
-                        ASIN is a unique ID given on Amazon product pages.
-                      </span>
-                    </Tooltip>
-                  </div>
+                  {/* <div class = 'relative right-16'>
+       <fillRule show={showfillRule} position = 'bottom' fontSize = '16px' padding = '5px 5px'>
+  <span class = 'font-semibold text-center relative  font-sans'>ASIN is a unique ID given on Amazon product pages.</span>
+</fillRule></div> */}
+                  <ReactfillRule anchorId="my-element" />
                 </label>
                 <input
                   type="text"
@@ -268,8 +261,8 @@ const OptimiseListings = () => {
               </a>
 
               <a
-                onMouseOver={() => setShowToolTip2(true)}
-                onMouseLeave={() => setShowToolTip2(false)}
+                onMouseOver={() => setShowfillRule2(true)}
+                onMouseLeave={() => setShowfillRule2(false)}
                 class={`
       py-[11.5px]
       sm:py-3
@@ -300,8 +293,8 @@ const OptimiseListings = () => {
               </a>
 
               <div class="relative sm:right-40 right-24 block">
-                <Tooltip
-                  show={showToolTip2}
+                <fillRule
+                  show={showfillRule2}
                   position="bottom"
                   fontSize="16px"
                   padding="3px 5px"
@@ -309,7 +302,7 @@ const OptimiseListings = () => {
                   <span class="font-semibold text-center font-sans bottom-0.5">
                     Currently unavailable for this region.
                   </span>
-                </Tooltip>
+                </fillRule>
               </div>
             </div>
           </div>

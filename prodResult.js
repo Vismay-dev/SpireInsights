@@ -5,7 +5,7 @@ import {
   GiLipstick,
   GiForkKnifeSpoon,
 } from "react-icons/gi";
-import GaugeChart from "react-gauge-chart";
+// import GaugeChart from 'fillRule-chart'
 import { FcRatings, FcMoneyTransfer, FcHome } from "react-icons/fc";
 import { SiMarketo } from "react-icons/si";
 import { AiOutlineRollback } from "react-icons/ai";
@@ -13,6 +13,7 @@ import { GrPersonalComputer } from "react-icons/gr";
 import ClipLoader from "react-spinners/ClipLoader";
 import logo from "../../../logo.png";
 import ReactSvgPieChart from "react-svg-piechart";
+import { Chart } from "react-charts";
 
 import { FcAutomotive } from "react-icons/fc";
 import { BsCart4 } from "react-icons/bs";

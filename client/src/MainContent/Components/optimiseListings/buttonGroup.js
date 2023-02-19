@@ -1,18 +1,18 @@
-import {GiSellCard} from 'react-icons/gi'
-import {MdSell} from 'react-icons/md'
-import {CgTrack} from 'react-icons/cg'
+import { GiSellCard } from "react-icons/gi";
+import { MdSell } from "react-icons/md";
+import { CgTrack } from "react-icons/cg";
 const ButtonGroup = (props) => {
-
-
-
-    return (<>
-
-
-
-<div class={`flex flex-wrap rounded-lg w-fit mx-auto md:shadow-md right-[3px] relative items-center text-center mt-7 mb-4`}>
-   <a href="javascript:void(0)" onClick = {()=> {
-      props.changeOp('top-prod')
-   }} class={`
+  return (
+    <>
+      <div
+        class={`flex flex-wrap rounded-lg w-fit mx-auto md:shadow-md right-[3px] relative items-center text-center mt-7 mb-4`}
+      >
+        <a
+          href="javascript:void(0)"
+          onClick={() => {
+            props.changeOp("top-prod");
+          }}
+          class={`
       py-[10px]
       sm:py-3
       px-[7px]
@@ -33,19 +33,27 @@ const ButtonGroup = (props) => {
       text-center  
       
       transition-all
-      ${props.operation==='top-prod'?"border-blue-700 text-center text-white text-base bg-blue-700":'text-black bg-white'}
+      ${
+        props.operation === "top-prod"
+          ? "border-blue-700 text-center text-white text-base bg-blue-700"
+          : "text-black bg-white"
+      }
       hover:bg-blue-700 hover:text-white hover:border-gray-300
       rounded-l-lg
       sm:rounded-r-none rounded-r-lg
-      `}>
-      <span class="pr-2 sm:inline hidden">
-         <GiSellCard/>
-      </span>
-      Analyze Top Products
-   </a>
-   <a href="javascript:void(0)" onClick = {()=> {
-      props.changeOp('marketplace-overview')
-   }} class={`
+      `}
+        >
+          <span class="pr-2 sm:inline hidden">
+            <GiSellCard />
+          </span>
+          Analyze Top Products
+        </a>
+        <a
+          href="javascript:void(0)"
+          onClick={() => {
+            props.changeOp("marketplace-overview");
+          }}
+          class={`
       py-[10px]
       sm:py-3
       px-[7px]
@@ -66,19 +74,27 @@ const ButtonGroup = (props) => {
       text-center  text-sm
       sm:text-base
       transition-all
-      ${props.operation==='marketplace-overview'?"border-blue-700 text-center text-white text-base bg-blue-700":'text-black bg-white'}
+      ${
+        props.operation === "marketplace-overview"
+          ? "border-blue-700 text-center text-white text-base bg-blue-700"
+          : "text-black bg-white"
+      }
       hover:bg-blue-700 hover:text-white hover:border-gray-300
-      `}>
-      <span class="pr-2 sm:inline hidden">
-         <MdSell/>
-      </span>
-      Market Place Analysis
-   </a>
-   <a href="javascript:void(0)" onClick = {()=> {
-      props.changeOp('track-product')
-      document.getElementById('keywords').value = ''
-      document.getElementById('keywords').textContent = ''
-   }} class={`
+      `}
+        >
+          <span class="pr-2 sm:inline hidden">
+            <MdSell />
+          </span>
+          Market Place Analysis
+        </a>
+        <a
+          href="javascript:void(0)"
+          onClick={() => {
+            props.changeOp("track-product");
+            document.getElementById("keywords").value = "";
+            document.getElementById("keywords").textContent = "";
+          }}
+          class={`
       py-[10px]
       sm:py-3
       px-[12px]
@@ -94,19 +110,24 @@ const ButtonGroup = (props) => {
       text-center  text-sm
       sm:text-base
       transition-all
-      ${props.operation==='track-product'?"border-blue-700 text-center text-white text-base bg-blue-700":'text-black bg-white'}
+      ${
+        props.operation === "track-product"
+          ? "border-blue-700 text-center text-white text-base bg-blue-700"
+          : "text-black bg-white"
+      }
       hover:bg-blue-700 hover:text-white hover:border-gray-300
       rounded-r-lg
       md:rounded-l-none rounded-l-lg
-      `}>
-      <span class="pr-2 sm:inline hidden">
-         <CgTrack/>
-      </span>
-      Track Product Performance
-   </a>
-</div>
-    
-    </>)
-}
+      `}
+        >
+          <span class="pr-2 sm:inline hidden">
+            <CgTrack />
+          </span>
+          Track Product Performance
+        </a>
+      </div>
+    </>
+  );
+};
 
-export default ButtonGroup
+export default ButtonGroup;

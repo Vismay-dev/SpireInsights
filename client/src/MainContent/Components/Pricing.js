@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Tooltip from "react-power-tooltip-hook";
+import Tooltip from "fillRule-tooltip-hook";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import RegModal from "../../../Modals/RegModal";
@@ -29,155 +29,18 @@ const Pricing = () => {
       <section
         class="
    bg-gradient-to-br from-blue-50 to-indigo-50
+   pt-[85px]
+   lg:pt-[66px]
+   pb-10
+   lg:pb-[50px]
    relative
    z-20
    overflow-hidden
    "
       >
         <div class="lg:container block mx-auto">
-          <section class="sm:pt-[60px] pt-[54px] sm:pb-4 pb-3">
-            <div class="container mx-auto">
-              <div class="-mx-4 flex flex-wrap">
-                <div class="w-full px-4">
-                  <div class="mx-auto mb-[60px] max-w-[535px] text-center">
-                    <span class="text-blue-700 mb-2 block text-base font-semibold">
-                      Unleash The Power Of E-Commerce
-                    </span>
-                    <h2 class="text-dark  mb-4 text-3xl font-bold sm:text-4xl md:text-[40px]">
-                      Our Digital Services
-                    </h2>
-                    <p class="text-body-color px-7 relative top-4 sm:my-2 my-0 sm:mt-3 mt-0 text-base">
-                      Our e-commerce focused portfolio of services enables you
-                      to take your online business forward.{" "}
-                      <span class="sm:inline hidden">
-                        Minimal Costs. Rapid Service Delivery. No Bottlenecks.
-                        Efficiency.
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </div>
 
-              <div class="-mx-4 flex flex-wrap">
-                <div class="w-full md:px-4 sm:px-20 px-16 md:w-1/2 xl:w-1/3">
-                  <div class="relative mb-12">
-                    <div class="overflow-hidden rounded-lg">
-                      <img
-                        src="https://www.csquaretech.com/wp-content/uploads/2021/08/Website-Maintenance-Policy-2.jpg"
-                        alt="portfolio"
-                        class="w-full"
-                      />
-                    </div>
-                    <div class="relative z-10 mx-7 -mt-8 px-5 rounded-lg bg-white border-blue-700 border-[1px] border-dashed sm:py-7 py-5 sm:px-5 px-3 sm:pb-5 pb-3  text-center shadow-lg">
-                      <span class="text-blue-700 mb-2 block text-sm font-semibold">
-                        Development
-                      </span>
-                      <h3 class="text-dark mb-4 sm:text-xl text-lg font-bold">
-                        Website Maintenance
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="w-full md:px-4 sm:px-20 px-16 md:w-1/2 xl:w-1/3">
-                  <div class="relative mb-12">
-                    <div class="overflow-hidden rounded-lg">
-                      <img
-                        src="https://displayadsdeepdive.com/wp-content/uploads/2021/08/displayadsdeepdive.com-creative-studio.png"
-                        alt="portfolio"
-                        class="w-full"
-                      />
-                    </div>
-                    <div class="relative z-10 mx-7 -mt-8 rounded-lg bg-white border-blue-700 border-[1px] border-dashed sm:py-7 py-5 sm:px-5 px-3 sm:pb-5 pb-3 text-center shadow-lg">
-                      <span class="text-blue-700 mb-2 block text-sm font-semibold">
-                        Marketing
-                      </span>
-                      <h3 class="text-dark mb-4 sm:text-xl text-lg font-bold">
-                        Google Ads Manager (PPC)
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="w-full md:px-4 sm:px-20 px-16 md:w-1/2 xl:w-1/3">
-                  <div class="relative mb-12">
-                    <div class="overflow-hidden rounded-lg">
-                      <img
-                        src="https://empowery.com/wp-content/uploads/2022/08/Secret-to-Successful-Amazon-FBA-Selling-scaled.jpg"
-                        alt="portfolio"
-                        class="w-full"
-                      />
-                    </div>
-                    <div class="relative z-10 mx-7 -mt-8 rounded-lg bg-white border-blue-700 border-[1px] border-dashed sm:py-7 py-5 sm:px-5 px-3 sm:pb-5 pb-3 text-center shadow-lg">
-                      <span class="text-blue-700 mb-2 block text-sm font-semibold">
-                        Research
-                      </span>
-                      <h3 class="text-dark mb-4 sm:text-xl text-lg font-bold">
-                        Amazon FBA Product Research
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="w-full md:px-4 sm:px-20 px-16 md:w-1/2 xl:w-1/3">
-                  <div class="relative mb-12">
-                    <div class="overflow-hidden bg-white rounded-lg">
-                      <img
-                        src="https://www.searlesgraphics.com/Images/social-media-top.png"
-                        alt="portfolio"
-                        class="w-full"
-                      />
-                    </div>
-                    <div class="relative z-10 mx-7 -mt-8 rounded-lg bg-white border-blue-700 border-[1px] border-dashed sm:py-7 py-5 sm:px-5 px-3 sm:pb-5 pb-3 text-center shadow-lg">
-                      <span class="text-blue-700 mb-2 block text-sm font-semibold">
-                        Design & Branding
-                      </span>
-                      <h3 class="text-dark mb-4 sm:text-xl text-lg font-bold">
-                        Social Media Marketing
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="w-full md:px-4 sm:px-20 px-16 md:w-1/2 xl:w-1/3">
-                  <div class="relative mb-12">
-                    <div class="overflow-hidden rounded-lg">
-                      <img
-                        src="https://www.solutions.kompass.com/blog/media/kompass_why_email_marketing_still_works.jpg"
-                        alt="portfolio"
-                        class="w-full"
-                      />
-                    </div>
-                    <div class="relative z-10 mx-7 top-[2px] -mt-8 rounded-lg bg-white border-blue-700 border-[1px] border-dashed sm:py-7 py-5 sm:px-5 px-3 sm:pb-5 pb-3 text-center shadow-lg">
-                      <span class="text-blue-700 mb-2 block text-sm font-semibold">
-                        Marketing
-                      </span>
-                      <h3 class="text-dark mb-4 sm:text-xl text-lg font-bold">
-                        Automated Email Marketing
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="w-full md:px-4 sm:px-20 px-16 md:w-1/2 xl:w-1/3">
-                  <div class="relative mb-12">
-                    <div class="overflow-hidden rounded-lg">
-                      <img
-                        src="https://vtldesign.com/wp-content/uploads/2021/06/vital-design-image-optimization-seo.jpg"
-                        alt="portfolio"
-                        class="w-full"
-                      />
-                    </div>
-                    <div class="relative z-10 mx-7 -mt-8 rounded-lg bg-white border-blue-700 border-[1px] border-dashed sm:py-7 py-5 sm:px-5 px-3 sm:pb-5 pb-3 text-center shadow-lg">
-                      <span class="text-blue-700 mb-2 block text-sm font-semibold">
-                        Visibility
-                      </span>
-                      <h3 class="text-dark mb-4 sm:text-xl text-lg font-bold">
-                        Search Engine Optimization
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          {/* 
-          <div class="flex flex-wrap -mx-4">
+          {/* <div class="flex flex-wrap -mx-4">
             <div class="w-full px-4">
               <div class="text-center mx-auto lg:bottom-0 bottom-4 relative mb-[60px] lg:mb-20 max-w-[510px]">
                 <span class="font-semibold relative bottom-2 text-lg text-primary mb-2 block">
@@ -1362,6 +1225,211 @@ const Pricing = () => {
               </div>
             </div>
           </div> */}
+
+<section
+  x-data="
+        {
+          showCards: 'all',
+          activeClasses: 'bg-primary text-white',
+          inactiveClasses: 'text-body-color hover:bg-primary hover:text-white',
+        }
+      "
+  class="pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]"
+>
+  <div class="container mx-auto">
+    <div class="-mx-4 flex flex-wrap">
+      <div class="w-full px-4">
+        <div class="mx-auto mb-[60px] max-w-[510px] text-center">
+          <span class="text-primary mb-2 block text-lg font-semibold">
+            Our Portfolio
+          </span>
+          <h2
+            class="text-dark mb-4 text-3xl font-bold sm:text-4xl md:text-[40px]"
+          >
+            Our Recent Projects
+          </h2>
+          <p class="text-body-color text-base">
+            There are many variations of passages of Lorem Ipsum available but
+            the majority have suffered alteration in some form.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="-mx-4 flex flex-wrap">
+      <div
+        class="w-full px-4 md:w-1/2 xl:w-1/3"
+      >
+        <div class="relative mb-12">
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="https://cdn.tailgrids.com/2.0/image/marketing/images/portfolio/portfolio-01/image-01.jpg"
+              alt="portfolio"
+              class="w-full"
+            />
+          </div>
+          <div
+            class="relative z-10 mx-7 -mt-20 rounded-lg bg-white py-9 px-3 text-center shadow-lg"
+          >
+            <span class="text-primary mb-2 block text-sm font-semibold">
+              Branding
+            </span>
+            <h3 class="text-dark mb-4 text-xl font-bold">Branding Design</h3>
+            <a
+              href="javascript:void(0)"
+              class="text-body-color hover:bg-primary hover:border-primary inline-block rounded-md border py-3 px-7 text-sm font-semibold transition hover:text-white"
+            >
+              View Details
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-full px-4 md:w-1/2 xl:w-1/3"
+      >
+        <div class="relative mb-12">
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="https://cdn.tailgrids.com/2.0/image/marketing/images/portfolio/portfolio-01/image-02.jpg"
+              alt="portfolio"
+              class="w-full"
+            />
+          </div>
+          <div
+            class="relative z-10 mx-7 -mt-20 rounded-lg bg-white py-9 px-3 text-center shadow-lg"
+          >
+            <span class="text-primary mb-2 block text-sm font-semibold">
+              Marketing
+            </span>
+            <h3 class="text-dark mb-4 text-xl font-bold">
+              Best Marketing tips
+            </h3>
+            <a
+              href="javascript:void(0)"
+              class="text-body-color hover:bg-primary hover:border-primary inline-block rounded-md border py-3 px-7 text-sm font-semibold transition hover:text-white"
+            >
+              View Details
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-full px-4 md:w-1/2 xl:w-1/3"
+      >
+        <div class="relative mb-12">
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="https://cdn.tailgrids.com/2.0/image/marketing/images/portfolio/portfolio-01/image-03.jpg"
+              alt="portfolio"
+              class="w-full"
+            />
+          </div>
+          <div
+            class="relative z-10 mx-7 -mt-20 rounded-lg bg-white py-9 px-3 text-center shadow-lg"
+          >
+            <span class="text-primary mb-2 block text-sm font-semibold">
+              Development
+            </span>
+            <h3 class="text-dark mb-4 text-xl font-bold">Web Design Trend</h3>
+            <a
+              href="javascript:void(0)"
+              class="text-body-color hover:bg-primary hover:border-primary inline-block rounded-md border py-3 px-7 text-sm font-semibold transition hover:text-white"
+            >
+              View Details
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-full px-4 md:w-1/2 xl:w-1/3"
+      >
+        <div class="relative mb-12">
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="https://cdn.tailgrids.com/2.0/image/marketing/images/portfolio/portfolio-01/image-04.jpg"
+              alt="portfolio"
+              class="w-full"
+            />
+          </div>
+          <div
+            class="relative z-10 mx-7 -mt-20 rounded-lg bg-white py-9 px-3 text-center shadow-lg"
+          >
+            <span class="text-primary mb-2 block text-sm font-semibold">
+              Design
+            </span>
+            <h3 class="text-dark mb-4 text-xl font-bold">
+              Business Card Design
+            </h3>
+            <a
+              href="javascript:void(0)"
+              class="text-body-color hover:bg-primary hover:border-primary inline-block rounded-md border py-3 px-7 text-sm font-semibold transition hover:text-white"
+            >
+              View Details
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-full px-4 md:w-1/2 xl:w-1/3"
+      >
+        <div class="relative mb-12">
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="https://cdn.tailgrids.com/2.0/image/marketing/images/portfolio/portfolio-01/image-05.jpg"
+              alt="portfolio"
+              class="w-full"
+            />
+          </div>
+          <div
+            class="relative z-10 mx-7 -mt-20 rounded-lg bg-white py-9 px-3 text-center shadow-lg"
+          >
+            <span class="text-primary mb-2 block text-sm font-semibold">
+              Marketing
+            </span>
+            <h3 class="text-dark mb-4 text-xl font-bold">Digital marketing</h3>
+            <a
+              href="javascript:void(0)"
+              class="text-body-color hover:bg-primary hover:border-primary inline-block rounded-md border py-3 px-7 text-sm font-semibold transition hover:text-white"
+            >
+              View Details
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        :class="showCards == 'all' || showCards == 'branding' ? 'block' : 'hidden' "
+        class="w-full px-4 md:w-1/2 xl:w-1/3"
+      >
+        <div class="relative mb-12">
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="https://cdn.tailgrids.com/2.0/image/marketing/images/portfolio/portfolio-01/image-06.jpg"
+              alt="portfolio"
+              class="w-full"
+            />
+          </div>
+          <div
+            class="relative z-10 mx-7 -mt-20 rounded-lg bg-white py-9 px-3 text-center shadow-lg"
+          >
+            <span class="text-primary mb-2 block text-sm font-semibold">
+              Branding
+            </span>
+            <h3 class="text-dark mb-4 text-xl font-bold">Creative Agency</h3>
+            <a
+              href="javascript:void(0)"
+              class="text-body-color hover:bg-primary hover:border-primary inline-block rounded-md border py-3 px-7 text-sm font-semibold transition hover:text-white"
+            >
+              View Details
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
         </div>
       </section>
     </>

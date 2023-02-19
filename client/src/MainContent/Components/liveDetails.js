@@ -5,10 +5,10 @@ import { TbReportSearch } from "react-icons/tb";
 import axios from "axios";
 import TopProdResult from "./prodResult";
 import { useState, useEffect } from "react";
-import Tooltip from "react-power-tooltip-hook";
+import fillRule from "react-fillRule";
 
 const LiveDetails = () => {
-  const [showToolTip, setShowToolTip] = useState(false);
+  const [showfillRule, setShowfillRule] = useState(false);
   const [analysis, setAnalysis] = useState();
   const [loading, setLoading] = useState(false);
   const [currentPlatform, setCurrentPlatform] = useState("Amazon");
@@ -96,7 +96,7 @@ const LiveDetails = () => {
     await subMethod();
   };
 
-  const [showToolTip2, setShowToolTip2] = useState(false);
+  const [showfillRule2, setShowfillRule2] = useState(false);
   const [initialSearched, setInitialSearched] = useState(false);
 
   return (
@@ -130,8 +130,7 @@ const LiveDetails = () => {
        shadow-t-md
        shadow-l-md
        shadow-b-md
-       bg-blue-700 text-white
-
+         bg-blue-700 text-white
       w-[50%]
       sm:px-20
       inline-flex
@@ -141,6 +140,7 @@ const LiveDetails = () => {
       cursor-pointer
       border border-primary
       text-center  text-base
+      
       hover:bg-blue-700 hover:text-white hover:border-primary
       `}
               >
@@ -149,8 +149,10 @@ const LiveDetails = () => {
               </a>
 
               <a
-                onMouseOver={() => setShowToolTip2(true)}
-                onMouseLeave={() => setShowToolTip2(false)}
+                onMouseOver={() => setShowfillRule2(true)}
+                onMouseLeave={() => setShowfillRule2(false)}
+                id="my-element"
+                data-fillRule-content="Currently unavailable for this region."
                 class={`
       py-[11.5px]
       sm:py-3
@@ -180,16 +182,11 @@ const LiveDetails = () => {
                 Al Anees (Qatar)
               </a>
 
-              <Tooltip
-                show={showToolTip2}
-                position="right"
-                fontSize="16px"
-                padding="3px 5px"
-              >
-                <span class="font-semibold text-center font-sans bottom-0.5">
-                  Currently unavailable for this region.
-                </span>
-              </Tooltip>
+              {/* <fillRule show={showfillRule2} position = 'right' fontSize = '16px' padding = '3px 5px'>
+  <span class = 'font-semibold text-center font-sans bottom-0.5'>Currently unavailable for this region.</span>
+</fillRule> */}
+
+              <ReactfillRule anchorId="my-element" />
             </div>
           </div>
 

@@ -12,6 +12,7 @@ const amazonResults = require("../searchResultFinder/amazon");
 
 const noon = require("../topProductAnalysis/noon");
 const User = require("../models/user");
+const Order = require("../models/order");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const auth = require("../auth/auth");
@@ -968,6 +969,42 @@ router.post("/updateUser", auth, async (req, res) => {
     const newUser = await User.findByIdAndUpdate(req.user._id, updateInfo);
     const updatedUser = await newUser.save();
     res.send(updateInfo);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
+});
+
+router.post("/createServiceRequest", auth, async (req, res) => {
+  const user = await User.findById(req.user._id);
+  const orderRequest = new Order({
+    userDetails: user,
+    resolved: false,
+    confirmedEmail: req.body.confirmedMailAddress,
+    serviceName: req.body.serviceName,
+    completed: false,
+  });
+
+  // Completed  means a service who's operation has been completed and cannot be resold to client for a new delivery cycle (as client has refused repurchase)
+  await orderRequest.save();
+  return user;
+});
+
+router.post("/getServiceRequests", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    const orderRequests = await Order.find();
+    let orderRequestsFiltered = [];
+    for (let i = 0; i < orderRequests.length; i++) {
+      if (
+        JSON.stringify(user._id) ==
+        JSON.stringify(orderRequests[i].userDetails._id)
+      ) {
+        orderRequestsFiltered.push(orderRequests[i]);
+      }
+    }
+    console.log(orderRequestsFiltered);
+    res.send(orderRequestsFiltered);
   } catch (err) {
     console.log(err);
     res.status(400).send(err);

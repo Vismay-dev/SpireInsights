@@ -1770,7 +1770,7 @@ rounded-l-md
 shadow-t-md
 shadow-l-md
 shadow-b-md
-         bg-blue-700 text-white
+bg-blue-700 text-white
 
 lg:w-[50%]
 w-[100%]
@@ -1782,7 +1782,7 @@ justify-center
 font-semibold
 cursor-pointer
 border border-primary
-text-center  text-base
+text-center text-base
 hover:bg-blue-700 hover:text-white hover:border-primary
 `}
           >

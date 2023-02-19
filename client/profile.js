@@ -1,8 +1,7 @@
 import { useContext, useRef, useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import userContext from "../../context/userContext";
 import EditModal from "../../Modals/EditModal";
-import Tooltip from "react-power-tooltip-hook";
+// import Tooltip from "fillRule-tooltip-hook";
 import ClipLoader from "react-spinners/ClipLoader";
 import axios from "axios";
 import logo from "../../logo.png";
@@ -23,30 +22,6 @@ const Profile = () => {
   const [daysLeft, setDaysLeft] = useState(0);
   const [minutesLeft, setMinutesLeft] = useState(0);
   const [hoursLeft, setHoursLeft] = useState(0);
-
-  const [loading, setLoading] = useState(false);
-
-  const [serviceRequests, setServiceRequests] = useState([]);
-  const location = useLocation();
-
-  useEffect(() => {
-    setLoading(true);
-    axios
-      .post(
-        process.env.NODE_ENV === "production"
-          ? "https://spire-insights.herokuapp.com/api/user/getServiceRequests"
-          : "http://localhost:4000/api/user/getServiceRequests",
-        { token: sessionStorage.getItem("token") }
-      )
-      .then((res) => {
-        setServiceRequests(res.data);
-        console.log(Boolean(res.data[0].completed));
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
-  }, [location.pathname]);
 
   useEffect(() => {
     setHours(
@@ -406,11 +381,11 @@ const Profile = () => {
                 <div className="w-full lg:w-4/12 xl:ml-3 px-4 xl:top-1.5 lg:mt-0 -mt-[105px] lg:left-0 left-[10px] relative lg:order-1 order-2">
                   <div className="flex  justify-center lg:py-4 py-7 xl:right-7 lg:right-3 right-0 relative lg:pt-4 pt-8">
                     <div className="mr-4 p-3 text-center">
-                      <span className="text-sm mt-1.5  text-blue-700 font-bold block uppercase tracking-wide text-blueGray-600">
-                        Free Sign-Up
+                      <span className="text-lg text-blue-700 underline font-bold block uppercase tracking-wide text-blueGray-600">
+                        Free Trial
                         {/* Paid  */}
                       </span>
-                      <span className="text-sm top-[7px] relative text-blueGray-400">
+                      <span className="text-sm top-1 relative text-blueGray-400">
                         Plan
                         {/* Subscription */}
                       </span>
@@ -427,12 +402,12 @@ const Profile = () => {
                 </div>
               </div>
               <div className="text-center lg:mt-0 mt-3 mb-8">
-                <h3 className="sm:text-4xl text-3xl font-semibold leading-normal mb-2 mt-3 text-blueGray-700">
+                <h3 className="sm:text-4xl text-3xl font-semibold leading-normal mb-2 text-blueGray-700">
                   {currentUser
                     ? userInfo.repFirstName + " " + userInfo.repLastName
                     : " "}
                 </h3>
-                <div className="text-sm leading-normal mt-0 lg:mb-11 mb-[50px] text-blueGray-400 font-bold uppercase">
+                <div className="text-sm leading-normal mt-0 lg:mb-10 mb-12 text-blueGray-400 font-bold uppercase">
                   <i className="fas fa-map-marker-alt mr-2 top-0.5 relative text-lg text-gray-400"></i>{" "}
                   {currentUser ? userInfo.city + ", " : " "}{" "}
                   {currentUser ? userInfo.country : " "}
@@ -440,79 +415,16 @@ const Profile = () => {
 
                 <div className="mb-2 font-semibold text-lg px-4">
                   <i className="fas fa-sitemap mr-2.5 top-[1px] relative text-lg sm:text-gray-400 text-gray-500"></i>
-                  <span class="">Organization/Business:</span>{" "}
+                  <span class="underline">Organization/Business:</span>{" "}
                   {currentUser ? userInfo.businessName : " "}
                 </div>
-                <div className="sm:mb-8 mb-11 text-blueGray-600 px-4">
+                <div className="sm:mb-5 mb-8 text-blueGray-600 px-4">
                   <i className="fas fa-envelope mr-2 top-[1px] relative text-lg sm:text-gray-400 text-gray-500"></i>
                   <span class="font-semibold">Contact:</span>{" "}
                   {currentUser ? userInfo.email : " "}
                 </div>
 
                 <hr class="mt-10 relative block" />
-
-                <div class="h-fit lg:pb-3 md:pb-2 pb-1 relative ">
-                  {serviceRequests &&
-                  serviceRequests.filter((req) => {
-                    return req.completed === "false";
-                  }).length > 0 ? (
-                    <div class="my-2 mt-2.5">
-                      <h1 class="font-bold sm:text-3xl text-2xl mt-6 text-center">
-                        Services Requested:
-                      </h1>
-                      <div class="grid lg:grid-cols-3 md:grid-cols-2 relative top-9 xl:mt-2 lg:mt-1 md:-mt-1 sm:-mt-2 -mt-2 md:px-9 sm:px-6 px-4 pb-4 space-x-2">
-                        {serviceRequests
-                          .filter((req) => {
-                            return req.completed === "false";
-                          })
-                          .map((req) => {
-                            return (
-                              <div class="col-span-1 bg-blue-50 border-[2px] shadow-md border-blue-700 border-dashed rounded-md h-fit p-3 pb-2.5 px-6">
-                                <h2 class="text-sm uppercase font-bold">
-                                  {req.serviceName}
-                                </h2>
-                                <h2 class="mt-[1px] text-sm text-blue-700 font-semibold">
-                                  {req.isRecurring
-                                    ? "recurring service"
-                                    : "non-recurring service"}
-                                </h2>
-                                <img
-                                  src={req.img}
-                                  class=" my-2.5 rounded-md shadow-md block mx-auto h-[160px] object-cover object-center"
-                                ></img>
-                                <h2
-                                  class={`mt-[5px] text-sm ${
-                                    req.resolved
-                                      ? "text-green-700"
-                                      : "text-red-700"
-                                  } font-bold`}
-                                >
-                                  {req.resolved
-                                    ? "PAYMENT COMPLETE"
-                                    : "PAYMENT INCOMPLETE"}
-                                </h2>
-                              </div>
-                            );
-                          })}
-                      </div>
-                    </div>
-                  ) : (
-                    <>
-                      <img
-                        class="w-16 block top-[104px] mt-1 mx-auto relative"
-                        src={logo}
-                      ></img>
-                      <br />
-                      <h1 class="text-3xl font-bold text-center top-[104px]  mb-[170px] left-[4px] relative text-gray-500">
-                        No Services Requested{" "}
-                        <span class="text-blue-700">Yet</span>
-                      </h1>
-                    </>
-                  )}
-                </div>
-
-                <hr class="mt-10 relative block" />
-
                 <img
                   class="w-16 block top-[104px] mt-1 mx-auto relative"
                   src={logo}
@@ -524,14 +436,16 @@ const Profile = () => {
                   </h1>
                 </div>
 
-                {/* <h1 class="md:text-3xl text-[28px] font-bold text-center top-11 relative">
+                <hr class="mt-6 relative block" />
+
+                <h1 class="md:text-3xl text-[28px] font-bold text-center top-11 relative">
                   <img
                     class="md:w-10 w-8  mr-1.5 -top-[3px] inline mx-auto relative"
                     src={logo}
                   ></img>
                   Your Subscription Plan
-                </h1> */}
-                {/* 
+                </h1>
+
                 <div class="h-[378px] relative top-[26px] md:left-1.5 ">
                   {userInfo.paid ? (
                     userInfo.subscription === "one" ? (
@@ -664,7 +578,9 @@ const Profile = () => {
                       ></img>
                     </>
                   )}
-                </div> */}
+
+                  {/* <Countdown date={new Date(userInfo.createdAt) + 1000 * 3600 * 48} renderer={renderer}/> */}
+                </div>
               </div>
             </div>
           </div>

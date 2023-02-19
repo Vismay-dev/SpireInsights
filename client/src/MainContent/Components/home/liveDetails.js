@@ -5,7 +5,7 @@ import { TbReportSearch } from "react-icons/tb";
 import axios from "axios";
 import TopProdResult from "./prodResult";
 import { useState, useEffect } from "react";
-import Tooltip from "react-power-tooltip-hook";
+import Tooltip from "fillRule-tooltip-hook";
 
 const LiveDetails = () => {
   const [showToolTip, setShowToolTip] = useState(false);
@@ -103,7 +103,7 @@ const LiveDetails = () => {
     <>
       <div class="relative mx-auto  z-[40]  w-fit">
         <h1 class="sm:text-4xl text-3xl font-bold mt-[40px] mb-4 px-4 bottom-2 relative text-center">
-          Live Trends
+          Live Details
         </h1>
         <hr class="relative top-1 w-[150%] mt-1 right-[25%]" />
         <div class="md:px-2.5 sm:px-12 px-6">
@@ -130,8 +130,11 @@ const LiveDetails = () => {
        shadow-t-md
        shadow-l-md
        shadow-b-md
-       bg-blue-700 text-white
-
+       ${
+         currentPlatform === "Amazon"
+           ? "bg-blue-700 text-white"
+           : "text-black bg-white"
+       }
       w-[50%]
       sm:px-20
       inline-flex
@@ -141,6 +144,7 @@ const LiveDetails = () => {
       cursor-pointer
       border border-primary
       text-center  text-base
+      bg-white
       hover:bg-blue-700 hover:text-white hover:border-primary
       `}
               >

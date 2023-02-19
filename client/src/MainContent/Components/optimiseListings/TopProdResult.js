@@ -7,12 +7,33 @@ import { IoPricetags } from "react-icons/io5";
 import ClipLoader from "react-spinners/ClipLoader";
 import logo from "../../../logo.png";
 import ReactSvgPieChart from "react-svg-piechart";
-import { Chart } from "react-charts";
+import { Chart } from "react-chartjs-2";
 import TableRanked from "./TableRanked";
 import loadingImg from "./loading.png";
 import Reviews from "../../../Modals/Reviews";
 
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
 import { useEffect, useState, useMemo } from "react";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const TopProdResult = (props) => {
   let avgDemand = 0;
@@ -23,8 +44,10 @@ const TopProdResult = (props) => {
   const [avgSupplyState, setAvgSupplyState] = useState(0);
   const [keyWordsNum, setKeyWordsNum] = useState(0);
 
-  console.log(props.analysis);
+  const [loading, setLoading] = useState(true);
 
+  const [chartData, setChartData] = useState([]);
+  const labels = ["Demand", "Supply"];
   const data = useMemo(
     () =>
       props.operation === "marketplace-overview" &&
@@ -32,25 +55,32 @@ const TopProdResult = (props) => {
       props.analysis.searchVolumeData &&
       props.analysis.relatedKeyWordData &&
       props.analysis.relatedKeyWordData.length !== 0
-        ? [
-            {
-              label: `Demand to Supply - ${props.keyword}`,
-              data: [
-                [0, avgDemandState],
-                [1, avgSupplyState],
-              ],
-            },
-
-            ...props.analysis.relatedKeyWordData.map((elem) => {
-              return {
-                label: `Demand to Supply - ${elem.keyWordSentence}`,
+        ? {
+            labels: labels,
+            datasets: [
+              {
+                label: `Demand to Supply - ${props.keyword}`,
                 data: [
-                  [0, elem.searchVolume],
-                  [1, elem.searchResults],
+                  [0, avgDemandState],
+                  [1, avgSupplyState],
                 ],
-              };
-            }),
-          ]
+                borderColor: "rgb(255, 99, 132)",
+                backgroundColor: "rgba(255, 99, 132, 0.5)",
+              },
+
+              ...props.analysis.relatedKeyWordData.map((elem) => {
+                return {
+                  label: `Demand to Supply - ${elem.keyWordSentence}`,
+                  data: [
+                    [0, elem.searchVolume],
+                    [1, elem.searchResults],
+                  ],
+                  borderColor: "rgb(53, 162, 235)",
+                  backgroundColor: "rgba(53, 162, 235, 0.5)",
+                };
+              }),
+            ],
+          }
         : [
             {
               label: `Demand to Supply - ${props.keyword}`,
@@ -126,6 +156,27 @@ const TopProdResult = (props) => {
 
       setAvgSupplyState(avgSupply);
       setAvgDemandState(avgDemand);
+
+      setChartData([
+        {
+          label: `Demand to Supply - ${props.keyword}`,
+          data: [
+            [0, avgDemandState],
+            [1, avgSupplyState],
+          ],
+        },
+
+        ...props.analysis.relatedKeyWordData.map((elem) => {
+          return {
+            label: `Demand to Supply - ${elem.keyWordSentence}`,
+            data: [
+              [0, elem.searchVolume],
+              [1, elem.searchResults],
+            ],
+          };
+        }),
+      ]);
+      setLoading(false);
     }
   }, [props.analysis, props.operation]);
 
@@ -143,10 +194,14 @@ const TopProdResult = (props) => {
       ) : (
         ""
       )}
-      {props.loading ? (
+      {loading && props.loading ? (
         <div class="h-[560px] -mb-4 bg-gradient-to-br mt-6 from-blue-100 to-indigo-200">
           <div class="top-[144px] left-[2.5px] relative mx-auto block text-center">
-            <ClipLoader color={"#3b5fcb"} loading={props.loading} size={90} />
+            <ClipLoader
+              color={"#3b5fcb"}
+              loading={loading && props.loading}
+              size={90}
+            />
             <img
               src={loadingImg}
               class="mx-auto block mt-2 relative w-[500px] mb-2"
@@ -1808,20 +1863,25 @@ const TopProdResult = (props) => {
                       }   lg:left-[1%] rounded-md shadow-md relative bg-white`}
                     >
                       <div
-                        class={`w-[90%] ${
+                        class={`w-[92%] ${
                           props.analysis.relatedKeyWordData &&
                           props.analysis.relatedKeyWordData.length === 0
-                            ? "h-[290px]"
+                            ? "h-[92%]"
                             : props.analysis.relatedKeyWordData &&
                               props.analysis.relatedKeyWordData.length === 1
-                            ? "h-[323px]"
+                            ? "h-[92%]"
                             : props.analysis.relatedKeyWordData &&
                               props.analysis.relatedKeyWordData.length === 2
-                            ? "h-[355px]"
-                            : "h-[410px]"
-                        } top-[10px] z-[400] relative block mx-auto right-1`}
+                            ? "h-[92%]"
+                            : "h-[92%]"
+                        } top-[12px] z-[400] relative block mx-auto -right-1`}
                       >
-                        <Chart data={data} axes={axes} tooltip />
+                        <Chart
+                          data={data}
+                          height={null}
+                          options={{ maintainAspectRatio: false }}
+                          type="line"
+                        />
                       </div>
                     </div>
                     <div class="lg:w-[48%] w-[100%] lg:mt-0 mt-6 lg:left-[3%] relative rounded-md shadow-md bg-white px-1 pt-2 overflow-hidden">
