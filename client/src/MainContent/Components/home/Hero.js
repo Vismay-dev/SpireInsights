@@ -325,11 +325,10 @@ const Hero = () => {
                     "
                 >
                   <span>
-                    <span class="text-blue-700">All-in-one</span> Platform
+                    All-in-one <span class="text-blue-700">B2B</span> Platform
                   </span>{" "}
                   for <br />
-                  <span class="text-blue-700"> B2B</span> Digital Services{" "}
-                  <br />
+                  <span class="text-blue-700">Digital</span> Services <br />
                   & Tools <br class="sm:block hidden" />
                 </h1>
                 <p class="text-base  mb-8 -mt-4 sm:px-0 px-4 relative text-center block mx-auto text-body-color max-w-[430px]">
