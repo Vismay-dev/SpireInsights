@@ -256,7 +256,6 @@ const NavBar = (props) => {
                   class=" mb-2 -mr-2 block relative"
                 >
                   <a
-                    type="button"
                     class={`block py-2 pr-4 cursor-pointer  pl-3 ${
                       location.pathname === "/setupListings" ||
                       location.pathname === "/setupListings/" ||
@@ -713,7 +712,6 @@ const NavBar = (props) => {
 
                           <li class=" align-middle items-center  text-center mb-2 -mr-2 block relative">
                             <a
-                              type="button"
                               class={` ${
                                 location.pathname === "/setupListings" ||
                                 location.pathname === "/setupListings/" ||
