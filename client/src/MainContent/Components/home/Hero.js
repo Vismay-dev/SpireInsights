@@ -327,7 +327,8 @@ const Hero = () => {
                   <span>
                     All-in-one <span class="text-blue-700">B2B</span> Platform
                   </span>{" "}
-                  for <br />
+                  <br />
+                  for
                   <span class="text-blue-700">Digital</span> Services <br />
                   & Tools <br class="sm:block hidden" />
                 </h1>
